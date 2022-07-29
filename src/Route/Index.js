@@ -45,7 +45,7 @@ const Index = () => {
                     <Route path='/blog/demo' element={<SingleBlog/>}/>
                     <Route path="/aboutUs" element={<AboutUs />} />
                     <Route path="/contactUs" element={<ContactUs />} /> */}
-                    <Route path="/" element={<Home demo={scrollSmoothTo} />} />
+                    <Route path="/" exact element={<Home demo={scrollSmoothTo} />} />
                     <Route path="/blockchain/:slug" element={<Web3 demo={scrollSmoothTo} />} />
                     <Route path='/blog' element={<BlogMain demo={scrollSmoothTo} />} />
                     <Route path='/blog/demo' element={<SingleBlog demo={scrollSmoothTo} />} />
