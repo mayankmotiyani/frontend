@@ -137,15 +137,15 @@ export default function Header() {
   // console.log("header", process.env.REACT_APP_BASE_URL);
 
   // const [nftList, setNftList] = useState([])
-  async function headerAPI() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
-    // console.log('api', api.data.response.NFT);
-    setNftList(api.data.response.NFT)
-  }
+  // async function headerAPI() {
+  //   const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
+  //   // console.log('api', api.data.response.NFT);
+  //   setNftList(api.data.response.NFT)
+  // }
 
-  useEffect(() => {
-    headerAPI()
-  }, [])
+  // useEffect(() => {
+  //   headerAPI()
+  // }, [])
 
   // ===================================== NFT API end ============================================ 
 
