@@ -153,7 +153,7 @@ export default function Header() {
   // const [CategoriesHead, setCategoriesHead] = useState([])
   const [CategoriesList, setCategoriesList] = useState([])
   async function blockchainCategories() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list`);
+    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
     // console.log(const demo = api.data.blockchain_category[0]);
     // setCategoriesHead(api.data.blockchain_category)
     // console.log(api.data);
