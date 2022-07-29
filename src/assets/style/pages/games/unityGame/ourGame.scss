@@ -1,0 +1,63 @@
+.ourGame-wrap {
+    padding: 50px 0px;
+    background: url("../../../../images/trusted/owl2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+
+    &::after {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "";
+        left: 0px;
+        top: 0px;
+        background: #000;
+        opacity: 0.5;
+    }
+
+    .ourGame-title {
+        position: relative;
+        z-index: 1;
+
+        .h3_title {
+            color: orange;
+        }
+
+        .h2_title {
+            color: #fff;
+        }
+    }
+
+    .ourGame-card-wrap {
+        border-radius: 10px;
+        box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+        background: #fff;
+        margin-top: 130px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.5s ease;
+
+        &:hover {
+            transform: translate(0, -10px);
+        }
+
+        .ourGame-card-img {
+            img {
+                margin-top: -100px;
+                border-radius: 20px 20px 0px 0px;
+            }
+        }
+    }
+
+    .ourGame-card-detail {
+        padding: 20px;
+
+        .h3_title {
+            color: orange;
+            padding-bottom: 10px;
+        }
+    }
+}

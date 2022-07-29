@@ -1,0 +1,121 @@
+.gameNews-wrap {
+    padding: 100px 0px;
+
+    .gameNews-detail {
+        p:nth-child(3) {
+            padding: 30px 0px;
+        }
+
+        .h3_title {
+            padding-bottom: 20px;
+            color: orange;
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        a span {
+            padding: 8px;
+            transition: .5s;
+            position: relative;
+        }
+
+        a span:nth-child(1) {
+            color: #fff;
+            background: #262626;
+        }
+
+        a span:nth-child(2) {
+            color: #fff;
+            background: orange;
+        }
+
+        a span:nth-child(1):before {
+            content: attr(data-attr);
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: orange;
+            padding: 8px;
+            transition: 0.5S;
+            transform-origin: top;
+            transform: rotateX(90deg) translateY(-50%);
+        }
+
+        a:hover span:nth-child(1):before {
+            transform: rotateX(0deg) translateY(0%);
+        }
+
+        a span:nth-child(2):before {
+            content: attr(data-attr);
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #262626;
+            padding: 8px 15px;
+            transition: 0.5S;
+            transform-origin: bottom;
+            transform: rotateX(90deg) translateY(50%);
+        }
+
+        a:hover span:nth-child(2):before {
+            transform: rotateX(0deg) translateY(0%);
+        }
+
+        a span:nth-child(1):after {
+            content: attr(data-attr);
+            padding: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #262626;
+            transform-origin: bottom;
+            transform: rotateX(0deg) translateY(0%);
+            transition: 0.5s;
+        }
+
+        a:hover span:nth-child(1):after {
+            transform: rotateX(90deg) translateY(50%);
+        }
+
+        a span:nth-child(2):after {
+            content: attr(data-attr);
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: orange;
+            padding: 8px 15px;
+            transition: 0.5S;
+            transform-origin: top;
+            transform: rotateX(0deg) translateY(0%);
+        }
+
+        a:hover span:nth-child(2):after {
+            transform: rotateX(90deg) translateY(-50%);
+        }
+    }
+
+    .gameNews-card-wrap {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        .gameNews-card-img {
+            img {
+                border-radius: 10px;
+            }
+        }
+        .gameNews-card-detail{
+            .h3_title{
+                color: orange;
+                padding: 10px 0px;
+            }
+        }
+    }
+}

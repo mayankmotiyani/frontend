@@ -27,7 +27,7 @@ const Footer = () => {
   const [companyData, setCompanyData] = useState([])
   async function companyApi() {
     const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/get-all-models/`);
-    // console.log(api.data.response.Company);
+    // console.log(api.data.response);
     setCompanyData(api.data.response.Company)
   }
 

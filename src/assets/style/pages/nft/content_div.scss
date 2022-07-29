@@ -1,0 +1,32 @@
+.content_div_section {
+    background-color: #00181c;
+    .content_div_cont {
+        display: flex;
+        height: 100%;
+        align-items: center;
+
+        .content_div {
+            h2 {
+                color: #fff;
+            }
+
+            p {
+                margin-bottom: 1em;
+                color: #fff;
+            }
+
+            ul {
+                li {
+                    list-style: outside;
+                    line-height: 2;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .content_img {
+        img {
+    
+        }
+    }
+}

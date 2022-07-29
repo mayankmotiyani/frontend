@@ -77,7 +77,7 @@ export default function HeroSection() {
     return (
         <>
             <section className='hero-wrap'>
-                <video autoPlay muted loop id="myVideo" width="100%">
+                <video autoPlay muted loop id="myVideo" width="100%" className='heroSection_video'>
                     <source src={video} type="video/mp4" />
                     <source src={video} type="video/ogg" />
                     {/* <source src={video} type="video/mp4" /> */}
@@ -85,8 +85,31 @@ export default function HeroSection() {
                 <div className='OwlCarousel-wrap'>
                     <OwlCarousel className='owl-theme hero_slider' loop margin={10} {...options}>
 
-                        {
-                            SliderData.map((ele, index) => {
+                        {SliderData.length === 0 ?
+                            <div className='item'>
+                                <div className='inner_section'>
+                                    <Container>
+                                        <Row>
+                                            <Col lg={6}>
+                                                <div className='hero_slide_section_content'>
+                                                    <div className='hero_content_div'>
+                                                        <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6>
+                                                        <h2 className='h2_title hero_cont_heading'>Heading Text Here</h2>
+                                                        <p className='hero_cont_para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nemo ea explicabo dolor, libero eveniet et nobis, praesentium exercitationem consequatur vel quidem iusto ipsum id inventore? Amet nam repudiandae dolorum?</p>
+                                                        <button className='hero_cont_btn'>Click Me</button>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col lg={6}>
+                                                <div className='hero_slide_section_img'>
+                                                    <Image src={HeroImage} fluid />
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </Container>
+                                </div>
+                            </div>
+                            : SliderData.map((ele, index) => {
                                 return <div className='item' key={index}>
                                     <div className='inner_section'>
                                         <Container>

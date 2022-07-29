@@ -1,0 +1,58 @@
+.featured-wrap {
+    padding: 50px 0px;
+    background: url("../../../../images/trusted/owl.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    .featured_img_div.axie {
+        img {
+            height: 50px;
+            object-fit: unset;
+        }
+    }
+
+    &::after {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "";
+        background: #000;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+    }
+
+    .featured_div {
+        background-color: rgb(255 255 255 / 50%);
+        border-radius: 15px;
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(10px);
+        padding: 1em 4em;
+
+        .featured_img_div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 80px;
+        }
+    }
+
+    .featured-title {
+        text-align: center;
+        padding-bottom: 20px;
+        position: relative;
+        z-index: 1;
+
+        .h3_title {
+            color: orange;
+        }
+
+        .h2_title {
+            color: #fff;
+        }
+    }
+}

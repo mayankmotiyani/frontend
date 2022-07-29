@@ -1,0 +1,17 @@
+.boxSections {
+    margin: 5em 0em;
+    .head_section {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    .box_shell {
+        border: 1px solid grey;
+        padding: 1em 2em;
+        margin: 1em 0em;
+
+        svg {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+    }
+}

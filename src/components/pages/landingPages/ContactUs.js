@@ -116,11 +116,11 @@ const ContactUs = () => {
                                     </div>
                                     <div className='contact-details'>
                                         <h5 className='h5_title'>Email</h5>
-                                        <a href="mailto:info@infograins.com" target={'_blank'} rel="noreferrer">info@infograins.com</a>
+                                        <a href="mailto:info@infograins.com" target={'_blank'}>info@infograins.com</a>
                                         <h5 className='h5_title'>Phone</h5>
                                         <a href='tel:+918925564395'>IND +91 8925564395</a>
                                         <h5 className='h5_title'>On The Web</h5>
-                                        <a href='#'>info@infograins.com</a>
+                                        <a href='#'>ingrains@gmail.com</a>
                                     </div>
                                 </div>
                             </Col>

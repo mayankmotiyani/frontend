@@ -357,24 +357,24 @@ export default function Header() {
             <Container>
               <Row className='justify-content-center'>
                 {CategoriesList.length === 0 ?
-                <div className='warning'>
-                    <b>Something went wrong</b>
-                </div>
-                :CategoriesList.map((e, key) => {
-                  return <Col lg={3} key={key}>
-                    <div className='desk_dropdown_col'>
-                      <div className='desk_dropdown_subhead'>{e.blockchain_category}</div>
-                      <ul>
-                        {e.array_of_blockchain_category_list.map((e, key) => {
-                          return <li key={key}>
-                            <Link to={e.blockchain_url} className='desk_dropdown_link'>
-                              <GrFormNextLink />
-                              <div>{e.blockchain_name}</div>
-                            </Link>
-                          </li>
-                        })}
+                  <div className='warning'>
+                    <b><IoIosWarning /> Something went wrong</b>
+                  </div>
+                  : CategoriesList.map((e, key) => {
+                    return <Col lg={3} key={key}>
+                      <div className='desk_dropdown_col'>
+                        <div className='desk_dropdown_subhead'>{e.blockchain_category}</div>
+                        <ul>
+                          {e.array_of_blockchain_category_list.map((e, key) => {
+                            return <li key={key}>
+                              <Link to={e.blockchain_url} className='desk_dropdown_link'>
+                                <GrFormNextLink />
+                                <div>{e.blockchain_name}</div>
+                              </Link>
+                            </li>
+                          })}
 
-                        {/* <li>
+                          {/* <li>
                           <a href="#" className='desk_dropdown_link'>
                             <GrFormNextLink />
                             <div>link List</div>
@@ -392,10 +392,10 @@ export default function Header() {
                             <div>link List</div>
                           </a>
                         </li> */}
-                      </ul>
-                    </div>
-                  </Col>
-                })}
+                        </ul>
+                      </div>
+                    </Col>
+                  })}
                 {/* <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     <div className='desk_dropdown_subhead'>Sub Heading</div>
@@ -536,14 +536,18 @@ export default function Header() {
                           <div>{nftList[0]}</div>
                         </a>
                       </li> */}
-                      {nftList.map((nft, index) => {
-                        return <li key={index}>
-                          <a href="#" className='desk_dropdown_link'>
-                            <GrFormNextLink />
-                            <div>{nft}</div>
-                          </a>
-                        </li>
-                      })}
+                      {nftList.length === 0 ?
+                        <div className='warning'>
+                          <b><IoIosWarning /> Something went wrong</b>
+                        </div>
+                        : nftList.map((nft, index) => {
+                          return <li key={index}>
+                            <a href="#" className='desk_dropdown_link'>
+                              <GrFormNextLink />
+                              <div>{nft}</div>
+                            </a>
+                          </li>
+                        })}
                       {/* <li>
                         <a href="#" className='desk_dropdown_link'>
                           <GrFormNextLink />
@@ -675,8 +679,10 @@ export default function Header() {
                         </a>
                       </li> */}
                       {gameList.length === 0 ?
-                        <h5><IoIosWarning /></h5> :
-                        gameList.map((game, index) => {
+                        <div className='warning'>
+                          <b><IoIosWarning /> Something went wrong</b>
+                        </div>
+                        : gameList.map((game, index) => {
                           return <li key={index}>
                             <a href="#" className='desk_dropdown_link'>
                               <GrFormNextLink />

@@ -250,6 +250,20 @@
             //     }
             // }
 
+            .warning{
+                display: flex;
+                justify-content: center;
+                b {
+                    display: flex;
+                    align-items: center;
+                    svg{
+                        color: #ffb600;
+                        font-size: 2em;
+                        margin-right: .5em;
+                    }
+                }
+            }
+
             .desk_dropdown_col {
                 .desk_dropdown_subhead {
                     font-size: 1.2em;

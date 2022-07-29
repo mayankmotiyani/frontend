@@ -1,0 +1,46 @@
+.keyFeature_section {
+    margin: 5em 0em;
+
+    .head {
+        text-align: center;
+        margin-bottom: 3em;
+    }
+    .key_box {
+        box-shadow: 0px 0px 5px grey;
+        padding: 2em;
+        // animation: float 4s linear infinite;
+        svg {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+        }
+
+        @keyframes float {
+            0%{
+                margin-top: 0px;
+            }
+            50%{
+                margin-top: 100px;
+            }
+            100%{
+                margin-top: 0px;
+            }
+        }
+    }
+    .key_box.odd{
+        margin-top: 100px;
+        // animation: floatOdd 4s linear infinite;
+
+        @keyframes floatOdd {
+            0%{
+                margin-top: 100px;
+            }
+            50%{
+                margin-top: 0px;
+            }
+            100%{
+                margin-top: 100px;
+            }
+            
+        }
+    }
+}
