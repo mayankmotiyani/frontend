@@ -36,7 +36,7 @@ const Index = () => {
 
     return (
         <>
-            <HashRouter>
+            <BrowserRouter>
                 <Header />
                 <Routes>
                     {/* <Route path="/" element={<Home />} />
@@ -56,7 +56,7 @@ const Index = () => {
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <Footer />
-            </HashRouter>
+            </BrowserRouter>
         </>
     )
 }
