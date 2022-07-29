@@ -1,0 +1,55 @@
+.single_blog_page{
+    margin: 5em 0em;
+
+    .side_menu_div{
+        position: relative;
+
+        @supports (position: sticky) or (position: -webkit-sticky){
+            
+                    .side_menu{
+                        position: -webkit-sticky;
+                        position: sticky;
+
+                        ul{
+                            list-style:outside;
+                            
+                            li{
+                                list-style: outside;
+                                margin-bottom: .5em;
+
+                                a{
+                                    color: #47576a;
+
+                                    &:hover{
+                                        color: dodgerblue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+        }
+    }
+    .blog_body{
+        .blog_content_div{
+            h3{
+                margin-top: 1em;
+                margin-bottom: .5em;
+            }
+        }
+
+        .h2_title{
+            border-left: 5px solid orange;
+            padding-left: 10px;
+            margin-bottom: .5em;
+        }
+        .blog_img{
+            height: 400px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .blog_content{
+            margin: 2em 0em;
+        }
+    }
+}

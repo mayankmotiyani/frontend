@@ -1,0 +1,154 @@
+@font-face {
+    font-family: heading;
+    src: url('../fonts/BebasNeue-Regular.ttf');
+}
+
+// @font-face {
+//     font-family: paragraph;
+//     src: url('../fonts/Lexend-VariableFont_wght.ttf');
+// }
+
+@font-face {
+    font-family: para;
+    src: url('../fonts/Quicksand-VariableFont_wght.ttf');
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+@import url('../style/common/header.scss');
+@import url('../style/pages/landing_page/index.scss');
+@import url("./pages/blockchain/blockchain.scss");
+@import url('../style/pages/blog/blogsection.scss');
+@import url('../style/pages/blog/single_blog.scss');
+@import url('./pages/not_found.scss');
+@import url("./pages/aboutUs/aboutUs.scss");
+@import url("./pages/contactUs/contactUs.scss");
+@import url("./pages/ourTeam/ourTeam.scss");
+@import url("./pages//games/unityGame/unityGame.scss");
+* {
+    // font-family: paragraph;
+    // font-family: 'Quicksand', sans-serif;
+    font-family: para;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+ul,
+li,
+ol,
+a,
+p {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+}
+
+hr {
+    margin: 1px 0px;
+    color: #b7b7b7;
+}
+
+a {
+    color: #000;
+    transition: all 0.5s ease;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: none ;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+}
+
+.h1_title {
+    font-size: 4rem;
+    color: #000;
+    font-family: heading;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+.h2_title {
+    font-family: heading;
+    font-size: 3rem;
+    color: #000;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+.h3_title {
+    font-family: heading;
+    font-weight: 500;
+    font-size: 24px;
+    color: #000;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+.h4_title {
+    font-family: heading;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #000;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+.h5_title {
+    font-family: heading;
+    font-weight: 500;
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+.h6_title {
+    font-family: heading;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+p {
+    // font-family: paragraph;
+    font-weight: 400;
+    font-size: 14px;
+    // color: #000;
+    color: #000;
+    letter-spacing: 0.7px;
+    margin-bottom: 0px;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.input_field {
+    border: none !important;
+    background: transparent !important;
+    // border-bottom: 2px solid orange !important;
+    border-bottom: 1px solid #47576a !important;
+    border-radius: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    // margin-bottom: 50px !important;
+    &:focus {
+        box-shadow: none !important;
+    }
+}

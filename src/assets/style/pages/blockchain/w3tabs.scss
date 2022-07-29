@@ -1,0 +1,91 @@
+.tabs-wrap {
+    padding: 80px 0px 150px;
+    background: url("../../../images/background/contact_background.jpg");
+    background-repeat: no-repeat;
+
+    .nav-tabs {
+        width: 50%;
+        margin: 0px auto;
+        border: none;
+        margin-bottom: 0px !important;
+    }
+
+    :nth-child(2) .nav-link {
+        left: -15px;
+    }
+
+    :nth-child(3) .nav-link {
+        left: -35px;
+    }
+
+    :nth-child(4) .nav-link {
+        left: -55px;
+    }
+
+    :nth-child(5) .nav-link {
+        left: -75px;
+    }
+
+    .nav-link {
+        border: 1px solid;
+        border-color: #dee2e6 #dee2e6 #fff;
+        ;
+        position: relative;
+        border-radius: 50% 50% 70% 30% / 100% 99% 1% 0%;
+        background-color: #eee; 
+        padding: 6px 0px;
+        color: #000;
+    }
+    .nav-link.active{
+        border-color: rgb(221, 193, 140);
+    }
+    .tabs-img {
+        position: relative;
+    }
+
+    img {
+        height: 300px;
+        object-fit: cover;
+        // margin-top: 30px;
+    }
+
+    .tabs-text {
+        text-align: center;
+        max-width: 850px;
+        margin: 20px auto 0px;
+        button {
+            background: transparent;
+            padding: 10px 45px;
+            border: 1px solid orange;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+            z-index: 0;
+            border-radius: 25px;    
+            color: #000;
+            margin-top: 30px;
+
+            &:hover {
+                color: #fff;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: -10px;
+                width: 10px;
+                height: 10px;
+                background-image: linear-gradient(45deg, #ff7731, #ffa52d, #ff742c);
+                border-radius: 50%;
+                border: 1px solid orange;
+                transition: all 0.2s;
+                z-index: -1;
+            }
+
+            &:hover::before {
+                transform: scale(100);
+            }
+        }
+    }
+}

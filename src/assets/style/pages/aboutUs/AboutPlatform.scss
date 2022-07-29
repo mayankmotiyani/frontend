@@ -1,0 +1,22 @@
+.AboutPlatform-wrap {
+    padding: 50px 0px;
+
+    .h3_title {
+        color: orange;
+    }
+
+    .AboutPlatform-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+
+        .AboutPlatform-details-img {
+            margin-right: 15px;
+            transition: all 0.5s ease;
+            &:hover {
+                transform: translateY(-8px);
+            }
+        }
+    }
+}

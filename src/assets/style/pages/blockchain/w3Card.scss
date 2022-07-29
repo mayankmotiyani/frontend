@@ -1,0 +1,78 @@
+.w3Card-wrap {
+    padding: 50px 0px;
+    background: url("../../../images/background/background03.png");
+    background-repeat: no-repeat;
+    background-size: 2600px;
+    background-position: center;
+
+    .w3Card-both {
+        margin-top: 100px;
+    }
+
+    .w3Card-upper {
+        .row {
+            justify-content: center;
+        }
+    }
+
+    .w3card-lower {
+        .row {
+            justify-content: center;
+        }
+    }
+
+    .w3Card-title {
+        .h2_title {
+            text-align: center;
+            padding-bottom: 100px;
+        }
+    }
+
+    .w3-card-body {
+        background-color: #fffafa;
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 20px;
+        height: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .h2_title {
+            font-size: 30px;
+            padding: 15px 0px;
+        }
+    }
+
+    .center-card {
+        position: relative;
+        bottom: 115px;
+    }
+
+    .lower-card {
+        position: relative;
+        bottom: 115px;
+    }
+
+}
+@media (max-width: 575px) {
+    .w3Card-wrap .center-card, .w3Card-wrap .lower-card{
+        bottom: 0px;
+    }
+    .w3Card-wrap .w3Card-title .h2_title{
+        padding-bottom: 20px;
+    }
+    .w3Card-wrap .w3Card-both{
+        margin: 0px;
+    }
+}   

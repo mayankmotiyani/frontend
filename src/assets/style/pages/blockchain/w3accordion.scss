@@ -1,0 +1,49 @@
+.w3-accordion-wrap {
+    padding: 50px 0px 100px;
+    // background-image: url("../../../images/background/web3/pattern.png");
+    background: #f7f7f7;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .w3-accordion-title {
+        .h2_title {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+    }
+
+    .accordion {
+        background: transparent;
+
+        .accordion-item {
+            background: transparent;
+            border-radius: 0px;
+            .accordion-header {
+                button {
+                    background-color: transparent;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                    button:not(.collapsed) {
+                        color: #000;
+                    }
+                }
+            }
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #000;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background: url("https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png");
+            height: 18px;
+            width: 2%;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+    }
+}

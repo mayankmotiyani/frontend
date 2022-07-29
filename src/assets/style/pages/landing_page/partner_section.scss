@@ -1,0 +1,22 @@
+.partner_section{
+    margin: 5em 0em;
+    .partner_div{
+        box-shadow: 0px 0px 20px #80808063;
+        padding: 2em;
+        border-radius: 10px;
+        .partner_slider{
+            .partner_img_div{
+                img{
+                    width: 250px;
+                    filter: grayscale(1);
+                    transition: all .5s;
+                    cursor: pointer;
+
+                    &:hover{
+                        filter: grayscale(0);
+                    }
+                }
+            }
+        }
+    }
+}

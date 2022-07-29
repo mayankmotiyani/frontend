@@ -1,0 +1,25 @@
+.w3-technologies-wrap{
+    padding: 50px 0px;
+    .row{
+        align-items: center;
+    }
+    .w3-technologies-content{
+        .h3_title{
+            color:orange;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .w3-technologies-wrap{
+        padding: 50px 0px 0px;
+    }
+    .w3-technologies-wrap .container{
+        max-width: 100%;
+    }
+}
+@media (max-width: 575px) {
+    .w3-technologies-wrap .row{
+        flex-direction: column-reverse;
+    }
+
+}

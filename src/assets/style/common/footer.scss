@@ -1,0 +1,289 @@
+.app-footer {
+    background-color: #fafafb;
+    // padding: 15px 0px;
+
+    p {
+        color: #4b5a65;
+        text-align: center;
+        padding: 15px;
+        border-top: 1px solid #d8d8d8;
+    }
+}
+
+//================= top btn =======================
+.top-btn-wrap {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    // border: 1px solid #47576a;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #47576a;
+    // animation-iteration-count: infinite;
+    // animation-name: line;
+    // animation-duration: 4s;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    overflow: hidden;
+    z-index: 1;
+
+    button {
+        color: #47576a;
+        font-size: 25px;
+        line-height: 40px;
+        padding: 0px;
+        padding-left: 9px;
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -10px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #1b2b38;
+        transition: all 0.5s;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        transform: scale(20);
+    }
+
+    &:hover > button{
+        color: #fff;
+    }
+
+
+}
+@keyframes line {
+    0% {
+        background-color: red;
+    }
+    25% {
+        background-color: pink;
+    }
+    50% {
+        background-color: blue;
+    }
+    75% {
+        background-color: orange;
+    }
+    100% {
+        background-color: green;
+    }
+}
+
+//================= // top btn ====================
+
+// ================================ chandrakant footer section start ===============================
+.footer_section {
+    // box-shadow: 0px -5px 50px 15px #e7e7e7;
+    // border-top-left-radius: 60px;
+    // border-top-right-radius: 60px;
+    // margin-top: 100%;   
+    // margin-top: -2.5em;
+    padding: 3em 0em;
+    background-color: #fafafb;
+    .footer_head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px 0px;
+        margin-top: 1em;
+        .subscribe_fieldDiv {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .subscribe_text {
+                font-size: 1.8em;
+                color: #47576a;
+                font-weight: 500;
+            }
+
+            .subscribe_email_field {
+                margin-left: 20px;
+                display: flex;
+
+                input {
+                    border: none;
+                    background-color: #f1f1f1;
+                    // box-shadow: -4px 2px 6px #c7c7c782;
+                    padding: 0px 15px;
+                    outline: none;
+                    color: #47576a;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    height: 3em;
+                }
+
+                button {
+                    border: none;
+                    background-color: #ededed;
+                    // box-shadow: 4px 2px 6px #c7c7c782;
+                    padding: 0px 15px;
+                    margin-left: -10px;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    outline: none;
+                    overflow: hidden;
+                    position: relative;
+                    transition: all 0.5s;
+                    z-index: 0;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 0%;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #17243b;
+                        transition: all 0.2s;
+                        z-index: -1;
+                    }
+
+                    &:hover::before {
+                        left: 0%;
+                    }
+
+                    &:hover{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .social_media_links {
+            width: 20%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            a {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    font-size: 1.1em;
+                }
+
+                &:hover {
+                    transform: translateY(-10px) scale(1.2);
+                }
+            }
+        }
+    }
+    .foot_sec {
+        margin: 20px 0px;
+        .foot_sec_subhead {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1b2b38;
+            border-bottom: 1px solid #4b5a6530;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        ul {
+            line-height: 2;
+            li {
+                overflow: hidden;
+                a {
+                    color: #000;
+                    transition: all 0.5s;
+                    position: relative;
+                    // transform: translateX(0px);
+                    // overflow: hidden;
+
+                    &:hover {
+                        margin-left: 1em;
+                        background: -webkit-linear-gradient(
+                            90deg,
+                            rgba(206, 0, 255, 1) 0%,
+                            rgba(9, 9, 121, 1) 44%,
+                            rgba(0, 212, 255, 1) 100%
+                        );
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        // transform: translateX(10px);
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: 0%;
+                        left: 0%;
+                        width: 100%;
+                        height: 1px;
+                        background: linear-gradient(
+                            90deg,
+                            rgba(206, 0, 255, 1) 0%,
+                            rgba(9, 9, 121, 1) 44%,
+                            rgba(0, 212, 255, 1) 100%
+                        );
+                        transition: all 0.5s;
+                        transform: translateX(-100%) translateY(5px);
+                    }
+
+                    &:hover::before {
+                        // width: 100%;
+                        transform: translateX(0%) translateY(5px);
+                    }
+                }
+            }
+        }
+    }
+    .footer_bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 2em;
+
+        // .logo{
+        //     background: -webkit-linear-gradient(90deg, rgba(206,0,255,1) 0%, rgba(9,9,121,1) 44%, rgba(0,212,255,1) 100%);
+        //     -webkit-background-clip: text;
+        //     -webkit-text-fill-color: transparent;
+        // }
+
+        .security_div {
+            a {
+                margin-right: 2em;
+            }
+        }
+    }
+}
+// ================================ chandrakant footer section end ===============================
+
+
+@media screen and (max-width:991px){
+    .footer_section .footer_head{
+        justify-content: center;
+    }
+    .footer_section .footer_bottom{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .footer_section .footer_head .subscribe_fieldDiv{
+        justify-content: center;
+    }
+
+    .footer_section .footer_head .subscribe_fieldDiv .subscribe_email_field{
+        margin-left: 0%;
+        width: 100%;
+    }
+    .footer_section .footer_head .subscribe_fieldDiv .subscribe_email_field input{
+        width: 100%;
+    }
+    .footer_section .footer_head .social_media_links{
+        width: 100%;
+        margin-top: 1em;
+    }
+}

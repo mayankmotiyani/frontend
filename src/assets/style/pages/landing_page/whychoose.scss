@@ -1,0 +1,20 @@
+.whyChoose_section {
+    background-color: #fafafb;
+    padding: 5em 0em;
+
+    .head_section {
+        text-align: center;
+    }
+    .box_div {
+        text-align: center;
+        box-shadow: 0px 0px 5px grey;
+        height: auto;
+        width: 80%;
+        margin: 1em auto;
+        padding: 2em;
+        img {
+            width: 50px;
+            margin-bottom: 1em;
+        }
+    }
+}

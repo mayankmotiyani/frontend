@@ -1,0 +1,108 @@
+.address-wrap {
+    padding: 50px 0px;
+    // background-image: url("../../../images/background/address.png");
+    background-color: #e1e1e159;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+
+    .ind-address-wrap {
+        .card {
+            background-color: transparent;
+            margin-bottom: 0px;
+        }
+    }
+
+    .row {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .address-title {
+        text-align: center;
+
+        .h2_title {
+            padding-bottom: 30px;
+        }
+    }
+
+    .card {
+        // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: none;
+        margin-bottom: 20px;
+        height: 180px;
+        align-items: center;
+        flex-direction: initial;
+        position: relative;
+        border-radius: 10px;
+
+        // &::after {
+        //     background: url("../../../images/coin/triangle.png");
+        //     background-repeat: no-repeat;
+        //     background-position: center;
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 90px;
+        //     content: "";
+        //     animation-name: example;
+        //     animation-duration: 4s;
+        //     animation-iteration-count: infinite;
+        // }
+
+        .card-link {
+            margin-left: 0px;
+        }
+
+        .card-body {
+
+            .card-text {
+                padding: 8px 0px 10px;
+            }
+
+            .address-num {
+                padding-bottom: 10px;
+            }
+
+            .address-num,
+            .address-email {
+                .card-link:nth-child(3) {
+                    margin-left: 5px;
+                }
+
+                //     &::after {
+                //         display: none;
+                //     }
+                // }
+
+                // .card-link {
+                //     position: relative;
+
+                //     &::after {
+                //         background: #000;
+                //         position: absolute;
+                //         height: 20px;
+                //         width: 2px;
+                //         right: -6px;
+                //         bottom: 0px;
+                //         content: "";
+                //     }
+                // }
+            }
+        }
+
+    }
+}
+
+@keyframes example {
+    0% {
+        margin-top: 0px;
+    }
+
+    50% {
+        margin-top: 10px;
+    }
+
+    100% {
+        margin-top: 0px;
+    }
+}
