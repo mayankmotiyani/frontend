@@ -34,7 +34,7 @@
     .ourGame-card-wrap {
         border-radius: 10px;
         box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
-        background: #fff;
+        background: #ffffff47;
         margin-top: 130px;
         position: relative;
         z-index: 1;
@@ -58,6 +58,9 @@
         .h3_title {
             color: orange;
             padding-bottom: 10px;
+        }
+        p{
+            color: #fff;
         }
     }
 }

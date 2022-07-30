@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import "../../../assets/style/pages/landing_page/launchPlatform.scss"
-import { IoIosWarning } from 'react-icons/io'
+import "../../../assets/style/pages/landing_page/launchPlatform.scss";
+import { IoIosWarning } from 'react-icons/io';
+import AOS from "aos";
 const LaunchPlatform = () => {
     // ======================================== Box Data Api ===============================================
     const [BoxContent, setBoxContent] = useState([])
@@ -17,6 +18,9 @@ const LaunchPlatform = () => {
     }
     useEffect(() => {
         boxData()
+        AOS.init({
+            duration: 1000
+        });
     }, [])
 
     // ======================================== Box Data Api ===============================================
@@ -57,7 +61,7 @@ const LaunchPlatform = () => {
                                     </Row>
                                     : BoxContent.map((box, key) => {
                                         return <Col sm={6} md={6} lg={4} xl={4} key={key}>
-                                            <div className="flip-card">
+                                            <div className="flip-card" data-aos="fade-up">
                                                 <div className="flip-card-inner">
                                                     <div className="flip-card-front">
                                                         <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />

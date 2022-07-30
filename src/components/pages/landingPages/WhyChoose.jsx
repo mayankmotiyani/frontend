@@ -1,7 +1,13 @@
-import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import DemoIcon from '../../../assets/media/demo_icon.png'
+import React, { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import DemoIcon from '../../../assets/media/demo_icon.png';
+import AOS from "aos";
 export default function WhyChoose() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        });
+    }, []);
     return (
         <>
             <section className='whyChoose_section'>
@@ -14,42 +20,42 @@ export default function WhyChoose() {
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-right">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-left">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-right">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-left">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-right">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                             </div>
                         </Col>
                         <Col lg={6}>
-                            <div className='box_div'>
+                            <div className='box_div' data-aos="fade-left">
                                 <img src={DemoIcon} alt="" />
                                 <h4 className='h4_title'>Your Title Here</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>

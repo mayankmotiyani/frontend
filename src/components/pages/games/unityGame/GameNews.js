@@ -13,7 +13,7 @@ const GameNews = () => {
                                 <h3 className='h3_title'>Latest News</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, harum?</p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, harum?</p>
-                                <div class="center">
+                                <div className="center">
                                     <a href="#"><span data-attr="Click">Click</span><span data-attr="Me">Me</span></a>
                                 </div>
                             </div>

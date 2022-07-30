@@ -1,7 +1,13 @@
-import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { BsFillFileEarmarkBarGraphFill } from 'react-icons/bs'
+import React, { useEffect  } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { BsFillFileEarmarkBarGraphFill } from 'react-icons/bs';
+import AOS from "aos"
 export default function SideBoxSection() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        });
+    }, []);
     return (
         <>
             <section className='sideBox_section'>
@@ -10,7 +16,7 @@ export default function SideBoxSection() {
                         <Col lg={8}>
                             <Row>
                                 <Col lg={6}>
-                                    <div className='box_content_div'>
+                                    <div className='box_content_div' data-aos="fade-up">
                                         {/* <img src="" alt="" /> */}
                                         <BsFillFileEarmarkBarGraphFill />
                                         <h4 className='h4_title'>Title Heading Here</h4>
@@ -18,7 +24,7 @@ export default function SideBoxSection() {
                                     </div>
                                 </Col>
                                 <Col lg={6}>
-                                    <div className='box_content_div'>
+                                    <div className='box_content_div' data-aos="fade-up">
                                         {/* <img src="" alt="" /> */}
                                         <BsFillFileEarmarkBarGraphFill />
                                         <h4 className='h4_title'>Title Heading Here</h4>
@@ -26,7 +32,7 @@ export default function SideBoxSection() {
                                     </div>
                                 </Col>
                                 <Col lg={6}>
-                                    <div className='box_content_div'>
+                                    <div className='box_content_div' data-aos="fade-up">
                                         {/* <img src="" alt="" /> */}
                                         <BsFillFileEarmarkBarGraphFill />
                                         <h4 className='h4_title'>Title Heading Here</h4>
@@ -34,7 +40,7 @@ export default function SideBoxSection() {
                                     </div>
                                 </Col>
                                 <Col lg={6}>
-                                    <div className='box_content_div'>
+                                    <div className='box_content_div' data-aos="fade-up">
                                         {/* <img src="" alt="" /> */}
                                         <BsFillFileEarmarkBarGraphFill />
                                         <h4 className='h4_title'>Title Heading Here</h4>
@@ -44,7 +50,7 @@ export default function SideBoxSection() {
                             </Row>
                         </Col>
                         <Col lg={4}>
-                            <div className='side_image_content_div'>
+                            <div className='side_image_content_div' data-aos="fade-left">
                                 <BsFillFileEarmarkBarGraphFill />
                                 <h3 className='h3_title'>Your Heading Title here</h3>
                                 <button>Click Me</button>

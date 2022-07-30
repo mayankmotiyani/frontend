@@ -2,7 +2,7 @@ import React, { useEffect  } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import blockchainService1 from "../../../assets/images/blockchainService1.png";
 import "../../../assets/style/pages/landing_page/technology.scss";
-import AOS from "aos"
+import AOS from "aos";
 const Technology = () => {
     useEffect(() => {
         AOS.init({

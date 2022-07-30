@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import BlogImage from '../../../assets/media/man-work.png'
 export default function BlogMain(props) {
@@ -9,7 +9,7 @@ export default function BlogMain(props) {
         props.demo('top')
     }, [])
     // =========================== scroll To Top default =========================
-    
+
     // useEffect(() => {
     //     const inputSearch = document.querySelector('[data-search]');
     //     // console.log(inputSearch);
@@ -26,7 +26,6 @@ export default function BlogMain(props) {
     const [featuredData, setFeaturedData] = useState([])
     async function featuredApi() {
         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
-        // console.log(api.data.response);
         setFeaturedData(api.data.response)
     }
 
@@ -46,81 +45,143 @@ export default function BlogMain(props) {
                 </div>
                 <Container >
                     <Row>
-                        {/* <Col lg={3} md={12}>
-                            <div className='side_menu'>
-                                <h4 className='h4_title'>List of Blogs</h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">Blog 1 List of Blogs List of Blogs List of dummy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog 1</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </Col> */}
-                        <Col lg={12} md={12}>
-                            <div className='all_blogs'>
-                                <Container fluid>
-                                    {/* <Row>
-                                        <Col lg={12}>
-                                            <div className='search_blog'>
-                                                <input type="text" placeholder='Search Blog By Name' data-search />
-                                                <button>Search</button>
-                                            </div>
-                                        </Col>
-                                    </Row> */}
-                                    <Row>
-                                        {featuredData.map((blog, key) => {
-                                            return <Col className='my-4' lg={4} md={6} sm={12} key={key}>
-                                                <div className='blog_card'>
-                                                    <img src={BlogImage} alt="" />
-                                                    <div className='blog_card_content'>
-                                                        <h3 className='h3_title' data-blog-title>{blog.title}</h3>
-                                                        <p>{blog.description}</p>
-                                                        <Link to={blog.blog_url}>Read More</Link>
-                                                    </div>
+                        <Col lg={12}>
+                            <div className='blog_tab_section'>
+                                <Tabs
+                                    defaultActiveKey="profile"
+                                    id="uncontrolled-tab-example"
+                                    className="mb-3"
+                                >
+                                    <Tab eventKey="home" title="All Blogs">
+                                        <div className='list_of_blog_section'>
+                                            <Container>
+                                                <Row>
+                                                    <Col lg={12}>
+                                                        <div className='head_search'>
+                                                            <input type="text" placeholder='Search your blog here...' />
+                                                        </div>
+                                                    </Col>
+                                                    <Col lg={12}>
+                                                        <div className='list_of_blogs'>
+                                                            <ul>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </Col>
+                                                </Row>
+                                            </Container>
+                                        </div>
+                                    </Tab>
+                                    <Tab eventKey="profile" title="Latest Blogs">
+                                        <Row>
+                                            <Col lg={12} md={12}>
+                                                <div className='all_blogs'>
+                                                    <Container fluid>
+                                                        <Row>
+                                                            {featuredData.map((blog, key) => {
+                                                                return <Col className='my-4' lg={4} md={6} sm={12} key={key}>
+                                                                    <div className='blog_card'>
+                                                                        <img src={BlogImage} alt="" />
+                                                                        <div className='blog_card_content'>
+                                                                            <h3 className='h3_title' data-blog-title>{blog.title}</h3>
+                                                                            <p>{blog.description}</p>
+                                                                            <Link to={blog.blog_url}>Read More</Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </Col>
+                                                            })}
+                                                            <Col className='my-4' lg={4} md={6} sm={12}>
+                                                                <div className='blog_card'>
+                                                                    <img src={BlogImage} alt="" />
+                                                                    <div className='blog_card_content'>
+                                                                        <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
+                                                                        <Link to="/blog/demo">Read More</Link>
+                                                                    </div>
+                                                                </div>
+                                                            </Col>
+                                                            <Col className='my-4' lg={4} md={6} sm={12}>
+                                                                <div className='blog_card'>
+                                                                    <img src={BlogImage} alt="" />
+                                                                    <div className='blog_card_content'>
+                                                                        <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
+                                                                        <Link to="/blog/demo">Read More</Link>
+                                                                    </div>
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+                                                    </Container>
                                                 </div>
                                             </Col>
-                                        })}
-                                        {/* <Col className='my-4' lg={4} md={6} sm={12}>
-                                            <div className='blog_card'>
-                                                <img src={BlogImage} alt="" />
-                                                <div className='blog_card_content'>
-                                                    <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                                    <Link to="/blog/demo">Read More</Link>
-                                                </div>
-                                            </div>
-                                        </Col> */}
-                                        <Col className='my-4' lg={4} md={6} sm={12}>
-                                            <div className='blog_card'>
-                                                <img src={BlogImage} alt="" />
-                                                <div className='blog_card_content'>
-                                                    <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                                    <Link to="/blog/demo">Read More</Link>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                        <Col className='my-4' lg={4} md={6} sm={12}>
-                                            <div className='blog_card'>
-                                                <img src={BlogImage} alt="" />
-                                                <div className='blog_card_content'>
-                                                    <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                                    <Link to="/blog/demo">Read More</Link>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </Container>
+                                        </Row>
+                                    </Tab>
+                                </Tabs>
                             </div>
                         </Col>
                     </Row>

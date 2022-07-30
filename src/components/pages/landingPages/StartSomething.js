@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Col, Row } from "react-bootstrap";
 import bitcoin from "../../../assets/images/coin/Bitcoin.png";
 import cardano from "../../../assets/images/coin/cardano.png";
@@ -9,10 +9,15 @@ import ltc from "../../../assets/images/coin/LTC.png";
 import polkadot from "../../../assets/images/coin/polkadot.png";
 import solana from "../../../assets/images/coin/solana.png";
 import infograins from "../../../assets/images/coin/infograins.png";
-
+import AOS from 'aos';
 
 
 const StartSomething = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        });
+    }, []);
     return (
         <>
             {/* ============================== StartSomething ========================= */}
@@ -22,7 +27,7 @@ const StartSomething = () => {
                     <div className='StartSomething_details'>
                         <Row> 
                             <Col sm={12} md={12} lg={6} xl={6}>
-                                <div className='StartSomething_text'>
+                                <div className='StartSomething_text' data-aos="fade-right">
                                     <h4 className='h4_title'>Start Something Undeniably</h4>
                                     <h2 className='h2_title'> Best possible solution</h2>
                                     <p>Click to connect with us, and our team of experts will get in touch with you to know about your idea, answer your queries, and propose the best possible solution.</p>

@@ -1,6 +1,48 @@
 .blog_section {
     margin: 0em 0em 5em 0em;
 
+    .blog_tab_section {
+        margin-top: -42px;
+
+        ul {
+            justify-content: center;
+        }
+
+        .list_of_blog_section {
+            .head_search {
+                margin: 1em 0em;
+                input {
+                    width: 100%;
+                    border: none;
+                    background-color: #f1f1f1;
+                    padding: 0px 15px;
+                    outline: none;
+                    color: #47576a;
+                    border-radius: 5px;
+                    height: 3em;
+                }
+            }
+            .list_of_blogs {
+                .blog_div {
+                    display: flex;
+                    box-shadow: 0px 0px 2px grey;
+                    margin: 1em 0em;
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    .img_blog {
+                        img {
+                            width: 190px;
+                        }
+                    }
+                    .content_div {
+                        padding: 10px 20px;
+                    }
+                }
+            }
+        }
+    }
+
     .top_section {
         background-color: #f7f7f7;
         text-align: center;
@@ -13,6 +55,7 @@
     }
 
     .all_blogs {
+        margin-top: 1em;
         .search_blog {
             display: flex;
 
@@ -46,16 +89,17 @@
         .blog_card {
             background-color: #fff;
             // padding: 15px;
-            box-shadow: 0px 0px 20px rgb(128 128 128 / 46%);
+            // box-shadow: 0px 0px 20px rgb(128 128 128 / 46%);
+            box-shadow: 0px 0px 5px rgb(128 128 128 / 46%);
             border-radius: 10px;
             transition: all 0.2s;
             height: 420px;
 
-            .blog_card_content{
+            .blog_card_content {
                 padding: 15px;
             }
 
-            h3{
+            h3 {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
@@ -64,9 +108,9 @@
                 -webkit-box-orient: vertical;
             }
 
-            &:hover {
-                box-shadow: 0px 0px 5px rgb(128 128 128 / 46%);
-            }
+            // &:hover {
+            //     box-shadow: 0px 0px 5px rgb(128 128 128 / 46%);
+            // }
 
             img {
                 border-radius: 5px 5px 0px 0px;

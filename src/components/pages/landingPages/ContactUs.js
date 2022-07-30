@@ -2,6 +2,7 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Button, Form, Container, Col, Row, FloatingLabel } from 'react-bootstrap';
+import AOS from "aos";
 
 const ContactUs = () => {
 
@@ -100,6 +101,9 @@ const ContactUs = () => {
     }
     useEffect(() => {
         countryCode()
+        AOS.init({
+            duration: 1000
+        });
     }, [])
 
 
@@ -107,7 +111,7 @@ const ContactUs = () => {
         <>
             <div className='form-wrap'>
                 <Container>
-                    <div className="contact-form-heading">
+                    <div className="contact-form-heading" data-aos="fade-right">
                         <div className='contact_form_head_div'>
                             <h2 className='h2_title'>Get In Touch</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, fugiat quasi id eius ducimus eum similique minima exercitationem distinctio a sapiente reiciendis consequuntur ea? Voluptatibus, commodi! Voluptatibus error illum ratione.</p>
@@ -149,9 +153,9 @@ const ContactUs = () => {
                                             <Form.Select id='mobile'>
                                                 {ErrorCountryCode ?
                                                     <option>00</option>
-                                                : countryCodeData.map((e, key) => {
-                                                    return <option key={key}>{e}</option>
-                                                })}
+                                                    : countryCodeData.map((e, key) => {
+                                                        return <option key={key}>{e}</option>
+                                                    })}
                                             </Form.Select>
                                             <Form.Control type="number" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
                                         </div>

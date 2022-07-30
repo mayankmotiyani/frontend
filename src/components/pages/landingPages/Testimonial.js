@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Container, Carousel, Row, Col } from 'react-bootstrap'
 import { IoIosWarning } from 'react-icons/io'
-
+import AOS from "aos"; 
 const Testimonial = () => {
 
     // ================================ Testimonial API ===================================
@@ -19,6 +19,9 @@ const Testimonial = () => {
 
     useEffect(() => {
         testimonialAPI()
+        AOS.init({
+            duration: 1000
+        });
     }, [])
 
     // ================================ Testimonial API ===================================
@@ -28,7 +31,7 @@ const Testimonial = () => {
                 <Container>
                     <Row>
                         <Col lg={12}>
-                            <div className='testimonial_head'>
+                            <div className='testimonial_head' data-aos="fade-right">
                                 <h2 className='h2_title'>Testimonial</h2>
                                 <p> ipsum dolor sit amet consectetur adipisicing elit. Aliquid id atque fugit dicta soluta voluptate eum labore laudantium earum ratione.</p>
                             </div>

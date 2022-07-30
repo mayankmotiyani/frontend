@@ -13,6 +13,8 @@ import OurTeam from '../components/pages/ourTeam/OurTeam';
 import NotFound from '../components/pages/NotFound';
 import UnityGame from '../components/pages/games/unityGame/UnityGame';
 import Main_nft from '../components/pages/NFT/main_nft';
+import ProductWeb from '../components/pages/product/productWeb/ProductWeb';
+// import Product from '../components/pages/product/Product';
 
 
 const Index = () => {
@@ -55,6 +57,7 @@ const Index = () => {
                     <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} />
                     <Route path="/game/:game_slug" element={<UnityGame demo={scrollSmoothTo} />} />
                     <Route path="/nft/:nft_slug" element={<Main_nft demo={scrollSmoothTo} />} />
+                    <Route path="/product/web" element={<ProductWeb demo={scrollSmoothTo} />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <Footer />

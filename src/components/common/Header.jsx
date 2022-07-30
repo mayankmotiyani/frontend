@@ -341,11 +341,13 @@ export default function Header() {
                     {/* <div className='subheading_text'>Sub Heading</div> */}
                     {/* <ul>
                       {gameList.map((game, index) => {
-                        return <li key={index}>
-                          <a href="#" className='desk_dropdown_link' >
-                            <div>{game}</div>
-                          </a>
-                        </li>
+                        return (
+                          <li key={index}>
+                            <Link to={game.game_slug} className='desk_dropdown_link' >
+                              <div>{game.name}</div>
+                            </Link>
+                          </li>
+                        )
                       })}
                     </ul> */}
                   </div>
