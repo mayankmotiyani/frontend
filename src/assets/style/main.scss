@@ -27,6 +27,8 @@
 @import url("./pages/ourTeam/ourTeam.scss");
 @import url("./pages//games/unityGame/unityGame.scss");
 @import url('./pages/nft/index.scss');
+
+@import url('./pages/particle.scss');
 * {
     // font-family: paragraph;
     // font-family: 'Quicksand', sans-serif;
@@ -151,5 +153,19 @@ p {
     // margin-bottom: 50px !important;
     &:focus {
         box-shadow: none !important;
+    }
+}
+
+.warning{
+    display: flex;
+    justify-content: center;
+    b {
+        display: flex;
+        align-items: center;
+        svg{
+            color: #ffb600;
+            font-size: 2em;
+            margin-right: .5em;
+        }
     }
 }

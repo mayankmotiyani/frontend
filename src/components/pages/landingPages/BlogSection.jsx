@@ -3,13 +3,19 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import BlogImage from '../../../assets/media/man-work.png'
+import { IoIosWarning } from 'react-icons/io'
 export default function BlogSection() {
     // ========================== Blog API ===========================
     const [BlogData, setBlogData] = useState([])
+    const [ErrorBlogData, setErrorBlogData] = useState(false)
     async function blogApi() {
-        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
-        // console.log(api.data.response);
-        setBlogData(api.data.response.slice(0, 3))
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
+            // console.log(api.data.response);
+            setBlogData(api.data.response.slice(0, 3))
+        } catch (error) {
+            setErrorBlogData(true)
+        }
     }
 
     useEffect(() => {
@@ -29,51 +35,55 @@ export default function BlogSection() {
                         </Col>
                     </Row>
                     <Row>
-                        {BlogData.length === 0 ?
-                            <Row>
-                                <Col lg={4}>
-                                    <div className='blog_section_EMPTY'>
-                                        <div className='image_EMPTY'></div>
-                                        <div className='blog_content'>
-                                            <div className='head_title'></div>
-                                            <p className='para'></p>
-                                            <div className='link'></div>
+                        {ErrorBlogData ?
+                            <div className='warning'>
+                                <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                            </div>
+                            : BlogData.length === 0 ?
+                                <Row>
+                                    <Col lg={4}>
+                                        <div className='blog_section_EMPTY'>
+                                            <div className='image_EMPTY'></div>
+                                            <div className='blog_content'>
+                                                <div className='head_title'></div>
+                                                <p className='para'></p>
+                                                <div className='link'></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Col>
-                                <Col lg={4}>
-                                    <div className='blog_section_EMPTY'>
-                                        <div className='image_EMPTY'></div>
-                                        <div className='blog_content'>
-                                            <div className='head_title'></div>
-                                            <p className='para'></p>
-                                            <div className='link'></div>
+                                    </Col>
+                                    <Col lg={4}>
+                                        <div className='blog_section_EMPTY'>
+                                            <div className='image_EMPTY'></div>
+                                            <div className='blog_content'>
+                                                <div className='head_title'></div>
+                                                <p className='para'></p>
+                                                <div className='link'></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Col>
-                                <Col lg={4}>
-                                    <div className='blog_section_EMPTY'>
-                                        <div className='image_EMPTY'></div>
-                                        <div className='blog_content'>
-                                            <div className='head_title'></div>
-                                            <p className='para'></p>
-                                            <div className='link'></div>
+                                    </Col>
+                                    <Col lg={4}>
+                                        <div className='blog_section_EMPTY'>
+                                            <div className='image_EMPTY'></div>
+                                            <div className='blog_content'>
+                                                <div className='head_title'></div>
+                                                <p className='para'></p>
+                                                <div className='link'></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Col>
-                            </Row>
-                            : BlogData.map((e, key) => {
-                                return <Col lg={4} key={key}>
-                                    <div className='blog_section'>
-                                        <img src={BlogImage} alt="" />
-                                        <div className='blog_content'>
-                                            <h3 className='h3_title'>{e.title}</h3>
-                                            <p>{e.description}</p>
-                                            <Link to={e.blog_url}>Read More</Link>
+                                    </Col>
+                                </Row>
+                                : BlogData.map((e, key) => {
+                                    return <Col lg={4} key={key}>
+                                        <div className='blog_section'>
+                                            <img src={BlogImage} alt="" />
+                                            <div className='blog_content'>
+                                                <h3 className='h3_title'>{e.title}</h3>
+                                                <p>{e.description}</p>
+                                                <Link to={e.blog_url}>Read More</Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Col>
-                            })}
+                                    </Col>
+                                })}
                         {/* <Col lg={4}>
                             <div className='blog_section_EMPTY'>
                                 <div className='image_EMPTY'></div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Particle from '../Particle';
 import BlogSection from './BlogSection';
 import ContactUs from './ContactUs';
 import HeroSection from './HeroSection';
@@ -19,14 +20,15 @@ const Home = (props) => {
     // =========================== scroll To Top default =========================
     return (
         <>
+            <Particle />
             <HeroSection />
             <PartnerStrip />
             <Technology />
             <OnlineStore />
             <StartSomething />
             <LaunchPlatform />
-            <SideBoxSection/>
-            <WhyChoose/>
+            <SideBoxSection />
+            <WhyChoose />
             <BlogSection />
             <Testimonial />
             <ContactUs />

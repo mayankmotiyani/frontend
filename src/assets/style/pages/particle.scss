@@ -1,0 +1,21 @@
+
+.app{
+    display: none;
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    
+    .demo{
+        position: absolute !important;
+        top: 0%;
+        left: 0%;
+        width: 100% !important;
+        height: 100vh;
+        z-index: unset;
+        
+        canvas{
+            position: unset !important;
+            z-index: unset !important;
+        }
+    }
+}

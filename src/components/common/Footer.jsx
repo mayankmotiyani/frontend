@@ -25,10 +25,14 @@ const Footer = () => {
 
   // =============================== company api ================================
   const [companyData, setCompanyData] = useState([])
+  const [ErrorCompany, setErrorCompany] = useState(false)
   async function companyApi() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/get-all-models/`);
-    // console.log(api.data.response);
-    setCompanyData(api.data.response.Company)
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/get-all-models/`);
+      setCompanyData(api.data.response.Company)
+    } catch (error) {
+      setErrorCompany(true)
+    }
   }
 
   useEffect(() => {
@@ -92,9 +96,9 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>Company</div>
                 <ul>
-                  {companyData.map((e, key)=>{
+                  {/* {companyData.map((e, key)=>{
                     return <li key={key}><a href="">{e}</a></li>
-                  })}
+                  })} */}
                   {/* <li> <a href="">demo</a></li>
                   <li> <a href="">demo</a></li>
                   <li> <a href="">demo</a></li>

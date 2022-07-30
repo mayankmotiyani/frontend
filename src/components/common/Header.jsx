@@ -102,18 +102,6 @@ export default function Header() {
 
   // ===================================== Header API start ============================================ 
   // console.log("header", process.env.REACT_APP_BASE_URL);
-
-  const [nftList, setNftList] = useState([])
-  async function headerAPI() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
-    // console.log('api', api.data.response.NFT);
-    setNftList(api.data.response.NFT)
-  }
-
-  useEffect(() => {
-    headerAPI()
-  }, [])
-
   // ===================================== Header API end ============================================ 
 
   useEffect(() => {
@@ -134,38 +122,40 @@ export default function Header() {
   }, [])
 
   // ===================================== NFT API start ============================================ 
-  // console.log("header", process.env.REACT_APP_BASE_URL);
 
-  // const [nftList, setNftList] = useState([])
-  // async function headerAPI() {
-  //   const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
-  //   // console.log('api', api.data.response.NFT);
-  //   setNftList(api.data.response.NFT)
-  // }
+  const [nftList, setNftList] = useState([])
+  const [ErrorNft, setErrorNft] = useState(false)
+  async function headerAPI() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
+      // console.log('api', api.data.response.NFT);
+      setNftList(api.data.response)
+      console.log("try");
 
-  // useEffect(() => {
-  //   headerAPI()
-  // }, [])
+    } catch (error) {
+      console.log("catch", error);
+      console.log(error.message);
+      setErrorNft(true)
+    }
+  }
+
+  useEffect(() => {
+    headerAPI()
+  }, [])
 
   // ===================================== NFT API end ============================================ 
 
   // ==================================== BLOCKCHAIN API ============================
-  // const [CategoriesHead, setCategoriesHead] = useState([])
   const [CategoriesList, setCategoriesList] = useState([])
+  const [ErrorBlockchain, setErrorBlockchain] = useState(false)
   async function blockchainCategories() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
-    // console.log(const demo = api.data.blockchain_category[0]);
-    // setCategoriesHead(api.data.blockchain_category)
-    // console.log(api.data);
-    // setCategoriesList(api.data.response)
-    // console.log(api.data.response);
-    setCategoriesList(api.data.response)
-    // console.log("api.data.response", api.data.response);
-    // var data = api.data.response;
-    // console.log("data", data.length);
-    // var setData = data.map((eles) => {
-    //   console.log("setData", setData);
-    // })
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
+      setCategoriesList(api.data.response)
+    } catch (error) {
+      setErrorBlockchain(true)
+    }
+
   }
 
   useEffect(() => {
@@ -174,10 +164,16 @@ export default function Header() {
   // ==================================== BLOCKCHAIN API ============================
   // ==================================== GAME API ============================
   const [gameList, setGameList] = useState([])
+  const [errorGame, setErrorGame] = useState(false)
   async function gameApi() {
-    const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game_list/`);
-    setGameList(api.data.response.Games)
-    // console.log("game", gameList);
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game_list/`);
+      setGameList(api.data.response)
+      console.log('try', api.data.response.length);
+    } catch (error) {
+      console.log('catch', error);
+      setErrorGame(true)
+    }
   }
 
   useEffect(() => {
@@ -282,25 +278,28 @@ export default function Header() {
                 <li className='mobile_drop_link' menulink="0" onClick={toggleDropdown_mobile}>Blockchain <IoMdArrowDropdown className='downArrow' /> </li>
                 <hr />
                 <li className='mobile_drop_menu_list'>
-                  {CategoriesList.map((e, key) => {
-                    return <div className='mobile_drop_menu' key={key}>
-                      <div className='subheading_text'>{e.blockchain_category}</div>
-                      <ul>
-                        {e.array_of_blockchain_category_list.map((e, key) => {
-                          return <li key={key}>
-                            <Link to={e.blockchain_url} className='desk_dropdown_link' >
-                              {/* <GrFormNextLink /> */}
-                              <div>{e.blockchain_name}</div>
-                            </Link>
-                          </li>
-                        })}
-                        {/* <li>link1</li>
-                        <li>link2</li>
-                        <li>link3</li>
-                        <li>link4</li> */}
-                      </ul>
+                  {ErrorBlockchain ?
+                    <div className='warning'>
+                      <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                     </div>
-                  })}
+                    : CategoriesList.length === 0 ?
+                      <div className='warning'>
+                        <b><IoIosWarning /> Something went wrong</b>
+                      </div>
+                      : CategoriesList.map((e, key) => {
+                        return <div className='mobile_drop_menu' key={key}>
+                          <div className='subheading_text'>{e.blockchain_category}</div>
+                          <ul>
+                            {e.array_of_blockchain_category_list.map((e, key) => {
+                              return <li key={key}>
+                                <Link to={e.blockchain_url} className='desk_dropdown_link' >
+                                  <div>{e.blockchain_name}</div>
+                                </Link>
+                              </li>
+                            })}
+                          </ul>
+                        </div>
+                      })}
                 </li>
                 <hr />
                 <li className='mobile_drop_link'><Link to='/blog'>Blogs</Link></li>
@@ -311,17 +310,22 @@ export default function Header() {
                   <div className='mobile_drop_menu'>
                     {/* <div className='subheading_text'>Sub Heading</div> */}
                     <ul>
-                      {nftList.map((nft, index) => {
-                        return <li key={index}>
-                          <a href="#" className='desk_dropdown_link' >
-                            <div>{nft}</div>
-                          </a>
-                        </li>
-                      })}
-                      {/* <li>link1</li>
-                      <li>link2</li>
-                      <li>link3</li>
-                      <li>link4</li> */}
+                      {ErrorNft ?
+                        <div className='warning'>
+                          <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                        </div>
+                        : nftList.length === 0 ?
+                          <div className='warning'>
+                            <b><IoIosWarning /> Something went wrong</b>
+                          </div>
+                          : nftList.map((nft, index) => {
+                            return <li key={index}>
+                              <Link to={nft.nft_url} className='desk_dropdown_link' >
+                                <div>{nft.name}</div>
+                              </Link>
+                            </li>
+                          })}
+
                     </ul>
                   </div>
                 </li>
@@ -335,7 +339,7 @@ export default function Header() {
                 <li className='mobile_drop_menu_list'>
                   <div className='mobile_drop_menu'>
                     {/* <div className='subheading_text'>Sub Heading</div> */}
-                    <ul>
+                    {/* <ul>
                       {gameList.map((game, index) => {
                         return <li key={index}>
                           <a href="#" className='desk_dropdown_link' >
@@ -343,11 +347,7 @@ export default function Header() {
                           </a>
                         </li>
                       })}
-                      {/* <li>link1</li>
-                      <li>link2</li>
-                      <li>link3</li>
-                      <li>link4</li> */}
-                    </ul>
+                    </ul> */}
                   </div>
                 </li>
               </ul>
@@ -356,170 +356,31 @@ export default function Header() {
           <div className='desk_dropdown' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
             <Container>
               <Row className='justify-content-center'>
-                {CategoriesList.length === 0 ?
+                {ErrorBlockchain ?
                   <div className='warning'>
-                    <b><IoIosWarning /> Something went wrong</b>
+                    <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                   </div>
-                  : CategoriesList.map((e, key) => {
-                    return <Col lg={3} key={key}>
-                      <div className='desk_dropdown_col'>
-                        <div className='desk_dropdown_subhead'>{e.blockchain_category}</div>
-                        <ul>
-                          {e.array_of_blockchain_category_list.map((e, key) => {
-                            return <li key={key}>
-                              <Link to={e.blockchain_url} className='desk_dropdown_link'>
-                                <GrFormNextLink />
-                                <div>{e.blockchain_name}</div>
-                              </Link>
-                            </li>
-                          })}
-
-                          {/* <li>
-                          <a href="#" className='desk_dropdown_link'>
-                            <GrFormNextLink />
-                            <div>link List</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className='desk_dropdown_link'>
-                            <GrFormNextLink />
-                            <div>link List</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className='desk_dropdown_link'>
-                            <GrFormNextLink />
-                            <div>link List</div>
-                          </a>
-                        </li> */}
-                        </ul>
-                      </div>
-                    </Col>
-                  })}
-                {/* <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <div className='desk_dropdown_subhead'>Sub Heading</div>
-                    <ul>
-                      <li>
-                        <Link to="/web3-development-company" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>Web3 Development Company</div>
-                        </Link>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <div className='desk_dropdown_subhead'>Sub Heading</div>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <div className='desk_dropdown_subhead'>Sub Heading</div>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <div className='desk_dropdown_subhead'>Sub Heading</div>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col> */}
+                  : CategoriesList.length === 0 ?
+                    <div className='warning'>
+                      <b><IoIosWarning /> Something went wrong</b>
+                    </div>
+                    : CategoriesList.map((e, key) => {
+                      return <Col lg={3} key={key}>
+                        <div className='desk_dropdown_col'>
+                          <div className='desk_dropdown_subhead'>{e.blockchain_category}</div>
+                          <ul>
+                            {e.array_of_blockchain_category_list.map((e, key) => {
+                              return <li key={key}>
+                                <Link to={e.blockchain_url} className='desk_dropdown_link'>
+                                  <GrFormNextLink />
+                                  <div>{e.blockchain_name}</div>
+                                </Link>
+                              </li>
+                            })}
+                          </ul>
+                        </div>
+                      </Col>
+                    })}
               </Row>
             </Container>
           </div>
@@ -530,42 +391,24 @@ export default function Header() {
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
                     <ul>
-                      {/* <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>{nftList[0]}</div>
-                        </a>
-                      </li> */}
-                      {nftList.length === 0 ?
+
+                      {ErrorNft ?
                         <div className='warning'>
-                          <b><IoIosWarning /> Something went wrong</b>
+                          <b><IoIosWarning style={{color:'red'}}/> Something went wrong</b>
                         </div>
-                        : nftList.map((nft, index) => {
-                          return <li key={index}>
-                            <a href="#" className='desk_dropdown_link'>
-                              <GrFormNextLink />
-                              <div>{nft}</div>
-                            </a>
-                          </li>
-                        })}
-                      {/* <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li> */}
+                        : nftList.length === 0 ?
+                          <div className='warning'>
+                            <b><IoIosWarning /> Something went wrong</b>
+                          </div>
+                          : nftList.map((nft, index) => {
+                            return <li key={index}>
+                              <Link to={nft.nft_url} className='desk_dropdown_link'>
+                                <GrFormNextLink />
+                                <div>{nft.name}</div>
+                              </Link>
+                            </li>
+                          })}
+
                     </ul>
                   </div>
                 </Col>
@@ -672,45 +515,44 @@ export default function Header() {
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
                     <ul>
-                      {/* <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>{nftList[0]}</div>
-                        </a>
-                      </li> */}
-                      {gameList.length === 0 ?
+                      {errorGame ?
                         <div className='warning'>
-                          <b><IoIosWarning /> Something went wrong</b>
+                          <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                         </div>
-                        : gameList.map((game, index) => {
-                          return <li key={index}>
-                            <a href="#" className='desk_dropdown_link'>
-                              <GrFormNextLink />
-                              <div>{game}</div>
-                            </a>
-                          </li>
-                        })}
-                      {/* <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li> */}
+                        : gameList.length === 0 ?
+                          <div className='warning'>
+                            <b><IoIosWarning /> Something went wrong</b>
+                          </div>
+                          : gameList.map((game, index) => {
+                            return <li key={index}>
+                              <Link to={game.game_slug} className='desk_dropdown_link'>
+                                <GrFormNextLink />
+                                <div>{game.name}</div>
+                              </Link>
+                            </li>
+                          })}
                     </ul>
                   </div>
                 </Col>
+                {/* <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li> */}
+
                 <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}

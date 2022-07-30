@@ -7,6 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import HeroImage from '../../../assets/images/blockchainService1.png';
 import video from "../../../assets/images/video/video_1.mp4"
 import axios from 'axios';
+import { IoIosWarning } from 'react-icons/io'
 export default function HeroSection() {
     // const [owlData, setOwlData] = useState([])
     // const getHeroContent = async () => {
@@ -32,10 +33,14 @@ export default function HeroSection() {
 
     // ===================================== Hero Section API ===================================
     const [SliderData, setSliderData] = useState([])
+    const [ErrorSlider, setErrorSlider] = useState(false)
     async function sliderContent() {
-        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/hero-section-content/`);
-        // console.log(api.data.response);
-        setSliderData(api.data.response)
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/hero-section-content/`);
+            setSliderData(api.data.response)
+        } catch (error) {
+            setErrorSlider(true)
+        }
     }
 
     useEffect(() => {
@@ -85,41 +90,23 @@ export default function HeroSection() {
                 <div className='OwlCarousel-wrap'>
                     <OwlCarousel className='owl-theme hero_slider' loop margin={10} {...options}>
 
-                        {SliderData.length === 0 ?
+                        {ErrorSlider ?
                             <div className='item'>
-                                <div className='inner_section'>
-                                    <Container>
-                                        <Row>
-                                            <Col lg={6}>
-                                                <div className='hero_slide_section_content'>
-                                                    <div className='hero_content_div'>
-                                                        <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6>
-                                                        <h2 className='h2_title hero_cont_heading'>Heading Text Here</h2>
-                                                        <p className='hero_cont_para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nemo ea explicabo dolor, libero eveniet et nobis, praesentium exercitationem consequatur vel quidem iusto ipsum id inventore? Amet nam repudiandae dolorum?</p>
-                                                        <button className='hero_cont_btn'>Click Me</button>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                            <Col lg={6}>
-                                                <div className='hero_slide_section_img'>
-                                                    <Image src={HeroImage} fluid />
-                                                </div>
-                                            </Col>
-                                        </Row>
-                                    </Container>
+                                <div className='warning'>
+                                    <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                                 </div>
                             </div>
-                            : SliderData.map((ele, index) => {
-                                return <div className='item' key={index}>
+                            : SliderData.length === 0 ?
+                                <div className='item'>
                                     <div className='inner_section'>
                                         <Container>
                                             <Row>
-                                                <Col lg={6} >
+                                                <Col lg={6}>
                                                     <div className='hero_slide_section_content'>
                                                         <div className='hero_content_div'>
-                                                            {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
-                                                            <h2 className='h2_title hero_cont_heading'>{ele.title}</h2>
-                                                            <p className='hero_cont_para'>{ele.content}</p>
+                                                            <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6>
+                                                            <h2 className='h2_title hero_cont_heading'>Heading Text Here</h2>
+                                                            <p className='hero_cont_para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nemo ea explicabo dolor, libero eveniet et nobis, praesentium exercitationem consequatur vel quidem iusto ipsum id inventore? Amet nam repudiandae dolorum?</p>
                                                             <button className='hero_cont_btn'>Click Me</button>
                                                         </div>
                                                     </div>
@@ -133,7 +120,31 @@ export default function HeroSection() {
                                         </Container>
                                     </div>
                                 </div>
-                            })
+                                : SliderData.map((ele, index) => {
+                                    return <div className='item' key={index}>
+                                        <div className='inner_section'>
+                                            <Container>
+                                                <Row>
+                                                    <Col lg={6} >
+                                                        <div className='hero_slide_section_content'>
+                                                            <div className='hero_content_div'>
+                                                                {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
+                                                                <h2 className='h2_title hero_cont_heading'>{ele.title}</h2>
+                                                                <p className='hero_cont_para'>{ele.content}</p>
+                                                                <button className='hero_cont_btn'>Click Me</button>
+                                                            </div>
+                                                        </div>
+                                                    </Col>
+                                                    <Col lg={6}>
+                                                        <div className='hero_slide_section_img'>
+                                                            <Image src={HeroImage} fluid />
+                                                        </div>
+                                                    </Col>
+                                                </Row>
+                                            </Container>
+                                        </div>
+                                    </div>
+                                })
                         }
 
                         {/* <div className='item'>

@@ -6,6 +6,7 @@ import { Button, Form, Container, Col, Row, FloatingLabel } from 'react-bootstra
 const ContactUs = () => {
 
     const [countryCodeData, setCountryCodeData] = useState([])
+    const [ErrorCountryCode, setErrorCountryCode] = useState(false)
     const [input, setInput] = useState({
         name: "",
         email: "",
@@ -18,10 +19,16 @@ const ContactUs = () => {
     const [numberError, setNumberError] = useState("");
     const [subjectError, setSubject] = useState("");
     const [messageError, setMessage] = useState("");
+
+
     async function countryCode() {
-        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
-        const apiData = api.data.response.country_dialing_code;
-        setCountryCodeData(apiData)
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+            const apiData = api.data.response.country_dialing_code;
+            setCountryCodeData(apiData)
+        } catch (error) {
+            setErrorCountryCode(true)
+        }
     }
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
@@ -140,7 +147,9 @@ const ContactUs = () => {
                                         <Form.Label>Mobile No.</Form.Label>
                                         <div className='mobile_div'>
                                             <Form.Select id='mobile'>
-                                                {countryCodeData.map((e, key) => {
+                                                {ErrorCountryCode ?
+                                                    <option>00</option>
+                                                : countryCodeData.map((e, key) => {
                                                     return <option key={key}>{e}</option>
                                                 })}
                                             </Form.Select>
