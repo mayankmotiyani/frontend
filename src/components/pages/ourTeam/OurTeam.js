@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Image, Col, Row } from "react-bootstrap";
 import team from "../../../assets/images/team/team.jpg";
 import axios from "axios";
-const OurTeam = () => {
+const OurTeam = (props) => {
     const [teamData, setTeamData] = useState([])
     const ourTeams = async () => {
         try {
-            const teamData = await axios.get(`${process.env.REACT_APP_BASE_URL}company/team-members/`)
+            const teamData = await axios.get(`${process.env.REACT_APP_BASE_URL}team/`)
             console.log("teamData", teamData.data.response);
             setTeamData(teamData.data.response)
         } catch (error) {
@@ -14,8 +14,10 @@ const OurTeam = () => {
         }
     }
     useEffect(() => {
-        ourTeams()
+        ourTeams();
+        props.demo('top')
     }, [])
+
 
     return (
         <section className='team-wrap'>

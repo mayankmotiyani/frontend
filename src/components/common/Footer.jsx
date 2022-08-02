@@ -32,9 +32,10 @@ const Footer = () => {
   const [ErrorCompany, setErrorCompany] = useState(false);
   async function footerApi() {
     try {
-      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/get-all-models/`);
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get-all-models/`);
       console.log("api", api.data.response);
       setCompanyData(api.data.response.Company)
+      console.log("api.data.response", api.data);
       setServiceData(api.data.response.Services)
       setAboutData(api.data.response.About)
     } catch (error) {
@@ -113,28 +114,27 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>Company</div>
                 <ul>
-                  {
-                    ErrorCompany ?
-                      <div className='warning'>
-                        <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
-                      </div>
-                      :
-                      companyData.length === 0 ?
-                        <>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                        </>
-                        :
-                        companyData.map((e, key) => {
-                          return (
-                            <li key={key}>
-                              <Link to="/">{e}</Link>
-                            </li>
-                          )
-                        })}
+                  <li>
+                    <Link to="/team">Team</Link>
+                  </li>
+                  <li>
+                    <Link to="/career">Career</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Testimonial</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Sitemap</Link>
+                  </li>
+                  <li>
+                    <Link to="/">PrivacyPolicy</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Event</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Help</Link>
+                  </li>
                 </ul>
               </div>
             </Col>

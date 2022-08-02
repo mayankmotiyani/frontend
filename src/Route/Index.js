@@ -20,6 +20,8 @@ import Resources from '../components/pages/resources/Resources';
 import ProductPage from '../components/pages/product/singleProduct/ProductPage';
 import Privacy from '../components/pages/PrivacyPolicy/privacy';
 import TermCondition from '../components/pages/Term_and_condition/TermCondition';
+import Career from '../components/pages/career/Career';
+import CareerApply from '../components/pages/career/CareerApply';
 const Index = () => {
     // ===================================== For Route API ============================================
     // const [RoutePath, setRoutePath] = useState([])
@@ -63,10 +65,12 @@ const Index = () => {
 
                     <Route path="/product/web" element={<ProductWeb demo={scrollSmoothTo} />} />
                     <Route path="/resource/:res_slug" element={<Resources demo={scrollSmoothTo} />} />
-
+                    <Route path="/career" element={<Career demo={scrollSmoothTo} />} />
+                    <Route path="/career/:apl_slug" element={<CareerApply demo={scrollSmoothTo} />} />
                     <Route path='/product/name' element={<ProductPage demo={scrollSmoothTo}/>}/>
                     <Route path='/privacy' element={<Privacy demo={scrollSmoothTo}/>}/>
                     <Route path='/term_and_condition' element={<TermCondition demo={scrollSmoothTo}/>}/>
+                    {/* <Route path='/:apl_slug' element={<CareerApply demo={scrollSmoothTo}/>}/> */}
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <Footer />

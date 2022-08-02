@@ -20,7 +20,8 @@
     "react-tsparticles": "^2.1.4",
     "sass": "^1.53.0",
     "tsparticles": "^2.1.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",

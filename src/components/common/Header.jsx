@@ -82,7 +82,17 @@ export default function Header() {
   // ========================================= chandrakant toggle mobile menu list start ================================
   function toggleDropdown_mobile(e) {
     const currentClick = e.target.attributes.menulink.nodeValue;
-    // console.log(e.target.classList)
+    const dropLink = document.getElementsByClassName('mobile_drop_menu_list');
+    for (let i = 0; i < dropLink.length; i++) {
+
+      if (dropLink[i].style.height == '210px') {
+        dropLink[i].style.cssText = "height : 0px !important"
+      } else {
+
+      }
+
+    }
+    // console.log(document.getElementsByClassName('mobile_drop_menu_list')[0].style.height)
     if (e.target.classList.value.includes('open_mob_link')) {
       e.target.classList.remove('open_mob_link')
       document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.height = "0px"
@@ -90,7 +100,8 @@ export default function Header() {
       document.getElementsByClassName('downArrow')[currentClick].style.transform = "rotate(0deg)"
     } else {
       e.target.classList.add('open_mob_link')
-      document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.height = "210px"
+      // document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.setProperty('padding', '10px', 'important');
+      document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.cssText = "height : 210px !important;padding : 10px !important"
       document.getElementsByClassName('downArrow')[currentClick].style.transform = "rotate(180deg)"
     }
   }
@@ -199,6 +210,25 @@ export default function Header() {
     }
   }, 500);
 
+
+  // =============================================== Product API ========================================
+  const [ProductData, setProductData] = useState([])
+  const [ErrorProduct, setErrorProduct] = useState(false)
+  async function ourProduct() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}product/product_list/`);
+      console.log(api.data.response[0].array_of_product_list);
+      setProductData(api.data.response[0].array_of_product_list)
+    } catch (error) {
+      setErrorProduct(true)
+    }
+  }
+
+  useEffect(() => {
+    ourProduct()
+  }, [])
+
+
   console.log('headd');
 
 
@@ -265,6 +295,7 @@ export default function Header() {
                         <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
                         <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li> */}
                         {/* <li className='main_nav_link'>Game</li> */}
+                        {/* <li className='main_nav_link'><Link to="/products">Our Products</Link></li> */}
                       </ul>
                       <button className='menu_toggle_btn' onClick={toggle_menu_icon}>
                         <div className='menu_bar1'></div>
@@ -282,7 +313,7 @@ export default function Header() {
             <div className='mobile_menu_div'>
               <ul>
                 <li className='mobile_drop_link' menulink="0" onClick={toggleDropdown_mobile}>Blockchain <IoMdArrowDropdown className='downArrow' /> </li>
-                <hr />
+
                 <li className='mobile_drop_menu_list'>
                   {ErrorBlockchain ?
                     <div className='warning'>
@@ -307,11 +338,9 @@ export default function Header() {
                         </div>
                       })}
                 </li>
-                <hr />
-                <li className='mobile_drop_link'><Link to='/blog'>Blogs</Link></li>
-                <hr />
+
                 <li className='mobile_drop_link' menulink="1" onClick={toggleDropdown_mobile}>NFT <IoMdArrowDropdown className='downArrow' /> </li>
-                <hr />
+
                 <li className='mobile_drop_menu_list'>
                   <div className='mobile_drop_menu'>
                     {/* <div className='subheading_text'>Sub Heading</div> */}
@@ -335,13 +364,8 @@ export default function Header() {
                     </ul>
                   </div>
                 </li>
-                <hr />
-                <li className='mobile_drop_link'><Link to="/aboutUs">About Us</Link></li>
-                <hr />
-                <li className='mobile_drop_link'><Link to='/contactUs'>Contact Us</Link></li>
-                <hr />
                 <li className='mobile_drop_link' menulink="2" onClick={toggleDropdown_mobile}>Games <IoMdArrowDropdown className='downArrow' /> </li>
-                <hr />
+
                 <li className='mobile_drop_menu_list'>
                   <div className='mobile_drop_menu'>
                     {/* <div className='subheading_text'>Sub Heading</div> */}
@@ -356,12 +380,39 @@ export default function Header() {
                     </ul> */}
                   </div>
                 </li>
+
+                <li className='mobile_drop_link' menulink="3" onClick={toggleDropdown_mobile}>Our Products <IoMdArrowDropdown className='downArrow' /> </li>
+
+                <li className='mobile_drop_menu_list'>
+                  <div className='mobile_drop_menu'>
+                    {/* <div className='subheading_text'>Sub Heading</div> */}
+                    {/* <ul>
+                      {gameList.map((game, index) => {
+                        return (
+                          <li key={index}>
+                            <Link to={game.game_slug} className='desk_dropdown_link' >
+                              <div>{game.name}</div>
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul> */}
+                  </div>
+                </li>
+
+                <li className='mobile_drop_link'><Link to="/aboutUs">About Us</Link></li>
+
+                <li className='mobile_drop_link'><Link to='/blog'>Blogs</Link></li>
+
+                <li className='mobile_drop_link'><Link to='/contactUs'>Contact Us</Link></li>
+
               </ul>
             </div>
           </section>
+          {/* =============================================== Desktop Dropdown ======================================= */}
           <div className='desk_dropdown' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
             <Container>
-              <Row className='justify-content-center'>
+              <Row className='justify-content-around'>
                 {ErrorBlockchain ?
                   <div className='warning'>
                     <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
@@ -392,7 +443,7 @@ export default function Header() {
           </div>
           <div className='desk_dropdown' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
             <Container>
-              <Row className='justify-content-center'>
+              <Row className='justify-content-around'>
                 <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
@@ -400,7 +451,7 @@ export default function Header() {
 
                       {ErrorNft ?
                         <div className='warning'>
-                          <b><IoIosWarning style={{color:'red'}}/> Something went wrong</b>
+                          <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                         </div>
                         : nftList.length === 0 ?
                           <div className='warning'>
@@ -516,7 +567,7 @@ export default function Header() {
           </div>
           <div className='desk_dropdown' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
             <Container>
-              <Row className='justify-content-center'>
+              <Row className='justify-content-around'>
                 <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
@@ -657,13 +708,29 @@ export default function Header() {
           </div>
           <div className='desk_dropdown' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
             <Container>
-              <Row className='justify-content-center'>
+              <Row className='justify-content-around'>
                 <Col lg={3}>
                   <div className='technology'>
-                      <h2 className='h2_title'>SliceLedger</h2>
+                    <h2 className='h2_title'>SliceLedger</h2>
                   </div>
                 </Col>
                 <Col lg={3}>
+                  <div className='desk_dropdown_col'>
+                    <ul>
+                      {ErrorProduct ? 'error'
+                        : ProductData.length === 0 ? 'loading'
+                          : ProductData.map((product, key) => {
+                            return <li key={key}>
+                              <Link to={product.product_url} className='desk_dropdown_link'>
+                                <GrFormNextLink />
+                                <div>{product.name}</div>
+                              </Link>
+                            </li>
+                          })}
+                    </ul>
+                  </div>
+                </Col>
+                {/* <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     <ul>
                       <li>
@@ -722,37 +789,7 @@ export default function Header() {
                       </li>
                     </ul>
                   </div>
-                </Col>
-                <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col>
+                </Col> */}
               </Row>
             </Container>
           </div>

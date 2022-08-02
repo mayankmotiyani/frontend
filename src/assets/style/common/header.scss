@@ -345,9 +345,11 @@
             transition: all 0.5s;
             z-index: -1;
             .mobile_menu_div {
-                background-color: #fff;
-                transition: all 0.5s ease .5s;
+                background-color: #fafafb;
+                transition: all 0.5s ease 0.5s;
                 width: 0%;
+                height: 100vh;
+                overflow-y: scroll;
                 // transform: translateX(-100%);
                 animation: slide 0.3s linear 0.3s 1 forwards;
                 opacity: 0;
@@ -372,8 +374,10 @@
 
                     li {
                         padding: 5px;
-                        width: fit-content;
                         position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
 
                         .downArrow {
                             transition: all 0.5s;
@@ -391,11 +395,15 @@
                     }
 
                     .mobile_drop_menu_list {
-                        transition: all 0.5s;
+                        transition: all 0.2s;
                         overflow-y: scroll;
-                        height: 0px;
-                        padding: 0%;
-                        // border-bottom: 1px solid lightgrey;
+                        height: 0px !important;
+                        padding: 0% !important;
+                        display: list-item;
+                        height: 210px;
+                        padding: 10px;
+                        box-shadow: rgb(241 241 241) 0px 0px 15px inset;
+                        background-color: #fafafb;
 
                         &::-webkit-scrollbar {
                             width: 2px;
@@ -414,7 +422,8 @@
                         .mobile_drop_menu {
                             .subheading_text {
                                 font-size: 15px;
-                                color: #a3a3a3;
+                                font-weight: 600;
+                                color: #000;
                                 ul {
                                     font-size: 14px;
                                 }
@@ -437,6 +446,12 @@
         top: 0%;
         background-color: #fff;
         box-shadow: 0px 10px 20px #00000026;
+    }
+}
+
+@media screen and (min-width: "1024px"){
+    .site_main_head .menu_bar_div .mobile_menu_section{
+        display: none !important;
     }
 }
 
@@ -469,15 +484,34 @@
 
 // ===================== Quote area ======================
 .quote_wrap {
-    background-color: orange;
+    background-color: #00d26d;
     display: inline-block;
-    // padding: 8px 20px;
     position: fixed;
-    right: -88px;
-    transform: rotate(270deg);
-    top: 50%;
+    right: 10px;
+    transform: rotate(0deg);
+    /* top: 50%; */
     z-index: 10;
     border-radius: 5px;
+    bottom: 10px;
+    overflow: hidden;
+    
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0%;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: rotate(45deg);
+        transition: all .5s;
+        animation: swipe 1s linear infinite;
+    }
+    
+    @keyframes swipe {
+        0%{left: -100%;}
+        100%{left: 100%;}
+    }
 
     p {
         color: #fff;
@@ -769,10 +803,10 @@
     .quote_wrap button {
         padding: 0px 10px !important;
     }
-    .quote_wrap {
-        right: -6px;
-        top: 215px;
-    }
+    // .quote_wrap {
+    //     right: -6px;
+    //     top: 215px;
+    // }
 }
 
 // ===================== // Quote area ===================

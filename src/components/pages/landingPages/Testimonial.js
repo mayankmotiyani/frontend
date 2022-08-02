@@ -10,7 +10,7 @@ const Testimonial = () => {
     const [ErrorTestimonial, setErrorTestimonial] = useState(false)
     async function testimonialAPI() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/testimonial/`)
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}testimonial/`)
             setTestimonialData(api.data.response)
         } catch (error) {
             setErrorTestimonial(true)

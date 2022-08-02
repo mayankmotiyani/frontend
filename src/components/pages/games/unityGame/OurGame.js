@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image } from "react-bootstrap";
-import gameGirl from "../../../../assets/images/trusted/gameGirl.png"
+import gameGirl from "../../../../assets/images/trusted/aceRemove.png"
 
 const OurGame = () => {
     return (

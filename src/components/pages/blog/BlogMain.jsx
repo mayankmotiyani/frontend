@@ -26,6 +26,7 @@ export default function BlogMain(props) {
     const [featuredData, setFeaturedData] = useState([])
     async function featuredApi() {
         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
+        // console.log(api.data.response);
         setFeaturedData(api.data.response)
     }
 

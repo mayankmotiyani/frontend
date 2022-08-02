@@ -109,7 +109,7 @@ export default function SideBoxSection() {
                             </Row>
                         </Col>
                         <Col lg={4}>
-                            <div className='side_image_content_div' data-aos="fade-left">
+                            <div className='side_image_content_div' data-aos="fade-up">
                                 <BsFillFileEarmarkBarGraphFill />
                                 <h3 className='h3_title'>Your Heading Title here</h3>
                                 <button>Click Me</button>

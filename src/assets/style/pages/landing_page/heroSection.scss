@@ -105,3 +105,9 @@
         }
     }
 }
+
+@media screen and (max-width:768px) {
+    .hero_slide_section_img{
+        display: none;
+    }
+}

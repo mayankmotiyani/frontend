@@ -60,7 +60,7 @@ const LaunchPlatform = () => {
                                             <div className="flip-card">
                                                 <div className="flip-card-inner">
                                                     <div className="flip-card-front">
-                                                        <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
+                                                        <img src={box.image_url} alt={box.name} />
                                                         <h4 className='h4_title'>{box.name}</h4>
                                                     </div>
                                                     <div className="flip-card-back">
