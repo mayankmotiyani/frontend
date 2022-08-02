@@ -4,6 +4,18 @@
 
     .head_section {
         text-align: center;
+        .h2_title{
+            font-size: 2rem;
+            padding-bottom: 20px;
+            max-width: 900px;
+            margin: 0px auto;
+            span{
+                color: orange;
+                font-family: heading;
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+        }
     }
     .box_div {
         text-align: center;

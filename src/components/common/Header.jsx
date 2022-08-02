@@ -252,12 +252,18 @@ export default function Header() {
                     <div className='main_nav_list'>
                       <ul>
                         <li className='main_nav_link' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Blockchain <IoMdArrowDropdown /> </li>
-                        {/* <li className='main_nav_link'>demo2</li> */}
+                        <li className='main_nav_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
+                        <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li>
+                        <li className='main_nav_link' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Our Products <IoMdArrowDropdown /> </li>
+                        <li className='main_nav_link'><Link to="/aboutUs">About Us</Link></li>
                         <li className='main_nav_link'><Link to='/blog'>Blogs</Link></li>
+                        <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
+                        {/* <li className='main_nav_link'>demo2</li> */}
+                        {/* <li className='main_nav_link'><Link to='/blog'>Blogs</Link></li>
                         <li className='main_nav_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
                         <li className='main_nav_link'><Link to="/aboutUs">About Us</Link></li>
                         <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
-                        <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li>
+                        <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li> */}
                         {/* <li className='main_nav_link'>Game</li> */}
                       </ul>
                       <button className='menu_toggle_btn' onClick={toggle_menu_icon}>
@@ -341,13 +347,11 @@ export default function Header() {
                     {/* <div className='subheading_text'>Sub Heading</div> */}
                     {/* <ul>
                       {gameList.map((game, index) => {
-                        return (
-                          <li key={index}>
-                            <Link to={game.game_slug} className='desk_dropdown_link' >
-                              <div>{game.name}</div>
-                            </Link>
-                          </li>
-                        )
+                        return <li key={index}>
+                          <a href="#" className='desk_dropdown_link' >
+                            <div>{game}</div>
+                          </a>
+                        </li>
                       })}
                     </ul> */}
                   </div>
@@ -620,6 +624,107 @@ export default function Header() {
                 <Col lg={3}>
                   <div className='desk_dropdown_col'>
                     {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
+                    <ul>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+          <div className='desk_dropdown' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
+            <Container>
+              <Row className='justify-content-center'>
+                <Col lg={3}>
+                  <div className='technology'>
+                      <h2 className='h2_title'>SliceLedger</h2>
+                  </div>
+                </Col>
+                <Col lg={3}>
+                  <div className='desk_dropdown_col'>
+                    <ul>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
+                <Col lg={3}>
+                  <div className='desk_dropdown_col'>
+                    <ul>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className='desk_dropdown_link'>
+                          <GrFormNextLink />
+                          <div>link List</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
+                <Col lg={3}>
+                  <div className='desk_dropdown_col'>
                     <ul>
                       <li>
                         <a href="#" className='desk_dropdown_link'>

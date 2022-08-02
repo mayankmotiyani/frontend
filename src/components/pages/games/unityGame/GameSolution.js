@@ -13,7 +13,7 @@ const GameSolution = () => {
                                 <h3 className='h3_title'>Modern Solution For Various Platforms</h3>
                                 <h2 className='h2_title'>Hire Our Unity Game Developer For Multiple Platforms</h2>
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore doloribus eligendi accusantium atque, velit neque expedita ut ipsa ratione ad unde nisi earum error possimus sapiente modi aliquid odio et.</p>
-                                <div className="center">
+                                <div class="center">
                                     <a href="#"><span data-attr="Click">Click</span><span data-attr="Me">Me</span></a>
                                 </div>
                             </div>

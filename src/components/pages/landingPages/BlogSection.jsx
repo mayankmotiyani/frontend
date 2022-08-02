@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import BlogImage from '../../../assets/media/man-work.png';
-import { IoIosWarning } from 'react-icons/io';
-import AOS from "aos";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import BlogImage from '../../../assets/media/man-work.png'
+import { IoIosWarning } from 'react-icons/io'
 export default function BlogSection() {
     // ========================== Blog API ===========================
     const [BlogData, setBlogData] = useState([])
@@ -21,9 +20,6 @@ export default function BlogSection() {
 
     useEffect(() => {
         blogApi()
-        AOS.init({
-            duration: 1000
-        });
     }, [])
 
     return (
@@ -46,7 +42,7 @@ export default function BlogSection() {
                             : BlogData.length === 0 ?
                                 <Row>
                                     <Col lg={4}>
-                                        <div className='blog_section_EMPTY' data-aos="fade-up">
+                                        <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
                                                 <div className='head_title'></div>
@@ -56,7 +52,7 @@ export default function BlogSection() {
                                         </div>
                                     </Col>
                                     <Col lg={4}>
-                                        <div className='blog_section_EMPTY' data-aos="fade-up">
+                                        <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
                                                 <div className='head_title'></div>
@@ -66,7 +62,7 @@ export default function BlogSection() {
                                         </div>
                                     </Col>
                                     <Col lg={4}>
-                                        <div className='blog_section_EMPTY' data-aos="fade-up"> 
+                                        <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
                                                 <div className='head_title'></div>
@@ -78,7 +74,7 @@ export default function BlogSection() {
                                 </Row>
                                 : BlogData.map((e, key) => {
                                     return <Col lg={4} key={key}>
-                                        <div className='blog_section' data-aos="fade-up">
+                                        <div className='blog_section'>
                                             <img src={BlogImage} alt="" />
                                             <div className='blog_content'>
                                                 <h3 className='h3_title'>{e.title}</h3>

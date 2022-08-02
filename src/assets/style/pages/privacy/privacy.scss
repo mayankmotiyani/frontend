@@ -1,0 +1,23 @@
+.privacy_section{
+    
+    .head{
+        padding: 5em 0em;
+        background-color: #fafafb;
+        text-align: center;
+
+        p{
+            width: calc(100% - 40%);
+            margin: auto;
+        }
+    }
+
+    .privacy_content{
+        margin: 2em 0em;
+
+        .h5_title{
+            border-left: 4px solid orange;
+            padding-left: 10px;
+            margin-bottom: .5em;
+        }
+    }
+}

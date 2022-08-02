@@ -27,7 +27,14 @@
 @import url("./pages/ourTeam/ourTeam.scss");
 @import url("./pages//games/unityGame/unityGame.scss");
 @import url('./pages/nft/index.scss');
-@import url("./pages/product/productWeb/product.scss");
+
+@import url('./pages/product/productWeb/productWeb.scss');
+@import url('./pages/resources/resources.scss');
+
+@import url('./pages/product/singleProduct/product_page.scss');
+@import url('./pages/privacy/privacy.scss');
+@import url('./pages/term_condition/term_condition.scss');
+
 @import url('./pages/particle.scss');
 * {
     // font-family: paragraph;

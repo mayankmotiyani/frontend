@@ -1,9 +1,11 @@
 import React from 'react'
+import ProductDetails from './ProductDetails'
 import ProductHeroWeb from "./ProductHeroWeb"
 const ProductWeb = () => {
   return (
     <>
-        <ProductHeroWeb />
+      <ProductHeroWeb />
+      <ProductDetails />
     </>
   )
 }

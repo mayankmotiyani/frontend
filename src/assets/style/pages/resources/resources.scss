@@ -1,0 +1,66 @@
+.resources-wrap {
+    .resources-banner {
+        // background: url("../../../images/resources/banner.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 50px 0px;
+        position: relative;
+        // height: 400px;
+
+        &::after {
+            background: #0000004f;
+            position: absolute;
+            content: "";
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+        }
+        .heroSection_video{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .row {
+            align-items: center;
+        }
+
+        .h2_title,
+        p {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .resourcesImg {
+            position: relative;
+            z-index: 1;
+            margin-left: auto;
+            width: 400px;
+
+            p {
+                max-width: 200px;
+                position: absolute;
+                bottom: 45px;
+                left: 25%;
+            }
+        }
+    }
+
+    .resources-details {
+        padding: 50px 0px;
+
+        .row {
+            align-items: center;
+        }
+
+        .product-about,
+        .product-img {
+            margin: 60px 0px;
+        }
+    }
+}

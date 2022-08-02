@@ -1,0 +1,11 @@
+.franchise_sections{
+    padding: 5em 0em;
+    .top_head_div{
+        text-align: center;
+
+        p{
+            width: calc(100% - 40%);
+            margin: auto;
+        }
+    }
+}

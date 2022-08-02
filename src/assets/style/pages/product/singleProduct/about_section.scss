@@ -1,0 +1,14 @@
+.about_section{
+    .about_container{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-align: end;
+    }
+    .about_image_wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}

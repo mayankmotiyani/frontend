@@ -13,10 +13,13 @@ import OurTeam from '../components/pages/ourTeam/OurTeam';
 import NotFound from '../components/pages/NotFound';
 import UnityGame from '../components/pages/games/unityGame/UnityGame';
 import Main_nft from '../components/pages/NFT/main_nft';
+
 import ProductWeb from '../components/pages/product/productWeb/ProductWeb';
-// import Product from '../components/pages/product/Product';
+import Resources from '../components/pages/resources/Resources';
 
-
+import ProductPage from '../components/pages/product/singleProduct/ProductPage';
+import Privacy from '../components/pages/PrivacyPolicy/privacy';
+import TermCondition from '../components/pages/Term_and_condition/TermCondition';
 const Index = () => {
     // ===================================== For Route API ============================================
     // const [RoutePath, setRoutePath] = useState([])
@@ -57,7 +60,13 @@ const Index = () => {
                     <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} />
                     <Route path="/game/:game_slug" element={<UnityGame demo={scrollSmoothTo} />} />
                     <Route path="/nft/:nft_slug" element={<Main_nft demo={scrollSmoothTo} />} />
+
                     <Route path="/product/web" element={<ProductWeb demo={scrollSmoothTo} />} />
+                    <Route path="/resource/:res_slug" element={<Resources demo={scrollSmoothTo} />} />
+
+                    <Route path='/product/name' element={<ProductPage demo={scrollSmoothTo}/>}/>
+                    <Route path='/privacy' element={<Privacy demo={scrollSmoothTo}/>}/>
+                    <Route path='/term_and_condition' element={<TermCondition demo={scrollSmoothTo}/>}/>
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <Footer />

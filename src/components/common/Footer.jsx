@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import "../../assets/style/common/footer.scss";
-import { BiUpArrowAlt } from "react-icons/bi"
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
-import { BsSkype, BsArrowLeft } from 'react-icons/bs'
+import { BiUpArrowAlt } from "react-icons/bi";
+import { IoIosWarning } from 'react-icons/io';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { BsSkype, BsArrowLeft } from 'react-icons/bs';
 import { BiRightArrowAlt } from 'react-icons/bi';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import axios from 'axios';
 // import Logo from '../../assets/media/Infograins IT-02.png'
 const Footer = () => {
@@ -24,21 +25,36 @@ const Footer = () => {
 
 
   // =============================== company api ================================
-  const [companyData, setCompanyData] = useState([])
-  const [ErrorCompany, setErrorCompany] = useState(false)
-  async function companyApi() {
+  const [companyData, setCompanyData] = useState([]);
+  const [serviceData, setServiceData] = useState([]);
+  const [aboutData, setAboutData] = useState([]);
+  const [resourcesData, setResourcesData] = useState([]);
+  const [ErrorCompany, setErrorCompany] = useState(false);
+  async function footerApi() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}company/get-all-models/`);
+      console.log("api", api.data.response);
       setCompanyData(api.data.response.Company)
+      setServiceData(api.data.response.Services)
+      setAboutData(api.data.response.About)
     } catch (error) {
       setErrorCompany(true)
     }
   }
-
+  const resources = async () => {
+    try {
+      const url = await axios.get(`${process.env.REACT_APP_BASE_URL}resource/resources_list/`);
+      console.log("url.data", url.data.response);
+      setResourcesData(url.data.response)
+    } catch (error) {
+      setErrorCompany(true)
+    }
+  }
   useEffect(() => {
-    companyApi()
+    footerApi();
+    resources();
   }, [])
-  
+
 
   return (
     <>
@@ -81,14 +97,15 @@ const Footer = () => {
           <Row>
             <Col lg={3}>
               <div className='foot_sec'>
-                <div className='foot_sec_subhead'>Products</div>
+                <div className='foot_sec_subhead'>Resources</div>
                 <ul>
-                  <li><Link to="/team">Our Team</Link></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
+                  {
+                    resourcesData.map((ele, key) => {
+                      return (
+                        <li key={key}><Link to={ele.resource_url}>{ele.name}</Link></li>
+                      )
+                    })
+                  }
                 </ul>
               </div>
             </Col>
@@ -96,37 +113,84 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>Company</div>
                 <ul>
-                  {/* {companyData.map((e, key)=>{
-                    return <li key={key}><a href="">{e}</a></li>
-                  })} */}
-                  {/* <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li> */}
+                  {
+                    ErrorCompany ?
+                      <div className='warning'>
+                        <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                      </div>
+                      :
+                      companyData.length === 0 ?
+                        <>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                        </>
+                        :
+                        companyData.map((e, key) => {
+                          return (
+                            <li key={key}>
+                              <Link to="/">{e}</Link>
+                            </li>
+                          )
+                        })}
                 </ul>
               </div>
             </Col>
             <Col lg={3}>
               <div className='foot_sec_one'></div><div className='foot_sec'>
-                <div className='foot_sec_subhead'>Products</div>
+                <div className='foot_sec_subhead'>Services</div>
                 <ul>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
+                  {
+                    ErrorCompany ?
+                      <div className='warning'>
+                        <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                      </div>
+                      :
+                      serviceData.length === 0 ?
+                        <>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                        </>
+                        :
+                        serviceData.map((e, key) => {
+                          return (
+                            <li key={key}><Link to="/">{e}</Link></li>
+                          )
+                        })
+                  }
                 </ul>
               </div>
             </Col>
             <Col lg={3}>
               <div className='foot_sec'>
-                <div className='foot_sec_subhead'>Products</div>
+                <div className='foot_sec_subhead'>About</div>
                 <ul>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
-                  <li> <a href="">demo</a></li>
+                  {
+                    ErrorCompany ?
+                      <div className='warning'>
+                        <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                      </div>
+                      :
+                      aboutData.length === 0 ?
+                        <>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                          <li> <a href="">demo</a></li>
+                        </>
+                        :
+                        aboutData.map((e, key) => {
+                          return (
+                            <li key={key}><Link to="/">{e}</Link></li>
+                          )
+                        })
+                  }
                 </ul>
               </div>
             </Col>
@@ -136,8 +200,8 @@ const Footer = () => {
               <div className='footer_bottom'>
                 <div className='logo'>Infograins</div>
                 <div className='security_div'>
-                  <a href='#'>Privacy Policy</a>
-                  <a href='#'>Terms & Conditions</a>
+                  <Link to='/privacy'>Privacy Policy</Link>
+                  <Link to='/term_and_condition'>Terms & Conditions</Link>
                 </div>
               </div>
             </Col>

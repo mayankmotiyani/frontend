@@ -1,0 +1,19 @@
+.outcome_section {
+    margin: 5em 0em;
+    .head_text {
+        text-align: center;
+    }
+
+    .outcome_container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .content_box {
+            padding: 2em;
+            border-radius: 5px;
+            margin-bottom: 2em;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+        }
+    }
+}

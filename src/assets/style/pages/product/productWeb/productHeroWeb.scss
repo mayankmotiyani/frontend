@@ -1,6 +1,6 @@
 .productHeroWeb-wrap {
     padding: 50px 0px;
-    background: url("../../../../images/product/hero.jpg");
+    background: url("../../../../images/product/banner.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -15,6 +15,11 @@
         background: #000;
         content: "";
         opacity: 0.6;
+    }
+
+    .row {
+        justify-content: space-between;
+        align-items: center;
     }
 
     .productHeroWeb-details {
@@ -69,11 +74,17 @@
         }
 
     }
-    .productHeroWeb-img{
+
+    .productHeroWeb-img {
         position: relative;
         z-index: 1;
-        img{
-            height: 400px;
+
+        p {
+            position: absolute;
+            bottom: 45px;
+            max-width: 251px;
+            color: #fff;
+            left: 95px;
         }
     }
 }
