@@ -1,13 +1,13 @@
 .career-apply-wrap {
-    .career-apply-details-wrap{
+    .career-apply-details-wrap {
         padding: 50px 0px;
     }
+
     .career-apply-banner {
-        background: url("../../../images/career/careerr.png");
+        background: url("../../../images/career/career.png");
         height: 400px;
         background-size: cover;
         width: 100%;
-        background-repeat: round;
         position: relative;
 
         &::after {
@@ -22,6 +22,14 @@
     }
 
     .career-apply-form-wrap {
+        // background: #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+        .h2_title{
+            text-align: center;
+            color: orange;
+        }
         .input_field {
             margin-bottom: 20px;
         }
@@ -68,6 +76,54 @@
 
             &:hover::before {
                 transform: scale(160);
+            }
+        }
+    }
+
+
+    .career-apply-details {
+        .career-apply-head {
+            .h2_title {
+                color: orange;
+            }
+
+            p:nth-child(2) {
+                // font-weight: 600;
+                font-size: 16px;
+                padding-bottom: 10px;
+            }
+
+            p:nth-child(3) {
+                // font-weight: 600;
+                font-size: 14px;
+            }
+        }
+
+        .career-apply-dis {
+
+
+            .career-apply-skills,
+            .career-apply-res {
+                h2 {
+                    font-family: heading;
+                    font-weight: 500;
+                    padding: 10px 0px;
+                    font-size: 24px;
+                    // color: orange;
+                    letter-spacing: 1px;
+                    margin-bottom: 0px;
+                }
+
+                ul {
+                    padding-left: 15px;
+
+                    li {
+                        font-size: 16px;
+                        // font-weight: 600;
+                        padding: 3px 0px;
+                        list-style: auto;
+                    }
+                }
             }
         }
     }

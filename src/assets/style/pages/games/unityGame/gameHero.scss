@@ -16,7 +16,7 @@
         background: #000;
         opacity: 0.5;
     }
-    
+
     .row {
         align-items: center;
     }
@@ -24,6 +24,7 @@
     .gameHero-about-wrap {
         position: relative;
         z-index: 1;
+
         .h2_title {
             color: orange;
         }
@@ -90,5 +91,17 @@
             border-color: orange;
             color: #fff;
         }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .gameHero-wrap .container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .gameHero-from-wrap {
+        margin-top: 20px;
     }
 }

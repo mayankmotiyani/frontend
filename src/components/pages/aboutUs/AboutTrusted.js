@@ -24,7 +24,7 @@ const AboutTrusted = () => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                     </div>
                     <Row>
-                        <Col sm={3} md={3} lg={3} xl={3}>
+                        <Col sm={6} md={6} lg={3} xl={3}>
                             <div className='AboutTrusted-card-wrap'>
                                 <figure className='AboutTrusted-card-img'>
                                     <Image src={secure} alt='Secure' />
@@ -36,7 +36,7 @@ const AboutTrusted = () => {
                                 </div>
                             </div>
                         </Col>
-                        <Col sm={3} md={3} lg={3} xl={3}>
+                        <Col sm={6} md={6} lg={3} xl={3}>
                             <div className='AboutTrusted-card-wrap'>
                                 <figure className='AboutTrusted-card-img'>
                                     <Image src={analysis} alt='Secure' />
@@ -48,7 +48,7 @@ const AboutTrusted = () => {
                                 </div>
                             </div>
                         </Col>
-                        <Col sm={3} md={3} lg={3} xl={3}>
+                        <Col sm={6} md={6} lg={3} xl={3}>
                             <div className='AboutTrusted-card-wrap'>
                                 <figure className='AboutTrusted-card-img'>
                                     <Image src={secure} alt='Secure' />
@@ -60,7 +60,7 @@ const AboutTrusted = () => {
                                 </div>
                             </div>
                         </Col>
-                        <Col sm={3} md={3} lg={3} xl={3}>
+                        <Col sm={6} md={6} lg={3} xl={3}>
                             <div className='AboutTrusted-card-wrap'>
                                 <figure className='AboutTrusted-card-img'>
                                     <Image src={credibility} alt='Secure' />

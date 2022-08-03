@@ -20,7 +20,7 @@ const Home = (props) => {
     // =========================== scroll To Top default =========================
     return (
         <>
-            <Particle />
+            {/* <Particle /> */}
             <HeroSection />
             <PartnerStrip />
             <Technology />

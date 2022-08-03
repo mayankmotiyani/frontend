@@ -8,6 +8,7 @@ import HeroImage from '../../../assets/images/blockchainService1.png';
 import video from "../../../assets/images/video/video_1.mp4"
 import axios from 'axios';
 import { IoIosWarning } from 'react-icons/io'
+import Particle from '../Particle';
 export default function HeroSection() {
     // const [owlData, setOwlData] = useState([])
     // const getHeroContent = async () => {
@@ -82,11 +83,12 @@ export default function HeroSection() {
     return (
         <>
             <section className='hero-wrap'>
-                <video autoPlay muted loop id="myVideo" width="100%" className='heroSection_video'>
+                <div className='hero_overlay'></div>
+                <Particle/>
+                {/* <video autoPlay muted loop id="myVideo" width="100%" className='heroSection_video'>
                     <source src={video} type="video/mp4" />
                     <source src={video} type="video/ogg" />
-                    {/* <source src={video} type="video/mp4" /> */}
-                </video>
+                </video> */}
                 <div className='OwlCarousel-wrap'>
                     <OwlCarousel className='owl-theme hero_slider' loop margin={10} {...options}>
 

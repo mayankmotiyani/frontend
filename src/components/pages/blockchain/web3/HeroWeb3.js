@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import { Container, Row, Col, Form, Button, Image } from "react-bootstrap"
 import Background from '../../../../assets/images/background/web3/banner3.jpg'
 const HeroWeb3 = () => {
+  // =====================================  API start ============================================ 
+  const location = useLocation();
+  const filterApi_PathName = location.pathname.slice(1);
+  // console.log(filterApi_PathName);
+
+  const [BlockchainCate, setBlockchainCate] = useState([])
+  const [ErrorBlockchain, setErrorBlockchain] = useState(false)
+  async function API() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
+      setBlockchainCate(api.data.response)
+      // console.log("try", api.data.response);
+    } catch (error) {
+      setErrorBlockchain(true)
+    }
+  }
+
+  useEffect(() => {
+    API()
+  }, [filterApi_PathName])
+
+  // =====================================  API end ============================================ 
   return (
     <>
       <section className='web3-hero-wrap'>
-        <Image className='background_img' src={Background} fluid/>
+        <Image className='background_img' src={Background} fluid />
         <Container>
           <Row>
             <Col sm={6} md={6} lg={8} xl={8}>
-              <div className='w3-about-wrap'>
-                <h2 className='h2_title'>Best Web3 Development</h2>
-                <h3 className='h3_title'>Company In India</h3>
-                <p>Deep dive into the web 3 world for the ultimate experience with our tailor made web3 development services. We have top-seeded Web 3 developers in the USA and the right set of technology to launch your digital solution abiding by legal compliance.</p>
-              </div>
+              {ErrorBlockchain ? 'Error'
+                : BlockchainCate.length === 0 ? 'loading'
+                  : <div className='w3-about-wrap'>
+                    <h2 className='h2_title'>Best Web3 Development</h2>
+                    <h3 className='h3_title'>Company In India</h3>
+                    <p>{BlockchainCate.blockchain_description}</p>
+                  </div>
+              }
             </Col>
             <Col sm={6} md={6} lg={4} xl={4}>
               <Form className='w3-from-wrap'>

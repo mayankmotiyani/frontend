@@ -1,6 +1,10 @@
 .AboutPlatform-wrap {
     padding: 50px 0px;
 
+    .row {
+        align-items: center;
+    }
+
     .h3_title {
         color: orange;
     }
@@ -14,9 +18,19 @@
         .AboutPlatform-details-img {
             margin-right: 15px;
             transition: all 0.5s ease;
+
             &:hover {
                 transform: translateY(-8px);
             }
         }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .AboutPlatform-wrap .row {
+        flex-direction: column-reverse;
+    }
+    .AboutPlatform-text{
+        margin-top: 20px;
     }
 }

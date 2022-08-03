@@ -115,7 +115,7 @@ const ContactUs = () => {
                     </div>
                     <div className='get_in_touch_div'>
                         <Row className='get_in_touch_row justify-content-between'>
-                            <Col sm={4} md={4} lg={4} xl={4}>
+                            <Col sm={12} md={5} lg={5} xl={5}>
                                 <div className='contact_information'>
                                     <div className='head'>
                                         <h3 className='h3_title'>Contact Information</h3>
@@ -131,7 +131,7 @@ const ContactUs = () => {
                                     </div>
                                 </div>
                             </Col>
-                            <Col sm={7} md={7} lg={7} xl={7}>
+                            <Col sm={12} md={7} lg={7} xl={7}>
                                 <Form className='contact-form-wrap row' onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3 col-lg-6" controlId="formBasicName">
                                         <Form.Label>Name</Form.Label>

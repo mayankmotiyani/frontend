@@ -39,3 +39,10 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .aboutUs-title .h2_title{
+        text-align: center;
+        max-width: 120px;
+        font-size: 2rem;
+    }
+}

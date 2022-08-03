@@ -37,12 +37,12 @@ const OnlineStore = () => {
           {Error ? 'error' : Data.length === 0 ? 'loading...'
             : <Row>
               <Col sm={12} md={12} lg={6} xl={6} >
-                <figure className='store_img' data-aos="fade-right">
+                <figure className='store_img'>
                   <img src={blockchainService1} alt='Store' />
                 </figure>
               </Col>
               <Col sm={12} md={12} lg={6} xl={6}>
-                <div className='store_div' data-aos="fade-left">
+                <div className='store_div'>
                   <div className='store_text'>
                     <h4 className='h4_title'>What We Do?</h4>
                     <h2 className='h2_title'>{Data[1].title}</h2>

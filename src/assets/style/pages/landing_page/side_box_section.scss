@@ -12,7 +12,13 @@
             color: #ff5722;
         }
     }
-
+    .sideBox_section-title{
+        text-align: center;
+        padding-bottom: 30px;
+        .h4_title{
+            color: orange;
+        }
+    }
     .side_image_content_div {
         // background: aliceblue;
         background-image: linear-gradient(198deg, rgba(255, 255, 255, 0.618), rgba(0, 0, 0, 0.601)) ,url('../../../media/man-work.png');

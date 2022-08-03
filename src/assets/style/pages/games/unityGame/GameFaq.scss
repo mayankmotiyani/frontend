@@ -7,3 +7,11 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .gameFaq-accordion-wrap{
+        padding: 50px 0px;
+    }
+    .gameFaq-accordion-wrap .container {
+        max-width: 100%;
+    }
+}

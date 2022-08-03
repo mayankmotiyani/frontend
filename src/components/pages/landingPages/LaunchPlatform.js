@@ -26,7 +26,7 @@ const LaunchPlatform = () => {
                 <Container >
                     <div className='LaunchPlatform-details'>
                         <div className='LaunchPlatform-heading'>
-                            <h3 className='h3_title'>Choose Your Niche</h3>
+                            <h4 className='h4_title'>Choose Your Niche</h4>
                             <h2 className='h2_title'>Launch Web 3 Platform with Professional Web3 Development Company</h2>
                         </div>
                         <Row>

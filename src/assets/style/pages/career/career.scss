@@ -1,11 +1,11 @@
 @import url("./careerApply.scss");
 .career-wrap {
     .career-banner-wrap {
-        background: url("../../../images/career/careerr.png");
+        background: url("../../../images/career/career.png");
         height: 400px;
         background-size: cover;
         width: 100%;
-        background-repeat: round;
+        background-repeat: no-repeat;
         position: relative;
 
         &::after {

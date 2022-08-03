@@ -56,7 +56,7 @@ const Index = () => {
                     <Route path="/" element={<Home demo={scrollSmoothTo} />} />
                     <Route path="/blockchain/:slug" element={<Web3 demo={scrollSmoothTo} />} />
                     <Route path='/blog' element={<BlogMain demo={scrollSmoothTo} />} />
-                    <Route path='/blog/demo' element={<SingleBlog demo={scrollSmoothTo} />} />
+                    <Route path='/blog/:blog_slug' element={<SingleBlog demo={scrollSmoothTo} />} />
                     <Route path="/aboutUs" element={<AboutUs demo={scrollSmoothTo} />} />
                     <Route path="/contactUs" element={<ContactUs demo={scrollSmoothTo} />} />
                     <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} />
@@ -67,11 +67,11 @@ const Index = () => {
                     <Route path="/resource/:res_slug" element={<Resources demo={scrollSmoothTo} />} />
                     <Route path="/career" element={<Career demo={scrollSmoothTo} />} />
                     <Route path="/career/:apl_slug" element={<CareerApply demo={scrollSmoothTo} />} />
-                    <Route path='/product/name' element={<ProductPage demo={scrollSmoothTo}/>}/>
+                    <Route path='/product/:product_slug' element={<ProductPage demo={scrollSmoothTo}/>}/>
                     <Route path='/privacy' element={<Privacy demo={scrollSmoothTo}/>}/>
                     <Route path='/term_and_condition' element={<TermCondition demo={scrollSmoothTo}/>}/>
                     {/* <Route path='/:apl_slug' element={<CareerApply demo={scrollSmoothTo}/>}/> */}
-                    <Route path='*' element={<NotFound />} />
+                    <Route path='*' element={<NotFound demo={scrollSmoothTo}/>} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

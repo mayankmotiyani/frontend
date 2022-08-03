@@ -16,9 +16,6 @@ const Web3 = (props) => {
         props.demo('top')
     }, [])
     // =========================== scroll To Top default =========================
-    const params = useParams();
-    const { slug } = params;
-    console.log('slug', slug);
     return (
         <>
             <HeroWeb3 />
@@ -26,9 +23,9 @@ const Web3 = (props) => {
             <W3Services />
             <W3Technologies />
             <W3Owl />
+            <W3Card />
             <W3Tabs />
             <W3Accordion />
-            <W3Card />
         </>
     )
 }

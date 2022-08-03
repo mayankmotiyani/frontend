@@ -3,42 +3,51 @@
     background: url("../../../images/background/contact_background.jpg");
     background-repeat: no-repeat;
 
-    .nav-tabs {
-        width: 50%;
-        margin: 0px auto;
-        border: none;
-        margin-bottom: 0px !important;
+    .tabs-title {
+        .h2_title {
+            text-align: center;
+            padding-bottom: 20px;
+        }
     }
 
-    :nth-child(2) .nav-link {
-        left: -15px;
-    }
+    // .nav-tabs {
+    //     width: 50%;
+    //     margin: 0px auto;
+    //     border: none;
+    //     margin-bottom: 0px !important;
+    // }
 
-    :nth-child(3) .nav-link {
-        left: -35px;
-    }
+    // :nth-child(2) .nav-link {
+    //     left: -15px;
+    // }
 
-    :nth-child(4) .nav-link {
-        left: -55px;
-    }
+    // :nth-child(3) .nav-link {
+    //     left: -35px;
+    // }
 
-    :nth-child(5) .nav-link {
-        left: -75px;
-    }
+    // :nth-child(4) .nav-link {
+    //     left: -55px;
+    // }
+
+    // :nth-child(5) .nav-link {
+    //     left: -75px;
+    // }
 
     .nav-link {
         border: 1px solid;
         border-color: #dee2e6 #dee2e6 #fff;
-        ;
+        border-radius: 0px;
         position: relative;
-        border-radius: 50% 50% 70% 30% / 100% 99% 1% 0%;
-        background-color: #eee; 
-        padding: 6px 0px;
+        // border-radius: 50% 50% 70% 30% / 100% 99% 1% 0%;
+        background-color: #eee;
+        // padding: 6px 0px;
         color: #000;
     }
-    .nav-link.active{
+
+    .nav-link.active {
         border-color: rgb(221, 193, 140);
     }
+
     .tabs-img {
         position: relative;
     }
@@ -50,9 +59,10 @@
     }
 
     .tabs-text {
-        text-align: center;
-        max-width: 850px;
+        // text-align: center;
+        // max-width: 850px;
         margin: 20px auto 0px;
+
         button {
             background: transparent;
             padding: 10px 45px;
@@ -61,7 +71,7 @@
             overflow: hidden;
             transition: all 0.2s;
             z-index: 0;
-            border-radius: 25px;    
+            border-radius: 25px;
             color: #000;
             margin-top: 30px;
 

@@ -11,7 +11,7 @@ const Resources = (props) => {
     // =========================== scroll To Top default =========================
     const params = useParams();
     const { res_slug } = params;
-    console.log('res_slug', res_slug);
+    // console.log('res_slug', res_slug);
     return (
         <>
             <section className='resources-wrap'>

@@ -8,6 +8,7 @@
     .key_box {
         box-shadow: 0px 0px 5px grey;
         padding: 2em;
+        min-height: 300px;
         // animation: float 4s linear infinite;
         svg {
             font-size: 2em;
@@ -42,5 +43,18 @@
             }
             
         }
+    }
+}
+@media screen and (max-width: 991px){
+    .keyFeature_section .key_box{
+        margin-bottom: 20px;
+    }
+    .keyFeature_section .key_box.odd{
+        margin-top: 0px;
+    }
+}
+@media screen and (max-width: 575px){
+    .keyFeature_section{
+        margin: 2em 0em;
     }
 }

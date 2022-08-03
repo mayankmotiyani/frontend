@@ -127,3 +127,9 @@
         transform: translateY(0);
     }
 }
+
+@media screen and (max-width: 767px) {
+    .GameSolution-wrap .container {
+        max-width: 100%;
+    }
+}

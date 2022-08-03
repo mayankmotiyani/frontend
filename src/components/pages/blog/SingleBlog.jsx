@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState, useRef } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import BlogImage from '../../../assets/media/man-work.png'
 export default function SingleBlog(props) {
     // =========================== scroll To Top default =========================
@@ -9,12 +9,14 @@ export default function SingleBlog(props) {
         props.demo('top')
     }, [])
     // =========================== scroll To Top default =========================
+    const location = useLocation();
+    const filterApi_PathName = location.pathname.slice(1);
     // ========================= Single Blog api ================================
     const [blogContent, setBlogContent] = useState({})
     const blog_content = useRef(null)
     const [listData, setListData] = useState([])
     async function singleBlog() {
-        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/the-role-of-tokenization-and-blockchain-in-sports-industry/`);
+        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
         setListData(api.data.blog_list)
         setBlogContent(api.data.response)
         // console.log(api.data.response);
@@ -22,7 +24,7 @@ export default function SingleBlog(props) {
     }
     useEffect(() => {
         singleBlog()
-    }, [])
+    }, [filterApi_PathName])
 
     // ========================= Single Blog api ================================
     return (
@@ -37,7 +39,7 @@ export default function SingleBlog(props) {
                                     <ul>
                                         {listData.map((list, key) => {
                                             return <li key={key}>
-                                                <Link to="/">{list}</Link>
+                                                <Link to={list.blog_url}>{list.title}</Link>
                                             </li>
                                         })}
                                         {/* <li>

@@ -38,7 +38,7 @@ const Technology = () => {
                         {Error ? 'error' : Data.length === 0 ? 'loading...'
                             : <Row>
                                 <Col sm={12} md={12} lg={6} xl={6}>
-                                    <div className='technology_div' data-aos="fade-right">
+                                    <div className='technology_div'>
                                         <div className='technology_text'>
                                             <h4 className='h4_title'>What We Do?</h4>
                                             <h2 className='h2_title'>{Data[0].title}</h2>
@@ -48,7 +48,7 @@ const Technology = () => {
                                     </div>
                                 </Col>
                                 <Col sm={12} md={12} lg={6} xl={6}>
-                                    <figure className='technology_img' data-aos="fade-left">
+                                    <figure className='technology_img'>
                                         <img src={blockchainService1} alt='technology' />
                                     </figure>
                                 </Col>

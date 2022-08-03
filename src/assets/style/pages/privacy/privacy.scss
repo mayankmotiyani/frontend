@@ -1,23 +1,33 @@
-.privacy_section{
-    
-    .head{
+.privacy_section {
+
+    .head {
         padding: 5em 0em;
         background-color: #fafafb;
         text-align: center;
 
-        p{
+        p {
             width: calc(100% - 40%);
             margin: auto;
         }
     }
 
-    .privacy_content{
+    .privacy_content {
         margin: 2em 0em;
 
-        .h5_title{
-            border-left: 4px solid orange;
-            padding-left: 10px;
-            margin-bottom: .5em;
+        .privacy_content-details {
+            h4 {
+                border-left: 4px solid orange;
+                padding-left: 10px;
+                margin-bottom: .5em;
+                font-family: heading;
+                font-weight: 500;
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            p {
+                margin-bottom: 1em;
+            }
         }
     }
 }

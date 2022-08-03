@@ -41,7 +41,7 @@ export default function BlogSection() {
                             </div>
                             : BlogData.length === 0 ?
                                 <Row>
-                                    <Col lg={4}>
+                                              <Col sm={12} md={12} lg={4} xl={4}>
                                         <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
@@ -51,7 +51,7 @@ export default function BlogSection() {
                                             </div>
                                         </div>
                                     </Col>
-                                    <Col lg={4}>
+                                    <Col sm={12} md={12} lg={4} xl={4}>
                                         <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
@@ -61,7 +61,7 @@ export default function BlogSection() {
                                             </div>
                                         </div>
                                     </Col>
-                                    <Col lg={4}>
+                                    <Col sm={12} md={12} lg={4} xl={4}>
                                         <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>
@@ -73,7 +73,7 @@ export default function BlogSection() {
                                     </Col>
                                 </Row>
                                 : BlogData.map((e, key) => {
-                                    return <Col lg={4} key={key}>
+                                    return <Col sm={12} md={12} lg={4} xl={4} key={key}>
                                         <div className='blog_section'>
                                             <img src={BlogImage} alt="" />
                                             <div className='blog_content'>

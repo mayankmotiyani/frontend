@@ -328,17 +328,24 @@
 // ================================ // text area ================================
 
 // =========================== responsive ========================================
+@media screen and (min-width: 1400px) and (max-width: 1700px) {
+    .StartSomething-wrap .circles_wrap {
+        width: 450px;
+        height: 450px;
+    }
+}
+
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     .StartSomething-wrap .circles_wrap {
-        width: 470px;
-        height: 470px;
+        width: 400px;
+        height: 400px;
     }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
     .StartSomething-wrap .circles_wrap {
-        width: 400px;
-        height: 400px;
+        width: 320px;
+        height: 320px;
     }
 
     .StartSomething_img {
@@ -390,31 +397,36 @@
         height: 470px;
     }
 }
-@media screen and (max-width: 767px){
+
+@media screen and (max-width: 767px) {
     .StartSomething-wrap .circles_wrap {
         width: 370px;
         height: 370px;
     }
-} 
-@media screen and (max-width: 575px){
+}
+
+@media screen and (max-width: 575px) {
     .StartSomething-wrap .circles_wrap {
         width: 300px;
         height: 300px;
     }
 }
-@media screen and (max-width: 480px){
+
+@media screen and (max-width: 480px) {
     .StartSomething-wrap .circles_wrap {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
     }
 }
-@media screen and (max-width: 360px){
+
+@media screen and (max-width: 360px) {
     .StartSomething-wrap .circles_wrap {
         width: 200px;
         height: 200px;
     }
 }
-@media screen and (max-width: 320px){
+
+@media screen and (max-width: 320px) {
     .StartSomething-wrap .circles_wrap {
         width: 150px;
         height: 150px;

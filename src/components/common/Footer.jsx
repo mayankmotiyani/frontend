@@ -33,9 +33,9 @@ const Footer = () => {
   async function footerApi() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get-all-models/`);
-      console.log("api", api.data.response);
+      // console.log("api", api.data.response);
       setCompanyData(api.data.response.Company)
-      console.log("api.data.response", api.data);
+      // console.log("api.data.response", api.data);
       setServiceData(api.data.response.Services)
       setAboutData(api.data.response.About)
     } catch (error) {
@@ -45,7 +45,7 @@ const Footer = () => {
   const resources = async () => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}resource/resources_list/`);
-      console.log("url.data", url.data.response);
+      // console.log("url.data", url.data.response);
       setResourcesData(url.data.response)
     } catch (error) {
       setErrorCompany(true)

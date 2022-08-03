@@ -35,8 +35,7 @@ const Career = (props) => {
                                 career.map((ele, key) => {
                                     return (
                                         <Col sm={4} md={4} lg={4} xl={4} key={key}>
-                                            <div className="opportunities-card-wrap" data-aos="fade-up">
-
+                                            <div className="opportunities-card-wrap">
                                                 <div className='opportunities-card-header'>
                                                     <h3 className='h3_title'>{ele.opening_designation}</h3>
                                                     <p>{ele.designation_brief}</p>

@@ -29,7 +29,7 @@ export default function SideBoxSection() {
             <section className='sideBox_section'>
                 <Container>
                     <div className='sideBox_section-title'>
-                        <h3 className='h3_title'>Sub heading</h3>
+                        <h4 className='h4_title'>Sub heading</h4>
                         <h2 className='h2_title'>Side Box Text Heading</h2>
                     </div>
                     <Row>
@@ -44,21 +44,21 @@ export default function SideBoxSection() {
                                         sideText.length === 0 ?
                                             <>
                                                 <Col lg={6}>
-                                                    <div className='box_content_div' data-aos="fade-up">
+                                                    <div className='box_content_div'>
                                                         <BsFillFileEarmarkBarGraphFill />
                                                         <h4 className='h4_title'>Title Heading Here</h4>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
                                                     </div>
                                                 </Col>
                                                 <Col lg={6}>
-                                                    <div className='box_content_div' data-aos="fade-up">
+                                                    <div className='box_content_div'>
                                                         <BsFillFileEarmarkBarGraphFill />
                                                         <h4 className='h4_title'>Title Heading Here</h4>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
                                                     </div>
                                                 </Col>
                                                 <Col lg={6}>
-                                                    <div className='box_content_div' data-aos="fade-up">
+                                                    <div className='box_content_div' >
                                                         <BsFillFileEarmarkBarGraphFill />
                                                         <h4 className='h4_title'>Title Heading Here</h4>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
@@ -69,7 +69,7 @@ export default function SideBoxSection() {
                                             sideText.map((ele, key) => {
                                                 return (
                                                     <Col lg={6} key={key}>
-                                                        <div className='box_content_div' data-aos="fade-up">
+                                                        <div className='box_content_div'>
                                                             <BsFillFileEarmarkBarGraphFill />
                                                             <h4 className='h4_title'>{ele.title}</h4>
                                                             <p>{ele.content}</p>
@@ -109,7 +109,7 @@ export default function SideBoxSection() {
                             </Row>
                         </Col>
                         <Col lg={4}>
-                            <div className='side_image_content_div' data-aos="fade-up">
+                            <div className='side_image_content_div' >
                                 <BsFillFileEarmarkBarGraphFill />
                                 <h3 className='h3_title'>Your Heading Title here</h3>
                                 <button>Click Me</button>

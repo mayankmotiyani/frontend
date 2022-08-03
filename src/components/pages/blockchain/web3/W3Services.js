@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import w3Services from "../../../../assets/images/background/web3/w3_service.png"
+import axios from 'axios';
 const W3Services = () => {
+  // =====================================  API start ============================================ 
+  const location = useLocation();
+  const filterApi_PathName = location.pathname.slice(1);
+  // console.log(filterApi_PathName);
+
+  const [BlockchainCate, setBlockchainCate] = useState([])
+  const [ErrorBlockchain, setErrorBlockchain] = useState(false)
+  async function API() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
+      setBlockchainCate(api.data.response)
+      // console.log("try", api.data.response);
+    } catch (error) {
+      setErrorBlockchain(true)
+    }
+  }
+
+  useEffect(() => {
+    API()
+  }, [filterApi_PathName])
+
+  // =====================================  API end ============================================ 
   return (
     <>
       <section className='w3Service-wrap'>
@@ -13,12 +37,15 @@ const W3Services = () => {
               </figure>
             </Col>
             <Col sm={6} md={6} lg={6} xl={6}>
-              <div className='w3-service-about'>
-                <h3 className='h3_title'>Our Unparalleled Services</h3>
-                <h2 className='h2_title'>Web3 Development Firm - How We Help You To Achieve What You Desire?</h2>
-                <p>Get a premium web3 development service that everyone wants to enjoy due to advanced and multi-purpose leveraging factors. We build and launch platforms that witness the emerging technology that exclusively concentrates on web services. Our designed web3 gaming, ecommerce, banking, real estate, or any other industry can skyrocket your business success. We believe in our services to represent your business in the virtual world from our past experiences in building 50+ NFT marketplaces, Play2Earn platforms, crypto wallet creation, crypto trading platforms, and more. Now, revamp your current platform or build fresh with us to enjoy a wonderful experience.</p>
-                <button className='btn' type='button'>Get Free Consultancy</button>
-              </div>
+              {ErrorBlockchain ? 'Error'
+                : BlockchainCate.length === 0 ? 'loading'
+                  : <div className='w3-service-about'>
+                    <h3 className='h3_title'>Our Unparalleled Services</h3>
+                    <h2 className='h2_title'>{BlockchainCate.Section1.title}</h2>
+                    <p>{BlockchainCate.Section1.content}</p>
+                    <button className='btn' type='button'>Get Free Consultancy</button>
+                  </div>
+              }
             </Col>
           </Row>
         </Container>

@@ -8,6 +8,15 @@
     position: relative;
     padding: 4em 0em;
 
+    .hero_overlay{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(4px);
+    }
+
     .heroSection_video{
         position: absolute;
         top: 0%;
@@ -57,16 +66,16 @@
 
                 .hero_content_div {
                     .h5_title {
-                        color: #fff;
+                        color: #000;
                     }
 
                     .h2_title {   
-                        color: #fff;
+                        color: #000;
                     }
 
                     p {
                         font-size: 1.2em;
-                        color: #fff;
+                        color: #000;
                  }
 
                     .hero_cont_btn {
@@ -79,7 +88,7 @@
                         transition: all 0.2s;
                         z-index: 0;
                         border-radius: 25px;
-                        color: #fff;
+                        color: #000;
 
                         &::before {
                             content: "";
@@ -106,7 +115,10 @@
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
+    .hero-wrap .container{
+        max-width: 100%;
+    }
     .hero_slide_section_img{
         display: none;
     }

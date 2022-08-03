@@ -1,5 +1,7 @@
 .content_div_section {
     background-color: #00181c;
+    padding: 50px 0px;
+
     .content_div_cont {
         display: flex;
         height: 100%;
@@ -24,9 +26,15 @@
             }
         }
     }
+
+}
+
+@media screen and (max-width: 991px) {
     .content_img {
         img {
-    
+
+            height: 500px;
+            object-fit: cover;
         }
     }
 }

@@ -36,6 +36,7 @@
 @import url('./pages/term_condition/term_condition.scss');
 @import url("./pages/career/career.scss");
 @import url('./pages/particle.scss');
+
 * {
     // font-family: paragraph;
     // font-family: 'Quicksand', sans-serif;
@@ -75,7 +76,7 @@ a {
 
 a:hover {
     color: orange;
-    text-decoration: none ;
+    text-decoration: none;
 }
 
 img {
@@ -157,22 +158,53 @@ p {
     border-radius: 0px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
+
     // margin-bottom: 50px !important;
     &:focus {
         box-shadow: none !important;
     }
 }
 
-.warning{
+.warning {
     display: flex;
     justify-content: center;
+
     b {
         display: flex;
         align-items: center;
-        svg{
+
+        svg {
             color: #ffb600;
             font-size: 2em;
             margin-right: .5em;
         }
+    }
+}
+
+.modal-backdrop.show {
+    opacity: 1;
+    background: #ffffff4a;
+    backdrop-filter: blur(4px);
+
+}
+
+@media screen and (max-width: 767px) {
+    .h2_title {
+        font-size: 2rem;
+    }
+    .h3_title{
+        font-size: 16px;
+    }
+    .container{
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .h2_title {
+        font-size: 1rem;
+    }
+    .h3_title{
+        font-size: 14px;
     }
 }

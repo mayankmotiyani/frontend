@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import ErrorImg from '../../assets/media/notfound.png'
 import { Link } from 'react-router-dom'
-export default function NotFound() {
+export default function NotFound(props) {
+    // =========================== scroll To Top default =========================
+    useEffect(() => {
+        props.demo('top')
+    }, [])
+    // =========================== scroll To Top default =========================
     return (
         <>
             <section className='notFound_section'>

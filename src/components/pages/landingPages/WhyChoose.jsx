@@ -29,7 +29,7 @@ export default function WhyChoose() {
                     <Row>
                         <Col lg={12}>
                             <div className='head_section'>
-                                <h3 className='h3_title'>Why Choose Us</h3>
+                                <h4 className='h4_title'>Why Choose Us</h4>
                                 <h2 className='h2_title'>Connect with us to receive top-notch <span>Blockchain Development Services</span> that can effectively drive your <span>company</span> toward long-term innovation</h2>
                             </div>
                         </Col>
@@ -41,21 +41,21 @@ export default function WhyChoose() {
                                 : choose.length === 0 ?
                                     <>
                                         <Col lg={6}>
-                                            <div className='box_div' data-aos="fade-left">
+                                            <div className='box_div' >
                                                 <img src={DemoIcon} alt="" />
                                                 <h4 className='h4_title'>Your Title Here</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                                             </div>
                                         </Col>
                                         <Col lg={6}>
-                                            <div className='box_div' data-aos="fade-right">
+                                            <div className='box_div' >
                                                 <img src={DemoIcon} alt="" />
                                                 <h4 className='h4_title'>Your Title Here</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
                                             </div>
                                         </Col>
                                         <Col lg={6}>
-                                            <div className='box_div' data-aos="fade-left">
+                                            <div className='box_div' >
                                                 <img src={DemoIcon} alt="" />
                                                 <h4 className='h4_title'>Your Title Here</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
@@ -66,7 +66,7 @@ export default function WhyChoose() {
                                     choose.map((ele, key) => {
                                         return (
                                             <Col lg={6} key={key}>
-                                                <div className='box_div' data-aos="fade-right">
+                                                <div className='box_div'>
                                                     <img src={DemoIcon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>
                                                     <p>{ele.content}</p>

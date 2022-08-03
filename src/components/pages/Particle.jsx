@@ -21,8 +21,7 @@ export default function Particle() {
     }
     return (
         <>
-            <div className="app" style={{position:'relative'}}>
-                <h1>Hello Coders!</h1>
+            <div className="app">
                 <Particles className='demo'
                     id="tsparticles"
                     init={particlesInit}
