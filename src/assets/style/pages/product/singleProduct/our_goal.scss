@@ -1,4 +1,4 @@
-.ourGoal_section{
+.ourGoal_section {
     text-align: center;
     background-image: linear-gradient(45deg, rgb(27, 0, 54), rgb(39, 3, 22));
     background-size: 200% 200%;
@@ -6,31 +6,38 @@
     animation: back 2s linear infinite;
 
     @keyframes back {
-        0%{
+        0% {
             background-position: 0% 50%;
         }
 
-        50%{
+        50% {
             background-position: 100% 50%;
         }
-        
-        100%{
+
+        100% {
             background-position: 0% 50%;
         }
     }
 
-    
-    .h2_title{
+
+    .h2_title {
         color: #fff;
     }
 
-    .h4_title{
+    .h4_title {
         color: #fff;
     }
-    
-    p{
+
+    p {
         width: 60%;
         margin: auto;
         color: #fff;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ourGoal_section p {
+        width: 100%;
+        padding: 0px 15px;
     }
 }

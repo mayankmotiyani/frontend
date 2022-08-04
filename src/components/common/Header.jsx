@@ -21,6 +21,48 @@ import { Link } from "react-router-dom";
 import { IoIosWarning } from 'react-icons/io'
 
 export default function Header() {
+  // ====================================== popup validations ===================================
+  const [input, setInput] = useState({
+    name: "",
+    email: "",
+    subject: ""
+
+  })
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [subjectError, setSubject] = useState("");
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault(e);
+    console.log("input", input);
+    // ================ name =============================
+    if (!input.name) {
+      setNameError("Name is required");
+    } else {
+      setNameError("");
+    }
+
+    // ===================== email =========================
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!input.email) {
+      setEmailError("Email is required")
+    } else if (!input.email.match(mailformat)) {
+      setEmailError("Please enter your valid email")
+    } else {
+      setEmailError("")
+    }
+
+    // ================ subject =============================
+    if (!input.subject) {
+      setSubject("Subject is required");
+    } else {
+      setSubject("");
+    }
+  }
+  // ====================================== popup validations ===================================
+
   // ======================================== chandrakant Dropdown start ========================================
   function toggleDropdown_enter(e) {
     // console.log(e.target);
@@ -651,18 +693,25 @@ export default function Header() {
             <div className="login-box">
               <form>
                 <div className="user-box">
-                  <input type="text" name="" required="" />
                   <label>Full Name</label>
+                  <input type="text" name="name" value={input.name} onChange={handleChange} />
+                  <small style={{ color: "red", fontSize: "12px" }}>{nameError}</small>
                 </div>
                 <div className="user-box">
-                  <input type="email" name="" required="" />
                   <label>Email</label>
+                  <input type="email" name="email" value={input.email} onChange={handleChange} />
+                  <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                 </div>
                 <div className="user-box">
-                  <textarea type="text" name="" required="" rows="4" cols="50" />
-                  <label className='popup-message'>Message</label>
+                  <label>Subject</label>
+                  <input type="text" name="subject" value={input.subject} onChange={handleChange} />
+                  <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
                 </div>
-                <a href="#">
+                <div className="user-box">
+                  <label className='popup-message'>Message</label>
+                  <textarea type="text" rows="4" cols="50" />
+                </div>
+                <a type='button' onClick={handleSubmit}>
                   <span></span>
                   <span></span>
                   <span></span>

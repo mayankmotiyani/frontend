@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import BlogImage from '../../../assets/media/man-work.png'
+
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 export default function BlogMain(props) {
     // =========================== scroll To Top default =========================
     useEffect(() => {
@@ -35,7 +38,26 @@ export default function BlogMain(props) {
     }, [])
 
     // ========================================== Featured Blog List =================================
+    // =============================== InfiniteScroll ==========================
+    const [items, setItem] = useState([])
+    const fetchMoreData = async() => {
+        let xo;
+        xo = items.length + 1
 
+        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog/blog-listing/?limit=${xo}`);
+        setItem(api.data.results)
+        console.log('dmeodmeo',items, items.length, xo);
+        
+        setTimeout(() => {
+            // console.log('sd', xo);
+            // setItem(items.concat(featuredData.slice(0, xo)))
+            // setItem(items.concat(Array.from({ length: 1 })))
+            
+            
+        }, 1000);
+        // console.log("fcds",items.length, xo);
+    };
+    // =============================== InfiniteScroll ==========================
 
     return (
         <>
@@ -65,72 +87,26 @@ export default function BlogMain(props) {
                                                     <Col lg={12}>
                                                         <div className='list_of_blogs'>
                                                             <ul>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className='blog_div'>
-                                                                        <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
-                                                                        </div>
-                                                                        <div className='content_div'>
-                                                                            <h4 className='h4_title'>Your Blog Title Here</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
+                                                                <InfiniteScroll
+                                                                    dataLength={items.length}
+                                                                    next={fetchMoreData}
+                                                                    hasMore={true}
+                                                                    loader={<h4>Loading...</h4>}
+                                                                >
+                                                                    {items.map((i, index) => (
+                                                                        <li key={index}>
+                                                                            <div className='blog_div'>
+                                                                                <div className='img_blog'>
+                                                                                    <img src={BlogImage} alt="" />
+                                                                                </div>
+                                                                                <div className='content_div'>
+                                                                                    <h4 className='h4_title'>{i.title}</h4>
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    ))}
+                                                                </InfiniteScroll>
                                                             </ul>
                                                         </div>
                                                     </Col>
@@ -145,7 +121,7 @@ export default function BlogMain(props) {
                                                     <Container fluid>
                                                         <Row>
                                                             {featuredData.map((blog, key) => {
-                                                                return <Col className='my-4' lg={4} md={6} sm={12} key={key}>
+                                                                return <Col className='my-3' lg={4} md={6} sm={12} key={key}>
                                                                     <div className='blog_card'>
                                                                         <img src={BlogImage} alt="" />
                                                                         <div className='blog_card_content'>
@@ -156,7 +132,7 @@ export default function BlogMain(props) {
                                                                     </div>
                                                                 </Col>
                                                             })}
-                                                            <Col className='my-4' lg={4} md={6} sm={12}>
+                                                            <Col className='my-3' lg={4} md={6} sm={12}>
                                                                 <div className='blog_card'>
                                                                     <img src={BlogImage} alt="" />
                                                                     <div className='blog_card_content'>
@@ -166,7 +142,7 @@ export default function BlogMain(props) {
                                                                     </div>
                                                                 </div>
                                                             </Col>
-                                                            <Col className='my-4' lg={4} md={6} sm={12}>
+                                                            <Col className='my-3' lg={4} md={6} sm={12}>
                                                                 <div className='blog_card'>
                                                                     <img src={BlogImage} alt="" />
                                                                     <div className='blog_card_content'>

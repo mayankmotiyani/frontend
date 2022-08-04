@@ -45,7 +45,7 @@ const CareerApply = (props) => {
         <div className='career-apply-details-wrap'>
           <Container>
             <Row>
-              <Col sm={6} md={6} lg={6} xl={6}>
+              <Col sm={12} md={12} lg={6} xl={6}>
                 <div className='career-apply-details'>
                   <div className='career-apply-head'>
                     <h2 className='h2_title'>{careerDetails.opening_designation}</h2>
@@ -60,7 +60,7 @@ const CareerApply = (props) => {
                   </div>
                 </div>
               </Col>
-              <Col sm={6} md={6} lg={6} xl={6}>
+              <Col sm={12} md={12} lg={6} xl={6}>
                 <div className='career-apply-form-wrap'>
                   <h2 className='h2_title'>Apply For Job</h2>
                   <Form>

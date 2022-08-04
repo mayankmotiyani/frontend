@@ -8,7 +8,9 @@
         height: 400px;
         background-size: cover;
         width: 100%;
+        background-repeat: no-repeat;
         position: relative;
+        background-position: center;
 
         &::after {
             background: #0003;
@@ -126,5 +128,10 @@
                 }
             }
         }
+    }
+}
+@media screen and (max-width: 991px) {
+    .career-apply-details{
+        margin-bottom: 20px;
     }
 }

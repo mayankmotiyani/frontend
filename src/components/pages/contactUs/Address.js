@@ -30,7 +30,7 @@ const Address = () => {
             <h2 className='h2_title'>Development Center-InfoGrains Software Solutions Pvt. Ltd.</h2>
           </div>
           <Row>
-            <Col sm={6} md={6} lg={6} xl={6}>
+            <Col sm={12} md={12} lg={6} xl={6}>
               <div className='ind-address-wrap'>
                 <Card>
                   <Card.Body>
@@ -48,7 +48,7 @@ const Address = () => {
                 </Card>
               </div>
             </Col>
-            <Col sm={6} md={6} lg={6} xl={6}>
+            <Col sm={12} md={12} lg={6} xl={6}>
               <Row>
                 {
                   otherData.map((ele) => {

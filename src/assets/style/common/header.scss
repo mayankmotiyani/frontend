@@ -1,10 +1,12 @@
 .site_main_head {
     position: relative;
     z-index: 5;
+
     .top_most_bar {
         background-color: #fafafb;
         z-index: 2;
     }
+
     .top_bar {
         display: flex;
         padding: 10px 20px;
@@ -85,11 +87,10 @@
         }
     }
 
-    .menu_bar_container{
+    .menu_bar_container {
         position: relative;
-        &::before{
 
-        }
+        &::before {}
     }
 
     .menu_bar_div {
@@ -100,9 +101,7 @@
         width: 100%;
         background: #fff;
 
-        .animated_bar{
-
-        }
+        .animated_bar {}
 
         &::before {
             content: "";
@@ -112,14 +111,12 @@
             height: 3px;
             // background:linear-gradient(90deg, rgba(255,166,0,1) 0%, rgba(9,121,92,1) 44%, rgba(0,212,255,1) 100%);
             // background: linear-gradient(54deg, rgba(0,255,188,1) 0%, rgba(33,203,152,1) 45%, rgba(0,212,255,1) 100%);
-            background: linear-gradient(
-                54deg,
-                rgba(0, 255, 188, 1) 0%,
-                rgba(33, 203, 152, 1) 25%,
-                rgba(0, 212, 255, 1) 43%,
-                rgba(0, 212, 255, 1) 61%,
-                rgba(255, 158, 0, 1) 83%
-            );
+            background: linear-gradient(54deg,
+                    rgba(0, 255, 188, 1) 0%,
+                    rgba(33, 203, 152, 1) 25%,
+                    rgba(0, 212, 255, 1) 43%,
+                    rgba(0, 212, 255, 1) 61%,
+                    rgba(255, 158, 0, 1) 83%);
             background-size: 400% 400%;
             transform: translateY(3px);
             animation: moving 5s linear infinite;
@@ -130,9 +127,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -205,13 +204,23 @@
                                 color: orangered;
                             }
 
-                            &:hover > a {
+                            &:hover>a {
                                 color: orangered;
                             }
 
                             a {
                                 &:hover {
                                     color: orangered;
+                                }
+
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 0%;
+                                    left: 0%;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: transparent;
                                 }
                             }
                         }
@@ -326,9 +335,11 @@
             .warning {
                 display: flex;
                 justify-content: center;
+
                 b {
                     display: flex;
                     align-items: center;
+
                     svg {
                         color: #ffb600;
                         font-size: 2em;
@@ -408,6 +419,7 @@
             left: 0%;
             transition: all 0.5s;
             z-index: -1;
+
             .mobile_menu_div {
                 background-color: #fafafb;
                 transition: all 0.5s ease 0.5s;
@@ -477,6 +489,7 @@
                             width: 2px;
                             background-color: transparent;
                         }
+
                         &::-webkit-scrollbar-thumb {
                             width: 2px;
                             background-color: lightgrey;
@@ -488,6 +501,7 @@
                                 font-size: 15px;
                                 font-weight: 600;
                                 color: #000;
+
                                 ul {
                                     font-size: 14px;
                                 }
@@ -525,6 +539,7 @@
             top: 84px !important;
         }
     }
+
     .mobile_menu_section {
         display: block;
     }
@@ -548,36 +563,39 @@
 
 // ===================== Quote area ======================
 .quote_wrap {
-    background-color: #00d26d;
-    display: inline-block;
-    position: fixed;
-    right: 10px;
-    transform: rotate(0deg);
-    /* top: 50%; */
-    z-index: 10;
-    border-radius: 5px;
-    bottom: 10px;
-    overflow: hidden;
+    button {
+        background-color: #00d26d;
+        display: inline-block;
+        position: fixed;
+        right: 10px;
+        transform: rotate(0deg);
+        /* top: 50%; */
+        z-index: 10;
+        border-radius: 5px;
+        bottom: 10px;
+        overflow: hidden;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: -100%;
-        width: 200%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.4);
-        transform: rotate(45deg);
-        transition: all 0.5s;
-        animation: swipe 1s linear infinite;
-    }
-
-    @keyframes swipe {
-        0% {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0%;
             left: -100%;
+            width: 200%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            animation: swipe 1s linear infinite;
         }
-        100% {
-            left: 100%;
+
+        @keyframes swipe {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
     }
 
@@ -591,21 +609,23 @@
     }
 
     button {
-        background-color: transparent;
+        // background-color: transparent;
         border: none;
+        transition: all 0.5s ease;
 
         &:focus {
-            background-color: transparent;
+            background-color: #00d26d;
             border: none;
         }
 
         &:active {
-            background-color: transparent;
+            background-color: #00d26d;
             border: none;
         }
 
         &:hover {
-            background-color: transparent;
+            opacity: 0.8;
+            background-color: #00d26d;
             border: none;
         }
     }
@@ -616,6 +636,7 @@
 }
 
 .modal-content {
+    border: 1px solid cyan;
     box-shadow: 0px 0px 10px cyan !important;
 }
 
@@ -623,12 +644,15 @@
     color: #000;
     text-align: center;
     width: 100%;
+    font-weight: 600;
 }
 
 .btn-close {
     position: relative;
-    top: -43px;
-    left: 34px;
+    top: -21px;
+    left: 12px;
+    box-shadow: 0px 0px 20px 0px #ccc;
+    border-radius: 50%;
 
     &:focus {
         box-shadow: none;
@@ -685,8 +709,13 @@
     width: 100%;
     border-color: orange;
     margin-top: 15px;
-    color: #fff;
+    color: rgb(0, 0, 0);
     background-color: transparent;
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 .popup-message {
@@ -700,33 +729,41 @@
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
+    color: #000;
+    // margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid orange;
     outline: none;
     background: transparent;
 }
 
-.login-box .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: 0.5s;
+.user-box label {
+    color: #000 !important;
+    font-size: 12px !important;
+    top: -20px !important;
+    margin-top: 10px;
+    font-weight: 600 !important;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #000;
-    font-weight: 600;
-    font-size: 12px;
-}
+// .login-box .user-box label {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     padding: 10px 0;
+//     font-size: 16px;
+//     color: #fff;
+//     pointer-events: none;
+//     transition: 0.5s;
+// }
+
+// .login-box .user-box input:focus ~ label,
+// .login-box .user-box input:valid ~ label {
+//     top: -20px;
+//     left: 0;
+//     color: #000;
+//     font-weight: 600;
+//     font-size: 12px;
+// }
 
 .login-box form a {
     position: relative;
@@ -744,7 +781,7 @@
 }
 
 .quote-popup {
-    padding-top: 25px;
+    padding-top: 0px;
 }
 
 .login-box a:hover {
@@ -871,12 +908,18 @@
         display: block !important;
         font-size: 30px;
     }
+
     .quote_wrap p {
         display: none;
     }
+
     .quote_wrap button {
         padding: 0px 10px !important;
+        &:hover{
+            opacity: 0.7;
+        }
     }
+
     // .quote_wrap {
     //     right: -6px;
     //     top: 215px;

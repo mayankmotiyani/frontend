@@ -1,7 +1,10 @@
 .solution_section {
-    margin: 5em 0em;
+    padding: 50px 0px;
     .head_text {
         text-align: center;
+        .h2_title{
+            padding-bottom: 20px;
+        }
     }
 
     .solution_container {
@@ -17,3 +20,4 @@
         }
     }
 }
+

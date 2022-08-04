@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
 import { Button, Form, Container, Col, Row, FloatingLabel } from 'react-bootstrap';
 
 const ContactUs = () => {
@@ -22,14 +22,30 @@ const ContactUs = () => {
 
 
     async function countryCode() {
+        // console.log('countryCode function called');
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+            // console.log('api', api);
             const apiData = api.data.response.country_dialing_code;
+            // console.log(apiData);
             setCountryCodeData(apiData)
+
+            // if(apiData === undefined || apiData === null ){
+            //     setCountryCodeData([])
+            // }else{
+            //     setCountryCodeData(apiData)
+            // }
         } catch (error) {
             setErrorCountryCode(true)
+            // console.log('api',api.data);
         }
     }
+
+    useEffect(() => {
+        countryCode()
+    }, [])
+
+
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
     }
@@ -80,10 +96,8 @@ const ContactUs = () => {
         // ======================== concat number and dialingCode ==============================
         var mobilesData = document.getElementById("mobile").value;
         var concatData = mobilesData + input.number;
+        // console.log("mobilesData", mobilesData);
         // ======================== concat number and dialingCode ==============================
-
-
-
         var get_json = { dialingCode: mobilesData, contactNumber: concatData, fullName: input.name, emailId: input.email, projectDescription: "...." }
         var formdata = new FormData();
         formdata.append("get_contact_detail", JSON.stringify(get_json));
@@ -93,14 +107,12 @@ const ContactUs = () => {
             body: formdata,
         };
 
-        fetch("http://127.0.0.1:8000/contact_us/", requestOptions)
+        fetch(`${process.env.REACT_APP_BASE_URL}contact_us/`, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
     }
-    useEffect(() => {
-        countryCode()
-    }, [])
+
 
 
     return (
@@ -149,9 +161,10 @@ const ContactUs = () => {
                                             <Form.Select id='mobile'>
                                                 {ErrorCountryCode ?
                                                     <option>00</option>
-                                                : countryCodeData.map((e, key) => {
-                                                    return <option key={key}>{e}</option>
-                                                })}
+                                                    : countryCodeData.map((e, key) => {
+
+                                                        return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
+                                                    })}
                                             </Form.Select>
                                             <Form.Control type="number" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
                                         </div>

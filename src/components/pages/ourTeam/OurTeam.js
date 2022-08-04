@@ -27,7 +27,7 @@ const OurTeam = (props) => {
                     {
                         teamData.map((element, index) => {
                             return (
-                                <Col sm={3} md={3} lg={3} xl={3} key={index}>
+                                <Col sm={12} md={6} lg={6} xl={3} key={index}>
                                     <div className='team-details'>
                                         <figure className='team-img'>
                                             <Image src={team} alt="Team" fluid />

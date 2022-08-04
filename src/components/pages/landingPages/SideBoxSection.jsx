@@ -6,12 +6,14 @@ import AOS from "aos";
 import { IoIosWarning } from 'react-icons/io';
 export default function SideBoxSection() {
     const [sideText, setSideText] = useState([]);
+    const [HeadContent, setHeadContent] = useState({})
     const [error, setError] = useState(false)
     const sideData = async () => {
         try {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}api/blockchain-development-process/`);
             setSideText(url.data.response);
-            console.log("url", url.data.response);
+            setHeadContent(url.data.heading_and_subheading)
+            // console.log("url", url.data.response);
             // setSide(url.data.response);
         } catch (error) {
             setError(true)
@@ -29,8 +31,8 @@ export default function SideBoxSection() {
             <section className='sideBox_section'>
                 <Container>
                     <div className='sideBox_section-title'>
-                        <h4 className='h4_title'>Sub heading</h4>
-                        <h2 className='h2_title'>Side Box Text Heading</h2>
+                        <h4 className='h4_title'>{HeadContent.subheading}</h4>
+                        <h2 className='h2_title'>{HeadContent.heading}</h2>
                     </div>
                     <Row>
                         <Col lg={8}>

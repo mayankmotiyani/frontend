@@ -188,14 +188,20 @@ p {
 
 }
 
+textarea {
+    resize: none;
+}
+
 @media screen and (max-width: 767px) {
     .h2_title {
         font-size: 2rem;
     }
-    .h3_title{
+
+    .h3_title {
         font-size: 16px;
     }
-    .container{
+
+    .container {
         max-width: 100%;
     }
 }
@@ -204,7 +210,8 @@ p {
     .h2_title {
         font-size: 1rem;
     }
-    .h3_title{
+
+    .h3_title {
         font-size: 14px;
     }
 }

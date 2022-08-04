@@ -41,9 +41,12 @@ export default function Privacy(props) {
     return (
         <>
             <section className='privacy_section'>
+
                 <div className='head'>
-                    <h2 className="h2_title" ref={title}></h2>
-                    <p ref={description}></p>
+                    <Container>
+                        <h2 className="h2_title" ref={title}></h2>
+                        <p ref={description}></p>
+                    </Container>
                 </div>
                 <Container>
                     <Row>

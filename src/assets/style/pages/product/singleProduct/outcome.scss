@@ -2,6 +2,9 @@
     margin: 5em 0em;
     .head_text {
         text-align: center;
+        .h2_title{
+            padding-bottom: 20px;
+        }
     }
 
     .outcome_container {
@@ -12,7 +15,7 @@
         .content_box {
             padding: 2em;
             border-radius: 5px;
-            margin-bottom: 2em;
+            margin-bottom: 20px;
             box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
         }
     }

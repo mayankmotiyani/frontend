@@ -12,7 +12,7 @@ const AboutPlatform = () => {
             <section className='AboutPlatform-wrap'>
                 <Container>
                     <Row>
-                        <Col sm={6} md={6} lg={6} xl={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <div className='AboutPlatform-text'>
                                 <h3 className='h3_title'>Why Choose Us</h3>
                                 <h2 className='h2_title'>We’ve Built A Platform To Buy And Sell Shares</h2>
@@ -46,7 +46,7 @@ const AboutPlatform = () => {
                                 </div>
                             </div>
                         </Col>
-                        <Col sm={6} md={6} lg={6} xl={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <figure className='AboutPlatform-img'>
                                 <Image src={platform} fluid />
                             </figure>

@@ -6,11 +6,13 @@ import axios from "axios";
 import { IoIosWarning } from 'react-icons/io';
 export default function WhyChoose() {
     const [choose, setChoose] = useState([]);
+    const [HeadContent, setHeadContent] = useState({})
     const [error, setError] = useState(false)
     const chooseData = async () => {
         try {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}api/why-we-choose/`);
             setChoose(url.data.response);
+            setHeadContent(url.data.heading_and_subheading)
         } catch (error) {
             setError(true)
             console.log(error);
@@ -29,8 +31,8 @@ export default function WhyChoose() {
                     <Row>
                         <Col lg={12}>
                             <div className='head_section'>
-                                <h4 className='h4_title'>Why Choose Us</h4>
-                                <h2 className='h2_title'>Connect with us to receive top-notch <span>Blockchain Development Services</span> that can effectively drive your <span>company</span> toward long-term innovation</h2>
+                                <h4 className='h4_title'>{HeadContent.subheading}</h4>
+                                <h2 className='h2_title'>{HeadContent.heading}</h2>
                             </div>
                         </Col>
                         {

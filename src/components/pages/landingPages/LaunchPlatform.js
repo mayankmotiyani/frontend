@@ -6,10 +6,12 @@ import { IoIosWarning } from 'react-icons/io'
 const LaunchPlatform = () => {
     // ======================================== Box Data Api ===============================================
     const [BoxContent, setBoxContent] = useState([])
+    const [HeadSection, setHeadSection] = useState({})
     const [ErrorBox, setErrorBox] = useState(false)
     async function boxData() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/our-mastery/`);
+            setHeadSection(api.data.heading_and_subheading)
             setBoxContent(api.data.response)
         } catch (error) {
             setErrorBox(true)
@@ -26,8 +28,8 @@ const LaunchPlatform = () => {
                 <Container >
                     <div className='LaunchPlatform-details'>
                         <div className='LaunchPlatform-heading'>
-                            <h4 className='h4_title'>Choose Your Niche</h4>
-                            <h2 className='h2_title'>Launch Web 3 Platform with Professional Web3 Development Company</h2>
+                            <h4 className='h4_title'>{HeadSection.subheading}</h4>
+                            <h2 className='h2_title'>{HeadSection.heading}</h2>
                         </div>
                         <Row>
                             {ErrorBox ?

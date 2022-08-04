@@ -195,7 +195,7 @@ const Footer = () => {
               </div>
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col lg={12}>
               <div className='footer_bottom'>
                 <div className='logo'>Infograins</div>
@@ -205,7 +205,7 @@ const Footer = () => {
                 </div>
               </div>
             </Col>
-          </Row>
+          </Row> */}
         </Container>
       </section>
       <footer className='app-footer'>

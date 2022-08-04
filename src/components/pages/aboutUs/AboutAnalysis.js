@@ -7,12 +7,12 @@ const AboutAnalysis = () => {
             <section className='AboutAnalysis-wrap'>
                 <Container>
                     <Row>
-                        <Col sm={6} md={6} lg={6} xl={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <figure className='AboutAnalysis-img'>
                                 <Image src={services} fluid />
                             </figure>
                         </Col>
-                        <Col sm={6} md={6} lg={6} xl={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <div className='AboutAnalysis-text'>
                                 <h3 className='h3_title'>Welcome To Cryptoxo</h3>
                                 <h2 className='h2_title'>Smart and Secure Way To Invest In Crypto</h2>

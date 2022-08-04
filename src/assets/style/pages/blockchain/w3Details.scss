@@ -186,9 +186,9 @@ header .footer-wave {
 
 .listar-feature-right-border {
     position: absolute;
-    width: calc(100% + 24px);
-    height: calc(100% + 24px);
-    top: -12px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
     left: 50%;
     overflow: hidden;
 }
@@ -394,6 +394,9 @@ header .footer-wave {
 .pset {
     padding-top: 180px;
     padding-bottom: 80px;
+    .row{
+        justify-content: space-around;
+    }
 }
 
 .listar-map-button-text span {

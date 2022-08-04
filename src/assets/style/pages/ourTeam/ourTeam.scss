@@ -40,7 +40,7 @@
         border-radius: 5px;
 
         &:hover .overlay {
-            height: 80%;
+            height: 100%;
         }
 
         &:hover img {
@@ -82,9 +82,35 @@
             .h3_title {
                 color: orange;
             }
-            p{
+
+            p {
                 color: #000;
             }
         }
     }
+}
+
+@media screen and (max-width: 1200px) {
+    .team-wrap .team-details .team-img img {
+        height: 360px;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .team-wrap .team-details .team-img img {
+        height: 300px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .team-wrap .team-details .team-img img {
+        height: 100%;
+    }
+
+    .team-wrap .team-details {
+        margin-bottom: 20px;
+    }
+
 }
