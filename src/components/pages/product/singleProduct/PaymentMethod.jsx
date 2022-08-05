@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap'
 
 export default function PaymentMethod() {
+    // =====================================  API start ============================================ 
+    const param = useParams();
+    // console.log(param);
+    const [HeadTitle, setHeadTitle] = useState(null)
+    const [PaymentData, setPaymentData] = useState([])
+    const [Error, setError] = useState(false)
+    async function paymentApi() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}product/payment-method/${param.product_slug}/`);
+            setHeadTitle(api.data)
+            setPaymentData(api.data.response)
+            // console.log("try", api.data.response);
+        } catch (error) {
+            // console.log('catch');
+            setError(true)
+        }
+        console.log(HeadTitle.heading_and_subheading.subheading);
+    }
+
+    useEffect(() => {
+        paymentApi()
+    }, [param])
+
+    // =====================================  API end ============================================ 
     return (
         <>
             <section className='payment_section'>
@@ -9,27 +35,22 @@ export default function PaymentMethod() {
                     <Row>
                         <Col lg={12}>
                             <div className="head">
-                                <h2 className='h2_title'>Payment Methods</h2>
+                                <h2 className='h2_title'>{HeadTitle === null ? 'loading...' : HeadTitle.heading_and_subheading.subheading}</h2>
                             </div>
                         </Col>
-                        <Col lg={4}>
-                            <div className='payment_box'>
-                                <h4 className='h4_title'>Title Text Here</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, nemo quo at sint ipsam aliquid voluptatum error facere minus, blanditiis sequi ullam reprehenderit officiis laudantium itaque illo obcaecati minima porro!</p>
-                            </div>
-                        </Col>
-                        <Col lg={4}>
-                            <div className='payment_box'>
-                                <h4 className='h4_title'>Title Text Here</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, nemo quo at sint ipsam aliquid voluptatum error facere minus, blanditiis sequi ullam reprehenderit officiis laudantium itaque illo obcaecati minima porro!</p>
-                            </div>
-                        </Col>
-                        <Col lg={4}>
-                            <div className='payment_box'>
-                                <h4 className='h4_title'>Title Text Here</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, nemo quo at sint ipsam aliquid voluptatum error facere minus, blanditiis sequi ullam reprehenderit officiis laudantium itaque illo obcaecati minima porro!</p>
-                            </div>
-                        </Col>
+                    </Row>
+                    <Row>
+                        {Error ? 'Error'
+                            : PaymentData.length === 0 ? 'loading...'
+                                : PaymentData.map((e, key) => {
+                                    return <Col lg={4} key={key}>
+                                        <div className='payment_box'>
+                                            <h4 className='h4_title'>{e.title}</h4>
+                                            <p>{e.content}</p>
+                                        </div>
+                                    </Col>
+                                })
+                        }
                     </Row>
                 </Container>
             </section>

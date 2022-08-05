@@ -13,7 +13,7 @@ import DeskDrop_img from '../../assets/images/blockchainService1.png'
 import { AiOutlineMessage } from "react-icons/ai";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import popupGif from "../../assets/images/popup_imgs.png";
+import popupGif from "../../assets/media/CUNSTULTANT.png";
 import { BiConversation } from "react-icons/bi";
 // import env from "react-dotenv";
 import axios from 'axios'

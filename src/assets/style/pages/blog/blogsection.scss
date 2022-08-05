@@ -25,6 +25,12 @@
             }
 
             .list_of_blogs {
+                .blog_loader{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                }
                 .blog_div {
                     display: flex;
                     box-shadow: 0px 0px 2px grey;

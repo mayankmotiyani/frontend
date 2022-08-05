@@ -5,6 +5,7 @@ import "../../../assets/style/pages/landing_page/technology.scss";
 import AOS from "aos";
 import axios from 'axios';
 // import { WOW } from "wowjs";
+// import $ from "jquery";
 // import 'animate.min.css';
 const Technology = () => {
     useEffect(() => {
@@ -17,6 +18,11 @@ const Technology = () => {
     //     const wow = new WOW({ live: false }); 
     //     wow.init()
     // })
+
+    // $(window).scroll(function(){
+    //     new WOW({ live: false }).init();
+    // }
+
     // =============================== What we Do API ============================================
 
     const [Data, setData] = useState([])
@@ -44,8 +50,8 @@ const Technology = () => {
                     {Error ? 'error' : Data.length === 0 ? 'loading...'
                         : <Row>
                             <Col sm={12} md={12} lg={6} xl={6}>
-                                <div className='technology_div wow fadeInDown' data-wow-iteration="1">
                                 {/* <div className='technology_div wow fadeInDown' data-wow-iteration="1"> */}
+                                <div className='technology_div wow fadeInDown' data-wow-iteration="1">
                                     <div className='technology_text'>
                                         <h4 className='h4_title'>What We Do?</h4>
                                         <h2 className='h2_title'>{Data[0].title}</h2>
@@ -55,7 +61,7 @@ const Technology = () => {
                                 </div>
                             </Col>
                             <Col sm={12} md={12} lg={6} xl={6}>
-                                <figure className='technology_img'>
+                                <figure className='technology_img wow fadeInUp' data-wow-iteration="1">
                                     <img src={blockchainService1} alt='technology' />
                                 </figure>
                             </Col>

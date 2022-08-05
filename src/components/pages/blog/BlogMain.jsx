@@ -1,10 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap'
+import { Container, Row, Col, Tab, Tabs, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import BlogImage from '../../../assets/media/man-work.png'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
+
+import Loader from "react-js-loader";
 
 export default function BlogMain(props) {
     // =========================== scroll To Top default =========================
@@ -39,24 +41,60 @@ export default function BlogMain(props) {
 
     // ========================================== Featured Blog List =================================
     // =============================== InfiniteScroll ==========================
-    const [items, setItem] = useState([])
-    const fetchMoreData = async() => {
-        let xo;
-        xo = items.length + 1
+    // const [items, setItem] = useState([])
 
-        const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog/blog-listing/?limit=${xo}`);
-        setItem(api.data.results)
-        console.log('dmeodmeo',items, items.length, xo);
-        
-        setTimeout(() => {
-            // console.log('sd', xo);
-            // setItem(items.concat(featuredData.slice(0, xo)))
-            // setItem(items.concat(Array.from({ length: 1 })))
-            
-            
-        }, 1000);
-        // console.log("fcds",items.length, xo);
-    };
+    // const fetchMoreData = async () => {
+    //     setTimeout(async () => {
+    //         let xo;
+    //         xo = items.length + 5
+    //         setCount(xo)
+    //         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog/blog-listing/?limit=${xo}`);
+    //         setItem(api.data.results)
+    //         console.log('dmeodmeo', items, items.length, xo, api.data.count);
+    //         setLimitReached(api.data.count)
+    //         // console.log('sd', xo);
+    //         // setItem(items.concat(featuredData.slice(0, xo)))
+    //         // setItem(items.concat(Array.from({ length: 1 })))
+    //     }, 1000);
+    //     console.log("limit =>", LimitReached, "count =>", Count);
+    // };
+
+
+    // ======================================= User Value =======================================
+    const [userEnteredValue, setuserEnteredValue] = useState('')
+    function userSearchValue(e) {
+        // console.log(e.target.value);
+        setuserEnteredValue(e.target.value)
+        searchAPI()
+    }
+
+    // ==================================== Search API =========================================
+    const [dummy, setdummy] = useState([])
+    const [LimitReached, setLimitReached] = useState(0)
+    const [Count, setCount] = useState(0)
+    async function searchAPI() {
+        // console.log('function called');
+        setTimeout(async () => {
+            let xo;
+            xo = dummy.length + 5
+            setCount(xo)
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/search_query/title/?blog=${userEnteredValue}`);
+            // console.log(api.data.response.length);
+            setLimitReached(api.data.response.length)
+            // console.log(xo)
+            setdummy(api.data.response.slice(0,xo))
+            // setItem(api.data.results)
+            // console.log('dmeodmeo', items, items.length, xo, api.data.count);
+        }, 500);
+    }
+
+    // ==================================== Search API =========================================
+    
+    useEffect(() => {
+        // fetchMoreData()
+        searchAPI()
+    }, [])
+    
     // =============================== InfiniteScroll ==========================
 
     return (
@@ -81,19 +119,24 @@ export default function BlogMain(props) {
                                                 <Row>
                                                     <Col lg={12}>
                                                         <div className='head_search'>
-                                                            <input type="text" placeholder='Search your blog here...' />
+                                                            <input type="text" placeholder='Search your blog here...' value={userEnteredValue} onInput={userSearchValue} />
                                                         </div>
                                                     </Col>
                                                     <Col lg={12}>
                                                         <div className='list_of_blogs'>
                                                             <ul>
                                                                 <InfiniteScroll
-                                                                    dataLength={items.length}
-                                                                    next={fetchMoreData}
+                                                                    style={{ overflow: 'unset' }}
+                                                                    dataLength={dummy.length}
+                                                                    next={searchAPI}
                                                                     hasMore={true}
-                                                                    loader={<h4>Loading...</h4>}
+                                                                    loader={Count >= LimitReached ? console.log('Limit Reached') : 
+                                                                        <div className='blog_loader'>
+                                                                            <Loader type="bubble-loop" bgColor={"#069aff"} color={'#707070'} size={100} />
+                                                                        </div>
+                                                                    }
                                                                 >
-                                                                    {items.map((i, index) => (
+                                                                    {dummy.map((i, index) => (
                                                                         <li key={index}>
                                                                             <div className='blog_div'>
                                                                                 <div className='img_blog'>

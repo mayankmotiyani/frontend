@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 export default function OurGoal() {
     // =====================================  API start ============================================ 
-    const location = useLocation();
     const param = useParams();
     // console.log(param);
     const [GoalData, setGoalData] = useState({})
