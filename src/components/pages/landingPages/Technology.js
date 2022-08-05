@@ -62,7 +62,7 @@ const Technology = () => {
                             </Col>
                             <Col sm={12} md={12} lg={6} xl={6}>
                                 <figure className='technology_img wow fadeInUp' data-wow-iteration="1">
-                                    <img src={blockchainService1} alt='technology' />
+                                    <img src={Data[0].image} alt='technology' />
                                 </figure>
                             </Col>
                         </Row>

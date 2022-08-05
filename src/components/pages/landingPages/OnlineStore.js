@@ -38,7 +38,7 @@ const OnlineStore = () => {
             : <Row>
               <Col sm={12} md={12} lg={6} xl={6} >
                 <figure className='store_img'>
-                  <img src={blockchainService1} alt='Store' />
+                  <img src={Data[1].image} alt='Store' />
                 </figure>
               </Col>
               <Col sm={12} md={12} lg={6} xl={6}>
@@ -46,7 +46,7 @@ const OnlineStore = () => {
                   <div className='store_text'>
                     <h4 className='h4_title'>What We Do?</h4>
                     <h2 className='h2_title'>{Data[1].title}</h2>
-                    <p>{Data[0].content}</p>
+                    <p>{Data[1].content}</p>
                     <button type='button' className='btn'>More About Us</button>
                   </div>
                 </div>

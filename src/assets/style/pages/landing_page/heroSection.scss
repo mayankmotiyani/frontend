@@ -56,6 +56,10 @@
             // position: absolute;
             // top: 25%;
             // width: 100%;
+
+            .hero_slide_section_img{
+                width: 80%;
+            }
     }
     .hero_slider {
         .inner_section {
@@ -82,13 +86,17 @@
                         margin: 1em 0em;
                         background: transparent;
                         padding: 10px 45px;
-                        border: 1px solid  orange;
+                        border: 1px solid  #6525ab;
                         position: relative;
                         overflow: hidden;
                         transition: all 0.2s;
                         z-index: 0;
                         border-radius: 25px;
                         color: #000;
+
+                        &:hover{
+                            color: #fff;
+                        }
 
                         &::before {
                             content: "";
@@ -97,9 +105,9 @@
                             left: -10px;
                             width: 10px;
                             height: 10px;
-                            background-image: linear-gradient(45deg, #ff7731, #ffa52d, #ff742c);
+                            background-image: linear-gradient(45deg, #6525ab, #914df4, #6525ab);
                             border-radius: 50%;
-                            border: 1px solid  orange;
+                            border: 1px solid  #914df4;
                             transition: all 0.2s;
                             z-index: -1;
                         }

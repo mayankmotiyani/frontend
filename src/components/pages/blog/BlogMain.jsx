@@ -73,18 +73,14 @@ export default function BlogMain(props) {
     const [LimitReached, setLimitReached] = useState(0)
     const [Count, setCount] = useState(0)
     async function searchAPI() {
-        // console.log('function called');
         setTimeout(async () => {
             let xo;
             xo = dummy.length + 5
             setCount(xo)
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/search_query/title/?blog=${userEnteredValue}`);
-            // console.log(api.data.response.length);
             setLimitReached(api.data.response.length)
-            // console.log(xo)
             setdummy(api.data.response.slice(0,xo))
-            // setItem(api.data.results)
-            // console.log('dmeodmeo', items, items.length, xo, api.data.count);
+
         }, 500);
     }
 

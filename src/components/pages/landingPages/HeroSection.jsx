@@ -139,7 +139,7 @@ export default function HeroSection() {
                                                     </Col>
                                                     <Col lg={6}>
                                                         <div className='hero_slide_section_img'>
-                                                            <Image src={HeroImage} fluid />
+                                                            <Image src={ele.image} fluid />
                                                         </div>
                                                     </Col>
                                                 </Row>

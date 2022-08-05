@@ -30,6 +30,19 @@ const Footer = () => {
   const [aboutData, setAboutData] = useState([]);
   const [resourcesData, setResourcesData] = useState([]);
   const [ErrorCompany, setErrorCompany] = useState(false);
+  // ============================ service =================================
+  async function serviceApi() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
+      setServiceData(api.data.response[0].array_of_blockchain_category_list);
+      console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list);
+    } catch (error) {
+      setServiceData(true)
+    }
+
+  }
+  // ============================ service =================================
+
   async function footerApi() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get-all-models/`);
@@ -54,6 +67,7 @@ const Footer = () => {
   useEffect(() => {
     footerApi();
     resources();
+    serviceApi()
   }, [])
 
 
@@ -159,7 +173,7 @@ const Footer = () => {
                         :
                         serviceData.map((e, key) => {
                           return (
-                            <li key={key}><Link to="/">{e}</Link></li>
+                            <li key={key}><Link to="/">{e.blockchain_name}</Link></li>
                           )
                         })
                   }
