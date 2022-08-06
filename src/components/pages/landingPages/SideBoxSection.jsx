@@ -4,6 +4,7 @@ import { BsFillFileEarmarkBarGraphFill } from 'react-icons/bs';
 import axios from "axios";
 import AOS from "aos";
 import { IoIosWarning } from 'react-icons/io';
+import { WOW } from "wowjs";
 export default function SideBoxSection() {
     const [sideText, setSideText] = useState([]);
     const [HeadContent, setHeadContent] = useState({})
@@ -26,6 +27,10 @@ export default function SideBoxSection() {
         });
         sideData()
     }, []);
+    useEffect(() => {
+        const wow = new WOW({ live: false }); 
+        wow.init()
+    })
     return (
         <>
             <section className='sideBox_section'>
@@ -71,7 +76,7 @@ export default function SideBoxSection() {
                                             sideText.map((ele, key) => {
                                                 return (
                                                     <Col lg={6} key={key}>
-                                                        <div className='box_content_div'>
+                                                        <div className='box_content_div wow zoomIn'>
                                                             <BsFillFileEarmarkBarGraphFill />
                                                             <h4 className='h4_title'>{ele.title}</h4>
                                                             <p>{ele.content}</p>
@@ -111,7 +116,7 @@ export default function SideBoxSection() {
                             </Row>
                         </Col>
                         <Col lg={4}>
-                            <div className='side_image_content_div' >
+                            <div className='side_image_content_div wow zoomIn'>
                                 <BsFillFileEarmarkBarGraphFill />
                                 <h3 className='h3_title'>Your Heading Title here</h3>
                                 <button>Click Me</button>

@@ -1,9 +1,10 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import BlogImage from '../../../assets/media/man-work.png'
-import { IoIosWarning } from 'react-icons/io'
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import BlogImage from '../../../assets/media/man-work.png';
+import { IoIosWarning } from 'react-icons/io';
+import { WOW } from "wowjs";
 export default function BlogSection() {
     // ========================== Blog API ===========================
     const [BlogData, setBlogData] = useState([])
@@ -21,6 +22,10 @@ export default function BlogSection() {
     useEffect(() => {
         blogApi()
     }, [])
+    useEffect(() => {
+        const wow = new WOW({ live: false }); 
+        wow.init()
+    })
 
     return (
         <>
@@ -74,7 +79,7 @@ export default function BlogSection() {
                                 </Row>
                                 : BlogData.map((e, key) => {
                                     return <Col sm={12} md={12} lg={4} xl={4} key={key}>
-                                        <div className='blog_section'>
+                                        <div className='blog_section wow zoomIn'>
                                             <img src={BlogImage} alt="" />
                                             <div className='blog_content'>
                                                 <h3 className='h3_title'>{e.title}</h3>

@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import "../../../assets/style/pages/landing_page/launchPlatform.scss"
-import { IoIosWarning } from 'react-icons/io'
+import "../../../assets/style/pages/landing_page/launchPlatform.scss";
+import { IoIosWarning } from 'react-icons/io';
+import { WOW } from "wowjs";
 const LaunchPlatform = () => {
     // ======================================== Box Data Api ===============================================
     const [BoxContent, setBoxContent] = useState([])
@@ -17,6 +18,10 @@ const LaunchPlatform = () => {
             setErrorBox(true)
         }
     }
+    useEffect(() => {
+        const wow = new WOW({ live: false }); 
+        wow.init()
+    })
     useEffect(() => {
         boxData()
     }, [])
@@ -39,27 +44,27 @@ const LaunchPlatform = () => {
                                 : BoxContent.length === 0 ?
                                     <Row>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                         <Col sm={6} md={6} lg={4} xl={4}>
-                                            <div className="flip-card_EMPTY"></div>
+                                            <div className="flip-card_EMPTY wow zoomIn"></div>
                                         </Col>
                                     </Row>
                                     : BoxContent.map((box, key) => {
                                         return <Col sm={6} md={6} lg={4} xl={4} key={key}>
-                                            <div className="flip-card">
+                                            <div className="flip-card wow zoomIn">
                                                 <div className="flip-card-inner">
                                                     <div className="flip-card-front">
                                                         <img src={box.image_url} alt={box.name} />

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import blockchainService1 from "../../../assets/images/blockchainService1.png"
 import AOS from "aos";
 import axios from 'axios';
-
+import { WOW } from "wowjs";
 const OnlineStore = () => {
   useEffect(() => {
     AOS.init({
@@ -12,6 +12,10 @@ const OnlineStore = () => {
   }, []);
 
 
+  useEffect(() => {
+    const wow = new WOW({ live: false }); 
+    wow.init()
+})
   // =============================== What we Do API ============================================
 
   const [Data, setData] = useState([])
@@ -37,12 +41,12 @@ const OnlineStore = () => {
           {Error ? 'error' : Data.length === 0 ? 'loading...'
             : <Row>
               <Col sm={12} md={12} lg={6} xl={6} >
-                <figure className='store_img'>
+                <figure className='store_img wow zoomIn' >
                   <img src={Data[1].image} alt='Store' />
                 </figure>
               </Col>
               <Col sm={12} md={12} lg={6} xl={6}>
-                <div className='store_div'>
+                <div className='store_div wow zoomIn'>
                   <div className='store_text'>
                     <h4 className='h4_title'>What We Do?</h4>
                     <h2 className='h2_title'>{Data[1].title}</h2>

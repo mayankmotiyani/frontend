@@ -4,6 +4,7 @@ import DemoIcon from '../../../assets/media/demo_icon.png';
 import AOS from "aos";
 import axios from "axios";
 import { IoIosWarning } from 'react-icons/io';
+import { WOW } from "wowjs";
 export default function WhyChoose() {
     const [choose, setChoose] = useState([]);
     const [HeadContent, setHeadContent] = useState({})
@@ -24,6 +25,10 @@ export default function WhyChoose() {
         });
         chooseData();
     }, []);
+    useEffect(() => {
+        const wow = new WOW({ live: false }); 
+        wow.init()
+    })
     return (
         <>
             <section className='whyChoose_section'>
@@ -68,7 +73,7 @@ export default function WhyChoose() {
                                     choose.map((ele, key) => {
                                         return (
                                             <Col lg={6} key={key}>
-                                                <div className='box_div'>
+                                                <div className='box_div wow zoomIn'>
                                                     <img src={DemoIcon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>
                                                     <p>{ele.content}</p>

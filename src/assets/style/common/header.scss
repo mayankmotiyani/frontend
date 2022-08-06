@@ -1,3 +1,12 @@
+$header_bottom_gradient: linear-gradient(
+    54deg,
+    #d9bdff 0%,
+    #a0c9fb 25%,
+    #79aade 43%,
+    #ba93f0 61%,
+    rgb(223 170 52 / 75%) 83%
+);
+
 .site_main_head {
     position: relative;
     z-index: 5;
@@ -90,7 +99,8 @@
     .menu_bar_container {
         position: relative;
 
-        &::before {}
+        &::before {
+        }
     }
 
     .menu_bar_div {
@@ -101,7 +111,8 @@
         width: 100%;
         background: #fff;
 
-        .animated_bar {}
+        .animated_bar {
+        }
 
         &::before {
             content: "";
@@ -111,12 +122,13 @@
             height: 3px;
             // background:linear-gradient(90deg, rgba(255,166,0,1) 0%, rgba(9,121,92,1) 44%, rgba(0,212,255,1) 100%);
             // background: linear-gradient(54deg, rgba(0,255,188,1) 0%, rgba(33,203,152,1) 45%, rgba(0,212,255,1) 100%);
-            background: linear-gradient(54deg,
-                    rgba(0, 255, 188, 1) 0%,
-                    rgba(33, 203, 152, 1) 25%,
-                    rgba(0, 212, 255, 1) 43%,
-                    rgba(0, 212, 255, 1) 61%,
-                    rgba(255, 158, 0, 1) 83%);
+            // background: linear-gradient(54deg,
+            //         rgba(0, 255, 188, 1) 0%,
+            //         rgba(33, 203, 152, 1) 25%,
+            //         rgba(0, 212, 255, 1) 43%,
+            //         rgba(0, 212, 255, 1) 61%,
+            //         rgba(255, 158, 0, 1) 83%);
+            background: $header_bottom_gradient;
             background-size: 400% 400%;
             transform: translateY(3px);
             animation: moving 5s linear infinite;
@@ -204,7 +216,7 @@
                                 color: orangered;
                             }
 
-                            &:hover>a {
+                            &:hover > a {
                                 color: orangered;
                             }
 
@@ -287,20 +299,20 @@
             top: 70px;
             left: 0%;
             width: 100%;
-            background-color: #f7f7f7;
-            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.92), rgba(241, 241, 241, 0.92)),
-                url("../../media/BLOCKCHAIN\ IMG02.png");
+            // background-color: #f7f7f7;
+            // background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.92), rgba(241, 241, 241, 0.92)),
+            //     url("../../media/BLOCKCHAIN\ IMG02.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            border-top: 2px solid grey;
-            box-shadow: 0px 12px 20px #80808026;
+            // border-top: 2px solid grey;
+            // box-shadow: 0px 12px 20px #80808026;
             transition: all 0.5s;
             transform: translateY(-500px);
             // animation: fade 0.3s linear 1 forwards;
             // opacity: 0;
-            overflow-y: scroll;
-            height: 250px;
+            // overflow-y: scroll;
+            // height: 250px;
             display: flex;
             align-items: center;
             z-index: -1;
@@ -318,6 +330,15 @@
                 width: 5px;
                 background-color: orangered;
                 border-radius: 25px;
+            }
+
+            .container {
+                background: #fff;
+                padding: 2em;
+                border-bottom: 4px solid #c5a5ff;
+                border-radius: 5px;
+                margin-top: -0.49em;
+                box-shadow: rgb(17 17 26 / 10%) 0px 5px 16px;
             }
 
             // @keyframes fade {
@@ -355,7 +376,7 @@
                 align-items: center;
                 height: 100%;
                 outline: 2px solid #96009e;
-                outline-offset: 10px;
+                outline-offset: 2px;
 
                 h2 {
                     color: #fff;
@@ -523,7 +544,7 @@
         position: absolute;
         top: 0%;
         background-color: #fff;
-        box-shadow: 0px 10px 20px #00000026;
+        // box-shadow: 0px 10px 20px #00000026;
     }
 }
 
@@ -915,7 +936,7 @@
 
     .quote_wrap button {
         padding: 0px 10px !important;
-        &:hover{
+        &:hover {
             opacity: 0.7;
         }
     }

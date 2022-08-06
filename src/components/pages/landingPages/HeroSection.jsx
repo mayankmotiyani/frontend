@@ -9,6 +9,8 @@ import video from "../../../assets/images/video/video_1.mp4"
 import axios from 'axios';
 import { IoIosWarning } from 'react-icons/io'
 import Particle from '../Particle';
+import { WOW } from "wowjs";
+
 export default function HeroSection() {
     // const [owlData, setOwlData] = useState([])
     // const getHeroContent = async () => {
@@ -43,6 +45,10 @@ export default function HeroSection() {
             setErrorSlider(true)
         }
     }
+    useEffect(() => {
+        const wow = new WOW({ live: false }); 
+        wow.init()
+    })
 
     useEffect(() => {
         sliderContent()
@@ -128,7 +134,7 @@ export default function HeroSection() {
                                             <Container>
                                                 <Row>
                                                     <Col lg={6} >
-                                                        <div className='hero_slide_section_content'>
+                                                        <div className='hero_slide_section_content wow fadeIn'>
                                                             <div className='hero_content_div'>
                                                                 {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
                                                                 <h2 className='h2_title hero_cont_heading'>{ele.title}</h2>

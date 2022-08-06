@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -8,15 +8,17 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import carousel from "../../../../assets/images/popup_imgs.png"
 const W3Owl = () => {
     // =====================================  API start ============================================ 
-    const location = useLocation();
-    const filterApi_PathName = location.pathname.slice(1);
+    // const location = useLocation();
+    // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
+    const params = useParams()
 
     const [BlockchainCate, setBlockchainCate] = useState([])
     const [ErrorBlockchain, setErrorBlockchain] = useState(false)
     async function API() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
+            // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain-section-three/${params.slug}/`);
             setBlockchainCate(api.data.response)
             // console.log("try", api.data.response);
         } catch (error) {
@@ -26,7 +28,7 @@ const W3Owl = () => {
 
     useEffect(() => {
         API()
-    }, [filterApi_PathName])
+    }, [params])
 
     // =====================================  API end ============================================ 
 
@@ -93,9 +95,9 @@ const W3Owl = () => {
                                 : BlockchainCate.length === 0 ? 'loading...'
                                     : <div className='hero_slide_section_content'>
                                         <div className='hero_content_div'>
-                                            <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6>
-                                            <h2 className='h2_title hero_cont_heading'>{BlockchainCate.Section3.title}</h2>
-                                            <p className='hero_cont_para'>{BlockchainCate.Section3.content}</p>
+                                            <h6 className='h5_title hero_cont_subheading'>{BlockchainCate.subheading}</h6>
+                                            <h2 className='h2_title hero_cont_heading'>{BlockchainCate.title}</h2>
+                                            <p className='hero_cont_para'>{BlockchainCate.content}</p>
                                             <button className='hero_cont_btn'>Click Me</button>
                                         </div>
                                     </div>
