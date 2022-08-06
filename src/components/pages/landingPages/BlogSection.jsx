@@ -19,11 +19,24 @@ export default function BlogSection() {
         }
     }
 
+    // ===================================== Blog Head ==========================
+    const [BlogHeadData, setBlogHeadData] = useState([])
+    const [HeadError, setHeadError] = useState(false)
+    async function blogHead() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/blog-section/`);
+            setBlogHeadData(api.data.response)
+        } catch (error) {
+            setHeadError(true)
+        }
+    }
+
     useEffect(() => {
+        blogHead()
         blogApi()
     }, [])
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
 
@@ -32,12 +45,15 @@ export default function BlogSection() {
             <section className='home_blog_section'>
                 <Container>
                     <Row>
-                        <Col lg={12}>
-                            <div className='blog_head'>
-                                <h2 className='h2_title'>Our Blogs</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nisi officiis, perspiciatis commodi ipsum reiciendis exercitationem, repudiandae optio, mollitia natus dolor. Natus corrupti consequuntur aliquam, dolorem nihil temporibus. Nulla, molestiae.</p>
-                            </div>
-                        </Col>
+                        {HeadError ? 'Error'
+                            : BlogHeadData.length === 0 ? 'loading...'
+                                : <Col lg={12}>
+                                    <div className='blog_head'>
+                                        <h2 className='h2_title'>{BlogHeadData.subheading}</h2>
+                                        <p>{BlogHeadData.content}</p>
+                                    </div>
+                                </Col>
+                        }
                     </Row>
                     <Row>
                         {ErrorBlogData ?
@@ -46,7 +62,7 @@ export default function BlogSection() {
                             </div>
                             : BlogData.length === 0 ?
                                 <Row>
-                                              <Col sm={12} md={12} lg={4} xl={4}>
+                                    <Col sm={12} md={12} lg={4} xl={4}>
                                         <div className='blog_section_EMPTY'>
                                             <div className='image_EMPTY'></div>
                                             <div className='blog_content'>

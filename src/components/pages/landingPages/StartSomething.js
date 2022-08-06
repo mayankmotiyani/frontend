@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Col, Row } from "react-bootstrap";
 import bitcoin from "../../../assets/images/coin/Bitcoin.png";
 import cardano from "../../../assets/images/coin/cardano.png";
@@ -10,11 +10,30 @@ import polkadot from "../../../assets/images/coin/polkadot.png";
 import solana from "../../../assets/images/coin/solana.png";
 import infograins from "../../../assets/images/coin/infograins.png";
 import { WOW } from "wowjs";
+import axios from 'axios';
 
 
 const StartSomething = () => {
+    // ==================================== API ======================================
+    const [ApiData, setApiData] = useState([])
+    const [ErrorApi, setErrorApi] = useState(false)
+    async function API() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/possible-solution/`);
+            setApiData(api.data.response)
+        } catch (error) {
+            setErrorApi(true)
+        }
+    }
+
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        API()
+    }, [])
+    
+
+
+    useEffect(() => {
+        const wow = new WOW({ live: false });
         wow.init()
     })
     return (
@@ -24,16 +43,19 @@ const StartSomething = () => {
                 <Container >
 
                     <div className='StartSomething_details'>
-                        <Row> 
+                        <Row>
                             <Col sm={12} md={12} lg={6} xl={6}>
-                                <div className='StartSomething_text wow zoomIn'>
-                                    <h4 className='h4_title'>Start Something Undeniably</h4>
-                                    <h2 className='h2_title'> Best possible solution</h2>
-                                    <p>Click to connect with us, and our team of experts will get in touch with you to know about your idea, answer your queries, and propose the best possible solution.</p>
-                                    <button type='button' className='btn'>Lets Start</button>
-                                </div>
+                                {ErrorApi ? 'Error'
+                                    : ApiData.length === 0 ? 'loading...'
+                                        : <div className='StartSomething_text wow zoomIn'>
+                                            <h4 className='h4_title'>{ApiData.subheading}</h4>
+                                            <h2 className='h2_title'>{ApiData.heading}</h2>
+                                            <p>{ApiData.content}</p>
+                                            <button type='button' className='btn'>Lets Start</button>
+                                        </div>
+                                }
                             </Col>
-                            <Col  sm={12} md={12} lg={6} xl={6}>
+                            <Col sm={12} md={12} lg={6} xl={6}>
                                 <figure className='StartSomething_img wow zoomIn'>
                                     <div className="circles_wrap">
                                         <div className="circle circle1">
@@ -69,7 +91,7 @@ const StartSomething = () => {
                                         <div className="circle circle4">
                                             <div className="coin_wrap">
                                                 <div className="coin">
-                                                    <img src={solana} alt="solana"  className='solana-icn'/>
+                                                    <img src={solana} alt="solana" className='solana-icn' />
                                                 </div>
                                             </div>
                                         </div>

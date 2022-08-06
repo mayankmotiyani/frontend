@@ -75,3 +75,9 @@
         flex-direction: column-reverse;
     }
 }
+
+@media screen and (max-width: 768px){
+    .technology_wrap .technology_details .technology_img{
+        margin-bottom: 2em;
+    }
+}

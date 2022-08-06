@@ -1,0 +1,31 @@
+.visionMission-wrap {
+    padding: 50px 0px;
+
+    .visionMission-list {
+        .h3_title {
+            color: orange;
+            span{
+                color: #000;
+            }
+        }
+
+        p {
+            padding-bottom: 20px;
+        }
+
+        ul {
+            li {
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    content: "\2713";
+                    top: 0px;
+                    left: -15px;
+                    color: orange;
+                }
+            }
+        }
+    }
+
+}

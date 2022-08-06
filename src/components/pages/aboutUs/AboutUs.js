@@ -3,6 +3,9 @@ import AboutAnalysis from './AboutAnalysis'
 import AboutBanner from './AboutBanner'
 import AboutPlatform from './AboutPlatform'
 import AboutTrusted from './AboutTrusted'
+import BecomePartner from './BecomePartner'
+import TechnologyPartners from './TechnologyPartners'
+import VisionMission from './VisionMission'
 const AboutUs = (props) => {
     // =========================== scroll To Top default =========================
     useEffect(() => {
@@ -15,6 +18,9 @@ const AboutUs = (props) => {
             <AboutAnalysis />
             <AboutPlatform />
             <AboutTrusted />
+            <VisionMission />
+            <TechnologyPartners />
+            <BecomePartner />
         </>
     )
 }

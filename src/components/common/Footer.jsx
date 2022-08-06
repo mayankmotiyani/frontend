@@ -8,6 +8,7 @@ import { BsSkype, BsArrowLeft } from 'react-icons/bs';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import WhatsApp from '../../assets/media/whatsapp.png'
 // import Logo from '../../assets/media/Infograins IT-02.png'
 const Footer = () => {
   const [showTopBtn, setShowTopBtn] = useState(false)
@@ -35,7 +36,7 @@ const Footer = () => {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
       setServiceData(api.data.response[0].array_of_blockchain_category_list);
-      console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list);
+      console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list[0].blockchain_url);
     } catch (error) {
       setServiceData(true)
     }
@@ -73,6 +74,9 @@ const Footer = () => {
 
   return (
     <>
+      <div className='whats_app_div'>
+        <a href='https://wa.me/+918925564395' target={'_blank'}><img src={WhatsApp} alt="" /></a>
+      </div>
 
       <div className='top-btn-wrap' onClick={handleTop} style={showTopBtn === false ? { display: "none" } : { display: "block" }}>
         <button className='btn'><BiUpArrowAlt /></button>
@@ -141,13 +145,13 @@ const Footer = () => {
                     <Link to="/">Sitemap</Link>
                   </li>
                   <li>
-                    <Link to="/">PrivacyPolicy</Link>
-                  </li>
-                  <li>
                     <Link to="/">Event</Link>
                   </li>
                   <li>
-                    <Link to="/">Help</Link>
+                    <Link to="/privacy">Privacy Policy</Link>
+                  </li>
+                  <li>
+                    <Link to="/term_and_condition">Term and Condition</Link>
                   </li>
                 </ul>
               </div>
@@ -173,7 +177,7 @@ const Footer = () => {
                         :
                         serviceData.map((e, key) => {
                           return (
-                            <li key={key}><Link to="/">{e.blockchain_name}</Link></li>
+                            <li key={key}><Link to={'/'}>{e.blockchain_name}</Link></li>
                           )
                         })
                   }

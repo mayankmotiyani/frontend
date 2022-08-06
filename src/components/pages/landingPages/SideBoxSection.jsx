@@ -77,7 +77,8 @@ export default function SideBoxSection() {
                                                 return (
                                                     <Col lg={6} key={key}>
                                                         <div className='box_content_div wow zoomIn'>
-                                                            <BsFillFileEarmarkBarGraphFill />
+                                                            {/* <BsFillFileEarmarkBarGraphFill /> */}
+                                                            <img src={ele.image} alt="" />
                                                             <h4 className='h4_title'>{ele.title}</h4>
                                                             <p>{ele.content}</p>
                                                         </div>

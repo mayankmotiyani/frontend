@@ -74,7 +74,7 @@ export default function WhyChoose() {
                                         return (
                                             <Col lg={6} key={key}>
                                                 <div className='box_div wow zoomIn'>
-                                                    <img src={DemoIcon} alt="" />
+                                                    <img src={ele.icon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>
                                                     <p>{ele.content}</p>
                                                 </div>

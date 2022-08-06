@@ -1,0 +1,49 @@
+.becomePartner-wrap {
+    padding: 50px 0px;
+
+    .becomePartner-title {
+        padding-bottom: 30px;
+
+        .h2_title {
+            text-align: center;
+            padding-bottom: 10px;
+
+            span {
+                font-family: heading;
+                font-size: 3rem;
+                color: orange;
+                letter-spacing: 1px;
+                margin-bottom: 0px;
+            }
+        }
+
+        p {
+            text-align: center;
+            max-width: 900px;
+            margin: 0px auto;
+        }
+    }
+
+    .becomePartner-card {
+        text-align: center;
+        padding: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        .becomePartner-img {
+            img {
+                width: 150px;
+                margin-bottom: 15px;
+                border: 1px dotted orange;
+                border-radius: 50%;
+                padding: 10px;
+            }
+        }
+
+        .h3_title {
+            padding-bottom: 5px;
+        }
+
+    }
+}

@@ -17,7 +17,20 @@ const Testimonial = () => {
         }
     }
 
+    // =============================== Head API =====================================
+    const [HeadData, setHeadData] = useState([])
+    const [ErrorHead, setErrorHead] = useState(false)
+    async function head() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/testimonials-section/`);
+            setHeadData(api.data.response)
+        } catch (error) {
+            setErrorHead(true)
+        }
+    }
+
     useEffect(() => {
+        head()
         testimonialAPI()
     }, [])
 
@@ -27,12 +40,15 @@ const Testimonial = () => {
             <section className='carousel-wrap'>
                 <Container>
                     <Row>
-                        <Col lg={12}>
-                            <div className='testimonial_head'>
-                                <h2 className='h2_title'>Testimonial</h2>
-                                <p> ipsum dolor sit amet consectetur adipisicing elit. Aliquid id atque fugit dicta soluta voluptate eum labore laudantium earum ratione.</p>
-                            </div>
-                        </Col>
+                        {ErrorHead ? 'Error'
+                            : HeadData.length === 0 ? 'loading'
+                                : <Col lg={12}>
+                                    <div className='testimonial_head'>
+                                        <h2 className='h2_title'>{HeadData.subheading}</h2>
+                                        <p>{HeadData.content}</p>
+                                    </div>
+                                </Col>
+                        }
                     </Row>
                     <Carousel variant="dark">
                         {ErrorTestimonial ?
