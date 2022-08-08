@@ -4,7 +4,7 @@ import part from "../../../assets/images/about/partner/bpart.png"
 const BecomePartner = () => {
     return (
         <>
-            <section className='becomePartner-wrap'>
+            <section className='becomePartner-wrap' id='ourPartner'>
                 <Container>
                     <div className='becomePartner-title'>
                         <h2 className='h2_title'>Partnership Programs At <span>infograins</span></h2>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap";
 import technologies from "../../../../assets/images/blockchainService1.png";
 
 const W3Technologies = () => {
@@ -36,7 +36,7 @@ const W3Technologies = () => {
             <section className='w3-technologies-wrap'>
                 <Container>
                     {ErrorBlockchain ? 'Error'
-                        : BlockchainCate.length === 0 ? 'loading...'
+                        : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : <Row>
                                 <Col sm={6} md={6} lg={6} xl={6}>
                                     <div className='w3-technologies-content'>

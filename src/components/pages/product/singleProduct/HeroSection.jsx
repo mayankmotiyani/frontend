@@ -8,7 +8,7 @@ export default function HeroSection() {
             <section className='singleProduct_section'>
                 <Container>
                     <Row>
-                        <Col lg={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <div className='product_container'>
                                 <div className='product_content'>
                                     <h2 className='h2_title'>Your Heading Text Here</h2>
@@ -16,7 +16,7 @@ export default function HeroSection() {
                                 </div>
                             </div>
                         </Col>
-                        <Col lg={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <div className='product_image_wrapper'>
                                 <Image src={ProductImg} className='product_img' fluid/>
                             </div>

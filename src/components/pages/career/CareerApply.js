@@ -193,7 +193,9 @@ const CareerApply = (props) => {
   return (
     <>
       <section className='career-apply-wrap'>
-        <div className='career-apply-banner'></div>
+        <div className='career-apply-banner'>
+          <h2 className='h2_title'>Career</h2>
+        </div>
         <div className='career-apply-details-wrap'>
           <Container>
             <Row>

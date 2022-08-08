@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Row, Col, Image, Nav, Navbar, NavDropdown, Tab, Spinner } from 'react-bootstrap'
 import FaceBook from '../../assets/media/icons/facebook-app.svg'
 import Instagram from '../../assets/media/icons/ig-instagram.svg'
 import Linkedin from '../../assets/media/icons/linkedin-app.svg'
@@ -67,7 +67,13 @@ export default function Header() {
   function toggleDropdown_enter(e) {
     // console.log(e.target);
     const currentDropdown = e.target.attributes.mainlink.nodeValue;
-    document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'translateY(0px)'
+    // document.getElementsByClassName('desk_dropdown')[currentDropdown].style.opacity = '1'
+    document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'scaleY(1)'
+    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.padding = '2em'
+    // setTimeout(() => {
+    //   document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.transform = 'rotateX(360deg)'
+    //   document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.opacity = '1'
+    // }, 300);
   }
 
   // function toggleDemo2_enter() {
@@ -81,7 +87,12 @@ export default function Header() {
   function toggleDropdown_leave(e) {
     // console.log(e.target);
     const currentDropdown = e.target.attributes.mainlink.nodeValue;
-    document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'translateY(-500px)'
+    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.transform = 'rotateX(330deg)'
+    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.opacity = '0'
+    document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'scaleY(0)'
+    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.padding = '0em'
+    // setTimeout(() => {
+    // }, 300);
   }
 
   // function dropdown_div_enter() {
@@ -302,6 +313,26 @@ export default function Header() {
     document.getElementsByClassName('menu_toggle_btn')[0].click()
   }
 
+
+  // ========================================================== Top Bar Nav =============================================================
+  const [TopBarNum, setTopBarNum] = useState([])
+  const [ErrorTopBar, setErrorTopBar] = useState(false)
+  async function topBar_Numbers() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/header-office-address/`);
+      console.log(api.data.response);
+      setTopBarNum(api.data.response)
+    } catch (error) {
+      setErrorTopBar(true)
+    }
+  }
+
+  useEffect(() => {
+    topBar_Numbers()
+  }, [])
+
+
+  // console.log(CategoriesList[0].blockchain_category);
   return (
     // /* ============================ header area =============================*/
     <>
@@ -315,11 +346,15 @@ export default function Header() {
                   <div className='call_us_div'>
                     <div>Call Us :</div>
                     <ul className='call_us_list'>
-                      <li><div className='country_name'>India</div>  <a href="tel:+919770477239">+91 9770477239</a>, <a href="tel:+919713406272">+91 9713406272</a></li>
-                      <li><div className='country_name'>UK</div>  <a href="tel:+447401232155"> +447401232155</a></li>
-                      <li><div className='country_name'>USA</div>  <a href="tel:+12025196167">  +12025196167</a></li>
-                      <li><div className='country_name'>UAE</div>  <a href="tel:+971585596272">  +971585596272</a></li>
-                      <li><div className='country_name'>Australia</div>  <a href="tel:+61480043472">   +61480043472</a></li>
+
+                      {ErrorTopBar ? 'Error'
+                        : TopBarNum.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                          : TopBarNum.map((e, key) => {
+                            return <li key={key}><div className='country_name'>{e.office}</div>  <a href={`tel:${e.phone1}`}>{e.phone1}</a>  <a href={`tel:${e.phone2}`}>{e.phone2}</a></li>
+                          })}
+                      {/* <li><div className='country_name'>USA</div>  <a href="tel:+12025196167">  +12025196167</a></li> */}
+                      {/* <li><div className='country_name'>UAE</div>  <a href="tel:+971585596272">  +971585596272</a></li> */}
+                      {/* <li><div className='country_name'>Australia</div>  <a href="tel:+61480043472">   +61480043472</a></li> */}
                     </ul>
                   </div>
                   <div className='social_link_div'>
@@ -351,8 +386,8 @@ export default function Header() {
                         {/* <div className='site_logo_name'>Infograins</div> */}
                       </div>
                       <div className='main_nav_list'>
-                        <ul>
-                          <li className='main_nav_link' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Blockchain <IoMdArrowDropdown /> </li>
+                        <ul className='main_nav_ul'>
+                          <li className='main_nav_link' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Blockchain <IoMdArrowDropdown /></li>
                           <li className='main_nav_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
                           <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li>
                           <li className='main_nav_link' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Our Products <IoMdArrowDropdown /> </li>
@@ -493,7 +528,7 @@ export default function Header() {
             {/* =============================================== Desktop Dropdown ======================================= */}
             <div className='desk_dropdown' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="0">
-                <Row className='justify-content-around' mainlink="0">
+                {/* <Row className='justify-content-around' mainlink="0">
                   {ErrorBlockchain ?
                     <div className='warning' mainlink="0">
                       <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
@@ -519,12 +554,57 @@ export default function Header() {
                           </div>
                         </Col>
                       })}
-                </Row>
+                </Row> */}
+                <Tab.Container id="left-tabs-example" defaultActiveKey='Core Blockchain'>
+                  <Row>
+                    <Col sm={3}>
+                      <Nav variant="pills" className="flex-column">
+                        {ErrorBlockchain ? "Error"
+                          : CategoriesList.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                            : CategoriesList.map((e, key) => {
+                              return <Nav.Item key={key}>
+                                <Nav.Link eventKey={e.blockchain_category}>{e.blockchain_category}</Nav.Link>
+                              </Nav.Item>
+                            })}
+                      </Nav>
+                    </Col>
+                    <Col sm={9}>
+                      <Tab.Content>
+                        {ErrorBlockchain ? 'Error'
+                          : CategoriesList.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                            : CategoriesList.map((e, key) => {
+                              return <Tab.Pane eventKey={e.blockchain_category} key={key}>
+                                <ul mainlink="0">
+                                  {e.array_of_blockchain_category_list.map((e, key) => {
+                                    return <li key={key} mainlink="0">
+                                      <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
+                                        <GrFormNextLink />
+                                        <div>{e.blockchain_name}</div>
+                                      </Link>
+                                    </li>
+                                  })}
+                                </ul>
+                              </Tab.Pane>
+                            })
+                        }
+                        {/* <Tab.Pane eventKey="second">
+                          dfhdfh
+                        </Tab.Pane> */}
+                      </Tab.Content>
+                    </Col>
+                  </Row>
+                </Tab.Container>
               </Container>
+
             </div>
             <div className='desk_dropdown' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="1">
                 <Row className='justify-content-around' mainlink="1">
+                  {/* <Col lg={3} mainlink="1">
+                    <div className='technology' mainlink="1">
+                      <h2 className='h2_title'>SliceLedger</h2>
+                    </div>
+                  </Col> */}
                   <Col lg={3} mainlink="1">
                     <div className='desk_dropdown_col' mainlink="1">
                       {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
@@ -535,9 +615,7 @@ export default function Header() {
                             <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                           </div>
                           : nftList.length === 0 ?
-                            <div className='warning' mainlink="1">
-                              <b><IoIosWarning /> Something went wrong</b>
-                            </div>
+                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : nftList.map((nft, index) => {
                               return <li key={index} mainlink="1">
                                 <Link to={nft.nft_url} className='desk_dropdown_link' mainlink="1">
@@ -557,6 +635,11 @@ export default function Header() {
             <div className='desk_dropdown' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="2">
                 <Row className='justify-content-around' mainlink="2">
+                  {/* <Col lg={3} mainlink="2">
+                    <div className='technology' mainlink="2">
+                      <h2 className='h2_title'>SliceLedger</h2>
+                    </div>
+                  </Col> */}
                   <Col lg={3} mainlink="2">
                     <div className='desk_dropdown_col' mainlink="2">
                       <ul mainlink="2">
@@ -565,9 +648,7 @@ export default function Header() {
                             <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                           </div>
                           : gameList.length === 0 ?
-                            <div className='warning' mainlink="2">
-                              <b><IoIosWarning /> Something went wrong</b>
-                            </div>
+                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : gameList.map((game, index) => {
                               return <li key={index} mainlink="2">
                                 <Link to={game.game_slug} className='desk_dropdown_link' mainlink="2">
@@ -594,7 +675,7 @@ export default function Header() {
                     <div className='desk_dropdown_col' mainlink="3">
                       <ul mainlink="3">
                         {ErrorProduct ? 'error'
-                          : ProductData.length === 0 ? 'loading'
+                          : ProductData.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : ProductData.map((product, key) => {
                               return <li key={key} mainlink="3">
                                 <Link to={product.product_url} className='desk_dropdown_link' mainlink="3">

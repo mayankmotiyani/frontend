@@ -14,9 +14,9 @@ const ContactUs = (props) => {
             <div className='contact-page-wrap'>
                 <Contact />
             </div>
-            <Map />
             <Address />
-            <W3Details />
+            <Map />
+            {/* <W3Details /> */}
         </>
     )
 }

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
-import mission from "../../../assets/images/mission/misson1.jpg"
-// D:\Sudhanshu\project\infograins_sFront-end\front-end\src\assets\images\mission\misson1.jpg
+import mission from "../../../assets/images/mission/misson1.jpg";
 const VisionMission = () => {
   return (
     <>
-      <section className='visionMission-wrap'>
+      <section className='visionMission-wrap' id='mission'>
         <Container>
           <Row>
             <Col sm={12} md={12} lg={6} xl={6}>

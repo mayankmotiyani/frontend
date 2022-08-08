@@ -9,11 +9,12 @@
         }
 
         .h4_title {
-            color: orange;
+            color: #f58741;
         }
 
         .h2_title {
             padding: 5px 0px 15px;
+            color: #0f2851;
         }
 
         button {
@@ -70,14 +71,17 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 575px) {
     .technology_details .row {
         flex-direction: column-reverse;
     }
-}
-
-@media screen and (max-width: 768px){
     .technology_wrap .technology_details .technology_img{
         margin-bottom: 2em;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .technology_wrap .technology_details .technology_img{
+        width: 100%;
     }
 }

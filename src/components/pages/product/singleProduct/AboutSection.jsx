@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 import AboutImg from '../../../../assets/images/blockchainService1.png'
 
 export default function AboutSection() {
@@ -34,15 +34,15 @@ export default function AboutSection() {
             <section className='about_section'>
                 <Container>
                     {Error ? 'Error'
-                        : AboutData.length === 0 ? 'loading'
+                        : AboutData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             :
                             <Row>
-                                <Col lg={6}>
+                                <Col sm={6} md={6} lg={6} xl={6}>
                                     <div className='about_image_wrapper'>
                                         <Image src={AboutData.image} className='about_img' fluid />
                                     </div>
                                 </Col>
-                                <Col lg={6}>
+                                <Col sm={6} md={6} lg={6} xl={6}>
                                     <div className='about_container'>
                                         <div className='about_content'>
                                             <h4 className='h4_title'>About Product</h4>

@@ -3,7 +3,7 @@ import { Container, Col, Row, Image } from 'react-bootstrap';
 import partner from "../../../assets/images/about/partner/part.png"
 const TechnologyPartners = () => {
     return (
-        <section className='TechnologyPartners-wrap'>
+        <section className='TechnologyPartners-wrap' id='technology'>
             <Container>
                 <div className='TechnologyPartners-title'>
                     <h2 className='h2_title'>Our Technology <span>Partners</span></h2>

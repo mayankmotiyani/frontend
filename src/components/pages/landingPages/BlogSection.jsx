@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BlogImage from '../../../assets/media/man-work.png';
 import { IoIosWarning } from 'react-icons/io';
@@ -46,7 +46,7 @@ export default function BlogSection() {
                 <Container>
                     <Row>
                         {HeadError ? 'Error'
-                            : BlogHeadData.length === 0 ? 'loading...'
+                            : BlogHeadData.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : <Col lg={12}>
                                     <div className='blog_head'>
                                         <h2 className='h2_title'>{BlogHeadData.subheading}</h2>
@@ -94,7 +94,7 @@ export default function BlogSection() {
                                     </Col>
                                 </Row>
                                 : BlogData.map((e, key) => {
-                                    return <Col sm={12} md={12} lg={4} xl={4} key={key}>
+                                    return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                         <div className='blog_section wow zoomIn'>
                                             <img src={BlogImage} alt="" />
                                             <div className='blog_content'>

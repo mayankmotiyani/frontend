@@ -114,6 +114,25 @@ const ContactUs = () => {
     }
 
 
+    // ========================================================= Get in Touch =============================================
+    const [getContentData, setGetContentData] = useState([])
+    const [Error, setError] = useState(false)
+    async function getContent() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/get-in-touch/`);
+            setGetContentData(api.data.response)
+        } catch (error) {
+            setError(true)
+        }
+    }
+
+    useEffect(() => {
+        getContent()
+    }, [])
+    
+
+    // console.log(getContentData);
+
 
     return (
         <>
@@ -121,27 +140,30 @@ const ContactUs = () => {
                 <Container>
                     <div className="contact-form-heading">
                         <div className='contact_form_head_div'>
-                            <h2 className='h2_title'>Get In Touch</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, fugiat quasi id eius ducimus eum similique minima exercitationem distinctio a sapiente reiciendis consequuntur ea? Voluptatibus, commodi! Voluptatibus error illum ratione.</p>
+                            <h2 className='h2_title'>{getContentData.heading}</h2>
+                            <p>{getContentData.description}</p>
                         </div>
                     </div>
                     <div className='get_in_touch_div'>
                         <Row className='get_in_touch_row justify-content-between'>
                             <Col sm={12} md={5} lg={5} xl={5}>
-                                <div className='contact_information'>
-                                    <div className='head'>
-                                        <h3 className='h3_title'>Contact Information</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus laudantium non</p>
-                                    </div>
-                                    <div className='contact-details'>
-                                        <h5 className='h5_title'>Email</h5>
-                                        <a href="mailto:info@infograins.com" target={'_blank'}>info@infograins.com</a>
-                                        <h5 className='h5_title'>Phone</h5>
-                                        <a href='tel:+918925564395'>IND +91 8925564395</a>
-                                        <h5 className='h5_title'>On The Web</h5>
-                                        <a href='#'>ingrains@gmail.com</a>
-                                    </div>
-                                </div>
+                                {Error ? "Error" :
+                                    getContentData.length === 0 ? 'loading...'
+                                        : <div className='contact_information'>
+                                            <div className='head'>
+                                                <h3 className='h3_title'>Contact Information</h3>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus laudantium non</p>
+                                            </div>
+                                            <div className='contact-details'>
+                                                <h5 className='h5_title'>Email</h5>
+                                                <a href={`mailto:${getContentData.contactInformation.email}`} target={'_blank'}>{getContentData.contactInformation.email}</a>
+                                                <h5 className='h5_title'>Phone</h5>
+                                                <a href={`tel:${getContentData.contactInformation.phone}`}>IND {getContentData.contactInformation.phone}</a>
+                                                <h5 className='h5_title'>On The Web</h5>
+                                                <a href={`mailto:${getContentData.contactInformation.on_the_web}`}>{getContentData.contactInformation.on_the_web}</a>
+                                            </div>
+                                        </div>
+                                }
                             </Col>
                             <Col sm={12} md={7} lg={7} xl={7}>
                                 <Form className='contact-form-wrap row' onSubmit={handleSubmit}>
@@ -166,7 +188,7 @@ const ContactUs = () => {
                                                         return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
                                                     })}
                                             </Form.Select>
-                                            <Form.Control type="number" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
+                                            <Form.Control type="number" min={0} placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
                                         </div>
                                         <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                     </Form.Group>

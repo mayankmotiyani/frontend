@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Container, Carousel, Row, Col } from 'react-bootstrap'
+import { Container, Carousel, Row, Col, Spinner } from 'react-bootstrap'
 import { IoIosWarning } from 'react-icons/io'
 
 const Testimonial = () => {
@@ -10,7 +10,7 @@ const Testimonial = () => {
     const [ErrorTestimonial, setErrorTestimonial] = useState(false)
     async function testimonialAPI() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}testimonial/`)
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/testimonial/`)
             setTestimonialData(api.data.response)
         } catch (error) {
             setErrorTestimonial(true)
@@ -41,7 +41,7 @@ const Testimonial = () => {
                 <Container>
                     <Row>
                         {ErrorHead ? 'Error'
-                            : HeadData.length === 0 ? 'loading'
+                            : HeadData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : <Col lg={12}>
                                     <div className='testimonial_head'>
                                         <h2 className='h2_title'>{HeadData.subheading}</h2>
@@ -75,7 +75,7 @@ const Testimonial = () => {
                                     return <div className="carousel-item" key={key}>
                                         <div className='testimonial_content'>
                                             <img className="rounded-circle shadow-1-strong mb-4"
-                                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
+                                                src={data.image} alt="avatar"
                                                 style={{ width: "150px" }} />
                                             <div className="row d-flex justify-content-center">
                                                 <div className="col-lg-8 text-center">

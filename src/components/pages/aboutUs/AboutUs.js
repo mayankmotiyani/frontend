@@ -6,12 +6,14 @@ import AboutTrusted from './AboutTrusted'
 import BecomePartner from './BecomePartner'
 import TechnologyPartners from './TechnologyPartners'
 import VisionMission from './VisionMission'
+import { useParams } from "react-router-dom"
 const AboutUs = (props) => {
     // =========================== scroll To Top default =========================
     useEffect(() => {
         props.demo('top')
     }, [])
     // =========================== scroll To Top default =========================
+
     return (
         <>
             <AboutBanner />

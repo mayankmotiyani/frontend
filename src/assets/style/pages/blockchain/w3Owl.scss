@@ -95,6 +95,9 @@
     .w3-OwlCarousel-wrap .container {
         max-width: 100%;
     }
+    .w3-OwlCarousel-wrap .hero_slide_section_img{
+        display: block;
+    }
 }
 
 @media (max-width: 575px) {

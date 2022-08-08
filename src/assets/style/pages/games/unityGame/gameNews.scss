@@ -119,17 +119,14 @@
         }
     }
 }
-@media screen and (max-width: 767px) {
-    .gameNews-wrap .container {
-        max-width: 100%;
+@media screen and (max-width: 991px) {
+    .gameNews-wrap .gameNews-detail a{
+        margin-top: 0px;
+        margin-bottom: 30px;
     }
 }
 @media screen and (max-width: 575px) {
     .gameNews-wrap{
         padding: 50px 0px;
-    }
-    .gameNews-wrap .gameNews-detail a{
-        margin-top: 0px;
-        margin-bottom: 30px;
     }
 }

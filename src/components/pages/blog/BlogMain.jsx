@@ -171,26 +171,6 @@ export default function BlogMain(props) {
                                                                     </div>
                                                                 </Col>
                                                             })}
-                                                            <Col className='my-3' lg={4} md={6} sm={12}>
-                                                                <div className='blog_card'>
-                                                                    <img src={BlogImage} alt="" />
-                                                                    <div className='blog_card_content'>
-                                                                        <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                                                        <Link to="/blog/demo">Read More</Link>
-                                                                    </div>
-                                                                </div>
-                                                            </Col>
-                                                            <Col className='my-3' lg={4} md={6} sm={12}>
-                                                                <div className='blog_card'>
-                                                                    <img src={BlogImage} alt="" />
-                                                                    <div className='blog_card_content'>
-                                                                        <h3 className='h3_title' data-blog-title>Our Blog Title</h3>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                                                        <Link to="/blog/demo">Read More</Link>
-                                                                    </div>
-                                                                </div>
-                                                            </Col>
                                                         </Row>
                                                     </Container>
                                                 </div>

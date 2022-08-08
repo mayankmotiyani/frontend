@@ -26,10 +26,12 @@ const Career = (props) => {
     return (
         <>
             <section className='career-wrap'>
-                <div className='career-banner-wrap'></div>
-                <div className='opportunities-wrap'>
-                    <h2 className='h2_title'>opportunities</h2>
-                    <Container>
+                <div className='career-banner-wrap'>
+                    <h2 className='h2_title'>Career</h2>
+                </div>
+                <Container>
+                    <div className='opportunities-wrap'>
+                        <h2 className='h2_title'>opportunities</h2>
                         <Row>
                             {
                                 career.map((ele, key) => {
@@ -58,8 +60,8 @@ const Career = (props) => {
                             }
 
                         </Row>
-                    </Container>
-                </div>
+                    </div>
+                </Container>
             </section>
         </>
     )

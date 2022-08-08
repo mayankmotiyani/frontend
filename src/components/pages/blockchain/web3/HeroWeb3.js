@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button, Image } from "react-bootstrap"
+import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap"
 import Background from '../../../../assets/images/background/web3/banner3.jpg'
 const HeroWeb3 = () => {
   // =====================================  API start ============================================ 
@@ -34,7 +34,7 @@ const HeroWeb3 = () => {
           <Row>
             <Col sm={6} md={6} lg={8} xl={8}>
               {ErrorBlockchain ? 'Error'
-                : BlockchainCate.length === 0 ? 'loading'
+                : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                   : <div className='w3-about-wrap'>
                     <h2 className='h2_title'>Best Web3 Development</h2>
                     <h3 className='h3_title'>Company In India</h3>

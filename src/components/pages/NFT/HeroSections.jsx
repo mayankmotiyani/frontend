@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap'
 
 export default function HeroSections() {
     // =====================================  API start ============================================ 
@@ -31,9 +31,9 @@ export default function HeroSections() {
             <section className='nft_heroSections'>
                 <Container>
                     <Row>
-                        <Col sm={12} md={12} lg={8} xl={8}>
+                        <Col sm={6} md={6} lg={8} xl={8}>
                             {ErrorNFT ? 'Error'
-                                : NFTCate.length === 0 ? 'loading...'
+                                : NFTCate.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                     : <div className='nftHero-about-wrap'>
                                         <h2 className='h2_title'>NFT</h2>
                                         <h3 className='h3_title'>Development Company</h3>
@@ -41,7 +41,7 @@ export default function HeroSections() {
                                     </div>
                             }
                         </Col>
-                        <Col sm={12} md={12} lg={4} xl={4}>
+                        <Col sm={6} md={6} lg={4} xl={4}>
                             <Form className='nftHero-from-wrap'>
                                 <h3 className='h3_title'>Talk to our experts</h3>
                                 <Form.Group className="mb-3" controlId="formBasicName">

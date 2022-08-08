@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { useLocation, useParams } from 'react-router-dom';
 import w3Services from "../../../../assets/images/background/web3/w3_service.png"
 import axios from 'axios';
@@ -35,7 +35,7 @@ const W3Services = () => {
       <section className='w3Service-wrap'>
         <Container>
           {ErrorBlockchain ? 'Error'
-            : BlockchainCate.length === 0 ? 'loading'
+            : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
               : <Row>
                 <Col sm={6} md={6} lg={6} xl={6}>
                   <figure className='w3-service-img'>

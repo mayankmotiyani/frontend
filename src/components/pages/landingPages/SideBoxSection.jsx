@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import { BsFillFileEarmarkBarGraphFill } from 'react-icons/bs';
 import axios from "axios";
 import AOS from "aos";
@@ -28,7 +28,7 @@ export default function SideBoxSection() {
         sideData()
     }, []);
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
     return (
@@ -40,7 +40,7 @@ export default function SideBoxSection() {
                         <h2 className='h2_title'>{HeadContent.heading}</h2>
                     </div>
                     <Row>
-                        <Col lg={8}>
+                    <Col sm={12} md={12} lg={6} xl={8}>
                             <Row>
                                 {
                                     error ?
@@ -49,33 +49,11 @@ export default function SideBoxSection() {
                                         </div>
                                         :
                                         sideText.length === 0 ?
-                                            <>
-                                                <Col lg={6}>
-                                                    <div className='box_content_div'>
-                                                        <BsFillFileEarmarkBarGraphFill />
-                                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                                    </div>
-                                                </Col>
-                                                <Col lg={6}>
-                                                    <div className='box_content_div'>
-                                                        <BsFillFileEarmarkBarGraphFill />
-                                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                                    </div>
-                                                </Col>
-                                                <Col lg={6}>
-                                                    <div className='box_content_div' >
-                                                        <BsFillFileEarmarkBarGraphFill />
-                                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                                    </div>
-                                                </Col>
-                                            </>
+                                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                             :
                                             sideText.map((ele, key) => {
                                                 return (
-                                                    <Col lg={6} key={key}>
+                                                    <Col sm={6} md={6} lg={6} xl={6} key={key}>
                                                         <div className='box_content_div wow zoomIn'>
                                                             {/* <BsFillFileEarmarkBarGraphFill /> */}
                                                             <img src={ele.image} alt="" />
@@ -116,7 +94,7 @@ export default function SideBoxSection() {
                                 </Col> */}
                             </Row>
                         </Col>
-                        <Col lg={4}>
+                        <Col sm={12} md={12} lg={6} xl={4}>
                             <div className='side_image_content_div wow zoomIn'>
                                 <BsFillFileEarmarkBarGraphFill />
                                 <h3 className='h3_title'>Your Heading Title here</h3>

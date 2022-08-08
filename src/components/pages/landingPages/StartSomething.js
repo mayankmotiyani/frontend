@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Spinner } from "react-bootstrap";
 import bitcoin from "../../../assets/images/coin/Bitcoin.png";
 import cardano from "../../../assets/images/coin/cardano.png";
 import ether from "../../../assets/images/coin/ether.png";
@@ -46,7 +46,7 @@ const StartSomething = () => {
                         <Row>
                             <Col sm={12} md={12} lg={6} xl={6}>
                                 {ErrorApi ? 'Error'
-                                    : ApiData.length === 0 ? 'loading...'
+                                    : ApiData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                         : <div className='StartSomething_text wow zoomIn'>
                                             <h4 className='h4_title'>{ApiData.subheading}</h4>
                                             <h2 className='h2_title'>{ApiData.heading}</h2>

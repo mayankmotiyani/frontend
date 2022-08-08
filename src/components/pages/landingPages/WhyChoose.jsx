@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import DemoIcon from '../../../assets/media/demo_icon.png';
 import AOS from "aos";
 import axios from "axios";
@@ -26,7 +26,7 @@ export default function WhyChoose() {
         chooseData();
     }, []);
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
     return (
@@ -46,33 +46,11 @@ export default function WhyChoose() {
                                     <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                                 </div>
                                 : choose.length === 0 ?
-                                    <>
-                                        <Col lg={6}>
-                                            <div className='box_div' >
-                                                <img src={DemoIcon} alt="" />
-                                                <h4 className='h4_title'>Your Title Here</h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
-                                            </div>
-                                        </Col>
-                                        <Col lg={6}>
-                                            <div className='box_div' >
-                                                <img src={DemoIcon} alt="" />
-                                                <h4 className='h4_title'>Your Title Here</h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
-                                            </div>
-                                        </Col>
-                                        <Col lg={6}>
-                                            <div className='box_div' >
-                                                <img src={DemoIcon} alt="" />
-                                                <h4 className='h4_title'>Your Title Here</h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, atque nisi. Culpa, praesentium! Numquam quis quidem facere nemo mollitia placeat molestiae, corrupti harum sed quam dolor illo. Magnam, ipsam magni!</p>
-                                            </div>
-                                        </Col>
-                                    </>
+                                    <div className='spin_loader'> <Spinner variant='primary' animation='border' /></div>
                                     :
                                     choose.map((ele, key) => {
                                         return (
-                                            <Col lg={6} key={key}>
+                                                <Col sm={12} md={6} lg={6} xl={6} key={key}>
                                                 <div className='box_div wow zoomIn'>
                                                     <img src={ele.icon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>

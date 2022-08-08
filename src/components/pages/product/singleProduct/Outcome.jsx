@@ -14,12 +14,12 @@ export default function Outcome() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col lg={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <div className='outcome_img_wrapper'>
                                 <Image src={OutcomeImg} fluid />
                             </div>
                         </Col>
-                        <Col lg={6}>
+                        <Col sm={12} md={12} lg={6} xl={6}>
                             <div className='outcome_container'>
                                 <div className="outcome_content">
                                     <div className="content_box">

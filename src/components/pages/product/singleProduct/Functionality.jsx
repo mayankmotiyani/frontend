@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 
 export default function Functionality() {
     // =====================================  API start ============================================ 
@@ -35,13 +35,13 @@ export default function Functionality() {
                     <Row>
                         <Col lg={12}>
                             <div className='head'>
-                                <h2 className="h2_title">{HeadTitle === null ? 'loading...' : HeadTitle.heading_and_subheading.subheading}</h2>
+                                <h2 className="h2_title">{HeadTitle === null ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div> : HeadTitle.heading_and_subheading.subheading}</h2>
                             </div>
                         </Col>
                         {Error ? 'Error'
-                            : FunctionalityData.length === 0 ? 'loading...'
+                            : FunctionalityData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : FunctionalityData.map((e, key) => {
-                                    return <Col lg={4} key={key}>
+                                    return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                         <div className='functionality_box'>
                                             <h4 className='h4_title'>{e.title}</h4>
                                             <p>{e.content}</p>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Spinner } from 'react-bootstrap';
 import carousel from "../../../../assets/images/popup_imgs.png"
 const W3Owl = () => {
     // =====================================  API start ============================================ 
@@ -92,7 +92,7 @@ const W3Owl = () => {
                         </Col>
                         <Col sm={6} md={6} lg={6} xl={6}>
                             {ErrorBlockchain ? 'Error'
-                                : BlockchainCate.length === 0 ? 'loading...'
+                                : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                     : <div className='hero_slide_section_content'>
                                         <div className='hero_content_div'>
                                             <h6 className='h5_title hero_cont_subheading'>{BlockchainCate.subheading}</h6>

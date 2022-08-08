@@ -10,7 +10,10 @@
         }
         .store_text {
             .h4_title {
-                color: orange;
+                color: #f58741;
+            }
+            .h2_title{
+                color: #0f2851;
             }
 
             button {
@@ -57,8 +60,13 @@
 }
 
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 575px){
     .store_wrap .store_details .store_img{
         margin-bottom: 2em;
+    }
+}
+@media screen and (max-width: 991px){
+    .store_wrap .store_details .store_img{
+        width: 100%;
     }
 }

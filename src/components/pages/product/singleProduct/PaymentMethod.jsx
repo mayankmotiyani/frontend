@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 
 export default function PaymentMethod() {
     // =====================================  API start ============================================ 
@@ -35,15 +35,15 @@ export default function PaymentMethod() {
                     <Row>
                         <Col lg={12}>
                             <div className="head">
-                                <h2 className='h2_title'>{HeadTitle === null ? 'loading...' : HeadTitle.heading_and_subheading.subheading}</h2>
+                                <h2 className='h2_title'>{HeadTitle === null ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div> : HeadTitle.heading_and_subheading.subheading}</h2>
                             </div>
                         </Col>
                     </Row>
                     <Row>
                         {Error ? 'Error'
-                            : PaymentData.length === 0 ? 'loading...'
+                            : PaymentData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : PaymentData.map((e, key) => {
-                                    return <Col lg={4} key={key}>
+                                    return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                         <div className='payment_box'>
                                             <h4 className='h4_title'>{e.title}</h4>
                                             <p>{e.content}</p>

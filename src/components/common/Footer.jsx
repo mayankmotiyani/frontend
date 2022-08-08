@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import "../../assets/style/common/footer.scss";
 import { BiUpArrowAlt } from "react-icons/bi";
 import { IoIosWarning } from 'react-icons/io';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, NavLink, Spinner } from 'react-bootstrap';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { BsSkype, BsArrowLeft } from 'react-icons/bs';
 import { BiRightArrowAlt } from 'react-icons/bi';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import WhatsApp from '../../assets/media/whatsapp.png'
 // import Logo from '../../assets/media/Infograins IT-02.png'
 const Footer = () => {
@@ -36,7 +37,7 @@ const Footer = () => {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
       setServiceData(api.data.response[0].array_of_blockchain_category_list);
-      console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list[0].blockchain_url);
+      // console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list[0].blockchain_url);
     } catch (error) {
       setServiceData(true)
     }
@@ -65,12 +66,23 @@ const Footer = () => {
       setErrorCompany(true)
     }
   }
+  // const { footer_slug } = useParams();
+  // console.log("footer_slug", footer_slug);
   useEffect(() => {
     footerApi();
     resources();
     serviceApi()
   }, [])
-
+  const navAbout = useNavigate()
+  const handleNav = () => {
+    navAbout("/aboutUs")
+    // console.log("navAbout", navAbout);
+    // event.currentTarget.classList.add('sudhanshu');
+    // console.log("event", event);
+    // navAbout.style.position = "relative"
+    // style.top = "-100px"
+    // style.left = "0px"
+  }
 
   return (
     <>
@@ -167,13 +179,7 @@ const Footer = () => {
                       </div>
                       :
                       serviceData.length === 0 ?
-                        <>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                        </>
+                        <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                         :
                         serviceData.map((e, key) => {
                           return (
@@ -188,7 +194,7 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>About</div>
                 <ul>
-                  {
+                  {/* {
                     ErrorCompany ?
                       <div className='warning'>
                         <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
@@ -205,10 +211,14 @@ const Footer = () => {
                         :
                         aboutData.map((e, key) => {
                           return (
-                            <li key={key}><Link to="/">{e}</Link></li>
+                            <li key={key}><Link to="/aboutUs">{e}</Link></li>
                           )
                         })
-                  }
+                  } */}
+                  <li> <Link to="/aboutUs">About Company</Link></li>
+                  <li> <a href="#mission" onClick={handleNav}>Vision & Mission</a></li>
+                  <li> <a href="#ourPartner" onClick={handleNav}>Become Our Partner</a></li>
+                  <li> <a href="#technology" onClick={handleNav}>Our Technology Partners</a></li>
                 </ul>
               </div>
             </Col>

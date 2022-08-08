@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Col, Container, Image, Row } from 'react-bootstrap'
+import { Col, Container, Image, Row, Spinner } from 'react-bootstrap'
 import Nft from '../../../assets/media/nft.png'
 export default function ContentDiv() {
     // =====================================  API start ============================================ 
@@ -31,9 +31,9 @@ export default function ContentDiv() {
             <section className='content_div_section'>
                 <Container>
                     <Row>
-                        <Col lg={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             {ErrorNFT ? 'Error'
-                                : NFTCate.length === 0 ? 'loading...'
+                                : NFTCate.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                     : <div className='content_div_cont'>
                                         <div className='content_div'>
                                             <h2 className='h2_title'>Your Heading Text Here</h2>
@@ -47,7 +47,7 @@ export default function ContentDiv() {
                                     </div>
                             }
                         </Col>
-                        <Col lg={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <div className='content_img'>
                                 <Image src={Nft} fluid />
                             </div>

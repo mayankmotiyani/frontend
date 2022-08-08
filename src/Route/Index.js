@@ -62,7 +62,6 @@ const Index = () => {
                     <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} />
                     <Route path="/game/:game_slug" element={<UnityGame demo={scrollSmoothTo} />} />
                     <Route path="/nft/:nft_slug" element={<Main_nft demo={scrollSmoothTo} />} />
-
                     <Route path="/product/web" element={<ProductWeb demo={scrollSmoothTo} />} />
                     <Route path="/resource/:res_slug" element={<Resources demo={scrollSmoothTo} />} />
                     <Route path="/career" element={<Career demo={scrollSmoothTo} />} />

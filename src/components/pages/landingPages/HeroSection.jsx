@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 // import "../../../assets/style/pages/landing_page/heroSection.scss"
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -46,7 +46,7 @@ export default function HeroSection() {
         }
     }
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
 
@@ -90,7 +90,7 @@ export default function HeroSection() {
         <>
             <section className='hero-wrap'>
                 <div className='hero_overlay'></div>
-                <Particle/>
+                <Particle />
                 {/* <video autoPlay muted loop id="myVideo" width="100%" className='heroSection_video'>
                     <source src={video} type="video/mp4" />
                     <source src={video} type="video/ogg" />
@@ -105,29 +105,7 @@ export default function HeroSection() {
                                 </div>
                             </div>
                             : SliderData.length === 0 ?
-                                <div className='item'>
-                                    <div className='inner_section'>
-                                        <Container>
-                                            <Row>
-                                                <Col lg={6}>
-                                                    <div className='hero_slide_section_content'>
-                                                        <div className='hero_content_div'>
-                                                            <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6>
-                                                            <h2 className='h2_title hero_cont_heading'>Heading Text Here</h2>
-                                                            <p className='hero_cont_para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nemo ea explicabo dolor, libero eveniet et nobis, praesentium exercitationem consequatur vel quidem iusto ipsum id inventore? Amet nam repudiandae dolorum?</p>
-                                                            <button className='hero_cont_btn'>Click Me</button>
-                                                        </div>
-                                                    </div>
-                                                </Col>
-                                                <Col lg={6}>
-                                                    <div className='hero_slide_section_img'>
-                                                        <Image src={HeroImage} fluid />
-                                                    </div>
-                                                </Col>
-                                            </Row>
-                                        </Container>
-                                    </div>
-                                </div>
+                                <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : SliderData.map((ele, index) => {
                                     return <div className='item' key={index}>
                                         <div className='inner_section'>

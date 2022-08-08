@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import { BsBox } from 'react-icons/bs'
 export default function BoxSections() {
     // =====================================  API start ============================================ 
@@ -39,9 +39,9 @@ export default function BoxSections() {
                             </div>
                         </Col>
                         {ErrorNFT ? "Error"
-                            : NFTCate.length === 0 ? 'loading...'
+                            : NFTCate.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                 : NFTCate.Section1.map((e, key) => {
-                                    return <Col sm={12} md={6} lg={4} xl={4} key={key}>
+                                    return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                         <div className='box_shell'>
                                             <BsBox />
                                             <h5 className='h5_title'>{e.title}</h5>

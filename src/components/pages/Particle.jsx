@@ -10,7 +10,7 @@ export default function Particle() {
     // tsparticles.setAttribute('style', tsparticles.style.cssText +
     // 'position' + ':' + 'unset' + (('important') ? ' !important' : '') + ';');
 
-    
+
     const particlesInit = async (main) => {
         // console.log(main);
 
@@ -103,10 +103,10 @@ export default function Particle() {
                             "events": {
                                 "onhover": {
                                     "enable": true,
-                                    "mode": ["grab"]
+                                    "mode": ["repulse"]
                                 },
                                 "onclick": {
-                                    "enable": false,
+                                    "enable": true,
                                     "mode": "bubble"
                                 },
                                 "resize": true
@@ -137,9 +137,9 @@ export default function Particle() {
                             }
                         },
                         "retina_detect": true,
-                        "style":{
-                            "position":"unset",
-                            "color":"blue",
+                        "style": {
+                            "position": "unset",
+                            "color": "blue",
                             "zIndex": "0"
                         },
                         "background": {

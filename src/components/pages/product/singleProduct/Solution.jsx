@@ -14,7 +14,7 @@ export default function Solution() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col lg={6}>
+                    <Col sm={12} md={6} lg={6} xl={6}>
                             <div className='solution_container'>
                                 <div className="solution_content">
                                     <div className="content_box">
@@ -28,7 +28,7 @@ export default function Solution() {
                                 </div>
                             </div>
                         </Col>
-                        <Col lg={6}>
+                        <Col sm={12} md={6} lg={6} xl={6}>
                             <div className='solution_img_wrapper'>
                                 <Image src={SolutionImg} fluid/>
                             </div>
