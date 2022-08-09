@@ -39,17 +39,20 @@ export default function PartnerStrip() {
             0: {
                 items: 1,
             },
+            300: {
+                items: 2,
+            },
             400: {
-                items: 1,
+                items: 4,
             },
             600: {
-                items: 1,
+                items: 5,
             },
             700: {
-                items: 5,
+                items: 6,
             },
             1000: {
-                items: 5,
+                items: 10,
 
             }
         },

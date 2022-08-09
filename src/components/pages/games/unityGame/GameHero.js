@@ -1,7 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const GameHero = () => {
+    // ========================= form validation =========================
+    const [input, setInput] = useState({
+        name: "",
+        email: "",
+        subject: ""
+    })
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [subjectError, setSubjectError] = useState("");
+    const handleChange = (event) => {
+        setInput({ ...input, [event.target.name]: event.target.value })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // ================ name =============================
+        if (!input.name) {
+            setNameError("Name is required");
+        } else {
+            setNameError("");
+        }
+
+        // ===================== email =========================
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!input.email) {
+            setEmailError("Email is required")
+        } else if (!input.email.match(mailformat)) {
+            setEmailError("Please enter your valid email")
+        } else {
+            setEmailError("")
+        }
+
+        // ================ subject =============================
+        if (!input.subject) {
+            setSubjectError("Subject is required");
+        } else {
+            setSubjectError("");
+        }
+    }
+
+    // ========================= form validation ========================= 
     return (
         <>
             <section className='gameHero-wrap'>
@@ -15,16 +55,19 @@ const GameHero = () => {
                             </div>
                         </Col>
                         <Col sm={6} md={6} lg={4} xl={4}>
-                            <Form className='gameHero-from-wrap'>
+                            <Form className='gameHero-from-wrap' onSubmit={handleSubmit}>
                                 <h3 className='h3_title'>Talk to our experts</h3>
                                 <Form.Group className="mb-3" controlId="formBasicName">
-                                    <Form.Control type="text" placeholder="Enter name" className='input_field' />
+                                    <Form.Control type="text" placeholder="Enter name" className='input_field' name='name' value={input.name} onChange={handleChange} />
+                                    <small style={{ color: "red", fontSize: "12px" }}>{nameError}</small>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Enter email" className='input_field' />
+                                    <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
+                                    <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicSubjecy">
-                                    <Form.Control type="text" placeholder="Enter subject" className='input_field' />
+                                    <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
+                                    <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
                                 </Form.Group>
                                 <Form.Control
                                     as="textarea"

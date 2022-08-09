@@ -1,15 +1,35 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Container } from "react-bootstrap";
 
 const AboutBanner = () => {
+  // ==================================== API ==============================================
+  const [apiData, setapiData] = useState([])
+  const [Error, setError] = useState(false)
+  async function api() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/`);
+      setapiData(api.data.response)
+    } catch (error) {
+      setError(true)
+    }
+  }
+
+  useEffect(() => {
+    api()
+  }, [])
+
   return (
     <>
       <section className='aboutUs-wrap'>
         <Container>
-          <div className='aboutUs-title'>
-            <h2 className='h2_title'>About Us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia cum, quisquam delectus repellat at error quibusdam consectetur! Libero, tempore delectus odio</p>
-          </div>
+          {Error ? 'Error'
+            : apiData.length === 0 ? 'loading...'
+              : <div className='aboutUs-title'>
+                <h2 className='h2_title'>{apiData.heading}</h2>
+                <p>{apiData.description}</p>
+              </div>
+          }
         </Container>
       </section>
     </>

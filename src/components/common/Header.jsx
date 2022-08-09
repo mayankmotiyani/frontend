@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { IoIosWarning } from 'react-icons/io'
 import NFT_bg from '../../assets/media/nft_bg.png'
 import Slice_bg from '../../assets/media/slice3ss.png'
+import Game_bg from '../../assets/media/games-d.png'
 
 
 export default function Header() {
@@ -323,7 +324,7 @@ export default function Header() {
   async function topBar_Numbers() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/header-office-address/`);
-      console.log(api.data.response);
+      // console.log(api.data.response);
       setTopBarNum(api.data.response)
     } catch (error) {
       setErrorTopBar(true)
@@ -353,7 +354,7 @@ export default function Header() {
                       {ErrorTopBar ? 'Error'
                         : TopBarNum.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                           : TopBarNum.map((e, key) => {
-                            return <li key={key}><div className='country_name'>{e.office}</div>  <a href={`tel:${e.phone1}`}>{e.phone1}</a>  <a href={`tel:${e.phone2}`}>{e.phone2}</a></li>
+                            return <li key={key}><div className='country_name'>{e.office}</div>  <a href={`tel:${e.phone1}`}>{e.phone1}</a>  <a className="ms-4" href={`tel:${e.phone2}`}>{e.phone2}</a></li>
                           })}
                       {/* <li><div className='country_name'>USA</div>  <a href="tel:+12025196167">  +12025196167</a></li> */}
                       {/* <li><div className='country_name'>UAE</div>  <a href="tel:+971585596272">  +971585596272</a></li> */}
@@ -651,9 +652,9 @@ export default function Header() {
               <Container mainlink="2">
                 <Row className='justify-content-around' mainlink="2">
                   <Col lg={3} mainlink="2">
-                    {/* <div className='technology' mainlink="2">
-                      <h2 className='h2_title'>SliceLedger</h2>
-                    </div> */}
+                    <div mainlink="2" className='dropdown_bg_image'>
+                      <img src={Game_bg} alt="" mainlink="1" />
+                    </div>
                   </Col>
                   <Col lg={3} mainlink="2">
                     <div className='desk_dropdown_col' mainlink="2">

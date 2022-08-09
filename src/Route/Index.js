@@ -22,6 +22,7 @@ import Privacy from '../components/pages/PrivacyPolicy/privacy';
 import TermCondition from '../components/pages/Term_and_condition/TermCondition';
 import Career from '../components/pages/career/Career';
 import CareerApply from '../components/pages/career/CareerApply';
+import SiteMap from '../components/pages/SiteMap';
 const Index = () => {
     // ===================================== For Route API ============================================
     // const [RoutePath, setRoutePath] = useState([])
@@ -69,6 +70,7 @@ const Index = () => {
                     <Route path='/product/:product_slug' element={<ProductPage demo={scrollSmoothTo}/>}/>
                     <Route path='/privacy' element={<Privacy demo={scrollSmoothTo}/>}/>
                     <Route path='/term_and_condition' element={<TermCondition demo={scrollSmoothTo}/>}/>
+                    <Route path='/siteMap' element={<SiteMap demo={scrollSmoothTo}/>}/>
                     {/* <Route path='/:apl_slug' element={<CareerApply demo={scrollSmoothTo}/>}/> */}
                     <Route path='*' element={<NotFound demo={scrollSmoothTo}/>} />
                 </Routes>

@@ -1,0 +1,32 @@
+.siteMap-wrap {
+    padding: 50px 0px;
+
+    .siteMap-title {
+        padding-bottom: 30px;
+
+        .h2_title {
+            text-align: center;
+        }
+    }
+
+    .siteMap-card-wrap {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 10px;
+
+        .blockChain-card-head {
+            border-bottom: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .blockChain-card-details {
+            padding: 20px;
+            .h4_title{
+                padding: 10px 0px 4px;
+            }
+            .blockChain-category-list{
+                font-size: 16px;
+            }
+        }
+    }
+
+}

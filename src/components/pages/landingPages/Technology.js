@@ -53,7 +53,7 @@ const Technology = () => {
                                 {/* <div className='technology_div wow fadeInDown' data-wow-iteration="1"> */}
                                 <div className='technology_div wow zoomIn' data-wow-iteration="1">
                                     <div className='technology_text'>
-                                        <h4 className='h4_title'>What We Do?</h4>
+                                        <h4 className='h4_title'>{Data[0].heading}</h4>
                                         <h2 className='h2_title'>{Data[0].title}</h2>
                                         <p>{Data[0].content}</p>
                                         <button type='button' className='btn'>More About Us</button>
