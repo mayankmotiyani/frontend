@@ -390,10 +390,16 @@ $header_bottom_gradient: linear-gradient(
                         background-color: #47576a;
                         color: #ffffff;
                     }
+                    .dropdown_bg_image{
+                        display: flex;
+                        height: 100%;
+                        align-items: center;
+                    }
                     .tab-content {
                         ul {
                             overflow: hidden;
                             line-height: 2;
+                            padding: 1em 0em;
                         }
 
                         .desk_dropdown_link {
@@ -471,6 +477,9 @@ $header_bottom_gradient: linear-gradient(
             }
 
             .desk_dropdown_col {
+                display: flex;
+                height: 100%;
+                align-items: center;
                 .desk_dropdown_subhead {
                     font-size: 1.2em;
                     font-weight: 600;

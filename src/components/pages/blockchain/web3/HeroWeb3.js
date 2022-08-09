@@ -36,7 +36,7 @@ const HeroWeb3 = () => {
               {ErrorBlockchain ? 'Error'
                 : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                   : <div className='w3-about-wrap'>
-                    <h2 className='h2_title'>Best Web3 Development</h2>
+                    <h2 className='h2_title'>{BlockchainCate.blockchain_name}</h2>
                     <h3 className='h3_title'>Company In India</h3>
                     <p>{BlockchainCate.blockchain_description}</p>
                   </div>

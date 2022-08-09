@@ -19,6 +19,9 @@ import { BiConversation } from "react-icons/bi";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { IoIosWarning } from 'react-icons/io'
+import NFT_bg from '../../assets/media/nft_bg.png'
+import Slice_bg from '../../assets/media/slice3ss.png'
+
 
 export default function Header() {
   // ====================================== popup validations ===================================
@@ -555,35 +558,47 @@ export default function Header() {
                         </Col>
                       })}
                 </Row> */}
-                <Tab.Container id="left-tabs-example" defaultActiveKey='Core Blockchain'>
-                  <Row>
-                    <Col sm={3}>
-                      <Nav variant="pills" className="flex-column">
+                <Tab.Container id="left-tabs-example" defaultActiveKey='Core Blockchain' mainlink="0">
+                  <Row mainlink="0">
+                    <Col sm={3} mainlink="0">
+                      <Nav variant="pills" className="flex-column" mainlink="0">
                         {ErrorBlockchain ? "Error"
                           : CategoriesList.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : CategoriesList.map((e, key) => {
-                              return <Nav.Item key={key}>
-                                <Nav.Link eventKey={e.blockchain_category}>{e.blockchain_category}</Nav.Link>
+                              return <Nav.Item key={key} mainlink="0">
+                                <Nav.Link eventKey={e.blockchain_category} mainlink="0">{e.blockchain_category}</Nav.Link>
                               </Nav.Item>
                             })}
                       </Nav>
                     </Col>
-                    <Col sm={9}>
-                      <Tab.Content>
+                    <Col sm={9} mainlink="0">
+                      <Tab.Content mainlink="0">
                         {ErrorBlockchain ? 'Error'
                           : CategoriesList.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : CategoriesList.map((e, key) => {
-                              return <Tab.Pane eventKey={e.blockchain_category} key={key}>
-                                <ul mainlink="0">
-                                  {e.array_of_blockchain_category_list.map((e, key) => {
-                                    return <li key={key} mainlink="0">
-                                      <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
-                                        <GrFormNextLink />
-                                        <div>{e.blockchain_name}</div>
-                                      </Link>
-                                    </li>
-                                  })}
-                                </ul>
+                              return <Tab.Pane eventKey={e.blockchain_category} key={key} mainlink="0">
+                                <div className='d-flex'>
+                                  <ul mainlink="0">
+                                    {e.array_of_blockchain_category_list.slice(0, 7).map((e, key) => {
+                                      return <li key={key} mainlink="0">
+                                        <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
+                                          <GrFormNextLink />
+                                          <div mainlink="0">{e.blockchain_name}</div>
+                                        </Link>
+                                      </li>
+                                    })}
+                                  </ul>
+                                  <ul>
+                                    {e.array_of_blockchain_category_list.slice(7).map((e, key) => {
+                                      return <li key={key} mainlink="0">
+                                        <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
+                                          <GrFormNextLink />
+                                          <div mainlink="0">{e.blockchain_name}</div>
+                                        </Link>
+                                      </li>
+                                    })}
+                                  </ul>
+                                </div>
                               </Tab.Pane>
                             })
                         }
@@ -600,11 +615,11 @@ export default function Header() {
             <div className='desk_dropdown' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="1">
                 <Row className='justify-content-around' mainlink="1">
-                  {/* <Col lg={3} mainlink="1">
-                    <div className='technology' mainlink="1">
-                      <h2 className='h2_title'>SliceLedger</h2>
+                  <Col lg={3} mainlink="1">
+                    <div mainlink="1" className='dropdown_bg_image'>
+                      <img src={NFT_bg} alt="" mainlink="1" />
                     </div>
-                  </Col> */}
+                  </Col>
                   <Col lg={3} mainlink="1">
                     <div className='desk_dropdown_col' mainlink="1">
                       {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
@@ -612,7 +627,7 @@ export default function Header() {
 
                         {ErrorNft ?
                           <div className='warning' mainlink="1">
-                            <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                            <b mainlink="1"><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                           </div>
                           : nftList.length === 0 ?
                             <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
@@ -620,7 +635,7 @@ export default function Header() {
                               return <li key={index} mainlink="1">
                                 <Link to={nft.nft_url} className='desk_dropdown_link' mainlink="1">
                                   <GrFormNextLink />
-                                  <div>{nft.name}</div>
+                                  <div mainlink="1">{nft.name}</div>
                                 </Link>
                               </li>
                             })}
@@ -635,11 +650,11 @@ export default function Header() {
             <div className='desk_dropdown' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="2">
                 <Row className='justify-content-around' mainlink="2">
-                  {/* <Col lg={3} mainlink="2">
-                    <div className='technology' mainlink="2">
+                  <Col lg={3} mainlink="2">
+                    {/* <div className='technology' mainlink="2">
                       <h2 className='h2_title'>SliceLedger</h2>
-                    </div>
-                  </Col> */}
+                    </div> */}
+                  </Col>
                   <Col lg={3} mainlink="2">
                     <div className='desk_dropdown_col' mainlink="2">
                       <ul mainlink="2">
@@ -653,7 +668,7 @@ export default function Header() {
                               return <li key={index} mainlink="2">
                                 <Link to={game.game_slug} className='desk_dropdown_link' mainlink="2">
                                   <GrFormNextLink />
-                                  <div>{game.name}</div>
+                                  <div mainlink="2">{game.name}</div>
                                 </Link>
                               </li>
                             })}
@@ -667,8 +682,8 @@ export default function Header() {
               <Container mainlink="3">
                 <Row className='justify-content-around' mainlink="3">
                   <Col lg={3} mainlink="3">
-                    <div className='technology' mainlink="3">
-                      <h2 className='h2_title'>SliceLedger</h2>
+                    <div mainlink="3" className='dropdown_bg_image'>
+                      <img src={Slice_bg} alt="" mainlink="3" />
                     </div>
                   </Col>
                   <Col lg={3} mainlink="3">
@@ -680,7 +695,7 @@ export default function Header() {
                               return <li key={key} mainlink="3">
                                 <Link to={product.product_url} className='desk_dropdown_link' mainlink="3">
                                   <GrFormNextLink />
-                                  <div>{product.name}</div>
+                                  <div mainlink="3">{product.name}</div>
                                 </Link>
                               </li>
                             })}

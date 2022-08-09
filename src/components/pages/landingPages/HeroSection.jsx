@@ -10,6 +10,7 @@ import axios from 'axios';
 import { IoIosWarning } from 'react-icons/io'
 import Particle from '../Particle';
 import { WOW } from "wowjs";
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
     // const [owlData, setOwlData] = useState([])
@@ -117,7 +118,8 @@ export default function HeroSection() {
                                                                 {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
                                                                 <h2 className='h2_title hero_cont_heading'>{ele.title}</h2>
                                                                 <p className='hero_cont_para'>{ele.content}</p>
-                                                                <button className='hero_cont_btn'>Click Me</button>
+                                                                <a href={ele.official_link} target={'_blank'} className='hero_cont_btn'>Visit Site</a>
+                                                                <Link to={ele.product_url} className='hero_cont_btn ms-4'>Read More</Link>
                                                             </div>
                                                         </div>
                                                     </Col>
