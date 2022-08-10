@@ -71,7 +71,9 @@ export default function PartnerStrip() {
                                                 <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                                             </div>
                                             : partner.length === 0 ?
-                                                <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                                                <div className='spin_loader'>
+                                                    <div className='partner_image_EMPTY'></div>
+                                                </div>
                                                 :
                                                 partner.map((ele) => {
                                                     return (

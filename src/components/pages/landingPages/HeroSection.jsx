@@ -106,13 +106,35 @@ export default function HeroSection() {
                                 </div>
                             </div>
                             : SliderData.length === 0 ?
-                                <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                                <Container>
+                                    <Row>
+                                        <Col lg={6} >
+                                            <div className='EMPTY_loader_content'>
+                                                <div className=''>
+                                                    {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
+                                                    <h2 className='h2_title EMPTY_loader_head'></h2>
+                                                    <p className='para_EMPTY'></p>
+                                                    <p className='para_EMPTY'></p>
+                                                    <p className='para_EMPTY'></p>
+                                                    <button className='EMPTY_btn'></button>
+                                                    {/* <a href={ele.official_link} target={'_blank'} className='hero_cont_btn'>Visit Site</a> */}
+                                                    {/* <Link to={ele.product_url} className='hero_cont_btn ms-4'>Read More</Link> */}
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col lg={6}>
+                                            <div className='EMPTY_loader_img'>
+                                                {/* <Image src={ele.image} fluid /> */}
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Container>
                                 : SliderData.map((ele, index) => {
                                     return <div className='item' key={index}>
                                         <div className='inner_section'>
                                             <Container>
                                                 <Row>
-                                                    <Col lg={6} >
+                                                    <Col sm={12} md={6} lg={6} xl={6}>
                                                         <div className='hero_slide_section_content wow fadeIn'>
                                                             <div className='hero_content_div'>
                                                                 {/* <h6 className='h5_title hero_cont_subheading'>Sub Heading</h6> */}
@@ -123,7 +145,7 @@ export default function HeroSection() {
                                                             </div>
                                                         </div>
                                                     </Col>
-                                                    <Col lg={6}>
+                                                    <Col sm={12} md={6} lg={6} xl={6}>
                                                         <div className='hero_slide_section_img'>
                                                             <Image src={ele.image} fluid />
                                                         </div>

@@ -133,6 +133,7 @@
                 padding: 2em;
                 position: relative;
                 overflow: hidden;
+                z-index: 9;
 
                 &::before {
                     content: "";
@@ -143,6 +144,7 @@
                     height: 150px;
                     background-color: #5194a5;
                     border-radius: 50%;
+                    z-index: -7;
                 }
 
                 .head {
@@ -164,8 +166,8 @@
         margin-top: 20px;
     }
     .form-wrap .get_in_touch_div .get_in_touch_row{
-        padding: 0%;
-        padding-top: 1em;
+        padding: 1em;
+        margin: 0px 15px;
     }
     .form-wrap .contact-form-heading .contact_form_head_div{
         width: 100%;

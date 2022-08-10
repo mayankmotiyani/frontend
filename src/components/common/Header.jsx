@@ -70,7 +70,14 @@ export default function Header() {
   // ======================================== chandrakant Dropdown start ========================================
   function toggleDropdown_enter(e) {
     // console.log(e.target);
+    // let currentDropdown;
+    // try {
+    //   currentDropdown = e.target.attributes.mainlink.nodeValue;
+    // } catch (error) {
+    //   console.log('errorrrrrrrrrrrrrrrr');
+    // }
     const currentDropdown = e.target.attributes.mainlink.nodeValue;
+    // console.log('currentDropdown', currentDropdown);
     // document.getElementsByClassName('desk_dropdown')[currentDropdown].style.opacity = '1'
     document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'scaleY(1)'
     // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.padding = '2em'
@@ -283,7 +290,10 @@ export default function Header() {
 
     for (let i = 0; i < allLink.length; i++) {
       allLink[i].addEventListener('click', (e) => {
+        // console.log(e.target.attributes.mainlink.nodeValue);
+        // const index = e.target.attributes.mainlink.nodeValue;
         const index = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('mainlink');
+        // console.log(index);
         document.getElementsByClassName('desk_dropdown')[index].style.transform = 'translateY(-500px)';
       })
 
@@ -391,10 +401,10 @@ export default function Header() {
                       </div>
                       <div className='main_nav_list'>
                         <ul className='main_nav_ul'>
-                          <li className='main_nav_link' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Blockchain <IoMdArrowDropdown /></li>
-                          <li className='main_nav_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
-                          <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li>
-                          <li className='main_nav_link' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Our Products <IoMdArrowDropdown /> </li>
+                          <li className='main_nav_link main_nav_Drop_link' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Blockchain <IoMdArrowDropdown /></li>
+                          <li className='main_nav_link main_nav_Drop_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
+                          <li className='main_nav_link main_nav_Drop_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li>
+                          <li className='main_nav_link main_nav_Drop_link' mainlink="3" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Our Products <IoMdArrowDropdown /> </li>
                           <li className='main_nav_link'><Link to="/aboutUs">About Us</Link></li>
                           <li className='main_nav_link'><Link to='/blog'>Blogs</Link></li>
                           <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
@@ -578,22 +588,22 @@ export default function Header() {
                           : CategoriesList.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                             : CategoriesList.map((e, key) => {
                               return <Tab.Pane eventKey={e.blockchain_category} key={key} mainlink="0">
-                                <div className='d-flex'>
+                                <div className='d-flex' mainlink="0">
                                   <ul mainlink="0">
                                     {e.array_of_blockchain_category_list.slice(0, 7).map((e, key) => {
                                       return <li key={key} mainlink="0">
                                         <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
-                                          <GrFormNextLink />
+                                          <GrFormNextLink mainlink="0" />
                                           <div mainlink="0">{e.blockchain_name}</div>
                                         </Link>
                                       </li>
                                     })}
                                   </ul>
-                                  <ul>
+                                  <ul mainlink="0">
                                     {e.array_of_blockchain_category_list.slice(7).map((e, key) => {
                                       return <li key={key} mainlink="0">
                                         <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
-                                          <GrFormNextLink />
+                                          <GrFormNextLink mainlink="0" />
                                           <div mainlink="0">{e.blockchain_name}</div>
                                         </Link>
                                       </li>
@@ -628,14 +638,14 @@ export default function Header() {
 
                         {ErrorNft ?
                           <div className='warning' mainlink="1">
-                            <b mainlink="1"><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                            <b mainlink="1"><IoIosWarning style={{ color: 'red' }} mainlink="1" /> Something went wrong</b>
                           </div>
                           : nftList.length === 0 ?
-                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                            <div className='spin_loader' mainlink="1"> <Spinner variant='primary' animation='border' mainlink="1" /> </div>
                             : nftList.map((nft, index) => {
                               return <li key={index} mainlink="1">
                                 <Link to={nft.nft_url} className='desk_dropdown_link' mainlink="1">
-                                  <GrFormNextLink />
+                                  <GrFormNextLink mainlink="1" />
                                   <div mainlink="1">{nft.name}</div>
                                 </Link>
                               </li>
@@ -653,7 +663,7 @@ export default function Header() {
                 <Row className='justify-content-around' mainlink="2">
                   <Col lg={3} mainlink="2">
                     <div mainlink="2" className='dropdown_bg_image'>
-                      <img src={Game_bg} alt="" mainlink="1" />
+                      <img src={Game_bg} alt="" mainlink="2" />
                     </div>
                   </Col>
                   <Col lg={3} mainlink="2">
@@ -661,14 +671,14 @@ export default function Header() {
                       <ul mainlink="2">
                         {errorGame ?
                           <div className='warning' mainlink="2">
-                            <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
+                            <b mainlink="2"><IoIosWarning style={{ color: 'red' }} mainlink="2" /> Something went wrong</b>
                           </div>
                           : gameList.length === 0 ?
-                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                            <div className='spin_loader' mainlink="2"> <Spinner variant='primary' animation='border' mainlink="2" /> </div>
                             : gameList.map((game, index) => {
                               return <li key={index} mainlink="2">
                                 <Link to={game.game_slug} className='desk_dropdown_link' mainlink="2">
-                                  <GrFormNextLink />
+                                  <GrFormNextLink mainlink="2" />
                                   <div mainlink="2">{game.name}</div>
                                 </Link>
                               </li>
@@ -683,19 +693,24 @@ export default function Header() {
               <Container mainlink="3">
                 <Row className='justify-content-around' mainlink="3">
                   <Col lg={3} mainlink="3">
-                    <div mainlink="3" className='dropdown_bg_image'>
-                      <img src={Slice_bg} alt="" mainlink="3" />
-                    </div>
+                    <Link to={'/products'} mainlink="3" className='desk_dropdown_link dropdown_bg_image'>
+                      <h5>View All Products</h5>
+                      <div>
+                        <div>
+                          <img src={Slice_bg} alt="" mainlink="3" />
+                        </div>
+                      </div>
+                    </Link>
                   </Col>
                   <Col lg={3} mainlink="3">
                     <div className='desk_dropdown_col' mainlink="3">
                       <ul mainlink="3">
                         {ErrorProduct ? 'error'
-                          : ProductData.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                          : ProductData.length === 0 ? <div className='spin_loader' mainlink="3"> <Spinner variant='primary' animation='border' mainlink="3" /> </div>
                             : ProductData.map((product, key) => {
                               return <li key={key} mainlink="3">
                                 <Link to={product.product_url} className='desk_dropdown_link' mainlink="3">
-                                  <GrFormNextLink />
+                                  <GrFormNextLink mainlink="3" />
                                   <div mainlink="3">{product.name}</div>
                                 </Link>
                               </li>

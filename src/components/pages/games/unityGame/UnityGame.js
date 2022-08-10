@@ -19,7 +19,7 @@ const UnityGame = (props) => {
       <OurGame />
       <GameNews />
       <Featured />
-      <GameFaq />
+      {/* <GameFaq /> */}
     </>
   )
 }

@@ -25,7 +25,7 @@ const Web3 = (props) => {
             <W3Owl />
             <W3Card />
             <W3Tabs />
-            <W3Accordion />
+            {/* <W3Accordion /> */}
         </>
     )
 }

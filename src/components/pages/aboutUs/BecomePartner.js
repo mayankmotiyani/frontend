@@ -1,7 +1,23 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Col, Row, Image } from 'react-bootstrap';
 import part from "../../../assets/images/about/partner/bpart.png"
 const BecomePartner = () => {
+    const [ApiData, setApiData] = useState([])
+    const [Error, setError] = useState(false)
+    async function api() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/build-connection/`);
+            setApiData(api.data.response)
+        } catch (error) {
+            setError(true)
+        }
+    }
+
+    useEffect(() => {
+        api()
+    }, [])
+
     return (
         <>
             <section className='becomePartner-wrap' id='ourPartner'>
@@ -11,33 +27,21 @@ const BecomePartner = () => {
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit ipsa quis modi neque quos? Quidem maxime nisi, sint dolor, illo aut odit quod, odio est maiores sunt error aspernatur fugiat.</p>
                     </div>
                     <Row>
-                        <Col sm={6} md={6} lg={4} xl={4}>
-                            <div className='becomePartner-card'>
-                                <figure className='becomePartner-img'>
-                                    <Image src={part} alt="Part" fluid />
-                                </figure>
-                                <h3 className='h3_title'>Regional Sales Partner</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sunt ad quis recusandae consectetur mollitia.</p>
-                            </div>
-                        </Col>
-                        <Col sm={6} md={6} lg={4} xl={4}>
-                            <div className='becomePartner-card'>
-                                <figure className='becomePartner-img'>
-                                    <Image src={part} alt="Part" fluid />
-                                </figure>
-                                <h3 className='h3_title'>Regional Sales Partner</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sunt ad quis recusandae consectetur mollitia.</p>
-                            </div>
-                        </Col>
-                        <Col sm={6} md={6} lg={4} xl={4}>
-                            <div className='becomePartner-card'>
-                                <figure className='becomePartner-img'>
-                                    <Image src={part} alt="Part" fluid />
-                                </figure>
-                                <h3 className='h3_title'>Regional Sales Partner</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sunt ad quis recusandae consectetur mollitia.</p>
-                            </div>
-                        </Col>
+                        {
+                            Error ? 'Error'
+                                : ApiData.length === 0 ? 'loading...'
+                                    : ApiData.map((e, key) => {
+                                        return <Col sm={6} md={6} lg={4} xl={4} key={key}>
+                                            <div className='becomePartner-card'>
+                                                <figure className='becomePartner-img'>
+                                                    <Image src={e.image} alt="Part" fluid />
+                                                </figure>
+                                                <h3 className='h3_title'>{e.title}</h3>
+                                                <p>{e.content}</p>
+                                            </div>
+                                        </Col>
+                                    })
+                        }
                     </Row>
                 </Container>
             </section>

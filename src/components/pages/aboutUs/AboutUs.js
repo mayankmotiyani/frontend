@@ -7,6 +7,7 @@ import BecomePartner from './BecomePartner'
 import TechnologyPartners from './TechnologyPartners'
 import VisionMission from './VisionMission'
 import { useParams } from "react-router-dom"
+import Faq from './Faq'
 const AboutUs = (props) => {
     // =========================== scroll To Top default =========================
     useEffect(() => {
@@ -23,6 +24,7 @@ const AboutUs = (props) => {
             <VisionMission />
             <TechnologyPartners />
             <BecomePartner />
+            <Faq/>
         </>
     )
 }

@@ -15,7 +15,7 @@ const Technology = () => {
     }, []);
 
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
 
@@ -47,7 +47,28 @@ const Technology = () => {
             <Container >
                 <div className='technology_details'>
                     {/* <Row> */}
-                    {Error ? 'error' : Data.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                    {Error ? 'error' : Data.length === 0 ?
+                        // <div className='spin_loader'>
+                            <Row>
+                                <Col sm={6} md={6} lg={6} xl={6}>
+                                    <div className='technology_div EMPTY_loader_content'>
+                                        <div className='technology_text'>
+                                            <h4 className='h4_title EMPTY_loader_subhead'></h4>
+                                            <h2 className='h2_title EMPTY_loader_head'></h2>
+                                            <p className='para_EMPTY'></p>
+                                            <p className='para_EMPTY'></p>
+                                            <p className='para_EMPTY'></p>
+                                            {/* <button type='button' className='btn EMPTY_loader'></button> */}
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col sm={6} md={6} lg={6} xl={6}>
+                                    <figure className='technology_img EMPTY_loader_img'>
+                                        
+                                    </figure>
+                                </Col>
+                            </Row>
+                        // </div>
                         : <Row>
                             <Col sm={6} md={6} lg={6} xl={6}>
                                 {/* <div className='technology_div wow fadeInDown' data-wow-iteration="1"> */}

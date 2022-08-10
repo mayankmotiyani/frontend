@@ -38,7 +38,25 @@ const OnlineStore = () => {
     <section className='store_wrap'>
       <Container >
         <div className='store_details'>
-          {Error ? 'error' : Data.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+          {Error ? 'error' : Data.length === 0 ?
+            <Row>
+              <Col sm={6} md={6} lg={6} xl={6} >
+                <figure className='EMPTY_loader_img' >
+                </figure>
+              </Col>
+              <Col sm={6} md={6} lg={6} xl={6}>
+                <div className='EMPTY_loader_content'>
+                  <div className='store_text'>
+                    <h4 className='h4_title EMPTY_loader_subhead'></h4>
+                    <h2 className='h2_title EMPTY_loader_head'></h2>
+                    <p className='para_EMPTY'></p>
+                    <p className='para_EMPTY'></p>
+                    <p className='para_EMPTY'></p>
+                    <div className='EMPTY_btn'></div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
             : <Row>
               <Col sm={6} md={6} lg={6} xl={6} >
                 <figure className='store_img wow zoomIn' >
