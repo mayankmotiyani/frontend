@@ -31,9 +31,9 @@ const VisionMission = () => {
           <Row>
             <Col sm={12} md={12} lg={6} xl={6}>
               {Error ? 'Error'
-                : apiData.length === 0 ? 'loading...'
+                : vision.length === 0 ? 'loading...'
                   : <figure className='mission-img'>
-                    <img src={apiData.response.image} alt="mission" />
+                    <img src={vision.response.image} alt="mission" />
                   </figure>
               }
             </Col>
