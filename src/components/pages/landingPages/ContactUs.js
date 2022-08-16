@@ -129,7 +129,15 @@ const ContactUs = () => {
     useEffect(() => {
         getContent()
     }, [])
-    
+
+
+    // ========================================= Arrow Key ==============================
+    useEffect(() => {
+        document.getElementById('userNumber').addEventListener('keydown', function (e) {
+            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {e.preventDefault()}
+        });
+    }, [])
+
 
     // console.log(getContentData);
 
@@ -145,7 +153,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     <div className='get_in_touch_div'>
-                        <Row className='get_in_touch_row justify-content-between'>
+                        <Row className='get_in_touch_row justify-content-around'>
                             <Col sm={12} md={5} lg={5} xl={5}>
                                 {Error ? "Error" :
                                     getContentData.length === 0 ? 'loading...'
@@ -165,19 +173,19 @@ const ContactUs = () => {
                                         </div>
                                 }
                             </Col>
-                            <Col sm={12} md={7} lg={7} xl={7}>
+                            <Col sm={12} md={6} lg={6} xl={6}>
                                 <Form className='contact-form-wrap row' onSubmit={handleSubmit}>
-                                    <Form.Group className="mb-3 col-lg-6" controlId="formBasicName">
+                                    <Form.Group className="mb-3 col-lg-12" controlId="formBasicName">
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter name" className='input_field' name="name" value={input.name} onChange={handleChange} />
                                         <small style={{ color: "red", fontSize: "12px" }}>{nameError}</small>
                                     </Form.Group>
-                                    <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+                                    <Form.Group className="mb-3 col-lg-12" controlId="formBasicEmail">
                                         <Form.Label>Email address</Form.Label>
                                         <Form.Control type="email" placeholder="Enter email" className='input_field' name="email" value={input.email} onChange={handleChange} />
                                         <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                     </Form.Group>
-                                    <Form.Group className="mb-3 col-lg-6">
+                                    <Form.Group className="mb-3 col-lg-12">
                                         <Form.Label>Mobile No.</Form.Label>
                                         <div className='mobile_div'>
                                             <Form.Select id='mobile'>
@@ -188,11 +196,11 @@ const ContactUs = () => {
                                                         return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
                                                     })}
                                             </Form.Select>
-                                            <Form.Control type="number" min={0} placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
+                                            <Form.Control type="number" min={0} id="userNumber" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
                                         </div>
                                         <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                     </Form.Group>
-                                    <Form.Group className="mb-3 col-lg-6" controlId="formBasicSubjecy">
+                                    <Form.Group className="mb-3 col-lg-12" controlId="formBasicSubjecy">
                                         <Form.Label>Subject</Form.Label>
                                         <Form.Control type="text" placeholder="Enter subject" className='input_field' name="subject" value={input.subject} onChange={handleChange} />
                                         <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>

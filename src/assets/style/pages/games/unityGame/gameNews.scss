@@ -8,7 +8,7 @@
 
         .h3_title {
             padding-bottom: 20px;
-            color: orange;
+            color: #36bbc2;
         }
 
         a {
@@ -27,12 +27,12 @@
 
         a span:nth-child(1) {
             color: #fff;
-            background: #262626;
+            background: #000545;
         }
 
         a span:nth-child(2) {
             color: #fff;
-            background: orange;
+            background: #36bbc2;
         }
 
         a span:nth-child(1):before {
@@ -40,7 +40,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: orange;
+            background: #36bbc2;
             padding: 8px;
             transition: 0.5S;
             transform-origin: top;
@@ -56,7 +56,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: #262626;
+            background: #000545;
             padding: 8px 15px;
             transition: 0.5S;
             transform-origin: bottom;
@@ -73,7 +73,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: #262626;
+            background: #000545;
             transform-origin: bottom;
             transform: rotateX(0deg) translateY(0%);
             transition: 0.5s;
@@ -88,7 +88,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: orange;
+            background: #36bbc2;
             padding: 8px 15px;
             transition: 0.5S;
             transform-origin: top;
@@ -113,7 +113,7 @@
         }
         .gameNews-card-detail{
             .h3_title{
-                color: orange;
+                color: #36bbc2;
                 padding: 10px 0px;
             }
         }

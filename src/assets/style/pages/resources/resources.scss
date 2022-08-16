@@ -9,7 +9,8 @@
         // height: 400px;
 
         &::after {
-            background: #0000004f;
+            // background: #0000004f;
+            background-image: linear-gradient(45deg, #000545c2, #000);
             position: absolute;
             content: "";
             top: 0px;
@@ -89,7 +90,8 @@
         font-size: 14px;
         left: 30%;
     }
-    .resources-wrap .resources-details .product-img, .resources-wrap .resources-details .product-about{
+    .resources-wrap .resources-details .product-img,
+    .resources-wrap .resources-details .product-about {
         margin: 0px;
     }
 }

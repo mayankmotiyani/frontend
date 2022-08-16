@@ -5,6 +5,12 @@
         display: flex;
         align-items: center;
         height: 100%;
+
+        .about_content{
+            .h4_title{
+                color: #36bbc2;
+            }
+        }
     }
     .about_image_wrapper{
         display: flex;

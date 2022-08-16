@@ -35,7 +35,7 @@ const W3Owl = () => {
     const options = {
         margin: 0,
         responsiveClass: true,
-        nav: true,
+        nav: false,
         dots: false,
         autoplay: true,
         autoplayHoverPause: false,
@@ -95,7 +95,7 @@ const W3Owl = () => {
                                 : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
                                     : <div className='hero_slide_section_content'>
                                         <div className='hero_content_div'>
-                                            <h6 className='h5_title hero_cont_subheading'>{BlockchainCate.subheading}</h6>
+                                            <h4 className='h4_title hero_cont_subheading'>{BlockchainCate.subheading}</h4>
                                             <h2 className='h2_title hero_cont_heading'>{BlockchainCate.title}</h2>
                                             <p className='hero_cont_para'>{BlockchainCate.content}</p>
                                             <button className='hero_cont_btn'>Click Me</button>

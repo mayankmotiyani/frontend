@@ -12,7 +12,7 @@
             margin: 0px auto;
 
             span {
-                color: orange;
+                color: #36bbc2;
                 font-family: heading;
                 font-size: 2rem;
                 letter-spacing: 1px;
@@ -20,13 +20,13 @@
         }
 
         .h4_title {
-            color: orange;
+            color: #36bbc2;
         }
     }
 
     .box_div {
         text-align: center;
-        box-shadow: rgb(17 17 26 / 10%) 0px 0px 16px;
+        box-shadow: #00054514 0px 0px 16px;
         height: auto;
         width: 80%;
         margin: 1em auto;
@@ -37,6 +37,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 5px;
+        background-color: #fff;
 
         img {
             width: 50px;

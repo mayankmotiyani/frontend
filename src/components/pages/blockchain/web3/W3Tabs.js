@@ -20,9 +20,8 @@ const W3Tabs = () => {
                             <div className='tabs-img'>
                                 {/* <Image src={tab_bg} alt="Tabs image" fluid /> */}
                                 <div className='tabs-text'>
-                                    <h2 className='h2_title'>Heading Text Here</h2>
+                                    <h4 className='h4_title'>Heading Text Here</h4>
                                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae iusto perferendis consequuntur obcaecati officiis illum nihil error officia voluptates sunt, alias deleniti quae quos doloribus animi at numquam culpa!</p>
-                                    <button className='btn' type='button'>Click me</button>
                                 </div>
                             </div>
                         </Tab>
@@ -30,9 +29,8 @@ const W3Tabs = () => {
                             <div className='tabs-img'>
                                 {/* <Image src={tab_bg} alt="Tabs image" fluid /> */}
                                 <div className='tabs-text'>
-                                    <h2 className='h2_title'>Heading Text Here</h2>
+                                    <h4 className='h4_title'>Heading Text Here</h4>
                                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae iusto perferendis consequuntur obcaecati officiis illum nihil error officia voluptates sunt, alias deleniti quae quos doloribus animi at numquam culpa!</p>
-                                    <button className='btn' type='button'>Click me</button>
                                 </div>
                             </div>
                         </Tab>
@@ -40,9 +38,8 @@ const W3Tabs = () => {
                             <div className='tabs-img'>
                                 {/* <Image src={tab_bg} alt="Tabs image" fluid /> */}
                                 <div className='tabs-text'>
-                                    <h2 className='h2_title'>Heading Text Here</h2>
+                                    <h4 className='h4_title'>Heading Text Here</h4>
                                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae iusto perferendis consequuntur obcaecati officiis illum nihil error officia voluptates sunt, alias deleniti quae quos doloribus animi at numquam culpa!</p>
-                                    <button className='btn' type='button'>Click me</button>
                                 </div>
                             </div>
                         </Tab>
@@ -50,9 +47,9 @@ const W3Tabs = () => {
                             <div className='tabs-img'>
                                 {/* <Image src={tab_bg} alt="Tabs image" fluid /> */}
                                 <div className='tabs-text'>
-                                    <h2 className='h2_title'>Heading Text Here</h2>
+                                    <h4 className='h4_title'>Heading Text Here</h4>
                                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae iusto perferendis consequuntur obcaecati officiis illum nihil error officia voluptates sunt, alias deleniti quae quos doloribus animi at numquam culpa!</p>
-                                    <button className='btn' type='button'>Click me</button>
+                                    {/* <button className='btn' type='button'>Click me</button> */}
                                 </div>
                             </div>
                         </Tab>

@@ -23,8 +23,8 @@ const Web3 = (props) => {
             <W3Services />
             <W3Technologies />
             <W3Owl />
-            <W3Card />
             <W3Tabs />
+            <W3Card />
             {/* <W3Accordion /> */}
         </>
     )

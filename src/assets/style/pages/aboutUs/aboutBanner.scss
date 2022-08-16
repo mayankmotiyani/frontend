@@ -14,7 +14,8 @@
         position: absolute;
         height: 300px;
         width: 100%;
-        background: rgba(255, 255, 255, 0.852);
+        // background: rgba(255, 255, 255, 0.852);
+        background-image: linear-gradient(45deg, #000545c2, #000);
         content: "";
         left: 0px;
         top: 0px;
@@ -26,8 +27,8 @@
 
         .h2_title {
             max-width: 150px;
-            color: #000;
-            border-bottom: 3px solid orange;
+            color: #36ccb2;
+            border-bottom: 3px solid #fff;
             margin: 0px auto;
         }
 
@@ -36,6 +37,7 @@
             margin: 0px auto;
             margin-top: 20px;
             text-align: center;
+            color: #fff;
         }
     }
 }

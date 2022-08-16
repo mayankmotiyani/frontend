@@ -96,8 +96,8 @@ export default function SideBoxSection() {
                         </Col>
                         <Col sm={12} md={12} lg={6} xl={4}>
                             <div className='side_image_content_div wow zoomIn'>
-                                <BsFillFileEarmarkBarGraphFill />
-                                <h3 className='h3_title'>Your Heading Title here</h3>
+                                {/* <BsFillFileEarmarkBarGraphFill /> */}
+                                <h3 className='h3_title'>{HeadContent.heading}</h3>
                                 <button>Click Me</button>
                             </div>
                         </Col>

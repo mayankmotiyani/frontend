@@ -22,7 +22,8 @@ import { IoIosWarning } from 'react-icons/io'
 import NFT_bg from '../../assets/media/nft_bg.png'
 import Slice_bg from '../../assets/media/slice3ss.png'
 import Game_bg from '../../assets/media/games-d.png'
-
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
+import { BsSkype } from 'react-icons/bs'
 
 export default function Header() {
   // ====================================== popup validations ===================================
@@ -372,11 +373,11 @@ export default function Header() {
                     </ul>
                   </div>
                   <div className='social_link_div'>
-                    <a href="https://www.facebook.com/infograins/" target={'_blank'}><img src={FaceBook} alt="facebook_icon" /></a>
-                    <a href="https://www.instagram.com/infograins/" target={'_blank'}><img src={Instagram} alt="instagram_icon" /></a>
-                    <a href="https://www.linkedin.com/company/infograin-software-solutions/" target={'_blank'}><img src={Linkedin} alt="linkedin_icon" /></a>
-                    <a href="https://twitter.com/infograinssoft?s=20" target={'_blank'}><img src={Twitter} alt="twitter_icon" /></a>
-                    <a href="https://join.skype.com/invite/NqBQ11qKBCxI" target={'_blank'}><img src={Skype} alt="skype_icon" /></a>
+                    <a href="https://www.facebook.com/infograins/" target={'_blank'}>  <FaFacebookF /> </a>
+                    <a href="https://twitter.com/infograinssoft?s=20" target={'_blank'}> <FaTwitter /> </a>
+                    <a href="https://www.instagram.com/infograins/" target={'_blank'}> <FaInstagram /> </a>
+                    <a href="https://www.linkedin.com/company/infograin-software-solutions/" target={'_blank'}> <FaLinkedinIn /> </a>
+                    <a href="https://join.skype.com/invite/NqBQ11qKBCxI" target={'_blank'}> <BsSkype /> </a>
                   </div>
                 </div>
               </Col>
@@ -654,7 +655,6 @@ export default function Header() {
                       </ul>
                     </div>
                   </Col>
-
                 </Row>
               </Container>
             </div>

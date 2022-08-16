@@ -11,7 +11,7 @@
             span {
                 font-family: heading;
                 font-size: 3rem;
-                color: orange;
+                color: #36ccb2;
                 letter-spacing: 1px;
                 margin-bottom: 0px;
             }
@@ -30,12 +30,13 @@
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 10px;
         margin-bottom: 20px;
+        min-height: 350px;
 
         .becomePartner-img {
             img {
                 width: 150px;
                 margin-bottom: 15px;
-                border: 1px dotted orange;
+                border: 1px dotted #36ccb2;
                 border-radius: 50%;
                 padding: 10px;
             }

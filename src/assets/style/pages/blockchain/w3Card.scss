@@ -52,6 +52,13 @@
             font-size: 30px;
             padding: 15px 0px;
         }
+    }   
+
+    .w3-card-body.card_number_1{
+        margin-top: -8em;
+    }
+    .w3-card-body.card_number_3{
+        margin-top: -6em;
     }
 
     .center-card {
@@ -76,3 +83,13 @@
         margin: 0px;
     }
 }   
+
+@media screen and (max-width: 991px) {
+    .w3Card-wrap{
+
+        .w3-card-body.card_number_1,  .w3-card-body.card_number_3{
+            margin-top: auto;
+        }
+    }
+    
+}

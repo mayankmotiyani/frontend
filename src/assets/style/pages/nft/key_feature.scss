@@ -4,9 +4,14 @@
     .head {
         text-align: center;
         margin-bottom: 3em;
+
+        .h4_title{
+            color: #36bbc2;
+        }
     }
     .key_box {
-        box-shadow: 0px 0px 5px grey;
+        // box-shadow: 0px 0px 5px grey;
+        box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
         padding: 2em;
         min-height: 300px;
         // animation: float 4s linear infinite;

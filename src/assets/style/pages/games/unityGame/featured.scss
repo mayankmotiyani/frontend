@@ -18,10 +18,11 @@
         height: 100%;
         width: 100%;
         content: "";
-        background: #000;
+        // background: #000;
+        background-image: linear-gradient(45deg, #000545c2, #000);
         left: 0px;
         top: 0px;
-        opacity: 0.3;
+        // opacity: 0.3;
     }
 
     .featured_div {
@@ -48,7 +49,7 @@
         z-index: 1;
 
         .h3_title {
-            color: orange;
+            color: #36bbc2;
         }
 
         .h2_title {

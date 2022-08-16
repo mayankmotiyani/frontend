@@ -81,6 +81,11 @@ $header_bottom_gradient: linear-gradient(
         }
 
         .social_link_div {
+            display: flex;
+            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;    
             a {
                 img {
                     width: 20px;

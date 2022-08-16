@@ -33,7 +33,7 @@ const VisionMission = () => {
               {Error ? 'Error'
                 : vision.length === 0 ? 'loading...'
                   : <figure className='mission-img'>
-                    <img src={vision.response.image} alt="mission" />
+                    <img src={vision.image} alt="mission" />
                   </figure>
               }
             </Col>
@@ -42,7 +42,7 @@ const VisionMission = () => {
                 :
                 <Col sm={12} md={12} lg={6} xl={6}>
                   <div className='visionMission-list'>
-                    <h3 className='h3_title'>{visionHead.subheading}</h3>
+                    <h2 className='h2_title'>{visionHead.subheading}</h2>
                     <h2 className='h2_title'>{visionHead.visionHead}</h2>
                     <div ref={descriptions}></div>
                     {/* <ul>

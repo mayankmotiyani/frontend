@@ -1,7 +1,8 @@
 .tabs-wrap {
     padding: 80px 0px 150px;
-    background: url("../../../images/background/contact_background.jpg");
-    background-repeat: no-repeat;
+    background-color: #fafafb;
+    // background: url("../../../images/background/contact_background.jpg");
+    // background-repeat: no-repeat;
 
     .tabs-title {
         .h2_title {
@@ -34,22 +35,26 @@
     // }
 
     .nav-link {
-        border: 1px solid;
-        border-color: #dee2e6 #dee2e6 #fff;
+        // border: 1px solid;
+        // /* border-color: #dee2e6 #dee2e6 #fafafb; */
         border-radius: 0px;
         position: relative;
-        // border-radius: 50% 50% 70% 30% / 100% 99% 1% 0%;
-        background-color: #eee;
-        // padding: 6px 0px;
+        border: none;
+        background-color: #ffffff;
         color: #000;
     }
 
     .nav-link.active {
-        border-color: rgb(221, 193, 140);
+        // border-color: #fafafb #fafafb #cccccc;
+        // box-shadow: 0px 5px 10px #cccccc;
+        border: none;
+        background-color: #ffffff;
+        border-bottom: 2px solid #36bbc2;
     }
 
     .tabs-img {
         position: relative;
+        padding: 2em;
     }
 
     img {
