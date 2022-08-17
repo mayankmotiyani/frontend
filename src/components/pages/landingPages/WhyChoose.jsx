@@ -46,11 +46,46 @@ export default function WhyChoose() {
                                     <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
                                 </div>
                                 : choose.length === 0 ?
-                                    <div className='spin_loader'> <Spinner variant='primary' animation='border' /></div>
+                                    <Row>
+                                        <Col sm={12} md={6} lg={6} xl={6}>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                        </Col>
+                                        <Col sm={12} md={6} lg={6} xl={6}>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                            <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
+                                                {/* <img src={ele.icon} alt="" /> */}
+                                                <h4 className='h4_title'></h4>
+                                                <p></p>
+                                            </div>
+                                        </Col>
+                                    </Row>
                                     :
                                     choose.map((ele, key) => {
                                         return (
-                                                <Col sm={12} md={6} lg={6} xl={6} key={key}>
+                                            <Col sm={12} md={6} lg={6} xl={6} key={key}>
                                                 <div className='box_div wow zoomIn'>
                                                     <img src={ele.icon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>

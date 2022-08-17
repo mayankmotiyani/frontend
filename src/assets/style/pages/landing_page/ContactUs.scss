@@ -158,7 +158,16 @@
                     border-radius: 50%;
                     z-index: -7;
                 }
-
+                &::after{
+                    position: absolute;
+                    background: #ffffff78;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    content: "";
+                    right: 40px;
+                    bottom: 30px;
+                }
                 .head {
                     h3 {
                         color: #fff;

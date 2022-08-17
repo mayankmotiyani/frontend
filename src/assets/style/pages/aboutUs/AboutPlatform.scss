@@ -26,12 +26,15 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
     .AboutPlatform-wrap .row {
         flex-direction: column-reverse;
     }
     .AboutPlatform-text, .AboutAnalysis-text{
         margin-top: 20px;
+    }
+    .AboutPlatform-wrap{
+        padding: 20px 0px;
     }
     
 }

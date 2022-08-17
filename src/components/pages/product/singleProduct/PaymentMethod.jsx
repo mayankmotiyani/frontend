@@ -20,7 +20,7 @@ export default function PaymentMethod() {
             // console.log('catch');
             setError(true)
         }
-        console.log(HeadTitle.heading_and_subheading.subheading);
+        // console.log(HeadTitle.heading_and_subheading.subheading);
     }
 
     useEffect(() => {

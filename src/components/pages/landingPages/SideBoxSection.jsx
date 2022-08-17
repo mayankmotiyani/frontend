@@ -40,7 +40,7 @@ export default function SideBoxSection() {
                         <h2 className='h2_title'>{HeadContent.heading}</h2>
                     </div>
                     <Row>
-                    <Col sm={12} md={12} lg={6} xl={8}>
+                        <Col sm={12} md={12} lg={6} xl={8}>
                             <Row>
                                 {
                                     error ?
@@ -49,7 +49,14 @@ export default function SideBoxSection() {
                                         </div>
                                         :
                                         sideText.length === 0 ?
-                                            <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                                            <Col sm={6} md={6} lg={12} xl={12}>
+                                                <div className='box_content_div_EMPTY'>
+                                                  <div className='box_EMPTY'></div>
+                                                  <div className='box_EMPTY'></div>
+                                                  <div className='box_EMPTY'></div>
+                                                  <div className='box_EMPTY'></div>
+                                                </div>
+                                            </Col>
                                             :
                                             sideText.map((ele, key) => {
                                                 return (

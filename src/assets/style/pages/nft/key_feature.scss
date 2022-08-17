@@ -60,6 +60,9 @@
 }
 @media screen and (max-width: 575px){
     .keyFeature_section{
-        margin: 2em 0em;
+        margin: 1em 0em;
+    }
+    .keyFeature_section .key_box{
+        min-height: 180px;
     }
 }

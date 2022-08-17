@@ -29,7 +29,7 @@ const VisionMission = () => {
       <section className='visionMission-wrap' id='mission'>
         <Container>
           <Row>
-            <Col sm={12} md={12} lg={6} xl={6}>
+            <Col sm={6} md={6} lg={6} xl={6}>
               {Error ? 'Error'
                 : vision.length === 0 ? 'loading...'
                   : <figure className='mission-img'>
@@ -40,7 +40,7 @@ const VisionMission = () => {
             {Error ? 'Error'
               : vision === "" ? 'loading...'
                 :
-                <Col sm={12} md={12} lg={6} xl={6}>
+                <Col sm={6} md={6} lg={6} xl={6}>
                   <div className='visionMission-list'>
                     <h2 className='h2_title'>{visionHead.subheading}</h2>
                     <h2 className='h2_title'>{visionHead.visionHead}</h2>

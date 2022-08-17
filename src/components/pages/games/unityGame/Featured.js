@@ -74,7 +74,7 @@ const Featured = () => {
                                 <OwlCarousel className='owl-theme featured_slider' loop margin={10} {...options}>
                                     {
                                         Error ? "Error" :
-                                            partner === 0 ? 'loading...' :
+                                            partner === 0 ? <div className='rectangle_shape'></div> :
                                                 partner.map((ele, key) => {
                                                     return (
                                                         <div className='item' key={key}>

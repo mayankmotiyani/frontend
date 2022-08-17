@@ -12,9 +12,10 @@
         width: 100%;
         top: 0px;
         left: 0px;
-        background: #000;
+        // background: #000;
+        background-image: linear-gradient(45deg, #000545c2, #000);
         content: "";
-        opacity: 0.6;
+        // opacity: 0.6;
     }
 
     .row {
@@ -27,7 +28,7 @@
         z-index: 1;
 
         .h3_title {
-            color: orange;
+            color: #36bbca;
         }
 
         .h2_title {
@@ -42,7 +43,7 @@
             margin-top: 20px;
             background: transparent;
             padding: 10px 45px;
-            border: 1px solid orange;
+            border: 1px solid #36bbca;
             position: relative;
             overflow: hidden;
             transition: all 0.2s;
@@ -61,9 +62,9 @@
                 left: -10px;
                 width: 10px;
                 height: 10px;
-                background-image: linear-gradient(45deg, #ff7731, #ffa52d, #ff742c);
+                background-image: linear-gradient(45deg, #36bbca, #36bbca, #36bbca);
                 border-radius: 50%;
-                border: 1px solid orange;
+                border: 1px solid #36bbca;
                 transition: all 0.2s;
                 z-index: -1;
             }

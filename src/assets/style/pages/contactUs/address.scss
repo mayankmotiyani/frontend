@@ -9,8 +9,9 @@
 
     .ind-address-wrap {
         .card {
-            background-color: transparent;
+            background-color: #fff;
             margin-bottom: 0px;
+            box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
         }
     }
 
@@ -32,9 +33,9 @@
         box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
         border: none;
         margin-bottom: 20px;
-        height: 180px;
-        align-items: center;
-        flex-direction: initial;
+        height: 200px;
+        // align-items: center;
+        // flex-direction: initial;
         position: relative;
         border-radius: 10px;
 
@@ -56,9 +57,12 @@
         }
 
         .card-body {
-
+            .card-title{
+                font-weight: 600;
+                color: #000545;
+            }
             .card-text {
-                padding: 8px 0px 10px;
+                padding: 0px 0px 10px;
             }
 
             .address-num {
@@ -108,8 +112,31 @@
         margin-top: 0px;
     }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .address-wrap .card{
-        height: 260px;
+        height: 230px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .ind-address-wrap{
+        margin-bottom: 20px;
+    }
+    .address-wrap .card{
+        height: 200px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .address-wrap .card{
+        height: 175px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .address-wrap .card{
+        height: 200px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .address-wrap .card{
+        height: 230px;
     }
 }

@@ -23,12 +23,12 @@ const AboutAnalysis = () => {
             <section className='AboutAnalysis-wrap'>
                 <Container>
                     <Row>
-                        <Col sm={12} md={12} lg={6} xl={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <figure className='AboutAnalysis-img'>
                                 <Image src={services} fluid />
                             </figure>
                         </Col>
-                        <Col sm={12} md={12} lg={6} xl={6}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             {
                                 Error ? 'Error'
                                     : ApiData.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>

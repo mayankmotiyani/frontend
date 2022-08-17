@@ -5,4 +5,17 @@
     .form-wrap{
         margin-bottom: 0px;
     }
+
+}
+
+@media screen and (max-width: 575px) {
+    .form-wrap{
+        padding: 20px 0px;
+    }
+    .form-wrap  .contact-form-heading{
+        margin-bottom: 1em;
+    }
+    .form-wrap .get_in_touch_div .get_in_touch_row{
+        margin: 0px;
+    }
 }

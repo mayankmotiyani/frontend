@@ -12,8 +12,11 @@
         box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
     }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 575px) {
     .functionality_section .functionality_box{
         margin-bottom: 20px;
+    }
+    .functionality_section {
+        padding: 1em 0em;
     }
 }

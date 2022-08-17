@@ -2,7 +2,7 @@
     .row{
         align-items: center;
     }
-    margin: 5em 0em;
+    padding: 5em 0em;
     .head_text {
         text-align: center;
         .h2_title{
@@ -22,5 +22,10 @@
             // box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
             box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
         }
+    }
+}
+@media screen and  (max-width: 575px) {
+    .outcome_section{
+        padding: 20px 0px;
     }
 }

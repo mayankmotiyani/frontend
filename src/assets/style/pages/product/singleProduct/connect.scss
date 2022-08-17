@@ -1,6 +1,6 @@
 .connect_section {
     text-align: center;
-    margin: 5em 0em;
+    padding: 5em 0em;
     p {
         width: 60%;
         margin: auto;
@@ -47,5 +47,10 @@
     .connect_section p{
         width: 100%;
         padding: 0px 15px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .connect_section{
+        padding: 1em 0em;
     }
 }

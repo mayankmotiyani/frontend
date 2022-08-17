@@ -1,11 +1,9 @@
-$header_bottom_gradient: linear-gradient(
-    54deg,
-    #d9bdff 0%,
-    #a0c9fb 25%,
-    #79aade 43%,
-    #ba93f0 61%,
-    rgb(223 170 52 / 75%) 83%
-);
+$header_bottom_gradient: linear-gradient(54deg,
+        #d9bdff 0%,
+        #a0c9fb 25%,
+        #79aade 43%,
+        #ba93f0 61%,
+        rgb(223 170 52 / 75%) 83%);
 
 .site_main_head {
     position: relative;
@@ -85,7 +83,8 @@ $header_bottom_gradient: linear-gradient(
             width: 200px;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.1em;    
+            font-size: 1.1em;
+
             a {
                 img {
                     width: 20px;
@@ -104,8 +103,7 @@ $header_bottom_gradient: linear-gradient(
     .menu_bar_container {
         position: relative;
 
-        &::before {
-        }
+        &::before {}
     }
 
     .menu_bar_div {
@@ -116,8 +114,7 @@ $header_bottom_gradient: linear-gradient(
         width: 100%;
         background: #fff;
 
-        .animated_bar {
-        }
+        .animated_bar {}
 
         &::before {
             content: "";
@@ -241,7 +238,7 @@ $header_bottom_gradient: linear-gradient(
                                 color: orangered;
                             }
 
-                            &:hover > a {
+                            &:hover>a {
                                 color: orangered;
                             }
 
@@ -383,10 +380,12 @@ $header_bottom_gradient: linear-gradient(
                 &::-webkit-scrollbar {
                     width: 4px;
                 }
+
                 &::-webkit-scrollbar-track {
                     width: 4px;
                     background-color: #fafafb;
                 }
+
                 &::-webkit-scrollbar-thumb {
                     width: 4px;
                     background-color: #ba93f0;
@@ -410,11 +409,13 @@ $header_bottom_gradient: linear-gradient(
                         background-color: #47576a9f;
                         color: #ffffff;
                     }
+
                     .nav-pills .nav-link.active,
-                    .nav-pills .show > .nav-link {
+                    .nav-pills .show>.nav-link {
                         background-color: #47576a;
                         color: #ffffff;
                     }
+
                     .dropdown_bg_image {
                         display: flex;
                         height: 100%;
@@ -432,8 +433,28 @@ $header_bottom_gradient: linear-gradient(
                             border-radius: 4px;
                             font-weight: 600;
                             letter-spacing: 1px;
+                            box-shadow: 0 0 0 #c82292;
+                            animation: pulse 1.5s infinite;
+
+                            @keyframes pulse {
+                                0% {
+                                    -moz-box-shadow: 0 0 0 0 #c82292;
+                                    box-shadow: 0 0 0 0 #c82292;
+                                }
+
+                                70% {
+                                    -moz-box-shadow: 0 0 0 10px #c82292;
+                                    box-shadow: 0 0 0 10px rgba(200, 34, 145, 0);
+                                }
+
+                                100% {
+                                    -moz-box-shadow: 0 0 0 0 #c82292;
+                                    box-shadow: 0 0 0 0 rgba(200, 34, 145, 0);
+                                }
+                            }
                         }
                     }
+
                     .tab-content {
                         ul {
                             overflow: hidden;
@@ -519,6 +540,7 @@ $header_bottom_gradient: linear-gradient(
                 display: flex;
                 height: 100%;
                 align-items: center;
+
                 .desk_dropdown_subhead {
                     font-size: 1.2em;
                     font-weight: 600;
@@ -543,7 +565,7 @@ $header_bottom_gradient: linear-gradient(
 
                             &:hover {
                                 transform: translateX(0px);
-                                color: dodgerblue;
+                                color: #9c27b0;
                             }
 
                             svg {
@@ -1071,6 +1093,7 @@ $header_bottom_gradient: linear-gradient(
 
     .quote_wrap button {
         padding: 0px 10px !important;
+
         &:hover {
             opacity: 0.7;
         }

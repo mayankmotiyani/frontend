@@ -29,7 +29,7 @@ const StartSomething = () => {
     useEffect(() => {
         API()
     }, [])
-    
+
 
 
     useEffect(() => {
@@ -46,7 +46,15 @@ const StartSomething = () => {
                         <Row>
                             <Col sm={12} md={12} lg={6} xl={6}>
                                 {ErrorApi ? 'Error'
-                                    : ApiData.length === 0 ?  <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                                    : ApiData.length === 0 ?
+                                        <div className='EMPTY_loader_content' style={{alignItems: 'flex-start',flexDirection: 'column', justifyContent: 'center'}}>
+                                            <h4 className='EMPTY_loader_subhead'></h4>
+                                            <h2 className='EMPTY_loader_head'></h2>
+                                            <p className='para_EMPTY'></p>
+                                            <p className='para_EMPTY'></p>
+                                            <p className='para_EMPTY'></p>
+                                            <button type='button' className='EMPTY_btn'></button>
+                                        </div>
                                         : <div className='StartSomething_text wow zoomIn'>
                                             <h4 className='h4_title'>{ApiData.subheading}</h4>
                                             <h2 className='h2_title'>{ApiData.heading}</h2>

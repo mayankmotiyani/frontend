@@ -350,3 +350,11 @@
         }
     }
 }
+@media screen and (max-width: 575px) {
+    .footer_section .foot_sec ul li a{
+        font-size: 14px;
+    }
+    .footer_section .footer_head .subscribe_fieldDiv .subscribe_text{
+        font-size: 22px;
+    }
+}

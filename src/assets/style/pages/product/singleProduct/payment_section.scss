@@ -12,8 +12,12 @@
         box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
     }
 }
-@media screen and (max-width: 991px) {
+
+@media screen and (max-width: 575px) {
     .payment_section .payment_box{
         margin-bottom: 20px;
+    }
+    .payment_section{
+        padding: 20px 0px;;
     }
 }

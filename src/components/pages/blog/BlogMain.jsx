@@ -79,18 +79,18 @@ export default function BlogMain(props) {
             setCount(xo)
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/search_query/title/?blog=${userEnteredValue}`);
             setLimitReached(api.data.response.length)
-            setdummy(api.data.response.slice(0,xo))
+            setdummy(api.data.response.slice(0, xo))
 
         }, 500);
     }
 
     // ==================================== Search API =========================================
-    
+
     useEffect(() => {
         // fetchMoreData()
         searchAPI()
     }, [])
-    
+
     // =============================== InfiniteScroll ==========================
 
     return (
@@ -100,95 +100,90 @@ export default function BlogMain(props) {
                     <h2 className='h2_title'>Your Blog Title Here</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores excepturi perspiciatis libero pariatur eos, eveniet quos sed, dolor esse aliquid rerum incidunt obcaecati debitis blanditiis. Eos velit expedita ea illo.</p>
                 </div>
-                <Container >
-                    <Row>
-                        <Col lg={12}>
-                            <div className='blog_tab_section'>
-                                <Tabs
-                                    defaultActiveKey="profile"
-                                    id="uncontrolled-tab-example"
-                                    className="mb-3"
-                                >
-                                    <Tab eventKey="home" title="All Blogs">
-                                        <div className='list_of_blog_section'>
-                                            <Container>
-                                                <Row>
-                                                    <Col lg={12}>
-                                                        <div className='head_search'>
-                                                            <input type="text" placeholder='Search your blog here...' value={userEnteredValue} onInput={userSearchValue} />
-                                                        </div>
-                                                    </Col>
-                                                    <Col lg={12}>
-                                                        <div className='list_of_blogs'>
-                                                            <ul>
-                                                                <InfiniteScroll
-                                                                    style={{ overflow: 'unset' }}
-                                                                    dataLength={dummy.length}
-                                                                    next={searchAPI}
-                                                                    hasMore={true}
-                                                                    loader={Count >= LimitReached ? console.log('Limit Reached') : 
-                                                                        <div className='blog_loader'>
-                                                                            <Loader type="bubble-loop" bgColor={"#069aff"} color={'#707070'} size={100} />
-                                                                        </div>
-                                                                    }
-                                                                >
-                                                                    {dummy.map((i, index) => (
-                                                                        <li key={index}>
-                                                                            <div className='blog_div'>
-                                                                                <div className='img_blog'>
-                                                                                    <img src={BlogImage} alt="" />
-                                                                                </div>
-                                                                                <div className='content_div'>
-                                                                                    <h4 className='h4_title'>{i.title}</h4>
-                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    ))}
-                                                                </InfiniteScroll>
-                                                            </ul>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
-                                            </Container>
-                                        </div>
-                                    </Tab>
-                                    <Tab eventKey="profile" title="Latest Blogs">
+                <Container fluid>
+                    <div className='blog_tab_section'>
+                        <Tabs
+                            defaultActiveKey="profile"
+                            id="uncontrolled-tab-example"
+                            className="mb-3"
+                        >
+                            <Tab eventKey="home" title="All Blogs">
+                                <div className='list_of_blog_section'>
+                                    <Container>
                                         <Row>
-                                            <Col lg={12} md={12}>
-                                                <div className='all_blogs'>
-                                                    <Container fluid>
-                                                        <Row>
-                                                            {featuredData.map((blog, key) => {
-                                                                return <Col className='my-3' lg={4} md={6} sm={12} key={key}>
-                                                                    <div className='blog_card'>
-                                                                        <img src={BlogImage} alt="" />
-                                                                        <div className='blog_card_content'>
-                                                                            <h3 className='h3_title' data-blog-title>{blog.title}</h3>
-                                                                            <p>{blog.description}</p>
-                                                                            <Link to={blog.blog_url}>Read More</Link>
+                                            <Col lg={12}>
+                                                <div className='head_search'>
+                                                    <input type="text" placeholder='Search your blog here...' value={userEnteredValue} onInput={userSearchValue} />
+                                                </div>
+                                            </Col>
+                                            <Col lg={12}>
+                                                <div className='list_of_blogs'>
+                                                    <ul>
+                                                        <InfiniteScroll
+                                                            style={{ overflow: 'unset' }}
+                                                            dataLength={dummy.length}
+                                                            next={searchAPI}
+                                                            hasMore={true}
+                                                            loader={Count >= LimitReached ? console.log('Limit Reached') :
+                                                                <div className='blog_loader'>
+                                                                    <Loader type="bubble-loop" bgColor={"#069aff"} color={'#707070'} size={100} />
+                                                                </div>
+                                                            }
+                                                        >
+                                                            {dummy.map((i, index) => (
+                                                                <li key={index}>
+                                                                    <div className='blog_div'>
+                                                                        <div className='img_blog'>
+                                                                            <img src={BlogImage} alt="" />
+                                                                        </div>
+                                                                        <div className='content_div'>
+                                                                            <h4 className='h4_title'>{i.title}</h4>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
                                                                         </div>
                                                                     </div>
-                                                                </Col>
-                                                            })}
-                                                        </Row>
-                                                    </Container>
+                                                                </li>
+                                                            ))}
+                                                        </InfiniteScroll>
+                                                    </ul>
                                                 </div>
                                             </Col>
                                         </Row>
-                                    </Tab>
-                                </Tabs>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col lg={12}>
-                            <div className='blog_contact_form'>
-
-                            </div>
-                        </Col>
-                    </Row>
+                                    </Container>
+                                </div>
+                            </Tab>
+                            <Tab eventKey="profile" title="Latest Blogs">
+                                <Row>
+                                    <Col lg={12} md={12}>
+                                        <div className='all_blogs'>
+                                            <Container>
+                                                <Row>
+                                                    {featuredData.map((blog, key) => {
+                                                        return <Col className='my-3'sm={6} xl={4} lg={4} md={6} key={key}>
+                                                            <div className='blog_card'>
+                                                                <img src={BlogImage} alt="" />
+                                                                <div className='blog_card_content'>
+                                                                    <h3 className='h3_title' data-blog-title>{blog.title}</h3>
+                                                                    <p>{blog.description}</p>
+                                                                    <Link to={blog.blog_url}>Read More</Link>
+                                                                </div>
+                                                            </div>
+                                                        </Col>
+                                                    })}
+                                                </Row>
+                                            </Container>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Tab>
+                        </Tabs>
+                    </div>
                 </Container>
+                <Row>
+                    <Col lg={12}>
+                        <div className='blog_contact_form'>
+                        </div>
+                    </Col>
+                </Row>
             </section>
 
         </>

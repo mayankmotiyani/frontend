@@ -31,3 +31,14 @@
     }
 
 }
+@media screen and (max-width: 575px) {
+    .visionMission-list{
+        margin-top: 20px;
+    }
+    .visionMission-wrap{
+        padding: 20px 0px;
+    }
+    .visionMission-wrap .visionMission-list p{
+        padding: 0px;
+    }
+}

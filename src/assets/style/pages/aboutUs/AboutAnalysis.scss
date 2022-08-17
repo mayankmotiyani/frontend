@@ -29,7 +29,7 @@
             &::before {
                 content: "";
                 position: absolute;
-                bottom: -10px;  
+                bottom: -10px;
                 left: -10px;
                 width: 10px;
                 height: 10px;
@@ -46,11 +46,19 @@
         }
     }
 }
+
 @media screen and (max-width: 575px) {
-    .AboutAnalysis-text{
+    .AboutAnalysis-text {
         margin-top: 20px;
     }
-    .AboutAnalysis-wrap{
+
+    .AboutAnalysis-wrap {
         padding: 20px 0px;
+    }
+
+    .AboutAnalysis-wrap .AboutAnalysis-text button {
+        padding: 5px 15px;
+        margin-top: 15px;
+        font-size: 14px;
     }
 }
