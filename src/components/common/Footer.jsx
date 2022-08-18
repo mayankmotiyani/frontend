@@ -180,7 +180,7 @@ const Footer = () => {
                         :
                         serviceData.map((e, key) => {
                           return (
-                            <li key={key}><Link to={e.blockchain_url}>{e.blockchain_name}</Link></li>
+                            <li key={key}><Link to={e.blockchain_url ? e.blockchain_url : '/'}>{e.blockchain_name}</Link></li>
                           )
                         })
                   }
