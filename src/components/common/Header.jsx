@@ -591,7 +591,7 @@ export default function Header() {
                               return <Tab.Pane eventKey={e.blockchain_category} key={key} mainlink="0">
                                 <div className='d-flex' mainlink="0">
                                   <ul mainlink="0">
-                                    {e.array_of_blockchain_category_list.slice(0, 7).map((e, key) => {
+                                    {e.array_of_blockchain_category_list.slice(0, 8).map((e, key) => {
                                       return <li key={key} mainlink="0">
                                         <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
                                           <GrFormNextLink mainlink="0" />
@@ -601,7 +601,17 @@ export default function Header() {
                                     })}
                                   </ul>
                                   <ul mainlink="0">
-                                    {e.array_of_blockchain_category_list.slice(7).map((e, key) => {
+                                    {e.array_of_blockchain_category_list.slice(8, 16).map((e, key) => {
+                                      return <li key={key} mainlink="0">
+                                        <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
+                                          <GrFormNextLink mainlink="0" />
+                                          <div mainlink="0">{e.blockchain_name}</div>
+                                        </Link>
+                                      </li>
+                                    })}
+                                  </ul>
+                                  <ul mainlink="0">
+                                    {e.array_of_blockchain_category_list.slice(16, 24).map((e, key) => {
                                       return <li key={key} mainlink="0">
                                         <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
                                           <GrFormNextLink mainlink="0" />
