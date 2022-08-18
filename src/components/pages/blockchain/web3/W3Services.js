@@ -38,20 +38,16 @@ const W3Services = () => {
       <section className='w3Service-wrap'>
         <Container>
           <Row>
-            {ErrorBlockchain ? 'Error'
-              : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
-                :
-                <Col sm={6} md={6} lg={6} xl={6}>
-                  <figure className='w3-service-img'>
-                    <img src={BlockchainCate.image} alt="W3 Service" />
-                  </figure>
-                </Col>
-            }
+            <Col sm={6} md={6} lg={6} xl={6}>
+              <figure className='w3-service-img'>
+                <img src={BlockchainCate.image} alt="W3 Service" />
+              </figure>
+            </Col>
             <Col sm={6} md={6} lg={6} xl={6}>
               <div className='w3-service-about'>
                 <h3 className='h3_title'>{BlockchainCate.subheading}</h3>
                 <h2 className='h2_title'>{BlockchainCate.title}</h2>
-                <div ref={apiContent}></div>
+                <div className='description' ref={apiContent}></div>
                 {/* <p>{BlockchainCate.content}</p> */}
                 <button className='btn' type='button'>Get Free Consultancy</button>
               </div>

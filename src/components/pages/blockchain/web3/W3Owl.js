@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import OwlCarousel from 'react-owl-carousel';
@@ -12,6 +12,7 @@ const W3Owl = () => {
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
     const params = useParams()
+    const description = useRef(null)
 
     const [BlockchainCate, setBlockchainCate] = useState([])
     const [ErrorBlockchain, setErrorBlockchain] = useState(false)
@@ -20,6 +21,7 @@ const W3Owl = () => {
             // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain-section-three/${params.slug}/`);
             setBlockchainCate(api.data.response)
+            description.current.innerHTML = api.data.response.content
             // console.log("try", api.data.response);
         } catch (error) {
             setErrorBlockchain(true)
@@ -66,42 +68,19 @@ const W3Owl = () => {
                 <Container>
                     <Row>
                         <Col sm={6} md={6} lg={6} xl={6}>
-                            <OwlCarousel className='owl-theme hero_slider' loop margin={10} {...options}>
-                                <div className='item'>
-                                    <div className='inner_section'>
-                                        <div className='hero_slide_section_img'>
-                                            <Image src={carousel} fluid />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='item'>
-                                    <div className='inner_section'>
-                                        <div className='hero_slide_section_img'>
-                                            <Image src={carousel} fluid />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='item'>
-                                    <div className='inner_section'>
-                                        <div className='hero_slide_section_img'>
-                                            <Image src={carousel} fluid />
-                                        </div>
-                                    </div>
-                                </div>
-                            </OwlCarousel>
+                            <div className='image_div'>
+                                <Image src={BlockchainCate.image} fluid />
+                            </div>
                         </Col>
                         <Col sm={6} md={6} lg={6} xl={6}>
-                            {ErrorBlockchain ? 'Error'
-                                : BlockchainCate.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
-                                    : <div className='hero_slide_section_content'>
-                                        <div className='hero_content_div'>
-                                            <h4 className='h4_title hero_cont_subheading'>{BlockchainCate.subheading}</h4>
-                                            <h2 className='h2_title hero_cont_heading'>{BlockchainCate.title}</h2>
-                                            <p className='hero_cont_para'>{BlockchainCate.content}</p>
-                                            <button className='hero_cont_btn'>Click Me</button>
-                                        </div>
-                                    </div>
-                            }
+                            <div className='hero_slide_section_content'>
+                                <div className='hero_content_div'>
+                                    <h4 className='h4_title hero_cont_subheading'>{BlockchainCate.subheading}</h4>
+                                    <h2 className='h2_title hero_cont_heading'>{BlockchainCate.title}</h2>
+                                    <div className='hero_cont_para' ref={description}></div>
+                                    <button className='hero_cont_btn'>Click Me</button>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
                 </Container>

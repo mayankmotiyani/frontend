@@ -12,12 +12,18 @@
     .AboutPlatform-details {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         margin-top: 30px;
 
         .AboutPlatform-details-img {
             margin-right: 15px;
             transition: all 0.5s ease;
+            width: 100px;
+            height: 50px;
+            object-fit: cover;
+
+            img{
+            }
 
             &:hover {
                 transform: translateY(-8px);

@@ -160,7 +160,7 @@ const ContactUs = () => {
                                         : <div className='contact_information'>
                                             <div className='head'>
                                                 <h3 className='h3_title'>Contact Information</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus laudantium non</p>
+                                                <p>{getContentData.contactInformation.description}</p>
                                             </div>
                                             <div className='contact-details'>
                                                 <h5 className='h5_title'>Email</h5>

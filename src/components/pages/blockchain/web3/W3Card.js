@@ -14,7 +14,7 @@ const W3Card = () => {
     async function api() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_service/${p.slug}/`);
-            console.log(api.data);
+            // console.log(api.data);
             setHeadData(api.data.heading_and_subheading)
             setApiData(api.data.response)
         } catch (error) {
@@ -24,7 +24,7 @@ const W3Card = () => {
 
     useEffect(() => {
         api()
-    }, [])
+    }, [p])
 
     return (
         <>

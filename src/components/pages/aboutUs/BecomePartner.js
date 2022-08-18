@@ -4,11 +4,13 @@ import { Container, Col, Row, Image } from 'react-bootstrap';
 import part from "../../../assets/images/about/partner/bpart.png"
 const BecomePartner = () => {
     const [ApiData, setApiData] = useState([])
+    const [HeadData, setHeadData] = useState({})
     const [Error, setError] = useState(false)
     async function api() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/build-connection/`);
             setApiData(api.data.response)
+            setHeadData(api.data.heading_and_subheading)
         } catch (error) {
             setError(true)
         }
@@ -23,8 +25,8 @@ const BecomePartner = () => {
             <section className='becomePartner-wrap' id='ourPartner'>
                 <Container>
                     <div className='becomePartner-title'>
-                        <h2 className='h2_title'>Partnership Programs At <span>infograins</span></h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit ipsa quis modi neque quos? Quidem maxime nisi, sint dolor, illo aut odit quod, odio est maiores sunt error aspernatur fugiat.</p>
+                        <h2 className='h2_title'>{HeadData.heading}</h2>
+                        <p>{HeadData.description}</p>
                     </div>
                     <Row>
                         {
