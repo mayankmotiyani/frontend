@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 const GameHero = () => {
     // ========================= form validation =========================
@@ -42,6 +44,23 @@ const GameHero = () => {
     }
 
     // ========================= form validation ========================= 
+
+    // ================================= API ======================================
+    const { game_slug } = useParams()
+    const [ApiData, setApiData] = useState([])
+    async function api() {
+        try {
+            const { data: { response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}/game/${game_slug}/`);
+            setApiData(response)
+            // console.log(response);
+        } catch (error) {
+
+        }
+    }
+    useEffect(() => {
+        api()
+    }, [game_slug])
+
     return (
         <>
             <section className='gameHero-wrap'>
@@ -49,9 +68,9 @@ const GameHero = () => {
                     <Row>
                         <Col sm={6} md={6} lg={8} xl={8}>
                             <div className='gameHero-about-wrap'>
-                                <h2 className='h2_title'>Unity 3D Game</h2>
-                                <h3 className='h3_title'>Development Company</h3>
-                                <p>Step into the world of innovation where every opportunity level up your target audience with monetary, physical, and mental benefits. We provide Unity Game development services with top-notch blockchain experts that offer unlimited potential to scale your business and players.</p>
+                                <h2 className='h2_title'>{ApiData.name}</h2>
+                                <h3 className='h3_title'>Company</h3>
+                                <p>{ApiData.description}</p>
                             </div>
                         </Col>
                         <Col sm={6} md={6} lg={4} xl={4}>

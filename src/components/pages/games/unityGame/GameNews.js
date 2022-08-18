@@ -10,14 +10,15 @@ const GameNews = () => {
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
     const params = useParams()
-
+    const [HeadData, setHeadData] = useState({})
     const [GameCate, setGameCate] = useState([])
     const [ErrorGame, setErrorGame] = useState(false)
     async function API() {
         try {
             // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game-section-3/${params.game_slug}/`);
-            setGameCate(api.data.response)
+            const { data: { heading_and_subheading, response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game-section-3/${params.game_slug}/`);
+            setGameCate(response)
+            setHeadData(heading_and_subheading)
             // console.log("try", api.data.response);
         } catch (error) {
             setErrorGame(true)
@@ -34,6 +35,13 @@ const GameNews = () => {
             <section className='gameNews-wrap'>
                 <Container>
                     <Row>
+                        <Col lg={12}>
+                            <div className='text-center mb-4'>
+                                <h4 className='h4_title'>{HeadData.subheading}</h4>
+                                <h2 className='h2_title'>{HeadData.heading}</h2>
+                                <p className='description'>{HeadData.description}</p>
+                            </div>
+                        </Col>
                         <Col sm={12} md={12} lg={12} xl={12}>
                             <Row>
                                 {ErrorGame ? 'Error'
