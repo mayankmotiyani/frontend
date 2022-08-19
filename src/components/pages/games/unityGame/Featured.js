@@ -16,10 +16,10 @@ const Featured = () => {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game_partners/`)
             setPartnerHead(url.data.heading_and_subheading);
             setPartner(url.data.response)
-            console.log("url.data.response", url.data);
+            // console.log("url.data.response", url.data);
         } catch (error) {
             setError(true)
-            console.log(error)
+            // console.log(error)
         }
     }
     useEffect(() => {

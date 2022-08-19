@@ -15,75 +15,35 @@ const Achievements = () => {
                         <h2 className='h2_title'>Get ready to Count our Blockchain Achievements</h2>
                     </div>
                     <Row>
-                        <Col sm={6} md={6} lg={4} xl={4}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <Row>
-                                <Col sm={6} md={6} lg={6} xl={6}>
+                                <Col sm={12} md={12} lg={12} xl={12}>
                                     <div className='achievements-card'>
-                                        <img src={clipboard} alt="Clipboard" />
-                                        <h3 className='h3_title'>
-                                            <CountUp start={0} end={50} delay={0} duration={2.75}>
-                                                {({ countUpRef }) => (
-                                                    <div>
-                                                        <span className='h3_title' ref={countUpRef} />
-                                                        <span>+</span>
-                                                    </div>
-                                                )}
-                                            </CountUp>
-                                        </h3>
+                                        <h5 className='h5_title'>Title</h5>
                                         <p>Projects Launched</p>
                                     </div>
                                 </Col>
-                                <Col sm={6} md={6} lg={6} xl={6}>
-                                    <div className='achievements-card'>
-                                        <img src={clipboard} alt="Clipboard" />
-                                        <h3 className='h3_title'>
-                                            <CountUp start={0} end={10} delay={0} duration={2.75}>
-                                                {({ countUpRef }) => (
-                                                    <div>
-                                                        <span className='h3_title' ref={countUpRef} />
-                                                        <span>+</span>
-                                                    </div>
-                                                )}
-                                            </CountUp>
-                                        </h3>
+                                <Col sm={12} md={12} lg={12} xl={12}>
+                                <div className='achievements-card'>
+                                        <h5 className='h5_title'>Title</h5>
                                         <p>Projects Launched</p>
                                     </div>
                                 </Col>
-                                <Col sm={6} md={6} lg={6} xl={6}>
+                                <Col sm={12} md={12} lg={12} xl={12}>
                                     <div className='achievements-card'>
-                                        <img src={clipboard} alt="Clipboard" />
-                                        <h3 className='h3_title'>
-                                            <CountUp start={0} end={60} delay={0} duration={2.75}>
-                                                {({ countUpRef }) => (
-                                                    <div>
-                                                        <span className='h3_title' ref={countUpRef} />
-                                                        <span>+</span>
-                                                    </div>
-                                                )}
-                                            </CountUp>
-                                        </h3>
+                                        <h5 className='h5_title'>Title</h5>
                                         <p>Projects Launched</p>
                                     </div>
                                 </Col>
-                                <Col sm={6} md={6} lg={6} xl={6}>
-                                    <div className='achievements-card'>
-                                        <img src={clipboard} alt="Clipboard" />
-                                        <h3 className='h3_title'>
-                                            <CountUp start={0} end={90} delay={0} duration={2.75}>
-                                                {({ countUpRef }) => (
-                                                    <div>
-                                                        <span className='h3_title' ref={countUpRef} />
-                                                        <span>+</span>
-                                                    </div>
-                                                )}
-                                            </CountUp>
-                                        </h3>
+                                <Col sm={12} md={12} lg={12} xl={12}>
+                                <div className='achievements-card'>
+                                        <h5 className='h5_title'>Title</h5>
                                         <p>Projects Launched</p>
                                     </div>
                                 </Col>
                             </Row>
                         </Col>
-                        <Col sm={6} md={6} lg={8} xl={8}>
+                        <Col sm={6} md={6} lg={6} xl={6}>
                             <figure className='achievements-img'>
                                 <img src={achievementsImg} alt="W3 Service" />
                             </figure>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap'
 
@@ -9,13 +9,15 @@ export default function HeroSections() {
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
 
+    const { nft_slug } = useParams()
+
     const [NFTCate, setNFTCate] = useState({})
     const [ErrorNFT, setErrorNFT] = useState(false)
     async function API() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-marketing-company/`);
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/${nft_slug}/`);
             setNFTCate(api.data.response)
-            console.log("try", api.data.response);
+            // console.log("try", api.data.response);
         } catch (error) {
             setErrorNFT(true)
         }
@@ -23,7 +25,7 @@ export default function HeroSections() {
 
     useEffect(() => {
         API()
-    }, [])
+    }, [nft_slug])
 
     // =====================================  API end ============================================ 
 
@@ -37,7 +39,7 @@ export default function HeroSections() {
     const [emailError, setEmailError] = useState("");
     const [subjectError, setSubjectError] = useState("");
     const handleChange = (event) => {
-        setInput({...input, [event.target.name]: event.target.value})
+        setInput({ ...input, [event.target.name]: event.target.value })
     }
     const handleSubmit = (e) => {
         e.preventDefault();

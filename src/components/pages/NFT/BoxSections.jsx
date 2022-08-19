@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import { BsBox } from 'react-icons/bs'
@@ -9,12 +9,14 @@ export default function BoxSections() {
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
 
+    const { nft_slug } = useParams()
+
     const [NFTCate, setNFTCate] = useState([]);
     const [ErrorNFT, setErrorNFT] = useState(false);
     const [head, setHead] = useState([]);
     async function API() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-1/nft-marketing-company/`);
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-1/${nft_slug}/`);
             setNFTCate(api.data.response)
             setHead(api.data.heading_and_subheading)
         } catch (error) {
@@ -24,7 +26,7 @@ export default function BoxSections() {
 
     useEffect(() => {
         API()
-    }, [])
+    }, [nft_slug])
 
     // =====================================  API end ============================================ 
     return (

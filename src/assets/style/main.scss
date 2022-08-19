@@ -321,6 +321,21 @@ textarea {
 .active{
     color: orangered;
 }
+
+// ================== scrollbar =====================
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-track{
+    width: 5px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: #36bbc2;
+    border-radius: 25px;
+}
 @keyframes placeholder {
     0% {
         background-position: -600px 0

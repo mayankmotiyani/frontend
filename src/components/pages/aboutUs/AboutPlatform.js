@@ -37,7 +37,7 @@ const AboutPlatform = () => {
                             <div className='AboutPlatform-text'>
                                 <h3 className='h3_title'>{HeadData.subheading}</h3>
                                 <h2 className='h2_title'>{HeadData.heading}</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                <p>{HeadData.description}</p>
                             </div>
                             {Error ? 'Error'
                                 : ApiData.length === 0 ? 'loading...'

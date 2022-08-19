@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import { AiFillFire } from 'react-icons/ai'
+import { useParams } from 'react-router-dom';
 export default function KeyFeature() {
     // =====================================  API start ============================================ 
     // const location = useLocation(); 
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
+
+    const { nft_slug } = useParams()
 
     const [NFTCate, setNFTCate] = useState([]);
     const [ErrorNFT, setErrorNFT] = useState(false);
@@ -15,7 +18,7 @@ export default function KeyFeature() {
 
     async function API() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-3/nft-marketing-company/`);
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-3/${nft_slug}/`);
             setNFTCate(api.data.response)
             setHead(api.data.heading_and_subheading)
         } catch (error) {
@@ -25,7 +28,7 @@ export default function KeyFeature() {
 
     useEffect(() => {
         API()
-    }, [])
+    }, [nft_slug])
     // =====================================  API end ============================================ 
     return (
         <>

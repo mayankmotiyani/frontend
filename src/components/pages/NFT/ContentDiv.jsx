@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Col, Container, Image, Row, Spinner } from 'react-bootstrap'
 import Nft from '../../../assets/media/nft.png'
@@ -9,12 +9,14 @@ export default function ContentDiv() {
     // const filterApi_PathName = location.pathname.slice(1);
     // console.log(filterApi_PathName);
 
+    const { nft_slug } = useParams()
+
     const [NFTCate, setNFTCate] = useState([])
     const [ErrorNFT, setErrorNFT] = useState(false)
 
     async function API() {
         try {
-            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-2/nft-marketing-company/`);
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-2/${nft_slug}/`);
             setNFTCate(api.data.response);
         } catch (error) {
             console.log("error", error);
@@ -24,7 +26,7 @@ export default function ContentDiv() {
 
     useEffect(() => {
         API()
-    }, [])
+    }, [nft_slug])
 
     // =====================================  API end ============================================ 
     // ======================== Convert html ================================= 

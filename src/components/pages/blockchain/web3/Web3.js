@@ -11,10 +11,11 @@ import W3Tabs from './W3Tabs';
 import W3Technologies from './W3Technologies';
 
 const Web3 = (props) => {
+    const { slug } = useParams()
     // =========================== scroll To Top default =========================
     useEffect(() => {
         props.demo('top')
-    }, [])
+    }, [slug])
     // =========================== scroll To Top default =========================
     return (
         <>

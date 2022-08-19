@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Featured from './Featured'
 import GameFaq from './GameFaq'
 import GameHero from './GameHero'
@@ -7,10 +8,11 @@ import GameSolution from './GameSolution'
 import OurGame from './OurGame'
 
 const UnityGame = (props) => {
+  const { game_slug } = useParams()
   // =========================== scroll To Top default =========================
   useEffect(() => {
     props.demo('top')
-  }, [])
+  }, [game_slug])
   // =========================== scroll To Top default =========================
   return (
     <>
