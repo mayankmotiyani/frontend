@@ -11,6 +11,7 @@ import { IoIosWarning } from 'react-icons/io'
 import Particle from '../Particle';
 import { WOW } from "wowjs";
 import { Link } from 'react-router-dom';
+import HomeImg from '../../../assets/media/hero_banner.png';
 
 export default function HeroSection() {
     // const [owlData, setOwlData] = useState([])
@@ -90,6 +91,7 @@ export default function HeroSection() {
     return (
         <>
             <section className='hero-wrap'>
+                {/* <img src={HomeImg} alt="" /> */}
                 <div className='hero_overlay'></div>
                 <Particle />
                 {/* <video autoPlay muted loop id="myVideo" width="100%" className='heroSection_video'>
