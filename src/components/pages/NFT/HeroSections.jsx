@@ -13,6 +13,8 @@ export default function HeroSections() {
 
     const [NFTCate, setNFTCate] = useState({})
     const [ErrorNFT, setErrorNFT] = useState(false)
+    const [countryCodeData, setCountryCodeData] = useState([]);
+    const [numberError, setNumberError] = useState("");
     async function API() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/${nft_slug}/`);
@@ -59,7 +61,16 @@ export default function HeroSections() {
         } else {
             setEmailError("")
         }
-
+        // ==================== Number =========================
+        var phoneno = /^\d{10}$/;
+        if (!input.number) {
+            setNumberError("Number is required")
+        } else if (input.number.match(phoneno)) {
+            setNumberError("")
+        } else {
+            setNumberError("Please enter valid number")
+            return true
+        }
         // ================ subject =============================
         if (!input.subject) {
             setSubjectError("Subject is required");
@@ -70,6 +81,20 @@ export default function HeroSections() {
 
     // ========================= form validation ========================= 
 
+    // ========================= Country Code =============================
+    async function countryCode() {
+        try {
+            const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+            const apiData = api.data.response.country_dialing_code;
+            setCountryCodeData(apiData)
+        } catch (error) {
+            setErrorNFT(true)
+        }
+    }
+
+    useEffect(() => {
+        countryCode()
+    }, [])
     return (
         <>
             <section className='nft_heroSections'>
@@ -95,9 +120,23 @@ export default function HeroSections() {
                                     <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicSubjecy">
+                                {/* <Form.Group className="mb-3" controlId="formBasicSubjecy">
                                     <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
+                                </Form.Group> */}
+                                <Form.Group className="mb-3">
+                                    <div className='mobile_div'>
+                                        <Form.Select id='mobile'>
+                                            {ErrorNFT ?
+                                                <option>00</option>
+                                                : countryCodeData.map((e, key) => {
+
+                                                    return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
+                                                })}
+                                        </Form.Select>
+                                        <Form.Control type="number" min={0} id="userNumber" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
+                                    </div>
+                                    <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                 </Form.Group>
                                 <Form.Control
                                     as="textarea"

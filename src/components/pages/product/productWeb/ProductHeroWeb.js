@@ -19,7 +19,7 @@ const ProductHeroWeb = () => {
             <Col sm={4} md={4} lg={4} xl={4}>
               <figure className='productHeroWeb-img'>
                 <Image src={productBanner} alt="Infograins" fluid />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}
               </figure>
             </Col>
           </Row>

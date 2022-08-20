@@ -21,9 +21,9 @@ export default function ProductPage(props) {
             <HeroSection />
             <AboutSection />
             <OurGoal />
-            <Solution />
+            {/* <Solution /> */}
             <PaymentMethod />
-            <Outcome />
+            {/* <Outcome /> */}
             <Functionality />
             <Connect />
         </>

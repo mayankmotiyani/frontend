@@ -82,6 +82,9 @@
     .w3Card-wrap .w3Card-both{
         margin: 0px;
     }
+    .w3Card-wrap{
+        padding: 20px 0px;
+    }
 }   
 
 @media screen and (max-width: 991px) {
@@ -91,5 +94,19 @@
             margin-top: auto;
         }
     }
+    .w3Card-wrap .w3Card-both{
+        margin-top: 0px;
+    }
+    .w3Card-wrap .w3Card-title .h2_title{
+        padding-bottom: 20px;
+    }
     
+}
+@media screen and (max-width: 991px) {
+    .w3Card-wrap .w3-card-body{
+        height: 140px;
+    }
+    .w3Card-wrap .w3-card-body .h2_title{
+        padding: 0px;
+    }
 }

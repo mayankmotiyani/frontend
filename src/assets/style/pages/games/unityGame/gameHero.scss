@@ -95,6 +95,20 @@
             color: #fff;
         }
     }
+    .mobile_div {
+        display: flex;
+
+        .form-select {
+            background-color: transparent;
+            height: 40px;
+            width: 140px;
+            border: none;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -109,5 +123,8 @@
     }
     .gameHero-wrap .gameHero-about-wrap .h3_title{
         font-size: 2em;
+    }
+    .gameHero-wrap{
+        padding: 20px 0px;
     }
 }

@@ -4,7 +4,7 @@
         text-align: center;
         margin-bottom: 1em;
 
-        .h4_title{
+        .h3_title{
                 color: #36bbc2;
         }
     }
@@ -24,5 +24,8 @@
 @media screen and (max-width: 575px) {
     .boxSections{
         padding: 1em 0em;
+    }
+    .boxSections .box_shell{
+        min-height: 180px;
     }
 }

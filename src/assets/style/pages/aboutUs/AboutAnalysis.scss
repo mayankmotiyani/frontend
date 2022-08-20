@@ -9,6 +9,9 @@
         .h3_title {
             color: #36ccb2;
         }
+        p{
+            padding-top: 20px;
+        }
 
         button {
             background: transparent;
@@ -60,5 +63,12 @@
         padding: 5px 15px;
         margin-top: 15px;
         font-size: 14px;
+    }
+    button{
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    .AboutAnalysis-img{
+        margin-bottom: 20px;
     }
 }

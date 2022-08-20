@@ -133,3 +133,8 @@
         max-width: 100%;
     }
 }
+@media screen and (max-width: 575px) {
+    .GameSolution-wrap{
+        padding: 20px 0px;
+    }
+}

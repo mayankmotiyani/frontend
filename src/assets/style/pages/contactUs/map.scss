@@ -5,3 +5,9 @@
         border-radius: 10px;
     }
 }
+
+@media screen and (max-width: 575px) {
+    .map-wrap {
+        padding: 20px 0px;
+    }
+}

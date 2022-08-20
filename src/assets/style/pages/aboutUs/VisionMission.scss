@@ -4,8 +4,8 @@
         align-items: center;
     }
     .visionMission-list {
-        .h3_title {
-            color: orange;
+        .h2_title {
+        //    padding-bottom: 10px;
             span{
                 color: #000;
             }
@@ -29,7 +29,10 @@
             }
         }
     }
-
+    .mission-img{
+        width: 80%;
+        margin: 0px auto;
+    }
 }
 @media screen and (max-width: 575px) {
     .visionMission-list{

@@ -2,7 +2,7 @@
 
 .career-wrap {
     .career-banner-wrap {
-        background: url("../../../images/career/career.png");
+        // background: url("../../../images/career/career.png");
         height: 300px;
         background-size: cover;
         width: 100%;
@@ -14,6 +14,15 @@
         align-items: center;
         flex-direction: column;
 
+        .background_img{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .h2_title {
             color: #fff;
             position: relative;
@@ -22,7 +31,7 @@
         }
 
         &::after {
-            background: #0003;
+            background: linear-gradient(45deg, rgba(0, 5, 69, 0.5), #000);
             position: absolute;
             width: 100%;
             height: 100%;
@@ -45,7 +54,7 @@
         }
 
         .opportunities-card-wrap {
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            box-shadow: rgb(0 5 69 / 8%) 0px 0px 16px;
             padding: 20px;
             text-align: center;
             border-radius: 10px;
@@ -61,7 +70,7 @@
 
             .opportunities-card-header {
                 .h3_title {
-                    color: orange;
+                    color: #36bbca;
                 }
 
                 p {
@@ -107,7 +116,7 @@
                 .apply-btn {
                     background: transparent;
                     padding: 5px 15px;
-                    border: 1px solid orange;
+                    border: 1px solid #36bbca;
                     position: relative;
                     overflow: hidden;
                     transition: all 0.2s;
@@ -127,9 +136,9 @@
                         left: -10px;
                         width: 10px;
                         height: 10px;
-                        background-image: linear-gradient(45deg, #ff7731, #ffa52d, #ff742c);
+                        background-image: linear-gradient(45deg, #36bbca, #36bbca, #36bbca);
                         border-radius: 50%;
-                        border: 1px solid orange;
+                        border: 1px solid #36bbca;
                         transition: all 0.2s;
                         z-index: -1;
                     }

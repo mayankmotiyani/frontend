@@ -13,7 +13,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        margin-top: 30px;
+        margin-top: 20px;
 
         .AboutPlatform-details-img {
             margin-right: 15px;
@@ -42,5 +42,7 @@
     .AboutPlatform-wrap{
         padding: 20px 0px;
     }
-    
+    .AboutPlatform-img{
+        margin-bottom: 20px;
+    }
 }

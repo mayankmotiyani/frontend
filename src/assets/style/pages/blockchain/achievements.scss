@@ -19,6 +19,7 @@
         text-align: center;
         .h3_title{
             color: #36bbc2;
+            padding-bottom: 20px;
         }
     }
     .achievements-img{
@@ -32,11 +33,14 @@
     }
 }
 @media (max-width: 575px) {
-    .achievements-title {
-        margin-bottom: 20px;
+    .achievements-wrap{
+        padding: 20px 0px;
     }
 
     .achievements-wrap .row {
         flex-direction: column-reverse;
+    }
+    .achievements-wrap .achievements-title{
+        margin: 0px;
     }
 }

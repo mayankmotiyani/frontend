@@ -3,6 +3,7 @@
     // padding: 50px 0px;
     // background-color: #7079e60f;
     background-color: #fafafb;
+    // background: linear-gradient(198deg, rgba(255, 255, 255, 0.618), rgba(0, 5, 69, 0.6862745098)), url();    
 }
 
 .LaunchPlatform-heading {
@@ -32,7 +33,7 @@
 }
 
 .flip-card-inner {
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #fff;
     position: relative;
     width: 100%;
@@ -58,20 +59,61 @@
 
 .flip-card-front {
     // background-color: rgb(255, 255, 255);
-    padding: 20px;
-    transform: translateZ(50px);
+    // padding: 20px;
+    border-radius: 20px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    
+    .tile_div{
+        perspective: preserve-3d;
+        transform: translateZ(50px);
+
+        .h4_title{
+            font-size: 2em;
+            color: #fff;
+        }
+    }
 }
 
 .flip-card-back {
     // background-color: #ffffff;
-    color: white;
-    transform: rotateY(180deg) translateZ(50px);
-    padding: 20px;
-    height: 330px;
+    // color: white;
+    // padding: 20px;
+    // height: 330px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: column;
+    transform: rotateY(180deg);
+    border-radius: 20px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
     display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    transform-style: preserve-3d;
+    
+    .tile_div{
+        perspective: preserve-3d;
+        // transform: translateZ(50px);
+        transform: translateZ(50px) scale(.90); 
+
+        .h4_title{
+            font-size: 2em;
+            color: #fff;
+        }
+        p{
+            color: #fff;
+        }
+    }
 }
 
 .flip-card-front {

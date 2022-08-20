@@ -36,7 +36,7 @@ export default function BoxSections() {
                     <Row>
                         <Col lg={12}>
                             <div className='head_section'>
-                                <h4 className='h4_title'>{head.subheading}</h4>
+                                <h3 className='h3_title'>{head.subheading}</h3>
                                 <h2 className='h2_title'>{head.heading}</h2>
                                 <p>{head.description}</p>
                             </div>

@@ -1,5 +1,5 @@
 .w3-OwlCarousel-wrap {
-    padding: 100px 0px;
+    padding: 50px 0px;
     // background-image: url("../../../images/background/web3/owlbackground2.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -18,6 +18,9 @@
     // }
 
     .image_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img{
             width: 80%;
         }
@@ -30,6 +33,9 @@
         .hero_content_div{
             .hero_cont_para{
                 word-break: break-word;
+                p:nth-child(1){
+                    padding: 15px 0px;
+                }
             }
         }
     }
@@ -38,7 +44,7 @@
         align-items: center;
     }
 
-    .h4_title {
+    .h3_title {
         color: #36bbc2;
     }
 
@@ -103,7 +109,7 @@
 
 @media (max-width: 767px) {
     .w3-OwlCarousel-wrap{
-        padding: 50px 0px 20px;
+        padding: 20px 0px 20px;
     }
     .w3-OwlCarousel-wrap .container {
         max-width: 100%;
@@ -116,5 +122,9 @@
 @media (max-width: 575px) {
     .hero_slide_section_content {
         margin-top: 20px;
+    }
+    .w3-OwlCarousel-wrap button{
+        padding: 10px 25px;
+        font-size: 14px;
     }
 }

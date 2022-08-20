@@ -124,7 +124,7 @@ export default function BlogMain(props) {
                                                             dataLength={dummy.length}
                                                             next={searchAPI}
                                                             hasMore={true}
-                                                            loader={Count >= LimitReached ? console.log('Limit Reached') :
+                                                            loader={Count >= LimitReached ? "" :
                                                                 <div className='blog_loader'>
                                                                     <Loader type="bubble-loop" bgColor={"#069aff"} color={'#707070'} size={100} />
                                                                 </div>
@@ -132,15 +132,15 @@ export default function BlogMain(props) {
                                                         >
                                                             {dummy.map((i, index) => (
                                                                 <li key={index}>
-                                                                    <div className='blog_div'>
+                                                                    <Link to={i.blog_url} className='blog_div'>
                                                                         <div className='img_blog'>
-                                                                            <img src={BlogImage} alt="" />
+                                                                            <img src={i.image} alt="" />
                                                                         </div>
                                                                         <div className='content_div'>
                                                                             <h4 className='h4_title'>{i.title}</h4>
                                                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
                                                                         </div>
-                                                                    </div>
+                                                                    </Link>
                                                                 </li>
                                                             ))}
                                                         </InfiniteScroll>
@@ -160,7 +160,7 @@ export default function BlogMain(props) {
                                                     {featuredData.map((blog, key) => {
                                                         return <Col className='my-3'sm={6} xl={4} lg={4} md={6} key={key}>
                                                             <div className='blog_card'>
-                                                                <img src={BlogImage} alt="" />
+                                                                <img src={blog.image} alt="" />
                                                                 <div className='blog_card_content'>
                                                                     <h3 className='h3_title' data-blog-title>{blog.title}</h3>
                                                                     <p>{blog.description}</p>

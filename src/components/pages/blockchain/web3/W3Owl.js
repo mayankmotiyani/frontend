@@ -75,7 +75,7 @@ const W3Owl = () => {
                         <Col sm={6} md={6} lg={6} xl={6}>
                             <div className='hero_slide_section_content'>
                                 <div className='hero_content_div'>
-                                    <h4 className='h4_title hero_cont_subheading'>{BlockchainCate.subheading}</h4>
+                                    <h3 className='h3_title hero_cont_subheading'>{BlockchainCate.subheading}</h3>
                                     <h2 className='h2_title hero_cont_heading'>{BlockchainCate.title}</h2>
                                     <div className='hero_cont_para' ref={description}></div>
                                     <button className='hero_cont_btn'>Click Me</button>

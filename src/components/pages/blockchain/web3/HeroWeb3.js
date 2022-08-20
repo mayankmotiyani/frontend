@@ -10,12 +10,14 @@ const HeroWeb3 = () => {
   // console.log(filterApi_PathName);
 
   const [BlockchainCate, setBlockchainCate] = useState([])
-  const [ErrorBlockchain, setErrorBlockchain] = useState(false)
+  const [ErrorBlockchain, setErrorBlockchain] = useState(false);
+  const [countryCodeData, setCountryCodeData] = useState([]);
+  const [numberError, setNumberError] = useState("");
   async function API() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
       setBlockchainCate(api.data.response)
-      // console.log("try", api.data.response);
+      console.log("try", filterApi_PathName);
     } catch (error) {
       setErrorBlockchain(true)
     }
@@ -57,7 +59,16 @@ const HeroWeb3 = () => {
     } else {
       setEmailError("")
     }
-
+    // ==================== Number =========================
+    var phoneno = /^\d{10}$/;
+    if (!input.number) {
+      setNumberError("Number is required")
+    } else if (input.number.match(phoneno)) {
+      setNumberError("")
+    } else {
+      setNumberError("Please enter valid number")
+      return true
+    }
     // ================ subject =============================
     if (!input.subject) {
       setSubjectError("Subject is required");
@@ -67,6 +78,21 @@ const HeroWeb3 = () => {
   }
 
   // ========================= form validation ========================= 
+
+  // ========================= Country Code =============================
+  async function countryCode() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+      const apiData = api.data.response.country_dialing_code;
+      setCountryCodeData(apiData)
+    } catch (error) {
+      setErrorBlockchain(true)
+    }
+  }
+
+  useEffect(() => {
+    countryCode()
+  }, [])
   return (
     <>
       <section className='web3-hero-wrap'>
@@ -94,9 +120,23 @@ const HeroWeb3 = () => {
                   <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicSubjecy">
+                {/* <Form.Group className="mb-3" controlId="formBasicSubjecy">
                   <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
+                </Form.Group> */}
+                <Form.Group className="mb-3">
+                  <div className='mobile_div'>
+                    <Form.Select id='mobile'>
+                      {ErrorBlockchain ?
+                        <option>00</option>
+                        : countryCodeData.map((e, key) => {
+
+                          return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
+                        })}
+                    </Form.Select>
+                    <Form.Control type="number" min={0} id="userNumber" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
+                  </div>
+                  <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                 </Form.Group>
                 <Form.Control
                   as="textarea"

@@ -29,7 +29,7 @@ export default function Outcome() {
                     <Row>
                         <Col lg={12}>
                             <div className='head_text'>
-                                <h4 className='h4_title' style={{ color: '#36bbca' }}>{HeadData.subheading}</h4>
+                                <h3 className='h3_title' style={{ color: '#36bbca' }}>{HeadData.subheading}</h3>
                                 <h2 className='h2_title'>{HeadData.heading}</h2>
                                 <p>{HeadData.description}</p>
                             </div>

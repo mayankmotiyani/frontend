@@ -62,3 +62,8 @@
         max-width: 100%;
     }
 }
+@media screen and (max-width: 575px) {
+    .featured-wrap {
+        padding: 20px 0px;
+    }
+}

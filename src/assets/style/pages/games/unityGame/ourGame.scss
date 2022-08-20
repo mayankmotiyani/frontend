@@ -70,3 +70,9 @@
         max-width: 100%;
     }
 }
+
+@media screen and (max-width: 575px) {
+    .ourGame-wrap {
+        padding: 20px 0px;
+    }
+}

@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Container, Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, FloatingLabel, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import AOS from "aos";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Background from '../../../assets/images/career/career.png'
+
+
 const CareerApply = (props) => {
   // =================================== apply from validation ===============================
   const [input, setInput] = useState({
@@ -168,6 +171,7 @@ const CareerApply = (props) => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}career/${apl_slug}/`);
       setCareerDetails(url.data.response)
+      // console.log(url.data.response);
     } catch (error) {
       console.log(error);
     }
@@ -194,6 +198,7 @@ const CareerApply = (props) => {
     <>
       <section className='career-apply-wrap'>
         <div className='career-apply-banner'>
+          <Image className='background_img' src={Background} fluid />
           <h2 className='h2_title'>Career</h2>
         </div>
         <div className='career-apply-details-wrap'>

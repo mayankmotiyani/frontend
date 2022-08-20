@@ -36,7 +36,7 @@ const AboutTrusted = () => {
                 items: 1,
             },
             700: {
-                items: 3,
+                items: 2,
             },
             1000: {
                 items: 3,
@@ -76,7 +76,7 @@ const AboutTrusted = () => {
                     </div> */}
                     {/* <div dangerouslySetInnerHTML={{ __html: diss }}></div> */}
                     <div className='AboutTrusted-title'>
-                        <h4 className='h4_title'>{HeadData.subheading}</h4>
+                        <h3 className='h3_title'>{HeadData.subheading}</h3>
                         <h2 className='h2_title'>{HeadData.heading}</h2>
                         <p>{HeadData.description}</p>
                     </div>

@@ -60,7 +60,7 @@ export default function ContentDiv() {
                         </Col>
                         <Col sm={6} md={6} lg={6} xl={6}>
                             <div className='content_img'>
-                                <Image src={Nft} fluid />
+                                <Image src={NFTCate.image} fluid />
                             </div>
                         </Col>
                     </Row>

@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Image, Tabs, Tab } from "react-bootstrap";
 import webImg from "../../../../assets/images/product/web.png";
 import appImg from "../../../../assets/images/product/app.png";
+import axios from 'axios';
+import { Link } from 'react-router-dom'
 
-const productDetails = () => {
+const ProductDetails = () => {
+  // =========================================== API ======================================
+  const [WebData, setWebData] = useState([])
+  const [AppData, setAppData] = useState([])
+
+  async function api() {
+    try {
+      const { data: { web, app } } = await axios.get(`${process.env.REACT_APP_BASE_URL}product/sliceledger_product/`);
+      setWebData(web)
+      setAppData(app)
+    } catch (error) {
+
+    }
+  }
+
+  useEffect(() => {
+    api()
+  }, [])
+
   return (
     <>
       <section className='productDetails-wrap'>
@@ -21,64 +41,49 @@ const productDetails = () => {
             <Tab eventKey="web" title="Web">
               <div className='productDetails-web-detail'>
                 <Container>
-                  <Row>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <div className='productDetails-web-tab'>
-                        <h2 className='h2_title'>Heading</h2>
-                        <h3 className='h3_title'>Sub title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore est harum perspiciatis aperiam impedit. Debitis soluta porro unde iusto laboriosam, nulla tempora minima veritatis a minus tenetur assumenda dicta corporis.</p>
-                        <button className='btn' type='button'>Live Preview</button>
-                      </div>
-                    </Col>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <figure className='productDetails-web-tab'>
-                        <Image src={webImg} alt="Web Img" />
-                      </figure>
-                    </Col>
-                  </Row>
-                </Container>
-              </div>
-              <div className='productDetails-web-detail'>
-                <Container>
-                  <Row>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <div className='productDetails-web-tab'>
-                        <h2 className='h2_title'>Heading</h2>
-                        <h3 className='h3_title'>Sub title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore est harum perspiciatis aperiam impedit. Debitis soluta porro unde iusto laboriosam, nulla tempora minima veritatis a minus tenetur assumenda dicta corporis.</p>
-                        <button className='btn' type='button'>Live Preview</button>
-                      </div>
-                    </Col>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <figure className='productDetails-web-img'>
-                        <Image src={webImg} alt="Web Img" />
-                      </figure>
-                    </Col>
-                  </Row>
+                  {WebData.map(({ product_slug, heading, content, image, title }, key) => {
+                    return <Row>
+                      <Col sm={6} md={6} lg={6} xl={6}>
+                        <div className='productDetails-web-tab'>
+                          <h3 className='h3_title'>{title}</h3>
+                          <h2 className='h2_title'>{heading}</h2>
+                          <p>{content}</p>
+                          <Link to={product_slug} className='btn' type='button'>Live Preview</Link>
+                        </div>
+                      </Col>
+                      <Col sm={6} md={6} lg={6} xl={6}>
+                        <figure className='productDetails-web-tab'>
+                          <Image src={image} alt="Web Img" />
+                        </figure>
+                      </Col>
+                    </Row>
+                  })}
                 </Container>
               </div>
             </Tab>
             <Tab eventKey="app" title="App">
               <div className='productDetails-app-detail'>
                 <Container>
-                  <Row>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <div className='productDetails-app-tab'>
-                        <h2 className='h2_title'>Heading</h2>
-                        <h3 className='h3_title'>Sub title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore est harum perspiciatis aperiam impedit. Debitis soluta porro unde iusto laboriosam, nulla tempora minima veritatis a minus tenetur assumenda dicta corporis.</p>
-                        <button className='btn' type='button'>Live Preview</button>
-                      </div>
-                    </Col>
-                    <Col sm={6} md={6} lg={6} xl={6}>
-                      <figure className='productDetails-app-img'>
-                        <Image src={appImg} alt="App Img" />
-                      </figure>
-                    </Col>
-                  </Row>
+                  {AppData.map(({ product_slug, title, content, image, heading }, key) => {
+                    return <Row key={key}>
+                      <Col sm={6} md={6} lg={6} xl={6}>
+                        <div className='productDetails-app-tab'>
+                          <h3 className='h3_title'>{title}</h3>
+                          <h2 className='h2_title'>{heading}</h2>
+                          <p>{content}</p>
+                          <Link to={product_slug} className='btn' type='button'>Live Preview</Link>
+                        </div>
+                      </Col>
+                      <Col sm={6} md={6} lg={6} xl={6}>
+                        <figure className='productDetails-app-img'>
+                          <Image src={image} alt="App Img" />
+                        </figure>
+                      </Col>
+                    </Row>
+                  })}
                 </Container>
               </div>
-              
+
             </Tab>
           </Tabs>
         </div>
@@ -87,4 +92,4 @@ const productDetails = () => {
   )
 }
 
-export default productDetails
+export default ProductDetails

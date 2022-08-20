@@ -90,9 +90,13 @@
 
 @media (max-width: 767px) {
     .w3Service-wrap{
-        padding: 0px;
+        padding: 20px 0px;;
     }
     .w3Service-wrap .container {
         max-width: 100%;
+    }
+    .w3Service-wrap .w3-service-about button{
+        font-size: 14px;
+        padding: 10px 25px;
     }
 }

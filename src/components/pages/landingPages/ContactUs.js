@@ -51,7 +51,6 @@ const ContactUs = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault(e);
-
         // ================ name =============================
         if (!input.name) {
             setNameError("Name is required");
@@ -108,8 +107,16 @@ const ContactUs = () => {
         };
 
         fetch(`${process.env.REACT_APP_BASE_URL}contact_us/`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => 
+            {
+                response.text()
+                console.log("response", response);
+            }
+            )
+            .then(result => {
+                console.log("result", result)
+            }
+            )
             .catch(error => console.log('error', error));
     }
 
@@ -134,7 +141,7 @@ const ContactUs = () => {
     // ========================================= Arrow Key ==============================
     useEffect(() => {
         document.getElementById('userNumber').addEventListener('keydown', function (e) {
-            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {e.preventDefault()}
+            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') { e.preventDefault() }
         });
     }, [])
 
@@ -200,11 +207,11 @@ const ContactUs = () => {
                                         </div>
                                         <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                     </Form.Group>
-                                    <Form.Group className="mb-3 col-lg-12" controlId="formBasicSubjecy">
+                                    {/* <Form.Group className="mb-3 col-lg-12" controlId="formBasicSubjecy">
                                         <Form.Label>Subject</Form.Label>
                                         <Form.Control type="text" placeholder="Enter subject" className='input_field' name="subject" value={input.subject} onChange={handleChange} />
                                         <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                                    </Form.Group>
+                                    </Form.Group> */}
                                     <Form.Group>
                                         <Form.Label>Your Message</Form.Label>
                                         <Form.Control

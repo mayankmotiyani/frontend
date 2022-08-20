@@ -14,10 +14,13 @@
     .term_condition_content{
         margin: 2em 0em;
 
-        .h5_title{
+        h4{
             border-left: 4px solid orange;
             padding-left: 10px;
             margin-bottom: .5em;
+            margin-top: 1em;
+            font-weight: 600;
+            font-size: 18px;
         }
     }
 }

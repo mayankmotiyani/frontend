@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import AOS from "aos";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Background from '../../../assets/images/career/career.png'
 const Career = (props) => {
     const [career, setCareer] = useState([]);
     const [error, setError] = useState(false)
@@ -27,6 +28,7 @@ const Career = (props) => {
         <>
             <section className='career-wrap'>
                 <div className='career-banner-wrap'>
+                    <Image className='background_img' src={Background} fluid />
                     <h2 className='h2_title'>Career</h2>
                 </div>
                 <Container>

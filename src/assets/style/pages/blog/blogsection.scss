@@ -56,6 +56,8 @@
                     .img_blog {
                         img {
                             width: 190px;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
 
@@ -184,5 +186,11 @@
     }
     .top_section{
         padding: 20px 0px 40px !important;
+    }
+    .blog_section {
+        margin: 0em 0em 0em 0em;
+    }
+    .blog_section .all_blogs .blog_card{
+        height: 400px;
     }
 }

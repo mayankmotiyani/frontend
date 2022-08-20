@@ -17,19 +17,19 @@
         .go_back_btn {
             margin-top: 3em;
             a {
-                background: orange;
+                background: #36bbca;
                 padding: 10px 45px;
-                border: 1px solid orange;
+                border: 1px solid #36bbca;
                 position: relative;
                 overflow: hidden;
                 transition: all 0.5s;
                 z-index: 0;
                 border-radius: 25px;
                 color: #000;
-                box-shadow: 0px 0px 20px rgb(255 165 45);
+                box-shadow: 0px 0px 20px #36bbca;
 
                 &:hover{
-                    box-shadow: 0px 0px 5px rgb(255 165 45);
+                    box-shadow: 0px 0px 5px #36bbca;
                 }
             }
         }

@@ -45,7 +45,7 @@ export default function AboutSection() {
                                 <Col sm={6} md={6} lg={6} xl={6}>
                                     <div className='about_container'>
                                         <div className='about_content'>
-                                            <h4 className='h4_title'>About Product</h4>
+                                            <h3 className='h3_title'>About Product</h3>
                                             <h2 className='h2_title'>{AboutData.title}</h2>
                                             <p>{AboutData.content}</p>
                                         </div>

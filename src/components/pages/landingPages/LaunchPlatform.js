@@ -19,7 +19,7 @@ const LaunchPlatform = () => {
         }
     }
     useEffect(() => {
-        const wow = new WOW({ live: false }); 
+        const wow = new WOW({ live: false });
         wow.init()
     })
     useEffect(() => {
@@ -66,12 +66,25 @@ const LaunchPlatform = () => {
                                         return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                             <div className="flip-card wow zoomIn">
                                                 <div className="flip-card-inner">
-                                                    <div className="flip-card-front">
-                                                        <img src={box.image_url} alt={box.name} />
-                                                        <h4 className='h4_title'>{box.name}</h4>
+                                                    <div className="flip-card-front"
+                                                        style={{
+                                                            background: `linear-gradient(198deg, rgba(0, 0, 0, 0.4), rgba(0, 5, 69, 0.6862745098)), url(${box.image_url})`,
+                                                        }}
+                                                    >
+                                                        <div className='tile_div'>
+                                                            <h4 className='h4_title'>{box.name}</h4>
+                                                        </div>
+                                                        {/* <img src={box.image_url} alt={box.name} fluid/> */}
                                                     </div>
-                                                    <div className="flip-card-back">
-                                                        <p>{box.content}</p>
+                                                    <div className="flip-card-back"
+                                                        style={{
+                                                            background: `linear-gradient(198deg, rgba(0, 0, 0, 0.618), rgba(0, 5, 69, 0.6862745098)), url(${box.image_url})`,
+                                                        }}
+                                                    >
+                                                        <div className='tile_div'>
+                                                            <h4 className='h4_title'>{box.name}</h4>
+                                                            <p>{box.content}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

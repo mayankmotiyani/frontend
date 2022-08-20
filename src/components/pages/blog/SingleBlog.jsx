@@ -58,7 +58,7 @@ export default function SingleBlog(props) {
                         <Col lg={9}>
                             <div className='blog_body'>
                                 <h2 className='h2_title'>{blogContent.title}</h2>
-                                <img className='blog_img' src={BlogImage} alt="" />
+                                <img className='blog_img' src={blogContent.image} alt="" />
                                 <div ref={blog_content} className="blog_content_div"></div>
                                 {/* <p className='blog_content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempora quos, nobis, sequi libero, ut sapiente maxime odit velit incidunt nihil magnam culpa error qui fuga numquam. Qui, mollitia iste?</p>
                                 <p className='blog_content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempora quos, nobis, sequi libero, ut sapiente maxime odit velit incidunt nihil magnam culpa error qui fuga numquam. Qui, mollitia iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempora quos, nobis, sequi libero, ut sapiente maxime odit velit incidunt nihil magnam culpa error qui fuga numquam. Qui, mollitia iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempora quos, nobis, sequi libero, ut sapiente maxime odit velit incidunt nihil magnam culpa error qui fuga numquam. Qui, mollitia iste?</p>

@@ -5,7 +5,9 @@
         text-align: center;
         max-width: 700px;
         margin: 0px auto 50px;
-
+        .h3_title{
+            color: #36ccb2;
+        }
         p {
             padding-top: 20px;
         }
@@ -49,5 +51,8 @@
     }
     .AboutTrusted-wrap{
         padding: 20px 0px;
+    }
+    .AboutTrusted-wrap .AboutTrusted-title{
+        margin: 0px;
     }
 }

@@ -96,7 +96,7 @@ export default function BlogSection() {
                                 : BlogData.map((e, key) => {
                                     return <Col sm={6} md={6} lg={4} xl={4} key={key}>
                                         <div className='blog_section wow zoomIn'>
-                                            <img src={BlogImage} alt="" />
+                                            <img src={e.image} alt="" />
                                             <div className='blog_content'>
                                                 <h3 className='h3_title'>{e.title}</h3>
                                                 <p>{e.description}</p>

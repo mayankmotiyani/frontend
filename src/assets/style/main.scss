@@ -145,7 +145,17 @@ p {
     letter-spacing: 0.7px;
     margin-bottom: 0px;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .btn:focus {
     box-shadow: none !important;
 }
@@ -378,6 +388,7 @@ textarea {
     .h4_title {
         font-size: 1em;
     }
+   
 }
 
 @media screen and (max-width: 360px) {
