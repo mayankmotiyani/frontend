@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-// import Axios from 'axios';
-import { Button, Form, Container, Col, Row, FloatingLabel } from 'react-bootstrap';
-
+import { Button, Form, Container, Col, Row } from 'react-bootstrap';
+import Loader from "react-js-loader";
 const ContactUs = () => {
 
     const [countryCodeData, setCountryCodeData] = useState([])
-    const [ErrorCountryCode, setErrorCountryCode] = useState(false)
+    const [ErrorCountryCode, setErrorCountryCode] = useState(false);
+    const [loader, setLoader] = useState(false);
+
     const [input, setInput] = useState({
         name: "",
         email: "",
@@ -22,22 +23,12 @@ const ContactUs = () => {
 
 
     async function countryCode() {
-        // console.log('countryCode function called');
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
-            // console.log('api', api);
             const apiData = api.data.response.country_dialing_code;
-            // console.log(apiData);
             setCountryCodeData(apiData)
-
-            // if(apiData === undefined || apiData === null ){
-            //     setCountryCodeData([])
-            // }else{
-            //     setCountryCodeData(apiData)
-            // }
         } catch (error) {
             setErrorCountryCode(true)
-            // console.log('api',api.data);
         }
     }
 
@@ -51,6 +42,7 @@ const ContactUs = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault(e);
+        setLoader(true)
         // ================ name =============================
         if (!input.name) {
             setNameError("Name is required");
@@ -69,15 +61,15 @@ const ContactUs = () => {
         }
 
         // ==================== Number =========================
-        var phoneno = /^\d{10}$/;
-        if (!input.number) {
-            setNumberError("Number is required")
-        } else if (input.number.match(phoneno)) {
-            setNumberError("")
-        } else {
-            setNumberError("Please enter valid number")
-            return true
-        }
+        // var phoneno = /^\d{10}$/;
+        // if (!input.number) {
+        //     setNumberError("")
+        // } else if (input.number.match(phoneno)) {
+        //     setNumberError("")
+        // } else {
+        //     setNumberError("Please enter valid number")
+        //     return true
+        // }
 
         // ================ subject =============================
         if (!input.subject) {
@@ -86,38 +78,61 @@ const ContactUs = () => {
             setSubject("");
         }
         // // ================ Message =============================
-        // if (!input.messageError) {
-        //     setMessage("Message is required");
-        // } else {
-        //     setMessage("");
-        // }
+        let messageId = document.getElementById("messageId").innerHTML
+        if (!messageId) {
+            setMessage("Message is required");
+        } else {
+            setMessage("");
+        }
 
         // ======================== concat number and dialingCode ==============================
-        var mobilesData = document.getElementById("mobile").value;
-        var concatData = mobilesData + input.number;
+        if (input.number != "") {
+            var mobilesData = document.getElementById("mobile").value;
+            var concatData = mobilesData + input.number;
+        } else {
+            concatData = ""
+        }
         // console.log("mobilesData", mobilesData);
         // ======================== concat number and dialingCode ==============================
-        var get_json = { dialingCode: mobilesData, contactNumber: concatData, fullName: input.name, emailId: input.email, projectDescription: "...." }
+        const payload = {
+            dialingCode: mobilesData,
+            contactNumber: concatData,
+            fullName: input.name,
+            emailId: input.email,
+            message: input.message,
+            subject: input.subject
+        }
         var formdata = new FormData();
-        formdata.append("get_contact_detail", JSON.stringify(get_json));
-
-        var requestOptions = {
-            method: 'POST',
-            body: formdata,
-        };
-
-        fetch(`${process.env.REACT_APP_BASE_URL}contact_us/`, requestOptions)
-            .then(response => 
-            {
-                response.text()
-                console.log("response", response);
+        formdata.append('get_contact_detail', JSON.stringify(payload));
+        axios({
+            method: 'post',
+            url: `${process.env.REACT_APP_BASE_URL}contact_us/`,
+            data: formdata,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res => {
+            if (res) {
+                setInput({
+                    name: "",
+                    email: "",
+                    message: "",
+                    number: "",
+                    subject: ""
+                })
+                setNumberError("");
+                setLoader(false)
             }
-            )
-            .then(result => {
-                console.log("result", result)
+        }).catch(err => {
+            setLoader(false)
+            console.log("err", err);
+            var numErr = JSON.parse(err.request.response);
+            if (numErr.response === "Phone number is not valid!") {
+                setNumberError("Phone number is not valid!")
+            } else {
+                setNumberError("")
             }
-            )
-            .catch(error => console.log('error', error));
+        })
     }
 
 
@@ -145,10 +160,6 @@ const ContactUs = () => {
         });
     }, [])
 
-
-    // console.log(getContentData);
-
-
     return (
         <>
             <div className='form-wrap'>
@@ -160,6 +171,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     <div className='get_in_touch_div'>
+                        
                         <Row className='get_in_touch_row justify-content-around'>
                             <Col sm={12} md={5} lg={5} xl={5}>
                                 {Error ? "Error" :
@@ -193,7 +205,7 @@ const ContactUs = () => {
                                         <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                     </Form.Group>
                                     <Form.Group className="mb-3 col-lg-12">
-                                        <Form.Label>Mobile No.</Form.Label>
+                                        <Form.Label>Mobile No. (optional)</Form.Label>
                                         <div className='mobile_div'>
                                             <Form.Select id='mobile'>
                                                 {ErrorCountryCode ?
@@ -207,11 +219,11 @@ const ContactUs = () => {
                                         </div>
                                         <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                     </Form.Group>
-                                    {/* <Form.Group className="mb-3 col-lg-12" controlId="formBasicSubjecy">
+                                    <Form.Group className="mb-3 col-lg-12" controlId="formBasicSubjecy">
                                         <Form.Label>Subject</Form.Label>
                                         <Form.Control type="text" placeholder="Enter subject" className='input_field' name="subject" value={input.subject} onChange={handleChange} />
                                         <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                                    </Form.Group> */}
+                                    </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Your Message</Form.Label>
                                         <Form.Control
@@ -219,12 +231,14 @@ const ContactUs = () => {
                                             placeholder="Leave a comment here"
                                             style={{ height: '100px' }}
                                             className='input_field'
-                                            name="message" value={input.message} onChange={handleChange}
+                                            name="message" value={input.message} onChange={handleChange} id="messageId"
                                         />
-                                        {/* <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small> */}
+                                        <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
                                     </Form.Group>
-                                    <button type="submit">
-                                        Send
+                                    <button type="submit" > 
+                                        {
+                                            loader ?  <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                                        }
                                     </button>
                                 </Form>
                             </Col>

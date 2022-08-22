@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Container, Col, Row } from 'react-bootstrap';
-import mission from "../../../assets/images/mission/misson1.jpg";
 const VisionMission = () => {
   const [vision, setVision] = useState("");
   const [visionHead, setVisionHead] = useState("");
@@ -13,7 +12,6 @@ const VisionMission = () => {
       setVisionHead(url.data.heading_and_subheading)
     } catch (error) {
       setError(true)
-      console.log("error", error.message);
     }
   }
   useEffect(() => {
@@ -45,12 +43,6 @@ const VisionMission = () => {
                     <h2 className='h2_title'>{visionHead.subheading}</h2>
                     <h2 className='h2_title'>{visionHead.visionHead}</h2>
                     <div ref={descriptions}></div>
-                    {/* <ul>
-                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laborum voluptas</li>
-                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laborum voluptas</li>
-                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laborum voluptas</li>
-                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laborum voluptas</li>
-                </ul> */}
                   </div>
                 </Col>
             }

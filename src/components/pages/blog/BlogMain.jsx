@@ -1,13 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Tab, Tabs, Spinner } from 'react-bootstrap'
+import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import BlogImage from '../../../assets/media/man-work.png'
-
 import InfiniteScroll from 'react-infinite-scroll-component'
-
 import Loader from "react-js-loader";
-
 export default function BlogMain(props) {
     // =========================== scroll To Top default =========================
     useEffect(() => {
@@ -15,23 +11,10 @@ export default function BlogMain(props) {
     }, [])
     // =========================== scroll To Top default =========================
 
-    // useEffect(() => {
-    //     const inputSearch = document.querySelector('[data-search]');
-    //     // console.log(inputSearch);
-    //     const blogTitle = document.querySelector('[data-blog-title]');
-    //     console.log(blogTitle.textContent.includes('title'));
-    //     inputSearch.addEventListener('input', (e) => {
-    //         console.log(e.target.value);
-    //     })
-
-    // }, [])
-
-
     // ========================================== Featured Blog List =================================
     const [featuredData, setFeaturedData] = useState([])
     async function featuredApi() {
         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
-        // console.log(api.data.response);
         setFeaturedData(api.data.response)
     }
 
@@ -41,29 +24,9 @@ export default function BlogMain(props) {
 
     // ========================================== Featured Blog List =================================
     // =============================== InfiniteScroll ==========================
-    // const [items, setItem] = useState([])
-
-    // const fetchMoreData = async () => {
-    //     setTimeout(async () => {
-    //         let xo;
-    //         xo = items.length + 5
-    //         setCount(xo)
-    //         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog/blog-listing/?limit=${xo}`);
-    //         setItem(api.data.results)
-    //         console.log('dmeodmeo', items, items.length, xo, api.data.count);
-    //         setLimitReached(api.data.count)
-    //         // console.log('sd', xo);
-    //         // setItem(items.concat(featuredData.slice(0, xo)))
-    //         // setItem(items.concat(Array.from({ length: 1 })))
-    //     }, 1000);
-    //     console.log("limit =>", LimitReached, "count =>", Count);
-    // };
-
-
     // ======================================= User Value =======================================
     const [userEnteredValue, setuserEnteredValue] = useState('')
     function userSearchValue(e) {
-        // console.log(e.target.value);
         setuserEnteredValue(e.target.value)
         searchAPI()
     }
@@ -87,18 +50,34 @@ export default function BlogMain(props) {
     // ==================================== Search API =========================================
 
     useEffect(() => {
-        // fetchMoreData()
         searchAPI()
     }, [])
 
     // =============================== InfiniteScroll ==========================
 
+
+    // ==================================================== Top Header API =============================================
+    const [HeaderData, setHeaderData] = useState({})
+    async function api() {
+        try {
+            const { data: { response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}/blog/blog/blog_section_one/`)
+            setHeaderData(response)
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+      api()
+    }, [])
+    
+
     return (
         <>
             <section className='blog_section'>
                 <div className='top_section'>
-                    <h2 className='h2_title'>Your Blog Title Here</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores excepturi perspiciatis libero pariatur eos, eveniet quos sed, dolor esse aliquid rerum incidunt obcaecati debitis blanditiis. Eos velit expedita ea illo.</p>
+                    <h2 className='h2_title'>{HeaderData.title}</h2>
+                    <p>{HeaderData.content}</p>
                 </div>
                 <Container fluid>
                     <div className='blog_tab_section'>
@@ -138,7 +117,7 @@ export default function BlogMain(props) {
                                                                         </div>
                                                                         <div className='content_div'>
                                                                             <h4 className='h4_title'>{i.title}</h4>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sit hic quod dignissimos dolorum, eius corporis repudiandae, est expedita distinctio nobis ratione unde odio nulla enim nisi dolore deleniti alias.</p>
+                                                                            <p>{i.description}</p>
                                                                         </div>
                                                                     </Link>
                                                                 </li>
@@ -158,7 +137,7 @@ export default function BlogMain(props) {
                                             <Container>
                                                 <Row>
                                                     {featuredData.map((blog, key) => {
-                                                        return <Col className='my-3'sm={6} xl={4} lg={4} md={6} key={key}>
+                                                        return <Col className='my-3' sm={6} xl={4} lg={4} md={6} key={key}>
                                                             <div className='blog_card'>
                                                                 <img src={blog.image} alt="" />
                                                                 <div className='blog_card_content'>

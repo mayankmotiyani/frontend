@@ -14,11 +14,8 @@ export default function Privacy(props) {
         try {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/privacy-policy/`);
             setPrivacy(url.data.response[0]);
-            console.log("privacy-policy", url.data.response[0]);
-            // setSide(url.data.response);
         } catch (error) {
             setError(true)
-            console.log(error);
         }
     }
     useEffect(() => {

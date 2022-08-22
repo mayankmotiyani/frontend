@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import gameGirl from "../../../../assets/images/trusted/aceRemove.png"
 
 const OurGame = () => {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
     const params = useParams();
     const [GameCate, setGameCate] = useState([])
     const [Head, setHead] = useState({})
     const [ErrorGame, setErrorGame] = useState(false)
     async function API() {
         try {
-            // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game-section-2/${params.game_slug}/`);
             setGameCate(api.data.response)
             setHead(api.data.heading_and_subheading)
-            // console.log("try", api.data.response);
         } catch (error) {
             setErrorGame(true)
         }

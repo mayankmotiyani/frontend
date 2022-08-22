@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Featured from './Featured'
-import GameFaq from './GameFaq'
 import GameHero from './GameHero'
 import GameNews from './GameNews'
 import GameSolution from './GameSolution'
@@ -21,7 +20,6 @@ const UnityGame = (props) => {
       <OurGame />
       <GameNews />
       <Featured />
-      {/* <GameFaq /> */}
     </>
   )
 }

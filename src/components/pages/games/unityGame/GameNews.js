@@ -6,20 +6,15 @@ import news from "../../../../assets/images/trusted/aceGame2.jpg"
 
 const GameNews = () => {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
     const params = useParams()
     const [HeadData, setHeadData] = useState({})
     const [GameCate, setGameCate] = useState([])
     const [ErrorGame, setErrorGame] = useState(false)
     async function API() {
         try {
-            // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
             const { data: { heading_and_subheading, response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game-section-3/${params.game_slug}/`);
             setGameCate(response)
             setHeadData(heading_and_subheading)
-            // console.log("try", api.data.response);
         } catch (error) {
             setErrorGame(true)
         }

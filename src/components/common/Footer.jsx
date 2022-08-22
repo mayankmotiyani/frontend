@@ -10,7 +10,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import WhatsApp from '../../assets/media/whatsapp.png'
-// import Logo from '../../assets/media/Infograins IT-02.png'
 const Footer = () => {
   const [showTopBtn, setShowTopBtn] = useState(false)
   window.addEventListener('scroll', () => {
@@ -37,7 +36,6 @@ const Footer = () => {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
       setServiceData(api.data.response[0].array_of_blockchain_category_list);
-      // console.log("api.data.response", api.data.response[0].array_of_blockchain_category_list[0].blockchain_url);
     } catch (error) {
       setServiceData(true)
     }
@@ -48,9 +46,7 @@ const Footer = () => {
   async function footerApi() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get-all-models/`);
-      // console.log("api", api.data.response);
       setCompanyData(api.data.response.Company)
-      // console.log("api.data.response", api.data);
       setServiceData(api.data.response.Services)
       setAboutData(api.data.response.About)
     } catch (error) {
@@ -60,14 +56,11 @@ const Footer = () => {
   const resources = async () => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}resource/resources_list/`);
-      // console.log("url.data", url.data.response);
       setResourcesData(url.data.response)
     } catch (error) {
       setErrorCompany(true)
     }
   }
-  // const { footer_slug } = useParams();
-  // console.log("footer_slug", footer_slug);
   useEffect(() => {
     footerApi();
     resources();
@@ -76,12 +69,6 @@ const Footer = () => {
   const navAbout = useNavigate()
   const handleNav = () => {
     navAbout("/aboutUs")
-    // console.log("navAbout", navAbout);
-    // event.currentTarget.classList.add('sudhanshu');
-    // console.log("event", event);
-    // navAbout.style.position = "relative"
-    // style.top = "-100px"
-    // style.left = "0px"
   }
 
   return (
@@ -99,7 +86,7 @@ const Footer = () => {
             <Col lg={12}>
               <div className='footer_head'>
                 <div className='subscribe_fieldDiv'>
-                  <div className='subscribe_text'>Subscribe for Updated</div>
+                  <div className='subscribe_text'>Subscribe for Updates</div>
                   <div className='subscribe_email_field'>
                     <input type="email" placeholder='Email Address' />
                     <button><BiRightArrowAlt /> </button>
@@ -191,27 +178,6 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>About</div>
                 <ul>
-                  {/* {
-                    ErrorCompany ?
-                      <div className='warning'>
-                        <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
-                      </div>
-                      :
-                      aboutData.length === 0 ?
-                        <>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                          <li> <a href="">demo</a></li>
-                        </>
-                        :
-                        aboutData.map((e, key) => {
-                          return (
-                            <li key={key}><Link to="/aboutUs">{e}</Link></li>
-                          )
-                        })
-                  } */}
                   <li> <Link to="/aboutUs">About Company</Link></li>
                   <li> <a href="#mission" onClick={handleNav}>Vision & Mission</a></li>
                   <li> <a href="#ourPartner" onClick={handleNav}>Become Our Partner</a></li>
@@ -220,24 +186,22 @@ const Footer = () => {
               </div>
             </Col>
           </Row>
-          {/* <Row>
-            <Col lg={12}>
-              <div className='footer_bottom'>
-                <div className='logo'>Infograins</div>
-                <div className='security_div'>
-                  <Link to='/privacy'>Privacy Policy</Link>
-                  <Link to='/term_and_condition'>Terms & Conditions</Link>
-                </div>
-              </div>
-            </Col>
-          </Row> */}
         </Container>
       </section>
       <footer className='app-footer'>
         <Container>
           <Row>
             <Col lg={12}>
-              <p>Copyright©2022 | All right reserved</p>
+              <div className='d-flex justify-content-between my-2'>
+                <a href="//www.dmca.com/Protection/Status.aspx?id=064d3eba-ec5d-411c-80de-5f48aa985d6e"
+                  title="DMCA.com Protection Status" className="dmca-badge">
+                  <img src="//images.dmca.com/Badges/DMCA_logo-grn-btn120w.png?ID=064d3eba-ec5d-411c-80de-5f48aa985d6e"
+                    alt="DMCA.com Protection Status"/>
+                </a>
+              </div>
+            </Col>
+            <Col lg={12}>
+                <p>Copyright©2022 | All right reserved</p>
             </Col>
           </Row>
         </Container>

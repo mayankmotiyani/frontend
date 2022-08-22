@@ -1,29 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap";
-import technologies from "../../../../assets/images/blockchainService1.png";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 const W3Technologies = () => {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
     const params = useParams();
-
     const description = useRef(null)
     const [BlockchainCate, setBlockchainCate] = useState([])
     const [ErrorBlockchain, setErrorBlockchain] = useState(false)
     async function API() {
         try {
-            // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain-section-two/${params.slug}/`);
 
             setBlockchainCate(api.data.response)
             description.current.innerHTML = api.data.response.content
-            // console.log("try", api);
         } catch (error) {
-            // console.log(error);
             setErrorBlockchain(true)
         }
     }

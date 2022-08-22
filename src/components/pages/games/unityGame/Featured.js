@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axie from "../../../../assets/images/trusted/axie-infinity.png";
-import cmc from "../../../../assets/images/trusted/cmc.png";
-import microsoftPartner from "../../../../assets/images/trusted/microsoftPartner.png";
-import openSea from "../../../../assets/images/trusted/openSea.png";
-import crypto from "../../../../assets/images/trusted/crypto.png";
 import OwlCarousel from 'react-owl-carousel';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import axios from "axios";
@@ -16,10 +11,8 @@ const Featured = () => {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game_partners/`)
             setPartnerHead(url.data.heading_and_subheading);
             setPartner(url.data.response)
-            // console.log("url.data.response", url.data);
         } catch (error) {
             setError(true)
-            // console.log(error)
         }
     }
     useEffect(() => {
@@ -85,26 +78,6 @@ const Featured = () => {
                                                     )
                                                 })
                                     }
-                                    {/* <div className='item'>
-                                        <div className='featured_img_div'>
-                                            <Image src={cmc} alt="Cmc" fluid />
-                                        </div>
-                                    </div>
-                                    <div className='item'>
-                                        <div className='featured_img_div'>
-                                            <Image src={microsoftPartner} alt="Microsoft Partner" fluid />
-                                        </div>
-                                    </div>
-                                    <div className='item'>
-                                        <div className='featured_img_div'>
-                                            <Image src={openSea} alt="Open Sea" fluid />
-                                        </div>
-                                    </div>
-                                    <div className='item'>
-                                        <div className='featured_img_div'>
-                                            <Image src={crypto} alt="Crypto" fluid />
-                                        </div>
-                                    </div> */}
                                 </OwlCarousel>
                             </div>
                         </Col>

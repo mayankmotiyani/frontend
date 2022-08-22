@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap"
-import Background from '../../../../assets/images/background/web3/banner3.jpg'
+import Background from '../../../../assets/images/background/web3/banner3.jpg';
+import Loader from "react-js-loader";
 const HeroWeb3 = () => {
-  // =====================================  API start ============================================ 
+  // =====================================  API start ============================================
+  const navigate = useNavigate() 
   const location = useLocation();
   const filterApi_PathName = location.pathname.slice(1);
-  // console.log(filterApi_PathName);
 
   const [BlockchainCate, setBlockchainCate] = useState([])
   const [ErrorBlockchain, setErrorBlockchain] = useState(false);
   const [countryCodeData, setCountryCodeData] = useState([]);
   const [numberError, setNumberError] = useState("");
+  const [loader, setLoader] = useState(false);
   async function API() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
       setBlockchainCate(api.data.response)
-      console.log("try", filterApi_PathName);
     } catch (error) {
       setErrorBlockchain(true)
+      navigate('/')
     }
   }
 
@@ -33,16 +35,35 @@ const HeroWeb3 = () => {
   const [input, setInput] = useState({
     name: "",
     email: "",
+    message: "",
+    number: "",
     subject: ""
   })
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [subjectError, setSubjectError] = useState("");
+  const [messageError, setMessage] = useState("");
   const handleChange = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value })
   }
+  // ========================= Country Code =============================
+  async function countryCode() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+      const apiData = api.data.response.country_dialing_code;
+      setCountryCodeData(apiData)
+    } catch (error) {
+      setErrorBlockchain(true)
+    }
+  }
+
+  useEffect(() => {
+    countryCode()
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoader(true)
     // ================ name =============================
     if (!input.name) {
       setNameError("Name is required");
@@ -60,39 +81,81 @@ const HeroWeb3 = () => {
       setEmailError("")
     }
     // ==================== Number =========================
-    var phoneno = /^\d{10}$/;
-    if (!input.number) {
-      setNumberError("Number is required")
-    } else if (input.number.match(phoneno)) {
-      setNumberError("")
-    } else {
-      setNumberError("Please enter valid number")
-      return true
-    }
+    // var phoneno = /^\d{10}$/;
+    // if (!input.number) {
+    //   setNumberError("Number is required")
+    // } else if (input.number.match(phoneno)) {
+    //   setNumberError("")
+    // } else {
+    //   setNumberError("Please enter valid number")
+    //   return true
+    // }
     // ================ subject =============================
     if (!input.subject) {
       setSubjectError("Subject is required");
     } else {
       setSubjectError("");
     }
+    // // ================ Message =============================
+    let messageId = document.getElementById("messageId").innerHTML;
+    if (!messageId) {
+      setMessage("Message is required");
+    } else {
+      setMessage("");
+    }
+    // ======================== concat number and dialingCode ==============================
+    if (input.number != "") {
+      var mobilesData = document.getElementById("mobile").value;
+      var concatData = mobilesData + input.number;
+    } else {
+      concatData = ""
+    }
+    // console.log("mobilesData", mobilesData);
+    // ======================== concat number and dialingCode ==============================
+    const payload = {
+      dialingCode: mobilesData,
+      contactNumber: concatData,
+      fullName: input.name,
+      emailId: input.email,
+      message: input.message,
+      subject: input.subject
+    }
+    var formdata = new FormData();
+    formdata.append('get_contact_detail', JSON.stringify(payload));
+    axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_BASE_URL}contact_us/`,
+      data: formdata,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(res => {
+      if (res) {
+        setInput({
+          name: "",
+          email: "",
+          message: "",
+          number: "",
+          subject: ""
+        })
+        setLoader(false)
+      }
+    }).catch(err => {
+      setLoader(false)
+      console.log("err", err);
+      var numErr = JSON.parse(err.request.response);
+      if (numErr.response === "Phone number is not valid!") {
+        setNumberError("Phone number is not valid!")
+      } else {
+        setNumberError("")
+      }
+    })
+
   }
 
   // ========================= form validation ========================= 
 
-  // ========================= Country Code =============================
-  async function countryCode() {
-    try {
-      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
-      const apiData = api.data.response.country_dialing_code;
-      setCountryCodeData(apiData)
-    } catch (error) {
-      setErrorBlockchain(true)
-    }
-  }
 
-  useEffect(() => {
-    countryCode()
-  }, [])
   return (
     <>
       <section className='web3-hero-wrap'>
@@ -120,10 +183,10 @@ const HeroWeb3 = () => {
                   <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                 </Form.Group>
-                {/* <Form.Group className="mb-3" controlId="formBasicSubjecy">
+                <Form.Group className="mb-3" controlId="formBasicSubjecy">
                   <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                </Form.Group> */}
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <div className='mobile_div'>
                     <Form.Select id='mobile'>
@@ -138,14 +201,21 @@ const HeroWeb3 = () => {
                   </div>
                   <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                 </Form.Group>
-                <Form.Control
-                  as="textarea"
-                  placeholder="Leave a comment here"
-                  style={{ height: '100px' }}
-                  className='input_field'
-                />
+                <Form.Group>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Leave a comment here"
+                    style={{ height: '100px' }}
+                    className='input_field'
+                    name='message'
+                    value={input.message} onChange={handleChange} id="messageId"
+                  />
+                  <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
+                </Form.Group>
                 <Button type="submit">
-                  Send
+                  {
+                    loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                  }
                 </Button>
               </Form>
             </Col>

@@ -1,7 +1,6 @@
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Image } from 'react-bootstrap';
-import part from "../../../assets/images/about/partner/bpart.png"
 const BecomePartner = () => {
     const [ApiData, setApiData] = useState([])
     const [HeadData, setHeadData] = useState({})

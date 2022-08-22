@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Spinner } from 'react-bootstrap';
-import { BsFillFileEarmarkBarGraphFill } from 'react-icons/bs';
+import { Col, Container, Row } from 'react-bootstrap';
 import axios from "axios";
 import AOS from "aos";
 import { IoIosWarning } from 'react-icons/io';
@@ -14,11 +13,8 @@ export default function SideBoxSection() {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}api/blockchain-development-process/`);
             setSideText(url.data.response);
             setHeadContent(url.data.heading_and_subheading)
-            // console.log("url", url.data.response);
-            // setSide(url.data.response);
         } catch (error) {
             setError(true)
-            console.log(error);
         }
     }
     useEffect(() => {
@@ -62,7 +58,6 @@ export default function SideBoxSection() {
                                                 return (
                                                     <Col sm={6} md={6} lg={6} xl={6} key={key}>
                                                         <div className='box_content_div wow zoomIn'>
-                                                            {/* <BsFillFileEarmarkBarGraphFill /> */}
                                                             <img src={ele.image} alt="" />
                                                             <h4 className='h4_title'>{ele.title}</h4>
                                                             <p>{ele.content}</p>
@@ -71,39 +66,10 @@ export default function SideBoxSection() {
                                                 )
                                             })
                                 }
-                                {/* <Col lg={6}>
-                                    <div className='box_content_div' data-aos="fade-up">
-                                        <BsFillFileEarmarkBarGraphFill />
-                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                    </div>
-                                </Col>
-                                <Col lg={6}>
-                                    <div className='box_content_div' data-aos="fade-up">
-                                        <BsFillFileEarmarkBarGraphFill />
-                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                    </div>
-                                </Col>
-                                <Col lg={6}>
-                                    <div className='box_content_div' data-aos="fade-up">
-                                        <BsFillFileEarmarkBarGraphFill />
-                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                    </div>
-                                </Col>
-                                <Col lg={6}>
-                                    <div className='box_content_div' data-aos="fade-up">
-                                        <BsFillFileEarmarkBarGraphFill />
-                                        <h4 className='h4_title'>Title Heading Here</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim nihil officia iste repellat repellendus sunt, accusamus nostrum temporibus hic velit deserunt numquam voluptatibus aperiam quam veniam quod error autem.</p>
-                                    </div>
-                                </Col> */}
                             </Row>
                         </Col>
                         <Col sm={12} md={12} lg={6} xl={4}>
                             <div className='side_image_content_div wow zoomIn'>
-                                {/* <BsFillFileEarmarkBarGraphFill /> */}
                                 <h3 className='h3_title'>{HeadContent.heading}</h3>
                                 <button>Click Me</button>
                             </div>

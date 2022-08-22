@@ -626,7 +626,7 @@ $header_bottom_gradient: linear-gradient(54deg,
                     line-height: 2;
                     padding: 0px 30px;
 
-                    .mobile_drop_link{
+                    .mobile_drop_link.with_dropdown{
 
                         &::before{
                             content: '';
@@ -998,6 +998,28 @@ $header_bottom_gradient: linear-gradient(54deg,
     animation: btn-anim1 1s linear infinite;
 }
 
+.mobile_div {
+    display: flex;
+
+    .form-select {
+        background-color: transparent;
+        height: 40px;
+        width: 140px;
+        border: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.phone_label_text{
+    color: #000 !important;
+    font-size: 12px !important;
+    top: -20px !important;
+    margin-top: 10px;
+    font-weight: 600 !important;
+}
 @keyframes btn-anim1 {
     0% {
         left: -100%;

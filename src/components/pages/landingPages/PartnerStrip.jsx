@@ -9,11 +9,9 @@ export default function PartnerStrip() {
     const partnerData = async () => {
         try {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}api/partner/`)
-            // console.log("url.data.response",url.data.response);
             setPartner(url.data.response)
         } catch (error) {
             setErrors(true)
-            console.log("error", error);
         }
     }
     useEffect(() => {

@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
-import AboutImg from '../../../../assets/images/blockchainService1.png'
 
 export default function AboutSection() {
     // =====================================  API start ============================================ 
     const param = useParams();
-    // console.log(param);
     const [HeadTitle, setHeadTitle] = useState(null)
     const [AboutData, setAboutData] = useState([])
     const [Error, setError] = useState(false)
@@ -16,12 +14,9 @@ export default function AboutSection() {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}product/about-product/${param.product_slug}/`);
             setHeadTitle(api.data)
             setAboutData(api.data.response)
-            // console.log("try", api.data.response);
         } catch (error) {
-            // console.log('catch');
             setError(true)
         }
-        // console.log(HeadTitle.heading_and_subheading.subheading);
     }
 
     useEffect(() => {

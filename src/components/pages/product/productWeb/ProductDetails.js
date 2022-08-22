@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Image, Tabs, Tab } from "react-bootstrap";
-import webImg from "../../../../assets/images/product/web.png";
-import appImg from "../../../../assets/images/product/app.png";
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
@@ -9,12 +7,14 @@ const ProductDetails = () => {
   // =========================================== API ======================================
   const [WebData, setWebData] = useState([])
   const [AppData, setAppData] = useState([])
+  const [SectionOneData, setSectionOneData] = useState({})
 
   async function api() {
     try {
-      const { data: { web, app } } = await axios.get(`${process.env.REACT_APP_BASE_URL}product/sliceledger_product/`);
+      const { data: { web, app, section_one } } = await axios.get(`${process.env.REACT_APP_BASE_URL}product/sliceledger_product/`);
       setWebData(web)
       setAppData(app)
+      setSectionOneData(section_one)
     } catch (error) {
 
     }
@@ -29,8 +29,8 @@ const ProductDetails = () => {
       <section className='productDetails-wrap'>
 
         <div className='productDetails-title'>
-          <h2 className='h2_title'>We Serve Our Clients With Smile...<br /> That's Why We Are Lauded</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam repudiandae perspiciatis aliquam quam iure dolorem illum eius quae dolor ipsa ut, debitis, ratione labore mollitia! Distinctio animi fugiat fugit odio dolorum at placeat provident voluptatibus laborum sapiente sit ad dignissimos odit explicabo illum blanditiis, vel aut maiores, optio nihil alias.</p>
+          <h2 className='h2_title'>{SectionOneData.heading}</h2>
+          <p>{SectionOneData.content}</p>
         </div>
         <div className='productDetails-tabs-wrap'>
           <Tabs
@@ -42,7 +42,7 @@ const ProductDetails = () => {
               <div className='productDetails-web-detail'>
                 <Container>
                   {WebData.map(({ product_slug, heading, content, image, title }, key) => {
-                    return <Row>
+                    return <Row key={key}>
                       <Col sm={6} md={6} lg={6} xl={6}>
                         <div className='productDetails-web-tab'>
                           <h3 className='h3_title'>{title}</h3>

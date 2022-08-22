@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Row, Col, Form, Button, FloatingLabel, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import AOS from "aos";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import Background from '../../../assets/images/career/career.png'
 
 
@@ -118,12 +116,8 @@ const CareerApply = (props) => {
       resume: "input.file",
       contact: input.number
     }).then(res => {
-      console.log("res", res)
     }).catch(err => {
-      console.log("err", err)
     })
-
-    console.log("input.fname", input.fname, "input.email", input.email, "input.state", input.state, "input.city", input.city, "input.address", input.address, "input.file", input.file, "input.number", input.number);
   }
 
   // =================================== state api ===========================================
@@ -139,7 +133,6 @@ const CareerApply = (props) => {
       });
       setStateData(state.data.data.states);
     } catch (error) {
-      console.log("error", error);
     }
   }
   const [cityData, setCityData] = useState([]);
@@ -152,10 +145,8 @@ const CareerApply = (props) => {
           'Content-Type': 'application/json'
         },
       });
-      console.log("city", city.data.data);
       setCityData(city.data.data);
     } catch (error) {
-      console.log("error", error);
     }
   }
   useEffect(() => {
@@ -171,9 +162,7 @@ const CareerApply = (props) => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}career/${apl_slug}/`);
       setCareerDetails(url.data.response)
-      // console.log(url.data.response);
     } catch (error) {
-      console.log(error);
     }
   }
   // =========================== scroll To Top default =========================
@@ -212,9 +201,7 @@ const CareerApply = (props) => {
                     <p><strong>Experience:</strong> {careerDetails.experience}</p>
                   </div>
                   <div className="career-apply-dis">
-                    {/* <h3 className='h3_title'>Skills</h3> */}
                     <div className='career-apply-skills' ref={skills}></div>
-                    {/* <h3 className='h3_title'>Responsibilities</h3> */}
                     <div className='career-apply-res' ref={responsibilities}></div>
                   </div>
                 </div>

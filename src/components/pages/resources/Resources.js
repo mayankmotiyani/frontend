@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Image } from "react-bootstrap";
-import resourcesImg from "../../../assets/images/product/Infograin_product.png";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import resourceBanner from "../../../assets/images/video/resource_banner.mp4"
 import axios from 'axios';
 const Resources = (props) => {
@@ -10,11 +9,8 @@ const Resources = (props) => {
         props.demo('top')
     })
     // =========================== scroll To Top default =========================
-    const params = useParams();
-    const { res_slug } = params;
-    // console.log('res_slug', res_slug);
-
-
+    // const params = useParams();
+    // const { res_slug } = params;
 
     // ==================== resource details ===========================
     const [contentData, setContentData] = useState([]);
@@ -26,20 +22,12 @@ const Resources = (props) => {
             setContentData(url.data.response);
             setHeroData(url.data.resource)
         } catch (error) {
-            console.log("error", error);
         }
     }
     useEffect(() => {
         resourceData()
     }, [])
     // ==================== resource details ==========================
-
-
-
-
-
-
-
     return (
         <>
             <section className='resources-wrap'>

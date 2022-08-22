@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import { useLocation, useParams } from 'react-router-dom';
-import w3Services from "../../../../assets/images/background/web3/w3_service.png"
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 const W3Services = () => {
   // =====================================  API start ============================================ 
-  // const location = useLocation();
-  // const filterApi_PathName = location.pathname.slice(1);
-  // console.log(filterApi_PathName);
   const params = useParams();
-  // console.log(params);
-
   const [BlockchainCate, setBlockchainCate] = useState([])
   const [ErrorBlockchain, setErrorBlockchain] = useState(false)
 
@@ -18,8 +12,6 @@ const W3Services = () => {
 
   async function API() {
     try {
-      // const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
-      // blockchain/blockchain-section-one/launchpad-development-company/
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain-section-one/${params.slug}/`);
       setBlockchainCate(api.data.response)
       apiContent.current.innerHTML = `${api.data.response.content}`
@@ -48,7 +40,6 @@ const W3Services = () => {
                 <h3 className='h3_title'>{BlockchainCate.subheading}</h3>
                 <h2 className='h2_title'>{BlockchainCate.title}</h2>
                 <div className='description' ref={apiContent}></div>
-                {/* <p>{BlockchainCate.content}</p> */}
                 <button className='btn' type='button'>Get Free Consultancy</button>
               </div>
             </Col>

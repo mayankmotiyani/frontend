@@ -74,7 +74,6 @@ const LaunchPlatform = () => {
                                                         <div className='tile_div'>
                                                             <h4 className='h4_title'>{box.name}</h4>
                                                         </div>
-                                                        {/* <img src={box.image_url} alt={box.name} fluid/> */}
                                                     </div>
                                                     <div className="flip-card-back"
                                                         style={{
@@ -90,74 +89,6 @@ const LaunchPlatform = () => {
                                             </div>
                                         </Col>
                                     })}
-
-
-
-                            {/* <Col sm={6} md={6} lg={4} xl={4}>
-                                <div className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                            <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
-                                            <h4 className='h4_title'>Web3 platform Development</h4>
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <p>Build a decentralization and token-based economy that revolves around the concepts of blockchain technology in the digital era with our experts.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col sm={6} md={6} lg={4} xl={4}>
-                                <div className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                            <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
-                                            <h4 className='h4_title'>Web3 platform Development</h4>
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <p>Build a decentralization and token-based economy that revolves around the concepts of blockchain technology in the digital era with our experts.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col> */}
-                            {/* <Col sm={6} md={6} lg={4} xl={4}>
-                                <div className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                            <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
-                                            <h4 className='h4_title'>Web3 platform Development</h4>
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <p>Build a decentralization and token-based economy that revolves around the concepts of blockchain technology in the digital era with our experts.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col sm={6} md={6} lg={4} xl={4}>
-                                <div className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                            <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
-                                            <h4 className='h4_title'>Web3 platform Development</h4>
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <p>Build a decentralization and token-based economy that revolves around the concepts of blockchain technology in the digital era with our experts.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col sm={6} md={6} lg={4} xl={4}>
-                                <div className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                            <img src="https://compile.blog/wp-content/uploads/2021/11/web3-icon.png" alt="Avatar" />
-                                            <h4 className='h4_title'>Web3 platform Development</h4>
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <p>Build a decentralization and token-based economy that revolves around the concepts of blockchain technology in the digital era with our experts.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col> */}
                         </Row>
                     </div>
                 </Container>

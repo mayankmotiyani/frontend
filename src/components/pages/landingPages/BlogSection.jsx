@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import BlogImage from '../../../assets/media/man-work.png';
 import { IoIosWarning } from 'react-icons/io';
 import { WOW } from "wowjs";
 export default function BlogSection() {
@@ -12,7 +11,6 @@ export default function BlogSection() {
     async function blogApi() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
-            // console.log(api.data.response);
             setBlogData(api.data.response.slice(0, 3))
         } catch (error) {
             setErrorBlogData(true)
@@ -105,26 +103,6 @@ export default function BlogSection() {
                                         </div>
                                     </Col>
                                 })}
-                        {/* <Col lg={4}>
-                            <div className='blog_section_EMPTY'>
-                                <div className='image_EMPTY'></div>
-                                <div className='blog_content'>
-                                    <div className='head_title'></div>
-                                    <p className='para'></p>
-                                    <div className='link'></div>
-                                </div>
-                            </div>
-                        </Col> */}
-                        {/* <Col lg={4}>
-                            <div className='blog_section'>
-                                <img src={BlogImage} alt="" />
-                                <div className='blog_content'>
-                                    <h3 className='h3_title'>Our Blog Title</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora labore dolorum. Aspernatur, corporis quis et amet voluptatum ad natus quo ab repudiandae incidunt vero officia autem odit, odio quod.</p>
-                                    <Link to="/blog/demo">Read More</Link>
-                                </div>
-                            </div>
-                        </Col> */}
                     </Row>
                 </Container>
             </section>

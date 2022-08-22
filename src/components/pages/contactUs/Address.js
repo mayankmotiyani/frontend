@@ -11,11 +11,9 @@ const Address = () => {
   const addressData = async () => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/office-address/`)
-      //console.log("url", url.data);
       setInfograinsData(url.data.infograins_india_office)
       setOtherData(url.data.response)
     } catch (error) {
-      console.log(error.message);
     }
   }
   useEffect(() => {
@@ -38,11 +36,9 @@ const Address = () => {
                     <Card.Text>{infograinsData.location}</Card.Text>
                     <div className='address-num'>
                       <BsTelephone /> <Card.Link href="#">{infograinsData.phone}</Card.Link>
-                      {/* <Card.Link href="#">+91 9713406272</Card.Link> */}
                     </div>
                     <div className='address-email'>
                       <AiOutlineMail /> <Card.Link href="#">{infograinsData.email}</Card.Link>
-                      {/* <Card.Link href="#">hr@infograins.com</Card.Link> */}
                     </div>
                   </Card.Body>
                 </Card>

@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Image, Nav, Navbar, NavDropdown, Tab, Spinner } from 'react-bootstrap'
-import FaceBook from '../../assets/media/icons/facebook-app.svg'
-import Instagram from '../../assets/media/icons/ig-instagram.svg'
-import Linkedin from '../../assets/media/icons/linkedin-app.svg'
-import Twitter from '../../assets/media/icons/twitter-app.svg'
-import Skype from '../../assets/media/icons/skype.svg'
+import {Form, Container, Row, Col, Nav, Tab, Spinner } from 'react-bootstrap'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import Mail_icon from '../../assets/media/gif/message.gif'
 import InfograinsIcon from '../../assets/media/logo-infograins.png'
 import { GrFormNextLink } from 'react-icons/gr'
-import DeskDrop_img from '../../assets/images/blockchainService1.png'
 import { AiOutlineMessage } from "react-icons/ai";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import popupGif from "../../assets/media/CUNSTULTANT.png";
 import { BiConversation } from "react-icons/bi";
-// import env from "react-dotenv";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { IoIosWarning } from 'react-icons/io'
@@ -24,24 +17,32 @@ import Slice_bg from '../../assets/media/slice3ss.png'
 import Game_bg from '../../assets/media/games-d.png'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import { BsSkype } from 'react-icons/bs'
+import Loader from "react-js-loader";
+
 
 export default function Header() {
   // ====================================== popup validations ===================================
   const [input, setInput] = useState({
     name: "",
     email: "",
+    message: "",
+    number: "",
     subject: ""
-
-  })
+  });
+  const [countryCodeData, setCountryCodeData] = useState([]);
+  const [Error, setError] = useState(false);
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [subjectError, setSubject] = useState("");
+  const [messageError, setMessage] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [numberError, setNumberError] = useState("");
+
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
   const handleSubmit = (e) => {
     e.preventDefault(e);
-    console.log("input", input);
     // ================ name =============================
     if (!input.name) {
       setNameError("Name is required");
@@ -65,63 +66,87 @@ export default function Header() {
     } else {
       setSubject("");
     }
+
+    // // ================ Message =============================
+    let messageId = document.getElementById("messageId").innerHTML;
+    if (!messageId) {
+      setMessage("Message is required");
+    } else {
+      setMessage("");
+    }
+    // ======================== concat number and dialingCode ==============================
+    if (input.number != "") {
+      var mobilesData = document.getElementById("mobile").value;
+      var concatData = mobilesData + input.number;
+    } else {
+      concatData = ""
+    }
+    // console.log("mobilesData", mobilesData);
+    // ======================== concat number and dialingCode ==============================
+    const payload = {
+      dialingCode: mobilesData,
+      contactNumber: concatData,
+      fullName: input.name,
+      emailId: input.email,
+      message: input.message,
+      subject: input.subject
+    }
+    var formdata = new FormData();
+    formdata.append('get_contact_detail', JSON.stringify(payload));
+    axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_BASE_URL}contact_us/`,
+      data: formdata,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(res => {
+      if (res) {
+        setInput({
+          name: "",
+          email: "",
+          message: "",
+          number: "",
+          subject: ""
+        })
+        setLoader(false)
+      }
+    }).catch(err => {
+      setLoader(false)
+      console.log("err", err);
+      var numErr = JSON.parse(err.request.response);
+      if (numErr.response === "Phone number is not valid!") {
+        setNumberError("Phone number is not valid!")
+      } else {
+        setNumberError("")
+      }
+    })
   }
   // ====================================== popup validations ===================================
+  // ========================= Country Code =============================
+  async function countryCode() {
+    try {
+      const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
+      const apiData = api.data.response.country_dialing_code;
+      setCountryCodeData(apiData)
+    } catch (error) {
+      setError(true)
+    }
+  }
 
+  useEffect(() => {
+    countryCode()
+  }, [])
   // ======================================== chandrakant Dropdown start ========================================
   function toggleDropdown_enter(e) {
-    // console.log(e.target);
-    // let currentDropdown;
-    // try {
-    //   currentDropdown = e.target.attributes.mainlink.nodeValue;
-    // } catch (error) {
-    //   console.log('errorrrrrrrrrrrrrrrr');
-    // }
     const currentDropdown = e.target.attributes.mainlink.nodeValue;
-    // console.log('currentDropdown', currentDropdown);
-    // document.getElementsByClassName('desk_dropdown')[currentDropdown].style.opacity = '1'
     document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'scaleY(1)'
-    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.padding = '2em'
-    // setTimeout(() => {
-    //   document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.transform = 'rotateX(360deg)'
-    //   document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.opacity = '1'
-    // }, 300);
   }
-
-  // function toggleDemo2_enter() {
-  //   document.getElementsByClassName('desk_dropdown')[1].style.transform = 'translateY(0px)'
-  // }
-
-  // function toggleDemo2_leave() {
-  //   document.getElementsByClassName('desk_dropdown')[1].style.transform = 'translateY(-500px)'
-  // }
 
   function toggleDropdown_leave(e) {
-    // console.log(e.target);
     const currentDropdown = e.target.attributes.mainlink.nodeValue;
-    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.transform = 'rotateX(330deg)'
-    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.opacity = '0'
     document.getElementsByClassName('desk_dropdown')[currentDropdown].style.transform = 'scaleY(0)'
-    // document.getElementsByClassName('desk_dropdown')[currentDropdown].children[0].style.padding = '0em'
-    // setTimeout(() => {
-    // }, 300);
   }
-
-  // function dropdown_div_enter() {
-  //   document.getElementsByClassName('desk_dropdown')[0].style.transform = 'translateY(0px)'
-  // }
-
-  // function dropdown_demo2div_enter() {
-  //   document.getElementsByClassName('desk_dropdown')[1].style.transform = 'translateY(0px)'
-  // }
-
-  // function dropdown_div_leave() {
-  //   document.getElementsByClassName('desk_dropdown')[0].style.transform = 'translateY(-500px)'
-  // }
-
-  // function dropdown_demo2div_leave() {
-  //   document.getElementsByClassName('desk_dropdown')[1].style.transform = 'translateY(-500px)'
-  // }
   // ======================================== chandrakant Dropdown end ========================================
   // ====================================== chandrakant toggle menu start ========================================
   function toggle_menu_icon(e) {
@@ -150,29 +175,17 @@ export default function Header() {
     for (let i = 0; i < dropLink.length; i++) {
       if (dropLink[i].style.height == '210px') {
         dropLink[i].style.cssText = "height : 0px !important; transform : rotate(0deg)"
-        // e.target.classList.remove('open_mob_link')
-        console.log('iffff', e.target.classList);
       }
     }
-
-    // console.log(dropMenuLink[0].classList.value.includes('open_mob_link'));
 
     const arrow = document.getElementsByClassName('downArrow');
     for (let i = 0; i < arrow.length; i++) {
       if (arrow[i].style.transform == 'rotate(180deg)') {
         arrow[i].style.transform = 'rotate(0deg)';
-        // e.target.classList.remove('open_mob_link')
       }
     }
     if (e.target.classList.value.includes('open_mob_link')) {
       e.target.classList.remove('open_mob_link')
-      // for (let i = 0; i < dropMenuLink.length; i++) {      
-      //   if(dropMenuLink[i].classList.value.includes('open_mob_link')){
-      //     console.log('if true', dropMenuLink[i].classList);
-      //   }else{
-      //     dropMenuLink[i].classList.remove('open_mob_link')
-      //   }
-      // }
       document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.height = "0px"
       document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.padding = "0px"
       document.getElementsByClassName('downArrow')[currentClick].style.transform = "rotate(0deg)"
@@ -182,13 +195,11 @@ export default function Header() {
       e.target.classList.add('open_mob_link')
       for (let i = 0; i < dropMenuLink.length; i++) {
         if (dropMenuLink[i].classList.value.includes('open_mob_link')) {
-          console.log('if true', dropMenuLink[i].classList);
           dropMenuLink[i].classList.remove('open_mob_link')
           dropMenuLink[index].classList.add('open_mob_link')
         } else {
         }
       }
-      // document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.setProperty('padding', '10px', 'important');
       document.getElementsByClassName('mobile_drop_menu_list')[currentClick].style.cssText = "height : 210px !important;padding : 10px !important"
       document.getElementsByClassName('downArrow')[currentClick].style.transform = "rotate(180deg)"
     }
@@ -200,7 +211,6 @@ export default function Header() {
   // ========================================= chandrakant toggle mobile menu list end ================================
 
   // ===================================== Header API start ============================================ 
-  // console.log("header", process.env.REACT_APP_BASE_URL);
   // ===================================== Header API end ============================================ 
 
   useEffect(() => {
@@ -227,13 +237,8 @@ export default function Header() {
   async function headerAPI() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft_list/`);
-      // console.log('api', api.data.response.NFT);
       setNftList(api.data.response)
-      // console.log("try");
-
     } catch (error) {
-      // console.log("catch", error);
-      // console.log(error.message);
       setErrorNft(true)
     }
   }
@@ -268,9 +273,7 @@ export default function Header() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game_list/`);
       setGameList(api.data.response)
-      // console.log('try', api.data.response.length);
     } catch (error) {
-      console.log('catch', error);
       setErrorGame(true)
     }
   }
@@ -291,10 +294,7 @@ export default function Header() {
 
     for (let i = 0; i < allLink.length; i++) {
       allLink[i].addEventListener('click', (e) => {
-        // console.log(e.target.attributes.mainlink.nodeValue);
-        // const index = e.target.attributes.mainlink.nodeValue;
         const index = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('mainlink');
-        // console.log(index);
         document.getElementsByClassName('desk_dropdown')[index].style.transform = 'translateY(-500px)';
       })
 
@@ -308,7 +308,6 @@ export default function Header() {
   async function ourProduct() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}product/product_list/`);
-      // console.log(api.data.response[0].array_of_product_list);
       setProductData(api.data.response[0].array_of_product_list)
     } catch (error) {
       setErrorProduct(true)
@@ -319,12 +318,7 @@ export default function Header() {
     ourProduct()
   }, [])
 
-
-  // console.log('headd');
-
   function closeMobileNav(e) {
-    // console.log('skldfjhsd');
-    // console.log(e.target);
     document.getElementsByClassName('menu_toggle_btn')[0].click()
   }
 
@@ -335,7 +329,6 @@ export default function Header() {
   async function topBar_Numbers() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/header-office-address/`);
-      // console.log(api.data.response);
       setTopBarNum(api.data.response)
     } catch (error) {
       setErrorTopBar(true)
@@ -346,8 +339,6 @@ export default function Header() {
     topBar_Numbers()
   }, [])
 
-
-  // console.log(CategoriesList[0].blockchain_category);
   return (
     // /* ============================ header area =============================*/
     <>
@@ -367,9 +358,6 @@ export default function Header() {
                           : TopBarNum.map((e, key) => {
                             return <li key={key}><div className='country_name'>{e.office}</div>  <a href={`tel:${e.phone1}`}>{e.phone1}</a>  <a className="ms-4" href={`tel:${e.phone2}`}>{e.phone2}</a></li>
                           })}
-                      {/* <li><div className='country_name'>USA</div>  <a href="tel:+12025196167">  +12025196167</a></li> */}
-                      {/* <li><div className='country_name'>UAE</div>  <a href="tel:+971585596272">  +971585596272</a></li> */}
-                      {/* <li><div className='country_name'>Australia</div>  <a href="tel:+61480043472">   +61480043472</a></li> */}
                     </ul>
                   </div>
                   <div className='social_link_div'>
@@ -398,7 +386,6 @@ export default function Header() {
                             <img src={InfograinsIcon} alt="site_logo" />
                           </Link>
                         </div>
-                        {/* <div className='site_logo_name'>Infograins</div> */}
                       </div>
                       <div className='main_nav_list'>
                         <ul className='main_nav_ul'>
@@ -409,14 +396,6 @@ export default function Header() {
                           <li className='main_nav_link'><Link to="/aboutUs">About Us</Link></li>
                           <li className='main_nav_link'><Link to='/blog'>Blogs</Link></li>
                           <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
-                          {/* <li className='main_nav_link'>demo2</li> */}
-                          {/* <li className='main_nav_link'><Link to='/blog'>Blogs</Link></li>
-                        <li className='main_nav_link' mainlink="1" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>NFT <IoMdArrowDropdown /> </li>
-                        <li className='main_nav_link'><Link to="/aboutUs">About Us</Link></li>
-                        <li className='main_nav_link'><Link to="/contactUs">Contact Us</Link></li>
-                        <li className='main_nav_link' mainlink="2" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>Game <IoMdArrowDropdown /> </li> */}
-                          {/* <li className='main_nav_link'>Game</li> */}
-                          {/* <li className='main_nav_link'><Link to="/products">Our Products</Link></li> */}
                         </ul>
                         <button className='menu_toggle_btn' onClick={toggle_menu_icon}>
                           <div className='menu_bar1'></div>
@@ -433,7 +412,7 @@ export default function Header() {
             <section className='mobile_menu_section'>
               <div className='mobile_menu_div'>
                 <ul>
-                  <li className='mobile_drop_link' menulink="0" onClick={toggleDropdown_mobile}>Blockchain <IoMdArrowDropdown className='downArrow' /> </li>
+                  <li className='mobile_drop_link with_dropdown' menulink="0" onClick={toggleDropdown_mobile}>Blockchain <IoMdArrowDropdown className='downArrow' /> </li>
 
                   <li className='mobile_drop_menu_list'>
                     {ErrorBlockchain ?
@@ -460,11 +439,10 @@ export default function Header() {
                         })}
                   </li>
 
-                  <li className='mobile_drop_link' menulink="1" onClick={toggleDropdown_mobile}>NFT <IoMdArrowDropdown className='downArrow' /> </li>
+                  <li className='mobile_drop_link with_dropdown' menulink="1" onClick={toggleDropdown_mobile}>NFT <IoMdArrowDropdown className='downArrow' /> </li>
 
                   <li className='mobile_drop_menu_list'>
                     <div className='mobile_drop_menu'>
-                      {/* <div className='subheading_text'>Sub Heading</div> */}
                       <ul>
                         {ErrorNft ?
                           <div className='warning'>
@@ -485,11 +463,10 @@ export default function Header() {
                       </ul>
                     </div>
                   </li>
-                  <li className='mobile_drop_link' menulink="2" onClick={toggleDropdown_mobile}>Games <IoMdArrowDropdown className='downArrow' /> </li>
+                  <li className='mobile_drop_link with_dropdown' menulink="2" onClick={toggleDropdown_mobile}>Games <IoMdArrowDropdown className='downArrow' /> </li>
 
                   <li className='mobile_drop_menu_list'>
                     <div className='mobile_drop_menu'>
-                      {/* <div className='subheading_text'>Sub Heading</div> */}
                       <ul>
                         {errorGame ?
                           <div className='warning' mainlink="2">
@@ -507,11 +484,10 @@ export default function Header() {
                     </div>
                   </li>
 
-                  <li className='mobile_drop_link' menulink="3" onClick={toggleDropdown_mobile}>Our Products <IoMdArrowDropdown className='downArrow' /> </li>
+                  <li className='mobile_drop_link with_dropdown' menulink="3" onClick={toggleDropdown_mobile}>Our Products <IoMdArrowDropdown className='downArrow' /> </li>
 
                   <li className='mobile_drop_menu_list'>
                     <div className='mobile_drop_menu'>
-                      {/* <div className='subheading_text'>Sub Heading</div> */}
                       <ul>
                         {ErrorProduct ?
                           <div className='warning' mainlink="2">
@@ -543,33 +519,6 @@ export default function Header() {
             {/* =============================================== Desktop Dropdown ======================================= */}
             <div className='desk_dropdown' mainlink="0" onMouseEnter={toggleDropdown_enter} onMouseLeave={toggleDropdown_leave}>
               <Container mainlink="0">
-                {/* <Row className='justify-content-around' mainlink="0">
-                  {ErrorBlockchain ?
-                    <div className='warning' mainlink="0">
-                      <b><IoIosWarning style={{ color: 'red' }} /> Something went wrong</b>
-                    </div>
-                    : CategoriesList.length === 0 ?
-                      <div className='warning' mainlink="0">
-                        <b><IoIosWarning /> Something went wrong</b>
-                      </div>
-                      : CategoriesList.map((e, key) => {
-                        return <Col lg={3} key={key} mainlink="0">
-                          <div className='desk_dropdown_col' mainlink="0">
-                            <div className='desk_dropdown_subhead' mainlink="0">{e.blockchain_category}</div>
-                            <ul mainlink="0">
-                              {e.array_of_blockchain_category_list.map((e, key) => {
-                                return <li key={key} mainlink="0">
-                                  <Link to={e.blockchain_url} className='desk_dropdown_link' mainlink="0">
-                                    <GrFormNextLink />
-                                    <div>{e.blockchain_name}</div>
-                                  </Link>
-                                </li>
-                              })}
-                            </ul>
-                          </div>
-                        </Col>
-                      })}
-                </Row> */}
                 <Tab.Container id="left-tabs-example" defaultActiveKey='Core Blockchain' mainlink="0">
                   <Row mainlink="0">
                     <Col sm={3} mainlink="0">
@@ -624,9 +573,6 @@ export default function Header() {
                               </Tab.Pane>
                             })
                         }
-                        {/* <Tab.Pane eventKey="second">
-                          dfhdfh
-                        </Tab.Pane> */}
                       </Tab.Content>
                     </Col>
                   </Row>
@@ -644,7 +590,6 @@ export default function Header() {
                   </Col>
                   <Col lg={3} mainlink="1">
                     <div className='desk_dropdown_col' mainlink="1">
-                      {/* <div className='desk_dropdown_subhead'>Sub Heading</div> */}
                       <ul mainlink="1">
 
                         {ErrorNft ?
@@ -728,66 +673,7 @@ export default function Header() {
                       </ul>
                     </div>
                   </Col>
-                  {/* <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col lg={3}>
-                  <div className='desk_dropdown_col'>
-                    <ul>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className='desk_dropdown_link'>
-                          <GrFormNextLink />
-                          <div>link List</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </Col> */}
+                  
                 </Row>
               </Container>
             </div>
@@ -824,21 +710,45 @@ export default function Header() {
                   <input type="email" name="email" value={input.email} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                 </div>
+                <Form.Group className="mb-3">
+                    <label className='phone_label_text'>Phone Number</label>
+                  <div className='mobile_div mb-4'>
+                    <Form.Select id='mobile'>
+                      {Error ?
+                        <option>00</option>
+                        : countryCodeData.map((e, key) => {
+
+                          return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
+                        })}
+                    </Form.Select>
+                    <Form.Control type="number" min={0} id="userNumber" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
+                  </div>
+                  <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
+                </Form.Group>
                 <div className="user-box">
                   <label>Subject</label>
                   <input type="text" name="subject" value={input.subject} onChange={handleChange} />
                   <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
                 </div>
-                <div className="user-box">
-                  <label className='popup-message'>Message</label>
-                  <textarea type="text" rows="4" cols="50" />
-                </div>
+                <Form.Group>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Leave a comment here"
+                    style={{ height: '100px' }}
+                    className='input_field'
+                    name='message'
+                    value={input.message} onChange={handleChange} id="messageId"
+                  />
+                  <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
+                </Form.Group>
                 <a type='button' onClick={handleSubmit}>
                   <span></span>
                   <span></span>
                   <span></span>
                   <span></span>
-                  Submit
+                  {
+                    loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                  }
                 </a>
               </form>
             </div>

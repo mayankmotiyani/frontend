@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap"
 import Background from '../../../../assets/images/background/web3/banner3.jpg'
-
+import Loader from "react-js-loader";
 export default function HeroSection() {
     // =====================================  API start ============================================ 
+    const navigate = useNavigate()
     const location = useLocation();
     const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
-
     const [BlockchainCate, setBlockchainCate] = useState([])
     const [ErrorBlockchain, setErrorBlockchain] = useState(false)
+    const [loader, setLoader] = useState(false);
+    const [messageError, setMessage] = useState("");
+
     async function API() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}${filterApi_PathName}`);
             setBlockchainCate(api.data.response)
-            console.log("try", api.data.response);
         } catch (error) {
             setErrorBlockchain(true)
+            navigate('/')
         }
     }
 
@@ -45,6 +47,7 @@ export default function HeroSection() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoader(true)
         // ================ name =============================
         if (!input.name) {
             setNameError("Name is required");
@@ -62,21 +65,75 @@ export default function HeroSection() {
             setEmailError("")
         }
         // ==================== Number =========================
-        var phoneno = /^\d{10}$/;
-        if (!input.number) {
-            setNumberError("Number is required")
-        } else if (input.number.match(phoneno)) {
-            setNumberError("")
-        } else {
-            setNumberError("Please enter valid number")
-            return true
-        }
+        // var phoneno = /^\d{10}$/;
+        // if (!input.number) {
+        //     setNumberError("Number is required")
+        // } else if (input.number.match(phoneno)) {
+        //     setNumberError("")
+        // } else {
+        //     setNumberError("Please enter valid number")
+        //     return true
+        // }
         // ================ subject =============================
         if (!input.subject) {
             setSubjectError("Subject is required");
         } else {
             setSubjectError("");
         }
+              // // ================ Message =============================
+              let messageId = document.getElementById("messageId").innerHTML;
+              if (!messageId) {
+                  setMessage("Message is required");
+              } else {
+                  setMessage("");
+              }
+           // ======================== concat number and dialingCode ==============================
+           if (input.number != "") {
+            var mobilesData = document.getElementById("mobile").value;
+            var concatData = mobilesData + input.number;
+        } else {
+            concatData = ""
+        }
+        // console.log("mobilesData", mobilesData);
+        // ======================== concat number and dialingCode ==============================
+        const payload = {
+            dialingCode: mobilesData,
+            contactNumber: concatData,
+            fullName: input.name,
+            emailId: input.email,
+            message: input.message,
+            subject: input.subject
+        }
+        var formdata = new FormData();
+        formdata.append('get_contact_detail', JSON.stringify(payload));
+        axios({
+            method: 'post',
+            url: `${process.env.REACT_APP_BASE_URL}contact_us/`,
+            data: formdata,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res => {
+            if (res) {
+                setInput({
+                    name: "",
+                    email: "",
+                    message: "",
+                    number: "",
+                    subject: ""
+                })
+                setLoader(false)
+            }
+        }).catch(err => {
+            setLoader(false)
+            console.log("err", err);
+            var numErr = JSON.parse(err.request.response);
+            if (numErr.response === "Phone number is not valid!") {
+                setNumberError("Phone number is not valid!")
+            } else {
+                setNumberError("")
+            }
+        })
     }
 
     // ========================= form validation ========================= 
@@ -103,7 +160,6 @@ export default function HeroSection() {
                     <Row>
                         <Col sm={6} md={6} lg={8} xl={8}>
                             <div className='w3-about-wrap'>
-                                {/* <h2 className='h2_title'>Product Name</h2> */}
                                 <h3 className='h3_title'>{BlockchainCate.name}</h3>
                             </div>
                         </Col>
@@ -118,10 +174,10 @@ export default function HeroSection() {
                                     <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                 </Form.Group>
-                                {/* <Form.Group className="mb-3" controlId="formBasicSubjecy">
+                                <Form.Group className="mb-3" controlId="formBasicSubjecy">
                                     <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                                </Form.Group> */}
+                                </Form.Group>
                                 <Form.Group className="mb-3">
                                     <div className='mobile_div'>
                                         <Form.Select id='mobile'>
@@ -136,14 +192,21 @@ export default function HeroSection() {
                                     </div>
                                     <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                 </Form.Group>
-                                <Form.Control
-                                    as="textarea"
-                                    placeholder="Leave a comment here"
-                                    style={{ height: '100px' }}
-                                    className='input_field'
-                                />
+                                <Form.Group>
+                                    <Form.Control
+                                        as="textarea"
+                                        placeholder="Leave a comment here"
+                                        style={{ height: '100px' }}
+                                        className='input_field'
+                                        name='message'
+                                        value={input.message} onChange={handleChange} id="messageId"
+                                    />
+                                    <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
+                                </Form.Group>
                                 <Button type="submit">
-                                    Send
+                                    {
+                                        loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                                    }
                                 </Button>
                             </Form>
                         </Col>

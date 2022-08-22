@@ -5,8 +5,6 @@ import "../../../assets/style/pages/landing_page/technology.scss";
 import AOS from "aos";
 import axios from 'axios';
 import { WOW } from "wowjs";
-// import $ from "jquery";
-// import 'animate.min.css';
 const Technology = () => {
     useEffect(() => {
         AOS.init({
@@ -18,10 +16,6 @@ const Technology = () => {
         const wow = new WOW({ live: false });
         wow.init()
     })
-
-    // $(window).scroll(function(){
-    //     new WOW({ live: false }).init();
-    // }
 
     // =============================== What we Do API ============================================
 
@@ -46,32 +40,27 @@ const Technology = () => {
         <section className='technology_wrap'>
             <Container >
                 <div className='technology_details'>
-                    {/* <Row> */}
                     {Error ? 'error' : Data.length === 0 ?
-                        // <div className='spin_loader'>
-                            <Row>
-                                <Col sm={6} md={6} lg={6} xl={6}>
-                                    <div className='technology_div EMPTY_loader_content'>
-                                        <div className='technology_text'>
-                                            <h4 className='h4_title EMPTY_loader_subhead'></h4>
-                                            <h2 className='h2_title EMPTY_loader_head'></h2>
-                                            <p className='para_EMPTY'></p>
-                                            <p className='para_EMPTY'></p>
-                                            <p className='para_EMPTY'></p>
-                                            {/* <button type='button' className='btn EMPTY_loader'></button> */}
-                                        </div>
+                        <Row>
+                            <Col sm={6} md={6} lg={6} xl={6}>
+                                <div className='technology_div EMPTY_loader_content'>
+                                    <div className='technology_text'>
+                                        <h4 className='h4_title EMPTY_loader_subhead'></h4>
+                                        <h2 className='h2_title EMPTY_loader_head'></h2>
+                                        <p className='para_EMPTY'></p>
+                                        <p className='para_EMPTY'></p>
+                                        <p className='para_EMPTY'></p>
                                     </div>
-                                </Col>
-                                <Col sm={6} md={6} lg={6} xl={6}>
-                                    <figure className='technology_img EMPTY_loader_img'>
-                                        
-                                    </figure>
-                                </Col>
-                            </Row>
-                        // </div>
+                                </div>
+                            </Col>
+                            <Col sm={6} md={6} lg={6} xl={6}>
+                                <figure className='technology_img EMPTY_loader_img'>
+
+                                </figure>
+                            </Col>
+                        </Row>
                         : <Row>
                             <Col sm={6} md={6} lg={6} xl={6}>
-                                {/* <div className='technology_div wow fadeInDown' data-wow-iteration="1"> */}
                                 <div className='technology_div wow zoomIn' data-wow-iteration="1">
                                     <div className='technology_text'>
                                         <h4 className='h4_title'>{Data[0].heading}</h4>
@@ -88,7 +77,6 @@ const Technology = () => {
                             </Col>
                         </Row>
                     }
-                    {/* </Row> */}
                 </div>
             </Container>
         </section>

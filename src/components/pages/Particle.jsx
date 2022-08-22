@@ -6,13 +6,11 @@ export default function Particle() {
 
     // var tsparticles = document.getElementById("tsparticles").getElementsByTagName("canvas")[0];
     // tsparticles.style.setProperty("position", "unset", "important")
-    // console.log("tsparticles", tsparticles);
     // tsparticles.setAttribute('style', tsparticles.style.cssText +
     // 'position' + ':' + 'unset' + (('important') ? ' !important' : '') + ';');
 
 
     const particlesInit = async (main) => {
-        // console.log(main);
 
         // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
         // this loads the tsparticles package bundle, it's the easiest method for getting everything ready

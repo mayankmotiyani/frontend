@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap'
-
+import Loader from "react-js-loader";
 export default function HeroSections() {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
-
+    const navigate = useNavigate()
     const { nft_slug } = useParams()
-
     const [NFTCate, setNFTCate] = useState({})
     const [ErrorNFT, setErrorNFT] = useState(false)
     const [countryCodeData, setCountryCodeData] = useState([]);
     const [numberError, setNumberError] = useState("");
+    const [loader, setLoader] = useState(false);
     async function API() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/${nft_slug}/`);
             setNFTCate(api.data.response)
-            // console.log("try", api.data.response);
         } catch (error) {
             setErrorNFT(true)
+            navigate('/')
         }
     }
 
@@ -35,16 +32,21 @@ export default function HeroSections() {
     const [input, setInput] = useState({
         name: "",
         email: "",
-        subject: ""
+        subject: "",
+        message: "",
+        number: ""
     })
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [subjectError, setSubjectError] = useState("");
+    const [messageError, setMessage] = useState("");
+
     const handleChange = (event) => {
         setInput({ ...input, [event.target.name]: event.target.value })
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoader(true)
         // ================ name =============================
         if (!input.name) {
             setNameError("Name is required");
@@ -62,21 +64,77 @@ export default function HeroSections() {
             setEmailError("")
         }
         // ==================== Number =========================
-        var phoneno = /^\d{10}$/;
-        if (!input.number) {
-            setNumberError("Number is required")
-        } else if (input.number.match(phoneno)) {
-            setNumberError("")
-        } else {
-            setNumberError("Please enter valid number")
-            return true
-        }
+        // var phoneno = /^\d{10}$/;
+        // if (!input.number) {
+        //     setNumberError("Number is required")
+        // } else if (input.number.match(phoneno)) {
+        //     setNumberError("")
+        // } else {
+        //     setNumberError("Please enter valid number")
+        //     return true
+        // }
         // ================ subject =============================
         if (!input.subject) {
             setSubjectError("Subject is required");
         } else {
             setSubjectError("");
         }
+        // // ================ Message =============================
+        let messageId = document.getElementById("messageId").innerHTML;
+        if (!messageId) {
+            setMessage("Message is required");
+        } else {
+            setMessage("");
+        }
+        // ======================== concat number and dialingCode ==============================
+        if (input.number != "") {
+            var mobilesData = document.getElementById("mobile").value;
+            var concatData = mobilesData + input.number;
+        } else {
+            concatData = ""
+        }
+        // console.log("mobilesData", mobilesData);
+        // ======================== concat number and dialingCode ==============================
+        const payload = {
+            dialingCode: mobilesData,
+            contactNumber: concatData,
+            fullName: input.name,
+            emailId: input.email,
+            message: input.message,
+            subject: input.subject
+        }
+        var formdata = new FormData();
+        formdata.append('get_contact_detail', JSON.stringify(payload));
+        axios({
+            method: 'post',
+            url: `${process.env.REACT_APP_BASE_URL}contact_us/`,
+            data: formdata,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res => {
+            if (res) {
+                setInput({
+                    name: "",
+                    email: "",
+                    message: "",
+                    number: "",
+                    subject: ""
+                })
+                setLoader(false)
+            }
+        }).catch(err => {
+            setLoader(false)
+            console.log("err", err);
+            var numErr = JSON.parse(err.request.response);
+            if (numErr.response === "Phone number is not valid!") {
+                setNumberError("Phone number is not valid!")
+            } else {
+                setNumberError("")
+            }
+        })
+
+
     }
 
     // ========================= form validation ========================= 
@@ -120,10 +178,10 @@ export default function HeroSections() {
                                     <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                                 </Form.Group>
-                                {/* <Form.Group className="mb-3" controlId="formBasicSubjecy">
+                                <Form.Group className="mb-3" controlId="formBasicSubjecy">
                                     <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
                                     <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                                </Form.Group> */}
+                                </Form.Group>
                                 <Form.Group className="mb-3">
                                     <div className='mobile_div'>
                                         <Form.Select id='mobile'>
@@ -138,14 +196,21 @@ export default function HeroSections() {
                                     </div>
                                     <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
                                 </Form.Group>
-                                <Form.Control
-                                    as="textarea"
-                                    placeholder="Leave a comment here"
-                                    style={{ height: '100px' }}
-                                    className='input_field'
-                                />
+                                <Form.Group>
+                                    <Form.Control
+                                        as="textarea"
+                                        placeholder="Leave a comment here"
+                                        style={{ height: '100px' }}
+                                        className='input_field'
+                                        name='message'
+                                        value={input.message} onChange={handleChange} id="messageId"
+                                    />
+                                    <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
+                                </Form.Group>
                                 <Button type="submit">
-                                    Send
+                                    {
+                                        loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                                    }
                                 </Button>
                             </Form>
                         </Col>

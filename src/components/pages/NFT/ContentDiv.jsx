@@ -1,16 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Col, Container, Image, Row, Spinner } from 'react-bootstrap'
-import Nft from '../../../assets/media/nft.png'
 export default function ContentDiv() {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
-
     const { nft_slug } = useParams()
-
     const [NFTCate, setNFTCate] = useState([])
     const [ErrorNFT, setErrorNFT] = useState(false)
 
@@ -19,7 +13,6 @@ export default function ContentDiv() {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}nft/nft-section-2/${nft_slug}/`);
             setNFTCate(api.data.response);
         } catch (error) {
-            console.log("error", error);
             setErrorNFT(true)
         }
     }
@@ -34,7 +27,6 @@ export default function ContentDiv() {
     const content = useRef(null);
     useEffect(() => {
         content.current.innerHTML = `${NFTCate.content}`;
-        // console.log("content", content);
     }, [NFTCate]);
 
     // ======================== Convert html =================================
@@ -51,9 +43,7 @@ export default function ContentDiv() {
                                             <div className='content_div'>
                                                 <h2 className='h2_title'>{NFTCate.heading}</h2>
                                                 <p>{NFTCate.title}</p>
-                                                {/* list */}
                                                 <div ref={content}></div>
-                                                {/* // list */}
                                             </div>
                                         </div>
                             }

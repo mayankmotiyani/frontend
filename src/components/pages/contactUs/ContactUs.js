@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import W3Details from '../blockchain/web3/W3Details';
 import Contact from '../landingPages/ContactUs';
 import Address from './Address';
 import Map from './Map';
@@ -16,7 +15,6 @@ const ContactUs = (props) => {
             </div>
             <Address />
             <Map />
-            {/* <W3Details /> */}
         </>
     )
 }

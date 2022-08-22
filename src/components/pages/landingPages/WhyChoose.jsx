@@ -16,7 +16,6 @@ export default function WhyChoose() {
             setHeadContent(url.data.heading_and_subheading)
         } catch (error) {
             setError(true)
-            console.log(error);
         }
     }
     useEffect(() => {
@@ -49,34 +48,28 @@ export default function WhyChoose() {
                                     <Row>
                                         <Col sm={12} md={6} lg={6} xl={6}>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>
                                         </Col>
                                         <Col sm={12} md={6} lg={6} xl={6}>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>
                                             <div className='box_div' style={{backgroundColor:'#f3f3f3',boxShadow:'none'}}>
-                                                {/* <img src={ele.icon} alt="" /> */}
                                                 <h4 className='h4_title'></h4>
                                                 <p></p>
                                             </div>

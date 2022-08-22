@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Image } from 'react-bootstrap';
-import partner from "../../../assets/images/about/partner/part.png"
 const TechnologyPartners = () => {
 
     // ============================= API ==============================
@@ -32,59 +31,6 @@ const TechnologyPartners = () => {
                             </figure>
                         </Col>
                     })}
-                    {/* <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col> */}
-
-
-
-                    {/* <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col>
-                    <Col sm={6} md={6} lg={3} xl={3}>
-                        <figure className='TechnologyPartners-img'>
-                            <Image src={partner} alt="Partner" fluid />
-                        </figure>
-                    </Col> */}
                 </Row>
             </Container>
         </section>

@@ -6,7 +6,6 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap'
 export default function Functionality() {
     // =====================================  API start ============================================ 
     const param = useParams();
-    // console.log(param);
     const [HeadTitle, setHeadTitle] = useState(null)
     const [FunctionalityData, setFunctionalityData] = useState([])
     const [Error, setError] = useState(false)
@@ -15,12 +14,9 @@ export default function Functionality() {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}product/payment-functionality/${param.product_slug}/`);
             setHeadTitle(api.data)
             setFunctionalityData(api.data.response)
-            // console.log("try", api.data.response);
         } catch (error) {
-            // console.log('catch');
             setError(true)
         }
-        // console.log(HeadTitle.heading_and_subheading.subheading);
     }
 
     useEffect(() => {

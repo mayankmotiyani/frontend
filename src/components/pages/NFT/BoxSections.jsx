@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import { BsBox } from 'react-icons/bs'
 export default function BoxSections() {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
-
     const { nft_slug } = useParams()
-
     const [NFTCate, setNFTCate] = useState([]);
     const [ErrorNFT, setErrorNFT] = useState(false);
     const [head, setHead] = useState([]);

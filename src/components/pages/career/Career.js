@@ -13,7 +13,6 @@ const Career = (props) => {
             setCareer(url.data.response);
         } catch (error) {
             setError(true)
-            console.log(error);
         }
     }
     useEffect(() => {

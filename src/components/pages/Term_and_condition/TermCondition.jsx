@@ -16,7 +16,6 @@ export default function TermCondition(props) {
         try {
             const { data: { response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/term-and-condition/`);
             setApiData(response)
-            console.log(response.length);
             Api_content.current.innerHTML = response[0].content;
         } catch (error) {
 

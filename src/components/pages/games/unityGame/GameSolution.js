@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import joyStick from "../../../../assets/images/background/games/joystick.png"
 
 const GameSolution = () => {
     // =====================================  API start ============================================ 
-    // const location = useLocation();
-    // const filterApi_PathName = location.pathname.slice(1);
-    // console.log(filterApi_PathName);
     const params = useParams();
-    // console.log(params.game_slug);
     const [GameCate, setGameCate] = useState([])
     const [ErrorGame, setErrorGame] = useState(false)
     async function API() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}game/game-section-1/${params.game_slug}/`);
             setGameCate(api.data.response)
-            // console.log("try", api.data.response);
         } catch (error) {
             setErrorGame(true)
         }

@@ -3,6 +3,32 @@
 
     .row {
         justify-content: center;
+
+        .card {
+            .card-shape {
+                position: relative;
+                .card_img_overlay{
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    width: 100%;
+                    height: calc(100% - 9%);
+                    background-color: rgba(0, 0, 0, 0.24);
+                }
+                .shape {
+                    svg {
+                        fill: #ffffffd9;
+                        transform: translateY(-29px) rotateX(180deg);
+                    }
+                }
+            }
+            img{
+                filter: grayscale(1);
+            }
+            &:hover img{
+                filter: grayscale(0);
+            }
+        }
     }
 
     .h2_title {
@@ -72,7 +98,7 @@
             overflow: hidden;
             width: 100%;
             height: 0;
-            transition: .4s ease;
+            transition: 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -94,14 +120,12 @@
     .team-wrap .team-details .team-img img {
         height: 360px;
     }
-
 }
 
 @media screen and (max-width: 991px) {
     .team-wrap .team-details .team-img img {
         height: 300px;
     }
-
 }
 
 @media screen and (max-width: 767px) {
@@ -112,5 +136,4 @@
     .team-wrap .team-details {
         margin-bottom: 20px;
     }
-
 }
