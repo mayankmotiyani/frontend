@@ -103,17 +103,17 @@ export default function Header() {
       setSubjectError("");
     }
     // // ================ Message =============================
-    // let messageId = document.getElementById("messageId").innerHTML;
-    // if (!messageId) {
-    //     setMessage("Message is required");
-    //     setTimeout(() => {
-    //         setLoader(false)
-    //     }, 100)
-    //     return true;
-    // } else {
-    //     setMessage("");
-
-    // }
+    const messageId = document.getElementById("message_Id").value;
+    console.log("message_Id",!messageId);
+    if (!messageId) {
+      setMessage("Message is required");
+      setTimeout(() => {
+        setLoader(false)
+      }, 100)
+        return true;
+    } else {
+        setMessage("");
+    }
     // ======================== concat number and dialingCode ==============================
     if (input.number != "") {
       var mobilesData = document.getElementById("mobile").value;
@@ -789,7 +789,7 @@ export default function Header() {
                     style={{ height: '100px' }}
                     className='input_field'
                     name='message'
-                    value={input.message} onChange={handleChange} id="messageId"
+                    value={input.message} onChange={handleChange} id="message_Id"
 
                   />
                   <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
