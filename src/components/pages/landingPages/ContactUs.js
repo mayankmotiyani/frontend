@@ -7,7 +7,6 @@ const ContactUs = () => {
     const [countryCodeData, setCountryCodeData] = useState([])
     const [ErrorCountryCode, setErrorCountryCode] = useState(false);
     const [loader, setLoader] = useState(false);
-
     const [input, setInput] = useState({
         name: "",
         email: "",
@@ -20,32 +19,41 @@ const ContactUs = () => {
     const [numberError, setNumberError] = useState("");
     const [subjectError, setSubject] = useState("");
     const [messageError, setMessage] = useState("");
+    const [ErrorBlockchain, setErrorBlockchain] = useState(false);
+    const [success, seSuccess] = useState(false);
 
 
+
+    const handleChange = (event) => {
+        setInput({ ...input, [event.target.name]: event.target.value })
+    }
+    // ========================= Country Code =============================
     async function countryCode() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}get_country_dialing_code/`);
             const apiData = api.data.response.country_dialing_code;
             setCountryCodeData(apiData)
         } catch (error) {
-            setErrorCountryCode(true)
+
+            setErrorBlockchain(true)
+
         }
     }
 
     useEffect(() => {
         countryCode()
-    }, [])
-
-
-    const handleChange = (e) => {
-        setInput({ ...input, [e.target.name]: e.target.value });
-    }
+    }, []);
     const handleSubmit = (e) => {
-        e.preventDefault(e);
+        e.preventDefault();
         setLoader(true)
+
         // ================ name =============================
         if (!input.name) {
             setNameError("Name is required");
+            setTimeout(() => {
+                setLoader(false)
+            }, 100)
+            return true;
         } else {
             setNameError("");
         }
@@ -54,37 +62,50 @@ const ContactUs = () => {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!input.email) {
             setEmailError("Email is required")
+            setTimeout(() => {
+                setLoader(false)
+            }, 100)
+            return true;
         } else if (!input.email.match(mailformat)) {
             setEmailError("Please enter your valid email")
+            setTimeout(() => {
+                setLoader(false)
+            }, 100)
+            return true;
         } else {
             setEmailError("")
         }
-
         // ==================== Number =========================
         // var phoneno = /^\d{10}$/;
         // if (!input.number) {
-        //     setNumberError("")
+        //     setNumberError("Number is required")
         // } else if (input.number.match(phoneno)) {
         //     setNumberError("")
         // } else {
         //     setNumberError("Please enter valid number")
         //     return true
         // }
-
         // ================ subject =============================
         if (!input.subject) {
             setSubject("Subject is required");
+            setTimeout(() => {
+                setLoader(false)
+            }, 100)
+            return true;
         } else {
             setSubject("");
         }
         // // ================ Message =============================
-        let messageId = document.getElementById("messageId").innerHTML
+        let messageId = document.getElementById("messageId").innerHTML;
         if (!messageId) {
             setMessage("Message is required");
+            setTimeout(() => {
+                setLoader(false)
+            }, 100)
+            return true;
         } else {
             setMessage("");
         }
-
         // ======================== concat number and dialingCode ==============================
         if (input.number != "") {
             var mobilesData = document.getElementById("mobile").value;
@@ -120,19 +141,31 @@ const ContactUs = () => {
                     number: "",
                     subject: ""
                 })
-                setNumberError("");
-                setLoader(false)
+                setLoader(false);
+                setNumberError("")
             }
+            seSuccess(true);
+            document.body.style.overflow = "hidden"
+            setTimeout(() => {
+                document.body.style.overflow = "auto"
+
+                seSuccess(false)
+            }, 3000)
         }).catch(err => {
             setLoader(false)
             console.log("err", err);
             var numErr = JSON.parse(err.request.response);
             if (numErr.response === "Phone number is not valid!") {
                 setNumberError("Phone number is not valid!")
+                setTimeout(() => {
+                    setLoader(false)
+                }, 100)
+                return true
             } else {
                 setNumberError("")
             }
         })
+
     }
 
 
@@ -171,7 +204,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     <div className='get_in_touch_div'>
-                        
+
                         <Row className='get_in_touch_row justify-content-around'>
                             <Col sm={12} md={5} lg={5} xl={5}>
                                 {Error ? "Error" :
@@ -208,7 +241,7 @@ const ContactUs = () => {
                                         <Form.Label>Mobile No. (optional)</Form.Label>
                                         <div className='mobile_div'>
                                             <Form.Select id='mobile'>
-                                                {ErrorCountryCode ?
+                                                {ErrorBlockchain ?
                                                     <option>00</option>
                                                     : countryCodeData.map((e, key) => {
 
@@ -235,16 +268,28 @@ const ContactUs = () => {
                                         />
                                         <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
                                     </Form.Group>
-                                    <button type="submit" > 
-                                        {
-                                            loader ?  <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
-                                        }
-                                    </button>
+                                    {
+                                        loader ?
+                                            <Button type="submit" disabled><div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div></Button>
+                                            : <Button type="submit">Send</Button>
+                                    }
                                 </Form>
                             </Col>
                         </Row>
                     </div>
                 </Container>
+            {
+                success ?
+                    <section className='congrats_popup'>
+                        <div className="svg-container">
+                            <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                                <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
+                                <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
+                            </svg>
+                            <p>Thanks for contacting us. We will contact you shortly</p>
+                        </div>
+                    </section> : ""
+            }
             </div>
         </>
     )

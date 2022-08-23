@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Container, Row, Col, Form, Button, Image, Spinner } from "react-bootstrap"
 import Background from '../../../../assets/images/background/web3/banner3.jpg'
 import Loader from "react-js-loader";
+import BannerForm from '../../../common/BannerForm';
 export default function HeroSection() {
     // =====================================  API start ============================================ 
     const navigate = useNavigate()
@@ -148,7 +149,6 @@ export default function HeroSection() {
             setError(true)
         }
     }
-
     useEffect(() => {
         countryCode()
     }, [])
@@ -164,51 +164,7 @@ export default function HeroSection() {
                             </div>
                         </Col>
                         <Col sm={6} md={6} lg={4} xl={4}>
-                            <Form className='w3-from-wrap' onSubmit={handleSubmit}>
-                                <h3 className='h3_title'>Talk to our experts</h3>
-                                <Form.Group className="mb-3" controlId="formBasicName">
-                                    <Form.Control type="text" placeholder="Enter name" className='input_field' name='name' value={input.name} onChange={handleChange} />
-                                    <small style={{ color: "red", fontSize: "12px" }}>{nameError}</small>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Enter email" className='input_field' name='email' value={input.email} onChange={handleChange} />
-                                    <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicSubjecy">
-                                    <Form.Control type="text" placeholder="Enter subject" className='input_field' name='subject' value={input.subject} onChange={handleChange} />
-                                    <small style={{ color: "red", fontSize: "12px" }}>{subjectError}</small>
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <div className='mobile_div'>
-                                        <Form.Select id='mobile'>
-                                            {Error ?
-                                                <option>00</option>
-                                                : countryCodeData.map((e, key) => {
-
-                                                    return <option key={key} value={e.Dial}>{e.country_with_dialing_code}</option>
-                                                })}
-                                        </Form.Select>
-                                        <Form.Control type="number" min={0} id="userNumber" placeholder="Enter number" className='input_field' name="number" value={input.number} onChange={handleChange} />
-                                    </div>
-                                    <small style={{ color: "red", fontSize: "12px" }}>{numberError}</small>
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Control
-                                        as="textarea"
-                                        placeholder="Leave a comment here"
-                                        style={{ height: '100px' }}
-                                        className='input_field'
-                                        name='message'
-                                        value={input.message} onChange={handleChange} id="messageId"
-                                    />
-                                    <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
-                                </Form.Group>
-                                <Button type="submit">
-                                    {
-                                        loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
-                                    }
-                                </Button>
-                            </Form>
+                            <BannerForm />
                         </Col>
                     </Row>
                 </Container>

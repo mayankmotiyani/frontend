@@ -7,6 +7,7 @@
     background-attachment: fixed;
     width: 100%;
     padding-bottom: 7em;
+    position: relative;
 
     .contact-details {
         float: right;
@@ -62,6 +63,7 @@
         color: #fff;
         margin-top: 30px;
         border: 1px solid #00b4d8;
+        transition: all 0.5s ease;
         .item{
             overflow: hidden;
             height: 30px;
@@ -72,7 +74,9 @@
         &:hover{
             color: #fff;
             background-color: #00b4d8;
+            opacity: 0.8;
         }
+     
         // &::before {
         //     content: "";
         //     position: absolute;
@@ -93,7 +97,8 @@
     }
 
     .btn-primary:hover {
-        border-color: orange;
+        border-color: #00b4d8;
+        opacity: 0.8;
     }
 
     .contact-form-wrap {

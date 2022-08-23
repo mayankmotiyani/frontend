@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import {Form, Container, Row, Col, Nav, Tab, Spinner } from 'react-bootstrap'
+import { Form, Container, Row, Col, Image, Nav, Navbar, NavDropdown, Tab, Spinner } from 'react-bootstrap'
+// import FaceBook from '../../assets/media/icons/facebook-app.svg'
+// import Instagram from '../../assets/media/icons/ig-instagram.svg'
+// import Linkedin from '../../assets/media/icons/linkedin-app.svg'
+// import Twitter from '../../assets/media/icons/twitter-app.svg'
+// import Skype from '../../assets/media/icons/skype.svg'
+// import {Form, Container, Row, Col, Nav, Tab, Spinner } from 'react-bootstrap'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import Mail_icon from '../../assets/media/gif/message.gif'
 import InfograinsIcon from '../../assets/media/logo-infograins.png'
@@ -33,19 +39,28 @@ export default function Header() {
   const [Error, setError] = useState(false);
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [subjectError, setSubject] = useState("");
+  const [subjectError, setSubjectError] = useState("");
   const [messageError, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
   const [numberError, setNumberError] = useState("");
+  const [success, seSuccess] = useState(false);
+  // const [subjectError, setSubjectError] = useState("");
+
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
   const handleSubmit = (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
+    setLoader(true)
+
     // ================ name =============================
     if (!input.name) {
       setNameError("Name is required");
+      setTimeout(() => {
+        setLoader(false)
+      }, 100)
+      return true;
     } else {
       setNameError("");
     }
@@ -54,26 +69,51 @@ export default function Header() {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!input.email) {
       setEmailError("Email is required")
+      setTimeout(() => {
+        setLoader(false)
+      }, 100)
+      return true;
     } else if (!input.email.match(mailformat)) {
       setEmailError("Please enter your valid email")
+      setTimeout(() => {
+        setLoader(false)
+      }, 100)
+      return true;
     } else {
       setEmailError("")
     }
-
+    // ==================== Number =========================
+    // var phoneno = /^\d{10}$/;
+    // if (!input.number) {
+    //     setNumberError("Number is required")
+    // } else if (input.number.match(phoneno)) {
+    //     setNumberError("")
+    // } else {
+    //     setNumberError("Please enter valid number")
+    //     return true
+    // }
     // ================ subject =============================
     if (!input.subject) {
-      setSubject("Subject is required");
+      setSubjectError("Subject is required");
+      setTimeout(() => {
+        setLoader(false)
+      }, 100)
+      return true;
     } else {
-      setSubject("");
+      setSubjectError("");
     }
-
     // // ================ Message =============================
-    let messageId = document.getElementById("messageId").innerHTML;
-    if (!messageId) {
-      setMessage("Message is required");
-    } else {
-      setMessage("");
-    }
+    // let messageId = document.getElementById("messageId").innerHTML;
+    // if (!messageId) {
+    //     setMessage("Message is required");
+    //     setTimeout(() => {
+    //         setLoader(false)
+    //     }, 100)
+    //     return true;
+    // } else {
+    //     setMessage("");
+
+    // }
     // ======================== concat number and dialingCode ==============================
     if (input.number != "") {
       var mobilesData = document.getElementById("mobile").value;
@@ -109,18 +149,30 @@ export default function Header() {
           number: "",
           subject: ""
         })
-        setLoader(false)
+        setLoader(false);
+        setNumberError("")
       }
+      document.body.style.overflow = "hidden"
+      seSuccess(true);
+      setTimeout(() => {
+        document.body.style.overflow = "auto"
+        seSuccess(false)
+      }, 3000)
     }).catch(err => {
       setLoader(false)
       console.log("err", err);
       var numErr = JSON.parse(err.request.response);
       if (numErr.response === "Phone number is not valid!") {
         setNumberError("Phone number is not valid!")
+        setTimeout(() => {
+          setLoader(false)
+        }, 100)
+        return true
       } else {
         setNumberError("")
       }
     })
+
   }
   // ====================================== popup validations ===================================
   // ========================= Country Code =============================
@@ -673,7 +725,7 @@ export default function Header() {
                       </ul>
                     </div>
                   </Col>
-                  
+
                 </Row>
               </Container>
             </div>
@@ -711,7 +763,7 @@ export default function Header() {
                   <small style={{ color: "red", fontSize: "12px" }}>{emailError}</small>
                 </div>
                 <Form.Group className="mb-3">
-                    <label className='phone_label_text'>Phone Number</label>
+                  <label className='phone_label_text'>Phone Number (optional)</label>
                   <div className='mobile_div mb-4'>
                     <Form.Select id='mobile'>
                       {Error ?
@@ -738,6 +790,7 @@ export default function Header() {
                     className='input_field'
                     name='message'
                     value={input.message} onChange={handleChange} id="messageId"
+
                   />
                   <small style={{ color: "red", fontSize: "12px" }}>{messageError}</small>
                 </Form.Group>
@@ -747,14 +800,27 @@ export default function Header() {
                   <span></span>
                   <span></span>
                   {
-                    loader ? <div className="item"><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : "Send"
+                    loader ? <div className="item popup_loader" disabled><Loader type="spinner-circle" bgColor={"#fff"} color={'#FFFFFF'} size={40} /></div> : <div>Send</div>
                   }
                 </a>
               </form>
             </div>
           </Modal.Body>
+        {
+          success ?
+            <section className='congrats_popup get_popup'>
+              <div className="svg-container">
+                <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                  <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
+                  <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
+                </svg>
+                <p>Thanks for contacting us. We will contact you shortly</p>
+              </div>
+            </section> : ""
+        }
         </div>
       </Modal>
+
 
       {/*=========================// position fix Quote====================== */}
     </>

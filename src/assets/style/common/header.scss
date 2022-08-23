@@ -756,6 +756,7 @@ $header_bottom_gradient: linear-gradient(54deg,
 
 // ===================== Quote area ======================
 .quote_wrap {
+    position: relative;
     button {
         background-color: #00d26d;
         display: inline-block;
@@ -827,7 +828,9 @@ $header_bottom_gradient: linear-gradient(54deg,
         display: none;
     }
 }
-
+.congrats_popup.get_popup{
+    height: 100% !important;
+}
 .modal-content {
     border: 1px solid #fdad4c;
     box-shadow: 0px 0px 10px #ffb44e !important;
@@ -1100,7 +1103,16 @@ $header_bottom_gradient: linear-gradient(54deg,
     height: 100vh;
     z-index: -1;
 }
-
+.item.popup_loader{
+    background: orange;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0px 20px orange, 0 0 25px orange, 0 0 50px orange, 0 0 100px orange;
+    .sl-spinner2{
+        height: 35px;
+        width: 70px;
+    }
+}
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 900px;
