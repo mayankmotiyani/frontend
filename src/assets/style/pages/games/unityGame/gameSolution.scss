@@ -3,8 +3,10 @@
     position: relative;
     background-image: url("../../../../images/trusted/game.png");
     background-repeat: no-repeat;
-    background-position: right;
-    
+    // background-position: right;
+    background-position: inherit;
+    background-size: cover;
+
     .row {
         align-items: center;
     }
@@ -133,8 +135,9 @@
         max-width: 100%;
     }
 }
+
 @media screen and (max-width: 575px) {
-    .GameSolution-wrap{
+    .GameSolution-wrap {
         padding: 20px 0px;
     }
 }

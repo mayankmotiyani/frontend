@@ -18,6 +18,9 @@ export default function PartnerStrip() {
         partnerData()
         setTimeout(() => {
             partnerData()
+            setTimeout(() => {
+                partnerData()
+            }, 500);
         }, 500);
     }, [])
 
@@ -77,7 +80,7 @@ export default function PartnerStrip() {
                                                     return (
                                                         <div className='item' key={ele.id}>
                                                             <div className='partner_img_div'>
-                                                                <Image src={ele.image} alt="Partner Image" fluid />
+                                                                <Image src={ele.image} alt="Partner Image" title={ele.partner_name} data-toggle="tooltip" data-placement="top"  fluid/>
                                                             </div>
                                                         </div>
                                                     )

@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-const SiteMap = () => {
+const SiteMap = (props) => {
+    // =========================== scroll To Top default =========================
+    useEffect(() => {
+        props.demo('top')
+    }, [])
+    // =========================== scroll To Top default =========================
     const [blockChain, setBlockChain] = useState([]);
     const [error, setError] = useState(false);
     const blockChainData = async () => {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blockchain/blockchain_list/`);
-            console.log("api.data.response", api.data.response);
+            // console.log("api.data.response", api.data.response);
             setBlockChain(api.data.response)
         } catch (error) {
             setError(true)

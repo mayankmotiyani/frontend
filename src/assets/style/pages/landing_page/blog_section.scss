@@ -4,8 +4,6 @@
     .blog_head {
         text-align: center;
 
-        .h2_title {}
-
         p {
             margin-bottom: 2em;
             color: #47576a;
@@ -29,7 +27,8 @@
             border-radius: 10px 10px 0px 0px;
             margin-bottom: 1em;
             height: 280px;
-            object-fit: cover;
+            object-fit: fill;
+
         }
 
         .blog_content {

@@ -105,6 +105,7 @@
             color: #fff;
         }
     }
+
     .mobile_div {
         display: flex;
 
@@ -120,16 +121,17 @@
         }
     }
 }
+
 @media (max-width: 767px) {
     .web3-hero-wrap .container {
         max-width: 100%;
     }
 
-    .web3-hero-wrap .w3-about-wrap .h3_title{
+    .web3-hero-wrap .w3-about-wrap .h3_title {
         font-size: 2em !important;
-        text-align: center;
     }
 }
+
 @media (max-width: 575px) {
     .w3-about-wrap {
         margin-bottom: 20px;
@@ -138,10 +140,12 @@
     .achievements-title {
         margin-bottom: 20px;
     }
-    .w3-service-about{
+
+    .w3-service-about {
         padding-top: 20px;
     }
-    .web3-hero-wrap{
+
+    .web3-hero-wrap {
         padding: 20px 0px;
     }
 }

@@ -9,7 +9,7 @@ import ltc from "../../../assets/images/coin/LTC.png";
 import polkadot from "../../../assets/images/coin/polkadot.png";
 import solana from "../../../assets/images/coin/solana.png";
 import infograins from "../../../assets/images/coin/infograins.png";
-import { WOW } from "wowjs";
+// import { WOW } from "wowjs";
 import axios from 'axios';
 
 
@@ -32,10 +32,10 @@ const StartSomething = () => {
 
 
 
-    useEffect(() => {
-        const wow = new WOW({ live: false });
-        wow.init()
-    })
+    // useEffect(() => {
+    //     const wow = new WOW({ live: false });
+    //     wow.init()
+    // })
     return (
         <>
             {/* ============================== StartSomething ========================= */}
@@ -55,7 +55,9 @@ const StartSomething = () => {
                                             <p className='para_EMPTY'></p>
                                             <button type='button' className='EMPTY_btn'></button>
                                         </div>
-                                        : <div className='StartSomething_text wow zoomIn'>
+                                        :
+                                        // : <div className='StartSomething_text wow zoomIn'>
+                                        <div className='StartSomething_text'>
                                             <h4 className='h4_title'>{ApiData.subheading}</h4>
                                             <h2 className='h2_title'>{ApiData.heading}</h2>
                                             <p>{ApiData.content}</p>
@@ -64,7 +66,8 @@ const StartSomething = () => {
                                 }
                             </Col>
                             <Col sm={12} md={12} lg={6} xl={6}>
-                                <figure className='StartSomething_img wow zoomIn'>
+                            {/* <figure className='StartSomething_img wow zoomIn'> */}
+                                <figure className='StartSomething_img'>
                                     <div className="circles_wrap">
                                         <div className="circle circle1">
                                             <div className="coin_wrap">

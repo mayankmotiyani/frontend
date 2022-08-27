@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import axios from "axios";
-import AOS from "aos";
+// import AOS from "aos";
 import { IoIosWarning } from 'react-icons/io';
-import { WOW } from "wowjs";
+// import { WOW } from "wowjs";
 export default function SideBoxSection() {
     const [sideText, setSideText] = useState([]);
     const [HeadContent, setHeadContent] = useState({})
@@ -18,15 +18,16 @@ export default function SideBoxSection() {
         }
     }
     useEffect(() => {
-        AOS.init({
-            duration: 1000
-        });
+    //     AOS.init({
+    //         duration: 1000
+    //     });
         sideData()
     }, []);
-    useEffect(() => {
-        const wow = new WOW({ live: false });
-        wow.init()
-    })
+    // useEffect(() => {
+    //     const wow = new WOW({ live: false });
+    //     wow.init()
+    // })
+
     return (
         <>
             <section className='sideBox_section'>
@@ -57,7 +58,8 @@ export default function SideBoxSection() {
                                             sideText.map((ele, key) => {
                                                 return (
                                                     <Col sm={6} md={6} lg={6} xl={6} key={key}>
-                                                        <div className='box_content_div wow zoomIn'>
+                                                        {/* <div className='box_content_div wow zoomIn'> */}
+                                                        <div className='box_content_div'>
                                                             <img src={ele.image} alt="" />
                                                             <h4 className='h4_title'>{ele.title}</h4>
                                                             <p>{ele.content}</p>
@@ -69,7 +71,8 @@ export default function SideBoxSection() {
                             </Row>
                         </Col>
                         <Col sm={12} md={12} lg={6} xl={4}>
-                            <div className='side_image_content_div wow zoomIn'>
+                        {/* <div className='side_image_content_div wow zoomIn'> */}
+                            <div className='side_image_content_div'>
                                 <h3 className='h3_title'>{HeadContent.heading}</h3>
                                 <button>Click Me</button>
                             </div>

@@ -6,13 +6,14 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios';
 import { IoIosWarning } from 'react-icons/io'
 import Particle from '../Particle';
-import { WOW } from "wowjs";
+// import { WOW } from "wowjs";
 import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
     // ===================================== Hero Section API ===================================
     const [SliderData, setSliderData] = useState([])
     const [ErrorSlider, setErrorSlider] = useState(false)
+    // const [update, setupdate] = useState(false)
     async function sliderContent() {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/hero-section-content/`);
@@ -21,17 +22,29 @@ export default function HeroSection() {
             setErrorSlider(true)
         }
     }
-    useEffect(() => {
-        const wow = new WOW({ live: false });
-        wow.init()
-    })
+    // useEffect(() => {
+    //     const wow = new WOW({ live: false });
+    //     wow.init()
+    // })
 
     useEffect(() => {
         sliderContent()
         setTimeout(() => {
             sliderContent()
-        }, 500);
+            setTimeout(() => {
+                sliderContent()
+            }, 500);
+        }, 500);                                                                                             
+
     }, [])
+
+    // if (SliderData.length === 0) {
+    //     // setupdate(true)
+    //     sliderContent()
+    // }
+
+    // console.log("SliderData", SliderData);
+    // console.log("ErrorSlider", ErrorSlider);
 
     // ===================================== Hero Section API ===================================
     const options = {
@@ -77,32 +90,35 @@ export default function HeroSection() {
                                 </div>
                             </div>
                             : SliderData.length === 0 ?
-                                <Container>
-                                    <Row>
-                                        <Col lg={6} >
-                                            <div className='EMPTY_loader_content'>
-                                                <div className=''>
-                                                    <h2 className='h2_title EMPTY_loader_head'></h2>
-                                                    <p className='para_EMPTY'></p>
-                                                    <p className='para_EMPTY'></p>
-                                                    <p className='para_EMPTY'></p>
-                                                    <button className='EMPTY_btn'></button>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                        <Col lg={6}>
-                                            <div className='EMPTY_loader_img'>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                                : SliderData.map((ele, index) => {
+                            ''
+                                // <Container>
+                                //     <Row>
+                                //         <Col lg={6} >
+                                //             <div className='EMPTY_loader_content'>
+                                //                 <div className=''>
+                                //                     <h2 className='h2_title EMPTY_loader_head'></h2>
+                                //                     <p className='para_EMPTY'></p>
+                                //                     <p className='para_EMPTY'></p>
+                                //                     <p className='para_EMPTY'></p>
+                                //                     <button className='EMPTY_btn'></button>
+                                //                 </div>
+                                //             </div>
+                                //         </Col>
+                                //         <Col lg={6}>
+                                //             <div className='EMPTY_loader_img'>
+                                //             </div>
+                                //         </Col>
+                                //     </Row>
+                                // </Container>
+                                :
+                                SliderData.map((ele, index) => {
                                     return <div className='item' key={index}>
                                         <div className='inner_section'>
                                             <Container>
                                                 <Row>
                                                     <Col sm={12} md={6} lg={6} xl={6}>
-                                                        <div className='hero_slide_section_content wow fadeIn'>
+                                                    {/* <div className='hero_slide_section_content wow fadeIn'> */}
+                                                        <div className='hero_slide_section_content'>
                                                             <div className='hero_content_div'>
                                                                 <h2 className='h2_title hero_cont_heading'>{ele.title}</h2>
                                                                 <p className='hero_cont_para'>{ele.content}</p>

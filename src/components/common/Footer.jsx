@@ -9,7 +9,8 @@ import { BiRightArrowAlt } from 'react-icons/bi';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import WhatsApp from '../../assets/media/whatsapp.png'
+import WhatsApp from '../../assets/media/whatsapp.png';
+import Address from "../pages/contactUs/Address"
 const Footer = () => {
   const [showTopBtn, setShowTopBtn] = useState(false)
   window.addEventListener('scroll', () => {
@@ -23,7 +24,6 @@ const Footer = () => {
   const handleTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
-
 
   // =============================== company api ================================
   const [companyData, setCompanyData] = useState([]);
@@ -74,7 +74,7 @@ const Footer = () => {
   return (
     <>
       <div className='whats_app_div'>
-        <a href='https://wa.me/+918925564395' target={'_blank'}><img src={WhatsApp} alt="" /></a>
+        <a href='https://wa.me/+12025196167' target={'_blank'}><img src={WhatsApp} alt="" /></a>
       </div>
 
       <div className='top-btn-wrap' onClick={handleTop} style={showTopBtn === false ? { display: "none" } : { display: "block" }}>
@@ -131,9 +131,9 @@ const Footer = () => {
               <div className='foot_sec'>
                 <div className='foot_sec_subhead'>Company</div>
                 <ul>
-                  <li>
+                  {/* <li>
                     <Link to="/team">Team</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/career">Career</Link>
                   </li>
@@ -186,7 +186,11 @@ const Footer = () => {
               </div>
             </Col>
           </Row>
+        <hr/>
         </Container>
+        <div className='footer_address'>
+          <Address />
+        </div>
       </section>
       <footer className='app-footer'>
         <Container>
@@ -196,16 +200,17 @@ const Footer = () => {
                 <a href="//www.dmca.com/Protection/Status.aspx?id=064d3eba-ec5d-411c-80de-5f48aa985d6e"
                   title="DMCA.com Protection Status" className="dmca-badge">
                   <img src="//images.dmca.com/Badges/DMCA_logo-grn-btn120w.png?ID=064d3eba-ec5d-411c-80de-5f48aa985d6e"
-                    alt="DMCA.com Protection Status"/>
+                    alt="DMCA.com Protection Status" />
                 </a>
               </div>
             </Col>
             <Col lg={12}>
-                <p>Copyright©2022 | All right reserved</p>
+              <p>Copyright©2022 | All right reserved</p>
             </Col>
           </Row>
         </Container>
       </footer>
+
     </>
   )
 }

@@ -21,6 +21,10 @@ const Resources = (props) => {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}/resource/how-can-we-help/`)
             setContentData(url.data.response);
             setHeroData(url.data.resource)
+            // const title_tag = document.getElementsByTagName('title')
+            // const meta_description = document.getElementsByTagName('meta');
+            // meta_description.description.content = url.data.metacontent.content
+            // title_tag[0].innerText = url.data.metacontent.title
         } catch (error) {
         }
     }

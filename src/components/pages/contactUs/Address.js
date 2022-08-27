@@ -12,12 +12,16 @@ const Address = () => {
     try {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/office-address/`)
       setInfograinsData(url.data.infograins_india_office)
-      setOtherData(url.data.response)
+      setOtherData(url.data.response);
+      const title_tag = document.getElementsByTagName('title')
+      const meta_description = document.getElementsByTagName('meta');
+      meta_description.description.content = url.data.metacontent.content
+      title_tag[0].innerText = url.data.metacontent.title
     } catch (error) {
     }
   }
   useEffect(() => {
-    addressData()
+    // addressData()
   }, [])
 
   return (
@@ -45,25 +49,27 @@ const Address = () => {
               </div>
             </Col>
             <Col sm={12} md={12} lg={6} xl={6}>
-              <Row>
-                {
-                  otherData.map((ele) => {
-                    return (
-                      <Col sm={6} md={6} lg={6} xl={6} key={ele.id}>
-                        <Card>
-                          <Card.Body>
-                            <Card.Title>{ele.office}</Card.Title>
-                            <Card.Text>{ele.location}</Card.Text>
-                            <div className='address-num'>
-                              <BsTelephone />  <Card.Link href="#">{ele.phone}</Card.Link>
-                            </div>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    )
-                  })
-                }
-              </Row>
+              <div className='sub_address'>
+                <Row>
+                  {
+                    otherData.map((ele) => {
+                      return (
+                        <Col sm={6} md={6} lg={6} xl={6} key={ele.id}>
+                          <Card>
+                            <Card.Body>
+                              <Card.Title>{ele.office}</Card.Title>
+                              <Card.Text>{ele.location}</Card.Text>
+                              <div className='address-num'>
+                                <BsTelephone />  <Card.Link href="#">{ele.phone}</Card.Link>
+                              </div>
+                            </Card.Body>
+                          </Card>
+                        </Col>
+                      )
+                    })
+                  }
+                </Row>
+              </div>
             </Col>
           </Row>
 

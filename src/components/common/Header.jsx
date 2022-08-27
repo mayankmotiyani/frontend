@@ -16,7 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import popupGif from "../../assets/media/CUNSTULTANT.png";
 import { BiConversation } from "react-icons/bi";
 import axios from 'axios'
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { IoIosWarning } from 'react-icons/io'
 import NFT_bg from '../../assets/media/nft_bg.png'
 import Slice_bg from '../../assets/media/slice3ss.png'
@@ -27,6 +27,25 @@ import Loader from "react-js-loader";
 
 
 export default function Header() {
+  // ======================================== Meta Tag Content =================================================
+  const { pathname } = useLocation()
+  async function MetaTags_Content() {
+    try {
+      const title_tag = document.getElementsByTagName('title')
+      const meta_description = document.getElementsByTagName('meta');
+      const { data: { response: { metacontent: { title, content } } } } = await axios.get(`${process.env.REACT_APP_BASE_URL}${pathname}`)
+      meta_description.description.content = content
+      title_tag[0].innerText = title
+    } catch (error) {
+
+    }
+  }
+
+  useEffect(() => {
+    MetaTags_Content()
+  }, [pathname])
+
+
   // ====================================== popup validations ===================================
   const [input, setInput] = useState({
     name: "",
@@ -104,15 +123,15 @@ export default function Header() {
     }
     // // ================ Message =============================
     const messageId = document.getElementById("message_Id").value;
-    console.log("message_Id",!messageId);
+    console.log("message_Id", !messageId);
     if (!messageId) {
       setMessage("Message is required");
       setTimeout(() => {
         setLoader(false)
       }, 100)
-        return true;
+      return true;
     } else {
-        setMessage("");
+      setMessage("");
     }
     // ======================== concat number and dialingCode ==============================
     if (input.number != "") {
@@ -390,7 +409,9 @@ export default function Header() {
   useEffect(() => {
     topBar_Numbers()
   }, [])
-
+  const handleTop = () =>{
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
   return (
     // /* ============================ header area =============================*/
     <>
@@ -406,7 +427,7 @@ export default function Header() {
                     <ul className='call_us_list'>
 
                       {ErrorTopBar ? 'Error'
-                        : TopBarNum.length === 0 ? <div className='spin_loader'> <Spinner variant='primary' animation='border' /> </div>
+                        : TopBarNum.length === 0 ? ''
                           : TopBarNum.map((e, key) => {
                             return <li key={key}><div className='country_name'>{e.office}</div>  <a href={`tel:${e.phone1}`}>{e.phone1}</a>  <a className="ms-4" href={`tel:${e.phone2}`}>{e.phone2}</a></li>
                           })}
@@ -434,7 +455,7 @@ export default function Header() {
                     <div className='main_nav'>
                       <div className='site_logo'>
                         <div className='site_logo_img'>
-                          <Link to='/'>
+                          <Link to='/' onClick={handleTop}>
                             <img src={InfograinsIcon} alt="site_logo" />
                           </Link>
                         </div>
@@ -806,18 +827,18 @@ export default function Header() {
               </form>
             </div>
           </Modal.Body>
-        {
-          success ?
-            <section className='congrats_popup get_popup'>
-              <div className="svg-container">
-                <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
-                  <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
-                  <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
-                </svg>
-                <p>Thanks for contacting us. We will contact you shortly</p>
-              </div>
-            </section> : ""
-        }
+          {
+            success ?
+              <section className='congrats_popup get_popup'>
+                <div className="svg-container">
+                  <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                    <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
+                    <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
+                  </svg>
+                  <p>Thanks for contacting us. We will contact you shortly</p>
+                </div>
+              </section> : ""
+          }
         </div>
       </Modal>
 

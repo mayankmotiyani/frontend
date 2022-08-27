@@ -69,7 +69,7 @@ const Testimonial = () => {
                                         <div className='testimonial_content'>
                                             <img className="rounded-circle shadow-1-strong mb-4"
                                                 src={data.image} alt="avatar"
-                                                style={{ width: "150px" }} />
+                                                style={{ width: "150px", height:"150px", boxShadow:"50%", objectFit:"cover" }} />
                                             <div className="row d-flex justify-content-center">
                                                 <div className="col-lg-8 text-center">
                                                     <h5 className="mb-3">{data.client_name}</h5>

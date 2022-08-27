@@ -15,14 +15,18 @@
         align-items: flex-start;
         margin-top: 20px;
 
+        .AboutPlatform-details-text {
+            width: calc(100% - 100px);
+        }
+
         .AboutPlatform-details-img {
             margin-right: 15px;
             transition: all 0.5s ease;
             width: 100px;
             height: 50px;
-            object-fit: cover;
 
-            img{
+            img {
+                object-fit: fill;
             }
 
             &:hover {
@@ -36,13 +40,17 @@
     .AboutPlatform-wrap .row {
         flex-direction: column-reverse;
     }
-    .AboutPlatform-text, .AboutAnalysis-text{
+
+    .AboutPlatform-text,
+    .AboutAnalysis-text {
         margin-top: 20px;
     }
-    .AboutPlatform-wrap{
+
+    .AboutPlatform-wrap {
         padding: 20px 0px;
     }
-    .AboutPlatform-img{
+
+    .AboutPlatform-img {
         margin-bottom: 20px;
     }
 }

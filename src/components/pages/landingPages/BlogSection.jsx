@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { IoIosWarning } from 'react-icons/io';
-import { WOW } from "wowjs";
+// import { WOW } from "wowjs";
 export default function BlogSection() {
     // ========================== Blog API ===========================
     const [BlogData, setBlogData] = useState([])
@@ -33,10 +33,10 @@ export default function BlogSection() {
         blogHead()
         blogApi()
     }, [])
-    useEffect(() => {
-        const wow = new WOW({ live: false });
-        wow.init()
-    })
+    // useEffect(() => {
+    //     const wow = new WOW({ live: false });
+    //     wow.init()
+    // })
 
     return (
         <>
@@ -93,7 +93,8 @@ export default function BlogSection() {
                                 </Row>
                                 : BlogData.map((e, key) => {
                                     return <Col sm={6} md={6} lg={4} xl={4} key={key}>
-                                        <div className='blog_section wow zoomIn'>
+                                        <div className='blog_section'>
+                                        {/* <div className='blog_section wow zoomIn'> */}
                                             <img src={e.image} alt="" />
                                             <div className='blog_content'>
                                                 <h3 className='h3_title'>{e.title}</h3>

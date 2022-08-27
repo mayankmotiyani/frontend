@@ -11,6 +11,10 @@ const Career = (props) => {
         try {
             const url = await axios.get(`${process.env.REACT_APP_BASE_URL}career/`);
             setCareer(url.data.response);
+            // const title_tag = document.getElementsByTagName('title')
+            // const meta_description = document.getElementsByTagName('meta');
+            // meta_description.description.content = url.data.metacontent.content
+            // title_tag[0].innerText = url.data.metacontent.title
         } catch (error) {
             setError(true)
         }

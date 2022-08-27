@@ -10,17 +10,22 @@
     "aos": "^2.3.4",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "fs": "^0.0.1-security",
+    "globby": "^13.1.2",
     "jquery": "^3.6.0",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-counter": "^1.0.1",
     "react-countup": "^6.3.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-js-loader": "^0.1.0",
     "react-owl-carousel": "^2.3.3",
     "react-scripts": "5.0.1",
+    "react-snap": "^1.23.0",
     "react-tsparticles": "^2.2.2",
     "sass": "^1.54.4",
     "tsparticles": "^2.2.2",
@@ -31,7 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": "react-snap"
   },
   "eslintConfig": {
     "extends": [

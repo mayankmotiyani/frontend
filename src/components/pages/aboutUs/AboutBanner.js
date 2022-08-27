@@ -9,7 +9,11 @@ const AboutBanner = () => {
   async function api() {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/`);
-      setapiData(api.data.response)
+      setapiData(api.data.response);
+      const title_tag = document.getElementsByTagName('title')
+      const meta_description = document.getElementsByTagName('meta');
+      meta_description.description.content = api.data.response.metacontent.content
+      title_tag[0].innerText = api.data.response.metacontent.title
     } catch (error) {
       setError(true)
     }

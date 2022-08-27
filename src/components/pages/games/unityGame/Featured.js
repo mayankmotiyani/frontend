@@ -48,7 +48,7 @@ const Featured = () => {
                 items: 5,
             },
             1000: {
-                items: 8,
+                items: 5,
 
             }
         },

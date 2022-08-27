@@ -1,68 +1,75 @@
-.single_blog_page{
+.single_blog_page {
     margin: 5em 0em;
 
-    .side_menu_div{
+    .side_menu_div {
         position: relative;
 
-        @supports (position: sticky) or (position: -webkit-sticky){
-            
-                    .side_menu{
-                        position: -webkit-sticky;
-                        position: sticky;
+        @supports (position: sticky) or (position: -webkit-sticky) {
 
-                        ul{
-                            list-style:outside;
-                            
-                            li{
-                                list-style: outside;
-                                margin-bottom: .5em;
+            .side_menu {
+                position: -webkit-sticky;
+                position: sticky;
 
-                                a{
-                                    color: #47576a;
+                ul {
+                    list-style: outside;
 
-                                    &:hover{
-                                        color: dodgerblue;
-                                    }
-                                }
+                    li {
+                        list-style: outside;
+                        margin-bottom: .5em;
+
+                        a {
+                            color: #47576a;
+
+                            &:hover {
+                                color: dodgerblue;
                             }
                         }
                     }
+                }
+            }
 
         }
     }
-    .blog_body{
-        .blog_content_div{
-            h3{
+
+    .blog_body {
+        .blog_content_div {
+            h3 {
                 margin-top: 1em;
                 margin-bottom: .5em;
             }
         }
 
-        .h2_title{
+        .h2_title {
             border-left: 5px solid #36bbca;
             padding-left: 10px;
             margin-bottom: .5em;
         }
-        .blog_img{
+
+        .blog_img {
             height: 400px;
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: fill;
             margin-bottom: 2em;
         }
-        .blog_content{
+
+        .blog_content {
             margin: 2em 0em;
         }
     }
 }
 
-@media screen and (max-width: 991px){
-    .side_menu_div{
+@media screen and (max-width: 991px) {
+    .side_menu_div {
         display: none;
     }
 }
 
-@media screen and (max-width: 525px){
-    .single_blog_page{
+@media screen and (max-width: 525px) {
+    .single_blog_page {
         margin: 2em 0em;
+    }
+
+    .single_blog_page .blog_body .blog_img {
+        height: 200px;
     }
 }

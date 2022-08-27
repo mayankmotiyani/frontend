@@ -176,6 +176,7 @@ const ContactUs = () => {
         try {
             const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/get-in-touch/`);
             setGetContentData(api.data.response)
+            // console.log("api.data.response", api.data.response);
         } catch (error) {
             setError(true)
         }
@@ -219,8 +220,8 @@ const ContactUs = () => {
                                                 <a href={`mailto:${getContentData.contactInformation.email}`} target={'_blank'}>{getContentData.contactInformation.email}</a>
                                                 <h5 className='h5_title'>Phone</h5>
                                                 <a href={`tel:${getContentData.contactInformation.phone}`}>IND {getContentData.contactInformation.phone}</a>
-                                                <h5 className='h5_title'>On The Web</h5>
-                                                <a href={`mailto:${getContentData.contactInformation.on_the_web}`}>{getContentData.contactInformation.on_the_web}</a>
+                                                <h5 className='h5_title'>On The Skype</h5>
+                                                <a href={`mailto:${getContentData.contactInformation.on_the_skype}`}>{getContentData.contactInformation.on_the_skype}</a>
                                             </div>
                                         </div>
                                 }
@@ -278,18 +279,18 @@ const ContactUs = () => {
                         </Row>
                     </div>
                 </Container>
-            {
-                success ?
-                    <section className='congrats_popup'>
-                        <div className="svg-container">
-                            <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
-                                <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
-                                <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
-                            </svg>
-                            <p>Thanks for contacting us. We will contact you shortly</p>
-                        </div>
-                    </section> : ""
-            }
+                {
+                    success ?
+                        <section className='congrats_popup'>
+                            <div className="svg-container">
+                                <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                                    <circle className="success" fill="#5bb543" cx="24" cy="24" r="22" />
+                                    <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17" />
+                                </svg>
+                                <p>Thanks for contacting us. We will contact you shortly</p>
+                            </div>
+                        </section> : ""
+                }
             </div>
         </>
     )

@@ -41,23 +41,24 @@
         align-items: center;
         justify-content: center;
 
-        p {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+        // p {
+        //     display: -webkit-box;
+        //     -webkit-line-clamp: 3;
+        //     -webkit-box-orient: vertical;
+        //     overflow: hidden;
+        // }
 
         .h2_title {
             font-size: 30px;
             padding: 15px 0px;
         }
-    }   
+    }
 
-    .w3-card-body.card_number_1{
+    .w3-card-body.card_number_1 {
         margin-top: -8em;
     }
-    .w3-card-body.card_number_3{
+
+    .w3-card-body.card_number_3 {
         margin-top: -6em;
     }
 
@@ -72,41 +73,56 @@
     }
 
 }
+
 @media (max-width: 575px) {
-    .w3Card-wrap .center-card, .w3Card-wrap .lower-card{
+
+    .w3Card-wrap .center-card,
+    .w3Card-wrap .lower-card {
         bottom: 0px;
     }
-    .w3Card-wrap .w3Card-title .h2_title{
+
+    .w3Card-wrap .w3Card-title .h2_title {
         padding-bottom: 20px;
     }
-    .w3Card-wrap .w3Card-both{
+
+    .w3Card-wrap .w3Card-both {
         margin: 0px;
     }
-    .w3Card-wrap{
+
+    .w3Card-wrap {
         padding: 20px 0px;
     }
-}   
-
+}
+@media screen and (max-width: 767px) {
+    .w3Card-wrap .w3-card-body {
+        height: auto !important;
+    }
+}
 @media screen and (max-width: 991px) {
-    .w3Card-wrap{
+    .w3Card-wrap {
 
-        .w3-card-body.card_number_1,  .w3-card-body.card_number_3{
+        .w3-card-body.card_number_1,
+        .w3-card-body.card_number_3 {
             margin-top: auto;
         }
     }
-    .w3Card-wrap .w3Card-both{
+
+    .w3Card-wrap .w3Card-both {
         margin-top: 0px;
     }
-    .w3Card-wrap .w3Card-title .h2_title{
+
+    .w3Card-wrap .w3Card-title .h2_title {
         padding-bottom: 20px;
     }
-    
+
 }
+
 @media screen and (max-width: 991px) {
-    .w3Card-wrap .w3-card-body{
-        height: 140px;
+    .w3Card-wrap .w3-card-body {
+        height: 220px;
     }
-    .w3Card-wrap .w3-card-body .h2_title{
+
+    .w3Card-wrap .w3-card-body .h2_title {
         padding: 0px;
     }
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import DemoIcon from '../../../assets/media/demo_icon.png';
-import AOS from "aos";
+// import AOS from "aos";
 import axios from "axios";
 import { IoIosWarning } from 'react-icons/io';
-import { WOW } from "wowjs";
+// import { WOW } from "wowjs";
 export default function WhyChoose() {
     const [choose, setChoose] = useState([]);
     const [HeadContent, setHeadContent] = useState({})
@@ -19,15 +19,15 @@ export default function WhyChoose() {
         }
     }
     useEffect(() => {
-        AOS.init({
-            duration: 1000
-        });
+        // AOS.init({
+        //     duration: 1000
+        // });
         chooseData();
     }, []);
-    useEffect(() => {
-        const wow = new WOW({ live: false });
-        wow.init()
-    })
+    // useEffect(() => {
+    //     const wow = new WOW({ live: false });
+    //     wow.init()
+    // })
     return (
         <>
             <section className='whyChoose_section'>
@@ -79,7 +79,8 @@ export default function WhyChoose() {
                                     choose.map((ele, key) => {
                                         return (
                                             <Col sm={12} md={6} lg={6} xl={6} key={key}>
-                                                <div className='box_div wow zoomIn'>
+                                                {/* <div className='box_div wow zoomIn'> */}
+                                                <div className='box_div'>
                                                     <img src={ele.icon} alt="" />
                                                     <h4 className='h4_title'>{ele.service_name}</h4>
                                                     <p>{ele.content}</p>

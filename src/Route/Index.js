@@ -46,7 +46,7 @@ const Index = () => {
                     <Route path='/blog/:blog_slug' element={<SingleBlog demo={scrollSmoothTo} />} />
                     <Route path="/aboutUs" element={<AboutUs demo={scrollSmoothTo} />} />
                     <Route path="/contactUs" element={<ContactUs demo={scrollSmoothTo} />} />
-                    <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} />
+                    {/* <Route path="/team" element={<OurTeam demo={scrollSmoothTo} />} /> */}
                     <Route path="/game/:game_slug" element={<UnityGame demo={scrollSmoothTo} />} />
                     <Route path="/nft/:nft_slug" element={<Main_nft demo={scrollSmoothTo} />} />
                     <Route path="/products" element={<ProductWeb demo={scrollSmoothTo} />} />
@@ -57,9 +57,9 @@ const Index = () => {
                     <Route path='/privacy' element={<Privacy demo={scrollSmoothTo}/>}/>
                     <Route path='/term_and_condition' element={<TermCondition demo={scrollSmoothTo}/>}/>
                     <Route path='/siteMap' element={<SiteMap demo={scrollSmoothTo}/>}/>
-                    <Route path='*' element={<NotFound demo={scrollSmoothTo}/>} />
+                    <Route path='*' element={<NotFound demo={scrollSmoothTo} />} />
                 </Routes>
-                <Footer />
+                <Footer/>
             </BrowserRouter>
         </>
     )

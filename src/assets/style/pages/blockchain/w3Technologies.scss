@@ -22,8 +22,11 @@
 
         .description {
             word-break: break-word;
-
+            padding: 15px 0px;
             p:nth-child(1) {
+                padding: 15px 0px 0px;
+            }
+            p:nth-child(2) {
                 padding: 15px 0px;
             }
         }

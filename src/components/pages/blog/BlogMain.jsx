@@ -15,7 +15,11 @@ export default function BlogMain(props) {
     const [featuredData, setFeaturedData] = useState([])
     async function featuredApi() {
         const api = await axios.get(`${process.env.REACT_APP_BASE_URL}blog/blog_list/`);
-        setFeaturedData(api.data.response)
+        setFeaturedData(api.data.response);
+        const title_tag = document.getElementsByTagName('title')
+        const meta_description = document.getElementsByTagName('meta');
+        meta_description.description.content = api.data.metacontent.content
+        title_tag[0].innerText = api.data.metacontent.title
     }
 
     useEffect(() => {
@@ -24,14 +28,11 @@ export default function BlogMain(props) {
 
     // ========================================== Featured Blog List =================================
     // =============================== InfiniteScroll ==========================
-    // ======================================= User Value =======================================
-    const [userEnteredValue, setuserEnteredValue] = useState('')
-    function userSearchValue(e) {
-        setuserEnteredValue(e.target.value)
-        searchAPI()
-    }
 
+    // ======================================= User Value =======================================
+    const [userEnteredValue, setUserEnteredValue] = useState('')
     // ==================================== Search API =========================================
+
     const [dummy, setdummy] = useState([])
     const [LimitReached, setLimitReached] = useState(0)
     const [Count, setCount] = useState(0)
@@ -47,11 +48,25 @@ export default function BlogMain(props) {
         }, 500);
     }
 
+    function userSearchValue(e) {
+        // console.log("e.target.value", e.target.value);
+        let eCode = e.target.value;
+        if (eCode === '') {
+            setUserEnteredValue("")
+            searchAPI()
+        } else {
+            setUserEnteredValue(eCode)
+            searchAPI()
+        }
+
+        // setUserEnteredValue(e.target.value)
+        // searchAPI()
+    }
     // ==================================== Search API =========================================
 
     useEffect(() => {
         searchAPI()
-    }, [])
+    }, [dummy])
 
     // =============================== InfiniteScroll ==========================
 
@@ -62,15 +77,16 @@ export default function BlogMain(props) {
         try {
             const { data: { response } } = await axios.get(`${process.env.REACT_APP_BASE_URL}/blog/blog/blog_section_one/`)
             setHeaderData(response)
+
         } catch (error) {
 
         }
     }
 
     useEffect(() => {
-      api()
+        api()
     }, [])
-    
+
 
     return (
         <>
@@ -86,6 +102,30 @@ export default function BlogMain(props) {
                             id="uncontrolled-tab-example"
                             className="mb-3"
                         >
+                            <Tab eventKey="profile" title="Latest Blogs">
+                                <Row>
+                                    <Col lg={12} md={12}>
+                                        <div className='all_blogs'>
+                                            <Container>
+                                                <Row>
+                                                    {featuredData.map((blog, key) => {
+                                                        return <Col className='my-3' sm={6} xl={4} lg={4} md={6} key={key}>
+                                                            <div className='blog_card'>
+                                                                <img src={blog.image} alt="" />
+                                                                <div className='blog_card_content'>
+                                                                    <h3 className='h3_title' data-blog-title>{blog.title}</h3>
+                                                                    <p>{blog.description}</p>
+                                                                    <Link to={blog.blog_url}>Read More</Link>
+                                                                </div>
+                                                            </div>
+                                                        </Col>
+                                                    })}
+                                                </Row>
+                                            </Container>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Tab>
                             <Tab eventKey="home" title="All Blogs">
                                 <div className='list_of_blog_section'>
                                     <Container>
@@ -130,30 +170,7 @@ export default function BlogMain(props) {
                                     </Container>
                                 </div>
                             </Tab>
-                            <Tab eventKey="profile" title="Latest Blogs">
-                                <Row>
-                                    <Col lg={12} md={12}>
-                                        <div className='all_blogs'>
-                                            <Container>
-                                                <Row>
-                                                    {featuredData.map((blog, key) => {
-                                                        return <Col className='my-3' sm={6} xl={4} lg={4} md={6} key={key}>
-                                                            <div className='blog_card'>
-                                                                <img src={blog.image} alt="" />
-                                                                <div className='blog_card_content'>
-                                                                    <h3 className='h3_title' data-blog-title>{blog.title}</h3>
-                                                                    <p>{blog.description}</p>
-                                                                    <Link to={blog.blog_url}>Read More</Link>
-                                                                </div>
-                                                            </div>
-                                                        </Col>
-                                                    })}
-                                                </Row>
-                                            </Container>
-                                        </div>
-                                    </Col>
-                                </Row>
-                            </Tab>
+
                         </Tabs>
                     </div>
                 </Container>
