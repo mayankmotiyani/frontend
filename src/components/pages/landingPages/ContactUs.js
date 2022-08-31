@@ -153,7 +153,6 @@ const ContactUs = () => {
             }, 3000)
         }).catch(err => {
             setLoader(false)
-            console.log("err", err);
             var numErr = JSON.parse(err.request.response);
             if (numErr.response === "Phone number is not valid!") {
                 setNumberError("Phone number is not valid!")
@@ -221,7 +220,7 @@ const ContactUs = () => {
                                                 <h5 className='h5_title'>Phone</h5>
                                                 <a href={`tel:${getContentData.contactInformation.phone}`}>IND {getContentData.contactInformation.phone}</a>
                                                 <h5 className='h5_title'>On The Skype</h5>
-                                                <a href={`mailto:${getContentData.contactInformation.on_the_skype}`}>{getContentData.contactInformation.on_the_skype}</a>
+                                                <a href={`skype:${getContentData.contactInformation.on_the_skype}?chat`}>{getContentData.contactInformation.on_the_skype}</a>
                                             </div>
                                         </div>
                                 }

@@ -13,15 +13,11 @@ const Address = () => {
       const url = await axios.get(`${process.env.REACT_APP_BASE_URL}about_us/office-address/`)
       setInfograinsData(url.data.infograins_india_office)
       setOtherData(url.data.response);
-      const title_tag = document.getElementsByTagName('title')
-      const meta_description = document.getElementsByTagName('meta');
-      meta_description.description.content = url.data.metacontent.content
-      title_tag[0].innerText = url.data.metacontent.title
     } catch (error) {
     }
   }
   useEffect(() => {
-    // addressData()
+    addressData()
   }, [])
 
   return (
@@ -39,10 +35,10 @@ const Address = () => {
                     <Card.Title>{infograinsData.office}</Card.Title>
                     <Card.Text>{infograinsData.location}</Card.Text>
                     <div className='address-num'>
-                      <BsTelephone /> <Card.Link href="#">{infograinsData.phone}</Card.Link>
+                      <BsTelephone /> <Card.Link href={`tel:${infograinsData.phone}`}>{infograinsData.phone}</Card.Link>
                     </div>
                     <div className='address-email'>
-                      <AiOutlineMail /> <Card.Link href="#">{infograinsData.email}</Card.Link>
+                      <AiOutlineMail /> <Card.Link href={`mailto:${infograinsData.email}`} target="_blank">{infograinsData.email}</Card.Link>
                     </div>
                   </Card.Body>
                 </Card>
@@ -60,7 +56,7 @@ const Address = () => {
                               <Card.Title>{ele.office}</Card.Title>
                               <Card.Text>{ele.location}</Card.Text>
                               <div className='address-num'>
-                                <BsTelephone />  <Card.Link href="#">{ele.phone}</Card.Link>
+                                <BsTelephone />  <Card.Link href={`tel:${ele.phone}`}>{ele.phone}</Card.Link>
                               </div>
                             </Card.Body>
                           </Card>

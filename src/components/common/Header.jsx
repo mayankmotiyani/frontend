@@ -24,11 +24,11 @@ import Game_bg from '../../assets/media/games-d.png'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import { BsSkype } from 'react-icons/bs'
 import Loader from "react-js-loader";
-
-
+import { useNavigate } from "react-router-dom"
+import { Helmet } from "react-helmet";
 export default function Header() {
   // ======================================== Meta Tag Content =================================================
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
   async function MetaTags_Content() {
     try {
       const title_tag = document.getElementsByTagName('title')
@@ -123,7 +123,6 @@ export default function Header() {
     }
     // // ================ Message =============================
     const messageId = document.getElementById("message_Id").value;
-    console.log("message_Id", !messageId);
     if (!messageId) {
       setMessage("Message is required");
       setTimeout(() => {
@@ -409,12 +408,39 @@ export default function Header() {
   useEffect(() => {
     topBar_Numbers()
   }, [])
-  const handleTop = () =>{
+  const handleTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
+
+  // page redirect area
+  const navigate = useNavigate();
+  const redirect = useLocation()
+  if (redirect.pathname === "/company/terms-conditions") {
+    navigate('term_and_condition');
+  }
+  if (redirect.pathname === "/contact/contact-us-2/" || redirect.pathname === "/meet-with-us/") {
+    navigate("/contactUs")
+  }
+  if (redirect.pathname === "/homepage-banner-mid-1-2/") {
+    navigate("/")
+  }
+  if (redirect.pathname === "/blog/how-blockchain-will-change-organizations-sliceledger") {
+    navigate("/products")
+  }
+  if (redirect.pathname === "/blog/ethereum-development-services-sliceledger") {
+    navigate("/blockchain/ethereum-development/")
+  }
+  if (redirect.pathname === "/about-us/careers") {
+    navigate("/career")
+  }
+  // page redirect area
   return (
     // /* ============================ header area =============================*/
     <>
+      <Helmet>
+        <link rel="canonical" href={`https://infograins.com${pathname}`} />
+        
+      </Helmet>
       <section className='site_main_head'>
         <div className='top_most_bar'>
           <Container >

@@ -148,7 +148,6 @@ const BannerForm = () => {
             }, 3000)
         }).catch(err => {
             setLoader(false)
-            console.log("err", err);
             var numErr = JSON.parse(err.request.response);
             if (numErr.response === "Phone number is not valid!") {
                 setNumberError("Phone number is not valid!")

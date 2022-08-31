@@ -1,8 +1,10 @@
 import axios from 'axios'
 import React, { useState, useRef, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { useLocation } from 'react-router-dom'
 
 export default function TermCondition(props) {
+    
     // =========================== scroll To Top default =========================
     useEffect(() => {
         props.demo('top')

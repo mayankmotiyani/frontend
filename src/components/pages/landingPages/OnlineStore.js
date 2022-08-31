@@ -24,10 +24,10 @@ const OnlineStore = () => {
     try {
       const api = await axios.get(`${process.env.REACT_APP_BASE_URL}api/what-we-do/`);
       setData(api.data.response)
-      // const title_tag = document.getElementsByTagName('title')
-      // const meta_description = document.getElementsByTagName('meta');
-      // meta_description.description.content = api.data.metacontent.content
-      // title_tag[0].innerText = api.data.metacontent.title
+      const title_tag = document.getElementsByTagName('title')
+      const meta_description = document.getElementsByTagName('meta');
+      meta_description.description.content = api.data.metacontent.content
+      title_tag[0].innerText = api.data.metacontent.title
     } catch (error) {
       setError(true)
     }
